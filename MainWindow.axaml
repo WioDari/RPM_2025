@@ -1,0 +1,82 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Spotify.MainWindow"
+        Title="Spotify"
+        Background="#000002">
+        
+        <Grid ColumnDefinitions="*,*,*,*,*,*,*,*" 
+              RowDefinitions="*,*,*,*,*,*,*,*">
+<StackPanel Grid.Column="0" Grid.Row="0">
+        <TextBlock Padding="15 15 15 15"
+                   FontSize="18"
+                Text="Музыка+"
+                Foreground="#9D90AA">
+        </TextBlock>
+</StackPanel>            
+
+            <TextBlock Grid.Row="2" Grid.Column="2"
+                       Grid.ColumnSpan="4"
+                       Text="Авторизация"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Foreground="#E9E9E9"
+                       FontSize="25">
+            </TextBlock>
+            
+            <StackPanel Grid.Column="3" Grid.Row="3"
+                        Grid.ColumnSpan="2">
+            <TextBox Background="#CBC9CC"
+                     Width="250"
+                     Height="40"
+                     Watermark="Login"
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center"
+                     Name="Email">
+            </TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="3" Grid.Row="4"
+                        Grid.ColumnSpan="2">
+                <TextBox Background="#CBC9CC"
+                         Width="250"
+                         Height="40"
+                         Watermark="Password"
+                         HorizontalContentAlignment="Left"
+                         VerticalContentAlignment="Center"
+                         Name="Password">
+                </TextBox>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="2" Grid.Row="5"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="5">
+                <Button Background="#433A67"
+                        Width="90"
+                        Height="45"
+                        Content="Войти"
+                        Foreground="#E9E9E9"
+                        HorizontalAlignment="Right"
+                        VerticalContentAlignment="Center"
+                        HorizontalContentAlignment="Center"
+                        Click="LogIn_Click">
+                </Button>
+            </StackPanel>
+                
+            <StackPanel Grid.Column="3" Grid.Row="5"
+                        Grid.ColumnSpan="3"
+                        Grid.RowSpan="5">
+                    <Button Background="#9D90AA"
+                            Width="90"
+                            Height="45"
+                            Content="Гость"
+                            Foreground="#E9E9E9"
+                            HorizontalAlignment="Left"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Center">
+                </Button>
+            </StackPanel>
+        </Grid>
+</Window>
