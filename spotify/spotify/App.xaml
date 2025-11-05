@@ -1,0 +1,19 @@
+﻿<Application x:Class="spotify.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:spotify"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style
+            TargetType="Window">
+            <Setter
+                Property="FontFamily"
+                Value="Times New Roman">
+            </Setter>
+            <Setter
+                Property="FontSize"
+                Value="12">
+            </Setter>
+        </Style>
+    </Application.Resources>
+</Application>
