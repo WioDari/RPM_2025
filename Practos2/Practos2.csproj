@@ -10,10 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\animation.gif.mp4" />
     <None Remove="Resources\cat-headphones.gif.gif" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Resources\animation.gif.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\cat-headphones.gif.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

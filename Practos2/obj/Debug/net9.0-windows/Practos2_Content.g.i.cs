@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/animation.gif.mp4")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/cat-headphones.gif.gif")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/icon.ico")]
 
