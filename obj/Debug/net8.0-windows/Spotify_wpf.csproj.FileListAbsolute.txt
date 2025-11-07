@@ -128,3 +128,4 @@ C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Vi
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\Menu.baml
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\bin\Debug\net8.0-windows\System.Speech.dll
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Speech.dll
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Spotify_wpf.sourcelink.json

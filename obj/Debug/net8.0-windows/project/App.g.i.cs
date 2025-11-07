@@ -59,7 +59,7 @@ namespace Spotify_wpf {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Spotify_wpf;V1.0.0.0;component/project/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Spotify_wpf;component/project/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\project\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
