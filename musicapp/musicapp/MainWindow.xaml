@@ -1,0 +1,49 @@
+﻿<Window x:Class="musicapp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Music App" Height="500" Width="420">
+    <Grid Margin="20">
+        
+        <Grid x:Name="LoginGrid" Visibility="Visible">
+            <StackPanel>
+                <TextBlock Text="Авторизация" FontSize="24" HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+                <TextBlock Text="Логин:" Margin="0,0,0,5"/>
+                <TextBox x:Name="LoginBox" Height="30" Margin="0,0,0,10"/>
+
+                <TextBlock Text="Пароль:" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="PasswordBox" Height="30" Margin="0,0,0,15"/>
+
+                
+                <TextBlock Text="Капча (5 символов):" Margin="0,0,0,5"/>
+                <Border Background="#F0F0F0" Height="60" CornerRadius="4" Padding="5" Margin="0,0,0,10">
+                    <Image x:Name="CaptchaImage"/>
+                </Border>
+                <TextBox x:Name="CaptchaBox" Height="30" MaxLength="5" HorizontalContentAlignment="Center" FontSize="16" Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,0,0,15">
+                    <Button Content="Обновить капчу" Click="RefreshCaptcha_Click" Padding="8,3" Margin="0,0,10,0"/>
+                    <Button Content="Проверить капчу" Click="VerifyCaptcha_Click" Padding="8,3"/>
+                </StackPanel>
+
+                
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button x:Name="LoginButton" Content="Войти" Click="LoginButton_Click" Width="90" Margin="5" IsEnabled="False"/>
+                    <Button Content="Гость" Click="GuestButton_Click" Width="90" Margin="5"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        
+        <Grid x:Name="MainGrid" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock x:Name="WelcomeText" FontSize="18" Margin="0,0,0,30"/>
+
+                <TextBlock Text="Добро пожаловать! Вы успешно вошли в систему." 
+                           TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Margin="0,0,0,30"/>
+
+                <Button Content="Выйти" Click="LogoutButton_Click" Width="100" HorizontalAlignment="Right"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
