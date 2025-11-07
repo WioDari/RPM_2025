@@ -123,3 +123,9 @@ C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\Ente
 C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\EnterWindow.baml
 C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\MainWindow.g.cs
 C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\MainWindow.baml
+C:\Users\User\source\repos\Practos2\Practos2\bin\Debug\net9.0-windows\Resources\animation.gif.mp4
+C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\Warning&Image.g.cs
+C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Views\Warning&Image.baml
+C:\Users\User\source\repos\Practos2\Practos2\obj\Debug\net9.0-windows\Practos2.sourcelink.json
+C:\Users\User\source\repos\Practos2\Practos2\bin\Debug\net9.0-windows\System.Speech.dll
+C:\Users\User\source\repos\Practos2\Practos2\bin\Debug\net9.0-windows\runtimes\win\lib\net9.0\System.Speech.dll

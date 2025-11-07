@@ -19,5 +19,9 @@
             <TextBlock Margin="20,122,0,0" TextWrapping="Wrap" FontSize="25" Text="Пароль:" VerticalAlignment="Top" Height="26"/>
             <TextBox Text="{Binding password}" HorizontalAlignment="Left" Margin="0,122,0,0" FontSize="25" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         </StackPanel>
+        <TextBox HorizontalAlignment="Center" Margin="0,304,0,0" TextWrapping="Wrap" Text="{Binding captchaInput, NotifyOnSourceUpdated=True}" TextAlignment="Center" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,285,0,0" TextWrapping="Wrap" TextAlignment="Center" Text="{Binding captchaText}" VerticalAlignment="Top"/>
+        <Button Content="Обновить" Command="{Binding UpdateCaptchaCommand}" Background="#9C4DFF" HorizontalAlignment="Center"  Margin="0,332,0,0" VerticalAlignment="Top"/>
+        <Image Source="{Binding captchaImage}" HorizontalAlignment="Left" Width="200" Height="50" Margin="70,250,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
