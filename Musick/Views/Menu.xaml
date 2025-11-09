@@ -1,0 +1,14 @@
+﻿<Window x:Class="Musick.Views.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Musick.Views"
+        mc:Ignorable="d"
+        Style="{StaticResource GeneralStyle}"
+        Title="Menu" Height="450" Width="800">
+    <Grid>
+        <Button Command="{Binding LogoutCommand}" Content="Выход" HorizontalAlignment="Left" Margin="678,9,0,0" VerticalAlignment="Top" Height="25" Width="83"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,9,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top" FontSize="16"/>
+    </Grid>
+</Window>
