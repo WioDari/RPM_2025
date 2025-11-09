@@ -23,6 +23,10 @@ public partial class User
 
     public DateOnly? LastLoginDate { get; set; }
 
+    public int FailedEntriesCount { get; set; }
+
+    public TimeSpan BanInterval { get; set; }
+
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 
     public virtual UserRole Role { get; set; } = null!;
