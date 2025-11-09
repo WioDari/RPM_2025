@@ -83,6 +83,10 @@
                 Background="{StaticResource PrimaryAccentColorBrush}"
                 BorderBrush="{StaticResource SecondaryAccentColorBrush}"/>
         </Grid>
-
+        <Button 
+            Grid.Column="2" Grid.Row="5"
+            Content="Войти как гость" 
+            HorizontalAlignment="Center" VerticalAlignment="Center" 
+            Click="GuestLoginButton_Click"/>
     </Grid>
 </Window>

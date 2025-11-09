@@ -72,7 +72,7 @@ public partial class MainWindow : Window
         if (user != null)
         {
             MessageBox.Show("Вход выполнен успешно", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            
+            //
         }
         else
         {
@@ -81,6 +81,18 @@ public partial class MainWindow : Window
             (DataContext as User)!.Password = "";
             GenerateCaptcha();
         }
+    }
+
+    private void GuestLoginButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (!string.Equals(CaptchaInputTextBox.Text, captchaText))
+        {
+            MessageBox.Show("Каптча введена неверно", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+            GenerateCaptcha();
+            return;
+        }
+        MessageBox.Show("Вход как гость выполнен успешно", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+        //
     }
 
     [Obsolete]
@@ -146,7 +158,7 @@ public partial class MainWindow : Window
 
         }
 
-        var bmp = new RenderTargetBitmap(width*2, height*2, 200, 200, PixelFormats.Pbgra32);
+        var bmp = new RenderTargetBitmap(width * 2, height * 2, 200, 200, PixelFormats.Pbgra32);
         bmp.Render(image);
 
         return bmp;
