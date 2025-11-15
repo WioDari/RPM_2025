@@ -21,11 +21,7 @@ public partial class User
 
     public DateOnly RegistrationDate { get; set; }
 
-    public DateOnly? LastLoginDate { get; set; }
-
-    public int FailedEntriesCount { get; set; }
-
-    public TimeSpan BanInterval { get; set; }
+    public DateTime? LastLoginDateTime { get; set; }
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 

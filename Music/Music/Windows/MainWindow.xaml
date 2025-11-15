@@ -5,11 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music"
         xmlns:m="clr-namespace:Music.Models"
+        xmlns:r="clr-namespace:Music.Resources"
         mc:Ignorable="d"
         Title="Музыка+" Height="900" Width="1600" MinHeight="900" MinWidth="1600"
-        d:DataContext="{d:DesignInstance Type=m:User, IsDesignTimeCreatable=True}"
         WindowStartupLocation="CenterScreen">
-
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="130"/>
@@ -30,11 +29,25 @@
 
         <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <TextBlock Text="Логин:" Margin="0,0,0,10"/>
-            <TextBox Text="{Binding Login}"/>
+            <TextBox Name="LoginTextBox"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center">
             <TextBlock Text="Пароль:" Margin="0,0,0,10"/>
-            <TextBox Text="{Binding Password}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+
+                <PasswordBox Name="PasswordBox" Template="{StaticResource PasswordBoxTemplate1}" Grid.Column="0" Visibility="Visible" Margin="0,0,10,0" PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                <TextBox Name="PassTextBox" Grid.Column="0" Margin="0,0,10,0" Visibility="Hidden" TextChanged="TextBox_TextChanged"/>
+
+                <ToggleButton Grid.Column="1" Padding="5" IsChecked="False" Checked="ToggleButton_Checked"  Unchecked="ToggleButton_Unchecked">
+                    <Image Name="ShowPasswordImage" Source="/Resources/hide.png" Stretch="Uniform"/>
+                </ToggleButton>
+            </Grid>
+
         </StackPanel>
 
         <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
@@ -50,8 +63,9 @@
                     Padding="0"
                     Grid.Row="1" Grid.Column="1"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
-                    Click="RefreshButton_Click">
-                    <TextBlock Text="⟳" FontSize="50"/>
+                    Click="RefreshButton_Click"
+                    Content="⟳"
+                    FontSize="50">
                 </Button>
             </Grid>
         </StackPanel>

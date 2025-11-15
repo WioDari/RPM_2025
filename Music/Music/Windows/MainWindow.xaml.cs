@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Music.Context;
 using Music.Models;
+using Music.Properties;
+using Music.Resources;
 using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -9,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -35,7 +38,19 @@ public partial class MainWindow : Window
     private async void Load()
     {
         await using MusicContext context = new();
-        DataContext = await context.Users.FirstOrDefaultAsync(x => x.Id == 1);
+
+        if (!string.IsNullOrEmpty(Settings.Default.UserId.ToString()) && Settings.Default.UserId != 0)
+        {
+            new MenuWindow(context.Users.First(x => x.Id == Settings.Default.UserId)).Show();
+            Close();
+            return;
+        }
+
+        var u = await context.Users.FirstAsync(x => x.Id == 1);
+
+        LoginTextBox.Text = u.Login;
+        PassTextBox.Text = u.Password;
+        PasswordBox.Password = u.Password;
     }
 
     private void GenerateCaptcha()
@@ -64,21 +79,61 @@ public partial class MainWindow : Window
             GenerateCaptcha();
             return;
         }
-        User currentUser = (DataContext as User)!;
+
+        var unBanTime = (Settings.Default.LastEntryDateTime + Settings.Default.BanInterval) - DateTime.Now;
+
+        if ((Settings.Default.FailedEntriesCount >= 5) && (unBanTime >= TimeSpan.Zero))
+        {
+            MessageBox.Show($"Ваш аккаунт заблокирован из-за слишком большого количества неудачных попыток входа.\nПовторите попытку через {unBanTime}",
+                "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
 
         await using MusicContext context = new();
 
-        User? user = await context.Users.FirstOrDefaultAsync(u => u.Login == currentUser.Login && u.Password == currentUser.Password);
+        User? user = await context.Users.FirstOrDefaultAsync(u => u.Login == LoginTextBox.Text);
         if (user != null)
         {
-            MessageBox.Show("Вход выполнен успешно", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-            //
+            if (PasswordBox.Password != user.Password)
+            {
+                Settings.Default.LastEntryDateTime = DateTime.Now;
+                Settings.Default.FailedEntriesCount += 1;
+                Settings.Default.Save();
+
+                if (Settings.Default.FailedEntriesCount == 3)
+                    MessageBox.Show("Неверный логин или пароль\nОсталось 2 попытки", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+                else
+                    MessageBox.Show("Неверный логин или пароль", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                /*LoginTextBox.Text = "";
+                PasswordBox.Password = "";*/
+
+                GenerateCaptcha();
+                return;
+            }
+            Settings.Default.UserId = user.Id;
+            Settings.Default.FailedEntriesCount = 0;
+            Settings.Default.LastEntryDateTime = DateTime.Now;
+            Settings.Default.Save();
+
+            user.LastLoginDateTime = DateTime.Now;
+            context.Users.Update(user);
+            await context.SaveChangesAsync();
+            
+            MenuWindow menuWindow = new(user);
+            menuWindow.Show();
+            Close();
         }
         else
         {
+            Settings.Default.FailedEntriesCount += 1;
+            Settings.Default.LastEntryDateTime = DateTime.Now;
+            if (Settings.Default.FailedEntriesCount >= 3)
+                Settings.Default.BanInterval = TimeSpan.FromMinutes(45);
+            Settings.Default.Save();
             MessageBox.Show("Неверный логин или пароль", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-            (DataContext as User)!.Login = "";
-            (DataContext as User)!.Password = "";
+            /*LoginTextBox.Text = "";
+            PasswordBox.Password = "";*/
             GenerateCaptcha();
         }
     }
@@ -96,7 +151,9 @@ public partial class MainWindow : Window
     }
 
     [Obsolete]
-    private ImageSource GenerateCaptchaImage(string text)
+    private ImageSource 
+        
+        GenerateCaptchaImage(string text)
     {
         int width = 215;
         int height = 65;
@@ -172,5 +229,34 @@ public partial class MainWindow : Window
     private void RefreshButton_Click(object sender, RoutedEventArgs e)
     {
         GenerateCaptcha();
+    }
+
+
+    private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+    {
+        if (PasswordBox.Visibility == Visibility.Visible)
+             PassTextBox.Text = PasswordBox.Password;
+    }
+
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (PassTextBox.Visibility == Visibility.Visible)
+             PasswordBox.Password = PassTextBox.Text;
+    }
+
+    private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+    {
+        PassTextBox.Text = PasswordBox.Password;
+        PasswordBox.Visibility = Visibility.Collapsed;
+        PassTextBox.Visibility = Visibility.Visible;
+        ShowPasswordImage.Source = new BitmapImage(new Uri("pack://application:,,,/Music;component/Resources/show.png"));
+    }
+
+    private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+    {
+        PasswordBox.Password = PassTextBox.Text;
+        PassTextBox.Visibility = Visibility.Collapsed;
+        PasswordBox.Visibility = Visibility.Visible;
+        ShowPasswordImage.Source = new BitmapImage(new Uri("pack://application:,,,/Music;component/Resources/hide.png"));
     }
 }
