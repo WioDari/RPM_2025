@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Music.Windows"
         mc:Ignorable="d"
-        Title="MenuWindow" Height="900" Width="1600" MinHeight="900" MinWidth="1600"
-        WindowStartupLocation="CenterScreen">
+        Title="Музыка+" Height="900" Width="1600" MinHeight="900" MinWidth="1600"
+        WindowStartupLocation="CenterScreen"
+        xmlns:design="clr-namespace:Music.Design"
+        d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}">
     <Window.Resources>
         <Style TargetType="TabPanel">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -14,6 +16,10 @@
         <Style TargetType="TabItem">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Padding" Value="15, 8"/>
+        </Style>
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+            <Setter Property="Padding" Value="0, 0, 0, 0"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -44,9 +50,14 @@
         <TabControl Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch">
             <TabItem Header="Музыка">
                 <TabItem.Content>
-                    <Grid>
-                        
-                    </Grid>
+                    <ListBox
+                        Name="MusicListBox">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                    </ListBox>
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="Артисты">
@@ -56,11 +67,77 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
+            <TabItem Header="Альбомы">
+                <TabItem.Content>
+                    <ListBox Name="AlbumsListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Margin="10" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Top" HorizontalAlignment="Stretch" ItemsSource="{Binding Albums}">
+                        <ListBox.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ListBox.ItemsPanel>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{StaticResource PrimaryAccentColorBrush}" Padding="10" ClipToBounds="True" CornerRadius="10" Margin="5" >
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Image Grid.Row="0" Stretch="Uniform" MaxHeight="255" MaxWidth="255" Source="{Binding CoverPath}"/>
+                                        <Grid Grid.Row="1">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="205" MaxWidth="205"/>
+                                                <ColumnDefinition Width="50"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="{Binding Title}" FontWeight="Bold" TextAlignment="Center" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Artist.Name}" TextAlignment="Center" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                            <TextBlock Grid.Column="1" Text="{Binding Tracks.Count}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0"/>
+                                        </Grid>
+                                        
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem.Content>
+            </TabItem>
             <TabItem Header="Плейлисты">
                 <TabItem.Content>
-                    <Grid>
+                    <ListBox Name="PlaylistsListBox" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" ItemsSource="{Binding Playlists}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="{StaticResource PrimaryAccentColorBrush}" Padding="10 5" ClipToBounds="True" CornerRadius="10">
+                                    <Grid ShowGridLines="True">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition MaxWidth="200" MinWidth="75"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
 
-                    </Grid>
+                                        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                            <TextBlock Text=" | " FontWeight="Bold"/>
+                                            <TextBlock Text="{Binding CreatorUser.FullName}" FontWeight="Bold"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="0" Grid.Row="1">
+                                            <TextBlock Text="{Binding Likes, StringFormat='Нравятся: {0}'}"/>
+                                            <TextBlock Text="{Binding Users.Count, StringFormat='Подписчиков: {0}'}"/>
+                                            <TextBlock Text="{Binding Tracks.Count, StringFormat='Треков: {0}'}"/>
+                                            <TextBlock Text="{Binding DateCreated, StringFormat='Создан: {0:dd.MM.yyyy}'}"/>
+                                        </StackPanel>
+
+                                        <TextBlock Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Text="{Binding Duration}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="Пользователи">
@@ -78,7 +155,7 @@
             Grid.Column="0" 
             Grid.ColumnSpan="2"
             Grid.Row="2"
-            Content="Выход" 
+            Content="Выйти из аккаунта" 
             HorizontalAlignment="Center" VerticalAlignment="Center" 
             Click="ExitButton_Click"
             Background="{StaticResource PrimaryAccentColorBrush}"

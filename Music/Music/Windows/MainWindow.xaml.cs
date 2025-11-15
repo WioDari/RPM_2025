@@ -119,7 +119,7 @@ public partial class MainWindow : Window
             user.LastLoginDateTime = DateTime.Now;
             context.Users.Update(user);
             await context.SaveChangesAsync();
-            
+
             MenuWindow menuWindow = new(user);
             menuWindow.Show();
             Close();
@@ -140,20 +140,13 @@ public partial class MainWindow : Window
 
     private void GuestLoginButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!string.Equals(CaptchaInputTextBox.Text, captchaText))
-        {
-            MessageBox.Show("Каптча введена неверно", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-            GenerateCaptcha();
-            return;
-        }
-        MessageBox.Show("Вход как гость выполнен успешно", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-        //
+        MenuWindow menuWindow = new();
+        menuWindow.Show();
+        Close();
     }
 
     [Obsolete]
-    private ImageSource 
-        
-        GenerateCaptchaImage(string text)
+    private RenderTargetBitmap GenerateCaptchaImage(string text)
     {
         int width = 215;
         int height = 65;
@@ -235,13 +228,13 @@ public partial class MainWindow : Window
     private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
     {
         if (PasswordBox.Visibility == Visibility.Visible)
-             PassTextBox.Text = PasswordBox.Password;
+            PassTextBox.Text = PasswordBox.Password;
     }
 
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (PassTextBox.Visibility == Visibility.Visible)
-             PasswordBox.Password = PassTextBox.Text;
+            PasswordBox.Password = PassTextBox.Text;
     }
 
     private void ToggleButton_Checked(object sender, RoutedEventArgs e)

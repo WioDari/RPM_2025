@@ -24,4 +24,19 @@ public partial class Playlist
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
+
+    public string Duration { get => GetDuration(); }
+
+    private string GetDuration()
+    {
+        TimeSpan totalDuration = new TimeSpan();
+        foreach (Track track in Tracks)
+        {
+            totalDuration += track.Duration;
+        }
+        if (totalDuration.TotalHours >= 1)
+            return totalDuration.ToString(@"hh\:mm\:ss");
+        else
+            return totalDuration.ToString(@"mm\:ss");
+    }
 }
