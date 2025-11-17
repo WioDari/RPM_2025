@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\App.xaml
-9-1285612593
+81702159912
 
-59920020184
+40340469317
 212-924045123
-MainWindow.xaml;SpotApp_wpf\App.xaml;SpotApp_wpf\MainWindow.xaml;SpotApp_wpf\Views\Authorize.xaml;SpotApp_wpf\Views\GuestWindow.xaml;SpotApp_wpf\Views\Menu.xaml;Views\Authorize.xaml;Views\GuestWindow.xaml;Views\Menu.xaml;
+MainWindow.xaml;Views\AlbumsPage.xaml;Views\AlbumsTemplate.xaml;Views\Authorize.xaml;Views\GuestWindow.xaml;Views\Menu.xaml;Views\PlaylistPage.xaml;Views\PlayListTemplate.xaml;
 
-False
+True
 

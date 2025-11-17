@@ -13,11 +13,24 @@ using System.Windows.Media.Imaging;
 using SpotApp_wpf.Context;
 using SpotApp_wpf.Models;
 using SpotApp_wpf.Views;
+using SpotApp_wpf.Properties;
 
 namespace SpotApp_wpf.ViewModels
 {
     public class AuthorizeViewModel : BaseViewModel
     {
+        private bool _isChecked;
+        public bool isChecked
+        {
+            get => _isChecked;
+            set
+            {
+                _isChecked = value;
+                Application.Current.Properties["isChecked"] = value;
+                OnPropertyChanged();
+            }
+        }
+
         private ImageSource _capchaImage;
         public ImageSource capchaImage
         {
@@ -77,6 +90,23 @@ namespace SpotApp_wpf.ViewModels
             LoginCommand = new RelayCommand(Login);
             OpenGuestCommand = new RelayCommand(OpenGuest);
             UpdateCapchaCommand = new RelayCommand(GenerateCapcha);
+
+            if (Settings.Default.User_id != 0)
+            {
+                int userId = Settings.Default.User_id;
+                var context = new SpotifyContext();
+                var user = context.Users.FirstOrDefault(u => u.UserId == userId);
+                Application.Current.Properties["CurrentUser"] = user;
+
+                new Views.Menu().Show();
+                foreach (Window w in Application.Current.Windows)
+                {
+                    if (w is not Views.Menu)
+                    {
+                        w.Close();
+                    }
+                }
+            }
         }
 
         public void OpenGuest()
@@ -87,21 +117,45 @@ namespace SpotApp_wpf.ViewModels
 
         public void Login()
         {
-            if (!string.Equals(_capchaInput, _capchaText))
+            var date = DateTime.Now.Subtract(Settings.Default.ban_time);
+
+            if (date.TotalHours < 0)
+            {
+                MessageBox.Show($"До разблокировки {(int)(date.TotalMinutes * -1)} минут", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+            /*if (!string.Equals(_capchaInput, _capchaText))
             {
                 MessageBox.Show("Капча введена неверно");
                 return;
-            }
+            }*/
 
             var context = new SpotifyContext();
             var user = context.Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
             if (user == null)
             {
-                MessageBox.Show("Неверные данные");
+                Settings.Default.count++;
+                MessageBox.Show("Неверные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                if(Settings.Default.count == 3)
+                {
+                    MessageBox.Show("Осталось 2 попытки для входа до блокировки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (Settings.Default.count == 5)
+                {
+                    MessageBox.Show($"Вы заблокированны \nВремя до разблокировки: {DateTime.Now + TimeSpan.FromHours(1)}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Settings.Default.ban_time = DateTime.Now + TimeSpan.FromHours(1);
+                    
+                }
+                Settings.Default.Save();
                 return;
             }
+
             MessageBox.Show($"Добро пожаловать, {user.FullName}");
             Application.Current.Properties["CurrentUser"] = user;
+
+            Settings.Default.count = 0;
+            Settings.Default.User_id = user.UserId;
+            Settings.Default.Save();
 
             Window menu = new Views.Menu();
             menu.Show();

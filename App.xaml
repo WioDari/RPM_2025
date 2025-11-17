@@ -5,6 +5,7 @@
              StartupUri="/Views/Authorize.xaml"
              >
     <Application.Resources>
+        <local:CheckBoxChangeVisibilityConverter x:Key="CheckBoxChangeVisibilityConverter"/>
         <Style TargetType="Window" x:Key="window">
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>
@@ -13,6 +14,9 @@
         </Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="#7A00CC"></Setter>
+        </Style>
+        <Style TargetType="Page" x:Key="page">
+            <Setter Property="FontFamily" Value="Times New Roman"/>
         </Style>
     </Application.Resources>
 </Application>

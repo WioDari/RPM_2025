@@ -59,7 +59,7 @@ namespace SpotApp_wpf {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;V1.0.0.0;component/spotapp_wpf/app.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;component/spotapp_wpf/app.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\SpotApp_wpf\App.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

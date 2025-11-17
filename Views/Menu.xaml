@@ -4,22 +4,34 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpotApp_wpf.Views"
+        xmlns:p="clr-namespace:SpotApp_wpf.Properties"
         mc:Ignorable="d"
         Style="{StaticResource window}"
         Title="Menu" Height="450" Width="800">
-    <Grid>
+    <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Width="190" Height="23" Grid.ColumnSpan="2"/>
-        <Button Content="Выйти" Command="{Binding LogoutCommand}" HorizontalAlignment="Left" Margin="562,6,0,0" VerticalAlignment="Top" Height="23" Width="50" Grid.Column="1"/>
-        <Button Content="Плэйлисты" HorizontalAlignment="Center" Margin="0,27,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="110"/>
-        <Button Content="Альбомы" HorizontalAlignment="Center" Margin="0,84,0,0" Grid.Row="1" VerticalAlignment="Top" Height="34" Width="110"/>
+        <Border Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="8"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Width="100" Height="44"/>
+        <Button Content="Выйти" Command="{Binding LogoutCommand}" HorizontalAlignment="Right" Margin="37,0,0,0" VerticalAlignment="Top" Height="31" Width="63" Grid.Column="7"/>
+        <Button Content="Альбомы" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.Tittle}" VerticalAlignment="Center" Width="84" Grid.Column="1"/>
+        <Button Content="Артисты" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="3"/>
+        <Button Content="Плэйлисты" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="4"/>
+        <Button Content="Пользователи" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="5"/>
+        <Frame Content="{Binding page}" Grid.Row="1" Grid.ColumnSpan="8" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>

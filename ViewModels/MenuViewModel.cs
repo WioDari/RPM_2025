@@ -1,4 +1,6 @@
 ﻿using SpotApp_wpf.Models;
+using SpotApp_wpf.Views;
+using SpotApp_wpf.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace SpotApp_wpf.ViewModels
 {
@@ -22,11 +25,23 @@ namespace SpotApp_wpf.ViewModels
             }
         }
 
+        private Page _page;
+        public Page page
+        {
+            get => _page;
+            set
+            {
+                _page = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MenuViewModel()
         {
 
             User user = (User)Application.Current.Properties["CurrentUser"];
             name = user.FullName;
+            page = new Views.PlaylistPage();
             LogoutCommand = new RelayCommand(Logout);
         }
 
@@ -34,6 +49,8 @@ namespace SpotApp_wpf.ViewModels
         public void Logout()
         {
             Application.Current.Properties["CurrentUser"] = null;
+            Settings.Default.Reset();
+
             Window auth = new Views.Authorize();
             auth.Show();
             foreach (Window w in Application.Current.Windows)

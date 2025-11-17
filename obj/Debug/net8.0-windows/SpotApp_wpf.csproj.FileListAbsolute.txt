@@ -129,3 +129,15 @@ C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Vie
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\GuestWindow.g.cs
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\GuestWindow.baml
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\SpotApp_wpf.sourcelink.json
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\bin\Debug\net8.0-windows\SpotApp_wpf.dll.config
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\SpotApp_wpf.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\SpotApp_wpf.Properties.Resources.resources
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistPage.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlayListTemplate.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistPage.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlayListTemplate.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsTemplate.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsTemplate.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsPage.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsPage.baml
