@@ -15,11 +15,27 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Spotify_wpf.Context;
 using Spotify_wpf.ViewModels;
 using Spotify_wpf.Views;
+using Spotify_wpf.Properties;
+using System.Net.WebSockets;
 
 namespace Spotify_wpf
 {
     class AuthViewModel : BaseViewModel
     {
+
+        private bool _isChecked = false;
+
+        public bool isChecked
+        {
+            get => _isChecked;
+            set
+            {
+                _isChecked = value;
+                Application.Current.Properties["isChecked"] = value;
+                OnPropertyChanged();
+               
+            }
+        }
         private ImageSource _captchaImage;
 
         public ImageSource captchaImage
@@ -82,24 +98,65 @@ namespace Spotify_wpf
             GenerateCaptcha();
             AuthCommand = new RelayCommand(OnAuth);
             UpdateCaptchaCommand = new RelayCommand(GenerateCaptcha);
+            if (Settings.Default.userid != 0)
+            {
+                int userId = Settings.Default.userid;
+                var context = new MusicContext();
+                var user = context.Users.FirstOrDefault(u => u.UserId == userId);
+                Application.Current.Properties["CurrentUser"] = user;
+                Window menu = new Views.Menu();
+                menu.Show();
+                foreach (Window w in Application.Current.Windows)
+                {
+                    if (w is not Views.Menu)
+                    {
+                        w.Close();
+                    }
+                }
+
+            }
         }
         public void OnAuth()
         {
-            if (!string.Equals(_captchaInput, _captchaText))
+            var date = DateTime.Now.Subtract(Settings.Default.ban_time);
+            if (date != null) //MessageBox.Show(date.TotalHours.ToString());
+
+            if (date.TotalHours < 0)
             {
-                MessageBox.Show("Капча введена неправильно!");
-                GenerateCaptcha();
-                return;
+                MessageBox.Show($"До разблокировки {(int)(date.TotalMinutes * -1)} мин", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+            /* if (!string.Equals(_captchaInput, _captchaText))
+             {
+                 MessageBox.Show("Капча введена неправильно!");
+                 GenerateCaptcha();
+                 return;
+             }*/
             var context = new MusicContext();
             var user = context.Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
+
             if (user == null)
             {
-                MessageBox.Show("Пароль введен неверно");
+                Settings.Default.count++;
+                MessageBox.Show("Неверные данные", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (Settings.Default.count == 3)
+                {
+                    MessageBox.Show("Осталось 2 попытки для входа до блокировки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (Settings.Default.count == 5)
+                {
+                    MessageBox.Show($"Вы заблокированны \nВремя до разблокировки: {DateTime.Now + TimeSpan.FromHours(1)}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Settings.Default.ban_time = DateTime.Now + TimeSpan.FromHours(1);
+                    Settings.Default.Save();
+                }
                 return;
             }
             MessageBox.Show($"Добро пожаловать, {user.FullName}");
             Application.Current.Properties["CurrentUser"] = user;
+
+            Settings.Default.count = 0;
+            Settings.Default.userid = user.UserId;
+            Settings.Default.Save();
+
             Window menu = new Views.Menu();
             menu.Show();
             foreach (Window w in Application.Current.Windows)
@@ -110,6 +167,8 @@ namespace Spotify_wpf
                 }
             }
         }
+
+
 
         public void GenerateCaptcha()
         {

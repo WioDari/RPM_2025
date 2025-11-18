@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\App.xaml
-3-1724921668
+9155461230
 
-291403023677
+41-1524190570
 213-168926900
-MainWindow.xaml;Views\Auth.xaml;Views\Menu.xaml;
+MainWindow.xaml;Views\Album.xaml;Views\AlbumUserControl.xaml;Views\Auth.xaml;Views\Menu.xaml;Views\Playlist.xaml;Views\PlaylistUserController.xaml;Views\UserList.xaml;Views\UserListUserControl.xaml;
 
-False
+True
 

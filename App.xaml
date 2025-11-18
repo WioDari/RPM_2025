@@ -4,10 +4,41 @@
              xmlns:local="clr-namespace:Spotify_wpf"
              StartupUri="/Views/Auth.xaml">
     <Application.Resources>
+        <local:CheckBoxChangeVisibility x:Key="CheckBoxChangeVisibility"/>
         <Style TargetType="Window" x:Key="Window">
             <Setter Property="Icon" Value="/Resources/icon.ico"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF7A00CC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}" 
+                                CornerRadius="3">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#9C4DFF"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#5DCC99"/>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </Application.Resources>
 </Application>

@@ -3,14 +3,35 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="Views\Album.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AlbumUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Auth.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Menu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Playlist.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PlaylistUserController.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\Album.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AlbumUserControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Auth.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -18,6 +39,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Menu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Playlist.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PlaylistUserController.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\UserList.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

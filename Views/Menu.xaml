@@ -4,24 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Spotify_wpf.Views"
+        xmlns:p="clr-namespace:Spotify_wpf.Properties"
         mc:Ignorable="d"
         Style="{StaticResource Window}"
         Title="Menu" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="97*"/>
-            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="30*"/>
-            <RowDefinition Height="187*"/>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="265*"/>
+            <RowDefinition Height="96*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="374" VerticalAlignment="Center" Width="194" Background="#FFEDE2FF" Grid.Row="1"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Height="28" Width="146"/>
-        <Button Content="Выйти" HorizontalAlignment="Center" Margin="0,318,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Width="126" Background="#FF7A00CC" Command="{Binding LogoutCommand}"/>
-        <Button Content="Альбомы" HorizontalAlignment="Center" Margin="0,29,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Width="126" Background="#FF7A00CC"/>
-        <Button Content="Плейлисты" HorizontalAlignment="Center" Margin="0,56,0,0" Grid.Row="1" VerticalAlignment="Top" Height="22" Width="126" Background="#FF7A00CC"/>
+        <Border Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="5"  Grid.Column="0" CornerRadius="15"/>
+        <!--<Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="5"  Grid.Column="0" Background="#FFEDE2FF" Margin="0,51,0,0" Grid.RowSpan="2" >
+            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Background="#FF9C4DFF" Grid.Row="1" CornerRadius="10"/>
+        </Border>-->
 
-
+        <TextBlock Text="МЕНЮ" FontSize="30" FontWeight="Bold" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Grid.Column="0" Grid.Row="0" />
+        <Button Content="Выйти"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="#CC3366" Command="{Binding LogoutCommand}" Grid.Column="4" Grid.Row="1" FontWeight="Bold" FontSize="16"/>
+        <Button Content="Альбомы" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Row="1" Command="{Binding GoAlbum}" FontSize="16" FontWeight="Bold"/>
+        <Button Content="Плейлисты" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="1" Command="{Binding GoPlaylist}" Grid.Row="1" FontSize="16" FontWeight="Bold"/>
+        <Button Content="Треки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="16"/>
+        <TextBlock Grid.Column="4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Height="14" Width="104"/>
+        <Button Content="Пользователи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="3" Grid.Row="1" FontSize="16" FontWeight="Bold" Command="{Binding GoUser}"/>
+        <Frame Content="{Binding currentPage}" Grid.ColumnSpan="5"  Grid.RowSpan="2" Grid.Column="0" Grid.Row="2" Margin="0,12,0,0" />
     </Grid>
 </Window>

@@ -1,6 +1,12 @@
 ﻿
 FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\App.xaml;;
 FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\MainWindow.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\Album.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\AlbumUserControl.xaml;;
 FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\Auth.xaml;;
 FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\Menu.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\Playlist.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\PlaylistUserController.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\UserList.xaml;;
+FC:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\Views\UserListUserControl.xaml;;
 

@@ -8,17 +8,21 @@
         Style="{StaticResource Window}"
         Title="Auth" Height="550" Width="550">
     <Grid Height="534" VerticalAlignment="Top">
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="204" Margin="0,91,0,0" VerticalAlignment="Top" Width="378" Background="#FFEDE2FF">
-
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="251" Margin="0,76,0,0" VerticalAlignment="Top" Width="490" Background="#FFEDE2FF">
         </Border>
         <TextBox  Text="{Binding login}" ToolTip="Логин" HorizontalAlignment="Center" Margin="0,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Height="36" BorderBrush="#FF7A00CC"/>
-        <TextBox Text="{Binding password}" ToolTip="Пароль" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Height="36" BorderBrush="#FF7A00CC" Margin="0,198,0,0"/>
-        <TextBlock HorizontalAlignment="Center" Margin="0,103,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Top" FontSize="16"/>
+        <TextBox Text="{Binding password, Converter={StaticResource CheckBoxChangeVisibility}, ConverterParameter=isChecked}" ToolTip="Пароль" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="276" Height="36" BorderBrush="#FF7A00CC" Margin="115,213,0,0"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,103,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Top" FontSize="25"/>
         <Button x:Name="Auth_Button" Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Height="26" Width="164" Command="{Binding AuthCommand}" Background="#FF7A00CC"/>
         <TextBox HorizontalAlignment="Center" Margin="0,396,0,0" TextWrapping="Wrap" Text="{Binding captchaInput}" VerticalAlignment="Top" Width="164" TextChanged="TextBox_TextChanged" RenderTransformOrigin="0.553,-4.004" Height="27"/>
         <TextBlock TextWrapping="Wrap" Text="{Binding captchaText}" Margin="149,305,137,202"/>
-        <Button Content="Обновить" Command="{Binding UpdateCaptchaCommand}" HorizontalAlignment="Center" Margin="0,428,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.347,-1.925"/>
+        <Button Content="Обновить" Command="{Binding UpdateCaptchaCommand}" HorizontalAlignment="Center" Margin="0,428,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.347,-1.925" Background="#FF7A00CC"/>
         <Image Source="{Binding captchaImage}" HorizontalAlignment="Left" Height="46" Margin="177,332,0,0" VerticalAlignment="Top" Width="186" RenderTransformOrigin="0.638,0.418"/>
+        <CheckBox IsChecked="{Binding isChecked}" Content="A" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="391,214,0,0" Height="20" Width="16" RenderTransformOrigin="5.103,-0.137">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
 
     </Grid>
 </Window>

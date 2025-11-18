@@ -26,6 +26,6 @@ namespace Spotify_wpf.Views
             DataContext = new MenuViewModel();
         }
 
-      
+    
     }
 }
