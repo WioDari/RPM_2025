@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PraktikaMusicF.AlbumsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PraktikaMusicF"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="300"
+             MaxHeight="350" MaxWidth="300" MinHeight="350" MinWidth="300">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="95">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Column="0"
+              Grid.Row="0"
+              Background="#9C4DFF"/>
+        <Image Source="{Binding ImagePath}" 
+               Stretch="UniformToFill"
+               Margin="5"
+               Grid.Column="0"
+               Grid.Row="0"
+               Width="290"
+               Height="250"
+               />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="90"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.ColumnSpan="2"
+                  Background="#EDE2FF"/>
+            <TextBlock Text="{Binding AlbumName}"
+                       Margin="5"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+            <TextBlock Text="{Binding ArtistName}"
+                       VerticalAlignment="Top"
+                       Margin="5,52,5,0"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+            <TextBlock Grid.Column="1"
+                       Text="{Binding TrackCount}"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+        </Grid>
+    </Grid>
+</UserControl>

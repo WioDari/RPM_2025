@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="PraktikaMusicF.PlaylistUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PraktikaMusicF"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="770">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="550"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="#9C4DFF" 
+              Grid.ColumnSpan="2"/>
+        <Grid Grid.Row="1"
+              Grid.Column="1"
+              Background="#FFEDE2FF">
+        </Grid>
+        <TextBlock Text="{Binding NameAuthor}"
+                   VerticalAlignment="Center"
+                   FontSize="20"/>
+
+        <TextBlock Grid.Row="2"
+                   Grid.Column="1"
+                   Text="{Binding Duration}"
+                   FontSize="20"
+                   FontFamily="Times New Roman"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Margin="5"/>
+        <Grid Grid.Column="0"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="145"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0"
+                       Text="Нравится:"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Center"
+                       FontFamily="Times New Roman"
+                       Margin="5"
+                       FontSize="20"/>
+            <TextBlock Grid.Row="1"
+                       Text="Подписчиков:"
+                       VerticalAlignment="Center"
+                       FontFamily="Times New Roman"
+                       HorizontalAlignment="Center"
+                       Margin="5"
+                       FontSize="20"/>
+            <TextBlock Grid.Row="2"
+                       Text="Треков:"
+                       VerticalAlignment="Center"
+                       FontFamily="Times New Roman"
+                       HorizontalAlignment="Center"
+                       Margin="5"
+                       FontSize="20"/>
+            <TextBlock Grid.Row="3"
+                       Text="Cоздан:"
+                       VerticalAlignment="Center"
+                       FontFamily="Times New Roman"
+                       HorizontalAlignment="Center"
+                       Margin="5"
+                       FontSize="20"/>
+            <TextBlock Grid.Column="1"
+                       Grid.Row="0"
+                       Text="{Binding Likes}"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+            <TextBlock Grid.Column="1"
+                       Grid.Row="1"
+                       Text="{Binding Subscribers}"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+            <TextBlock Grid.Column="1"
+                       Grid.Row="2"
+                       Text="{Binding Tracks}"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+            <TextBlock Grid.Column="1"
+                       Grid.Row="3"
+                       Text="{Binding Created}"
+                       VerticalAlignment="Center"
+                       FontSize="20"
+                       FontFamily="Times New Roman"/>
+        </Grid>
+    </Grid>
+</UserControl>

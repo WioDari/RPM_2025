@@ -1,0 +1,84 @@
+﻿<Window x:Class="PraktikaMusicF.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PraktikaMusicF"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyleG}"
+        Title="Auth" MaxHeight="400" MaxWidth="299">
+    <Grid Width="300" 
+          Height="400"
+          ShowGridLines="True" Margin="0,0,-1,-16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.ColumnSpan="3" 
+                 TextWrapping="Wrap" 
+                 Text="{Binding captchaInput, UpdateSourceTrigger=PropertyChanged}" 
+                 Margin="64,189,64,29" 
+                 Grid.Row="1"/>
+        <Button Content="Обновить" 
+                Margin="92,224,92,93" 
+                Grid.Row="1" 
+                Grid.RowSpan="2" 
+                Grid.ColumnSpan="3"
+                Command="{Binding UpdateCaptchaCommand}" Background="#FF9C4DFF"/>
+        <TextBlock TextWrapping="Wrap" 
+                   Text="{Binding captchaText}"
+                   Margin="65,145,63,64" 
+                   Grid.Row="1" 
+                   Grid.ColumnSpan="3" 
+                   TextAlignment="Center"/>
+        <Image Source="{Binding captchaImage}"
+               Width="174"
+               Height="43"
+               Margin="0,140,63,0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top" Grid.Row="1" Grid.ColumnSpan="3" />
+
+
+        <TextBox Grid.ColumnSpan="2" 
+                 TextWrapping="Wrap"
+                 Text="{Binding login}" 
+                 Margin="3,54,17,158" 
+                 Grid.Row="1" 
+                 Grid.Column="1"/>
+        <TextBox Grid.ColumnSpan="2" 
+                 TextWrapping="Wrap"
+                 Text="{Binding password}" 
+                 Margin="3,99,17,114" 
+                 Grid.Row="1" Grid.Column="1"/>
+        <TextBlock TextWrapping="Wrap" 
+                 Text="Логин:" 
+                 Margin="10,54,13,158" 
+                 Grid.Row="1"/>
+        <TextBlock TextWrapping="Wrap" 
+                 Text="Пароль:" 
+                 Margin="9,99,0,114" 
+                 Grid.Row="1"/>
+        <Button Content="Войти"
+                Command="{Binding LoginCommand}"
+                Margin="74,26,47,47" 
+                Grid.Column="1" 
+                Grid.ColumnSpan="2"
+                Grid.Row="2" Background="#FF7A00CC"/>
+        <Button Content="Гость" Margin="47,26,74,47" Grid.ColumnSpan="2" Grid.Row="2"/>
+        <Grid Grid.ColumnSpan="3" Background="#FFEDE2FF"/>
+        <TextBlock Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Text="Авторизация"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center" Margin="82,0,0,0"/>
+
+
+    </Grid>
+</Window>

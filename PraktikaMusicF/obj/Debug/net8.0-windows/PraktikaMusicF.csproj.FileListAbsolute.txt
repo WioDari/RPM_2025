@@ -122,3 +122,14 @@ C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windo
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PraktikaMusicF.pdb
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PraktikaMusicF.genruntimeconfig.cache
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\ref\PraktikaMusicF.dll
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PraktikaMusicF.sourcelink.json
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\Auth.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\Menu.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\Auth.baml
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\Menu.baml
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PraktikaMusicF.Resources1.resources
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PraktikaMusicF.csproj.GenerateResource.cache
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PlaylistUC.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PlaylistUC.baml
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AlbumsUC.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AlbumsUC.baml
