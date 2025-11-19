@@ -141,3 +141,9 @@ C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Vie
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsTemplate.baml
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsPage.g.cs
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsPage.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\UsersPage.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\UserTemplate.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\UsersPage.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\UserTemplate.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumDetails.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumDetails.baml

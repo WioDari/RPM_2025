@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Views\AlbumDetails.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AlbumsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -21,6 +24,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlayListTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UsersPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

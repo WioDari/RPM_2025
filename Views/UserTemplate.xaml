@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="SpotApp_wpf.Views.UserTemplate"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SpotApp_wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="110" d:DesignWidth="900">
+    <Grid Background="White"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding login}" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding email}" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding role}" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding subStatus}" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding regDate}" VerticalAlignment="Center" FontSize="16"/>
+        <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding lastEntranceDate}" VerticalAlignment="Center" FontSize="16"/>
+
+    </Grid>
+</UserControl>

@@ -12,11 +12,16 @@ namespace SpotApp_wpf.ViewModels
 {
     internal class AlbumViewModel : BaseViewModel
     {
-
+        public AlbumViewModel()
+        {
+            LoadAlbums();
+        }
 
         public class AlbTemplate
         {
+            public string id { get; set; }
             public string title { get; set; }
+            public string imgPath { get; set; }
             public string author { get; set; }
             public string tracksCount { get; set; }
         };
@@ -25,13 +30,19 @@ namespace SpotApp_wpf.ViewModels
         private void LoadAlbums()
         {
             var context = new SpotifyContext();
-            /*albums = new ObservableCollection<AlbTemplate>(context.Artists
-                .Include(a => a.Albums)
-                .Select( a => new AlbTemplate
+            albums = new ObservableCollection<AlbTemplate>(context.Albums
+                .Include(a => a.Artist)
+                .Include(a => a.TracksInAlbums)
+                .Select(a => new AlbTemplate
                 {
-                    title = a.Albums.,
-                    author = a.Artist
-                }));*/
+                    id = a.AlbumId.ToString(),
+                    title = a.AlbumTitle,
+                    imgPath = a.CoverPath == null ? "/Resources/placeholder_cover.png" : a.CoverPath,
+                    author = a.Artist.ArtistName,
+                    tracksCount = a.TracksInAlbums.Where(t => t.AlbumId == a.AlbumId).Count().ToString()
+                })
+                .OrderBy(a => a.id)
+                .ToList());
         }
     }
 }

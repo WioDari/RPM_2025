@@ -25,6 +25,17 @@ namespace SpotApp_wpf.ViewModels
             }
         }
 
+        private string _title;
+        public string title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
+
         private Page _page;
         public Page page
         {
@@ -41,11 +52,18 @@ namespace SpotApp_wpf.ViewModels
 
             User user = (User)Application.Current.Properties["CurrentUser"];
             name = user.FullName;
-            page = new Views.PlaylistPage();
+            //page = new Views.UsersPage();
+            title = "Меню";
             LogoutCommand = new RelayCommand(Logout);
+            ShowAlbumsCommand = new RelayCommand(ShowAlbumsPage);
+            ShowPlaylistsCommand = new RelayCommand(ShowPlaylistsPage);
+            ShowUsersCommand = new RelayCommand(ShowUsersPage);
         }
 
         public ICommand LogoutCommand { get; }
+        public ICommand ShowAlbumsCommand { get; }
+        public ICommand ShowUsersCommand { get; }
+        public ICommand ShowPlaylistsCommand { get; }
         public void Logout()
         {
             Application.Current.Properties["CurrentUser"] = null;
@@ -60,6 +78,22 @@ namespace SpotApp_wpf.ViewModels
                     w.Close();
                 }
             }
+        }
+
+        public void ShowAlbumsPage()
+        {
+            title = "Альбомы";
+            page = new Views.AlbumsPage();
+        }
+        public void ShowPlaylistsPage()
+        {
+            title = "Плэйлисты";
+            page = new Views.PlaylistPage();
+        }
+        public void ShowUsersPage()
+        {
+            title = "Таблица Пользователей";
+            page = new Views.UsersPage();
         }
     }
 }

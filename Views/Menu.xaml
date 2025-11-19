@@ -7,7 +7,7 @@
         xmlns:p="clr-namespace:SpotApp_wpf.Properties"
         mc:Ignorable="d"
         Style="{StaticResource window}"
-        Title="Menu" Height="450" Width="800">
+        Title="Menu" Height="600" Width="1000">
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -21,17 +21,19 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="9*"/>
         </Grid.RowDefinitions>
-        <Border Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="8"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Width="100" Height="44"/>
+        <Border Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="8" Grid.RowSpan="2"/>
+        <TextBlock TextWrapping="Wrap" Text="{Binding title}" Grid.Column="3" Grid.ColumnSpan="2" TextAlignment="Center" Height="40" FontSize="22" FontWeight="Bold" Margin="0,8,0,5"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Width="158" Height="44" Grid.Row="1" Grid.ColumnSpan="2"/>
         <Button Content="Выйти" Command="{Binding LogoutCommand}" HorizontalAlignment="Right" Margin="37,0,0,0" VerticalAlignment="Top" Height="31" Width="63" Grid.Column="7"/>
-        <Button Content="Альбомы" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="2"/>
-        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.Tittle}" VerticalAlignment="Center" Width="84" Grid.Column="1"/>
-        <Button Content="Артисты" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="3"/>
-        <Button Content="Плэйлисты" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="4"/>
-        <Button Content="Пользователи" HorizontalAlignment="Center" Margin="0,38,0,0" VerticalAlignment="Top" Height="34" Width="80" Grid.Column="5"/>
-        <Frame Content="{Binding page}" Grid.Row="1" Grid.ColumnSpan="8" NavigationUIVisibility="Hidden"/>
+        <Button Content="Альбомы" Command="{Binding ShowAlbumsCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="80" Grid.Row="1" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.Tittle}" VerticalAlignment="Center" Width="158" Grid.Column="0" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20"/>
+        <Button Content="Артисты" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="80" Grid.Column="3" Grid.Row="1"/>
+        <Button Content="Плэйлисты" Command="{Binding ShowPlaylistsCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="80" Grid.Column="4" Grid.Row="1"/>
+        <Button Content="Пользователи" Command="{Binding ShowUsersCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="34" Width="80" Grid.Column="5" Grid.Row="1"/>
+        <Frame Content="{Binding page}" Grid.Row="2" Grid.ColumnSpan="8" NavigationUIVisibility="Hidden"/>
 
     </Grid>
 </Window>
