@@ -1,0 +1,123 @@
+﻿<Window x:Class="Music__.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music__"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800"
+        MinWidth="500"
+        WindowStartupLocation="CenterScreen"
+        Style="{StaticResource GeneralStyle}">
+    <Grid
+        ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        
+        
+        <!--#region ШАПКА + КНОПКА ВЫХОДА-->
+        <Grid
+            Grid.Column="0"
+            Grid.ColumnSpan="6"
+            Grid.Row="0"
+            Background="{DynamicResource SecondaryBackground}">
+
+            <StackPanel
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+
+                <!--#region лого-->
+                <Image
+                    Source="/Resources/icon.png"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Height="64"
+                    Width="64">
+                </Image>
+                <!--#endregion-->
+
+                <!--#region текст-->
+                <TextBlock 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"  
+                    TextWrapping="Wrap" 
+                    Text="ГЛАВНОЕ МЕНЮ" 
+                    FontSize="32"
+                    FontWeight="SemiBold"  
+                />
+                <!--#endregion-->
+                
+            </StackPanel>
+
+
+            <!--#region выход-->
+            <Button 
+                x:Name="ExitB"
+                Command="{Binding ExitCommand}"
+                Grid.Column="5"
+                Grid.Row="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,0,25,0"
+                Height="50"
+                Width="100"
+                Content="ВЫХОД"
+                FontSize="20">
+            </Button>
+            <!--#endregion-->
+
+        </Grid>
+        <!--#endregion-->
+        
+        
+        
+        <!--#region КНОПКИ (кроме выхода)-->
+        
+        
+        
+        <!--#endregion-->
+        
+        
+        
+        <!--#region ВКЛАДКИ-->
+
+        <TabControl
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="0"
+            TabStripPlacement="Left"
+            Background="{DynamicResource SecondaryBackground}"
+            BorderBrush="{DynamicResource MainAccent}">
+            
+
+            
+            <TabItem
+                Header="Альбомы">
+            </TabItem>
+            <TabItem
+                Header="Артисты">
+            </TabItem>
+            <TabItem
+                Header="Плейлисты">
+            </TabItem>
+            <TabItem
+                Header="Пользователи">
+            </TabItem>
+        </TabControl>
+        
+        <!--#endregion-->
+    </Grid>
+</Window>
