@@ -19,5 +19,5 @@ public partial class Artist
 
     public virtual ICollection<GenreArtist> GenreArtists { get; set; } = new List<GenreArtist>();
 
-    public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
+    public virtual ICollection<TrackArtist> TrackArtists { get; set; } = new List<TrackArtist>();
 }

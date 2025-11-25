@@ -12,11 +12,6 @@
         <!--<DataGrid ItemsSource="{Binding listUser}"/>
         <TextBlock Text="{Binding role}"/>-->
         <ListBox ItemsSource="{Binding listUser}" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:UserListUserControl/>

@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Spotify_wpf.Views.AlbumListUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Spotify_wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="800" Height="80">
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12*"/>
+            <RowDefinition Height="13*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="200*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Padding="10,0,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding tracknam}" VerticalAlignment="Bottom"  Grid.Column="0" Grid.Row="0" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold"/>
+        <TextBlock Padding="10,0,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding artistrac}" VerticalAlignment="Stretch"  Grid.Column="0" Grid.Row="1" FontFamily="Times New Roman" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding countlisten}" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" FontFamily="Times New Roman" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding rating}" VerticalAlignment="Center"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" FontFamily="Times New Roman" FontSize="18"/>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding duration}" VerticalAlignment="Center"  Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" FontFamily="Times New Roman" FontSize="18"/>
+        <Border BorderBrush="Black" BorderThickness="0.4" Grid.ColumnSpan="4" Grid.RowSpan="2"/>
+
+
+
+
+    </Grid>
+</UserControl>

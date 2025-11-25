@@ -46,6 +46,8 @@ public partial class MusicContext : DbContext
 
     public virtual DbSet<Track> Tracks { get; set; }
 
+    public virtual DbSet<TrackArtist> TrackArtists { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -287,16 +289,31 @@ public partial class MusicContext : DbContext
 
             entity.Property(e => e.TrackId).HasColumnName("Track_Id");
             entity.Property(e => e.AlbumId).HasColumnName("Album_Id");
-            entity.Property(e => e.ArtistId).HasColumnName("Artist_Id");
 
             entity.HasOne(d => d.Album).WithMany(p => p.Tracks)
                 .HasForeignKey(d => d.AlbumId)
                 .HasConstraintName("track_album_fk");
+        });
 
-            entity.HasOne(d => d.Artist).WithMany(p => p.Tracks)
+        modelBuilder.Entity<TrackArtist>(entity =>
+        {
+            entity.HasKey(e => e.TrackArtistId).HasName("TrackArtist_pkey");
+
+            entity.ToTable("TrackArtist");
+
+            entity.Property(e => e.TrackArtistId).HasColumnName("TrackArtist_Id");
+            entity.Property(e => e.ArtistId).HasColumnName("Artist_Id");
+            entity.Property(e => e.TrackId).HasColumnName("Track_Id");
+
+            entity.HasOne(d => d.Artist).WithMany(p => p.TrackArtists)
                 .HasForeignKey(d => d.ArtistId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("track_artist_fk");
+                .HasConstraintName("trackartist_artist_fk");
+
+            entity.HasOne(d => d.Track).WithMany(p => p.TrackArtists)
+                .HasForeignKey(d => d.TrackId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("trackartist_track_fk");
         });
 
         modelBuilder.Entity<User>(entity =>

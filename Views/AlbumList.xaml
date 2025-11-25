@@ -1,0 +1,40 @@
+﻿<Window x:Class="Spotify_wpf.Views.AlbumList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Spotify_wpf.Views" xmlns:viewmodels="clr-namespace:Spotify_wpf.ViewModels" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AlbumList">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="63*"/>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="281*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Center" Height="200" VerticalAlignment="Center" Width="200" Grid.Row="0" Grid.RowSpan="3" Source="{Binding Image}"/>
+
+        <ListBox ItemsSource="{Binding trackLists}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:AlbumListUC/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <TextBlock TextWrapping="Wrap" Text="{Binding namealbum}" FontSize="24" FontFamily="Times New Roman" FontWeight="Bold" />
+            <TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontSize="18" FontFamily="Times New Roman"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding genre}" FontFamily="Times New Roman" FontSize="18"/>
+
+        </StackPanel>
+
+    </Grid>
+</Window>

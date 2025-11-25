@@ -11,12 +11,12 @@
             <ColumnDefinition Width="*"/>
 
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="Black" BorderThickness="1,1,1,1">
+        <Border BorderBrush="Black" BorderThickness="1,1,1,1" CornerRadius="20">
             <TextBlock TextWrapping="Wrap" Text="{}" Foreground="{x:Null}" Margin="0,0,189,0"/>
 
         </Border>
         <StackPanel Margin="10,10,10,10">
-            <TextBlock TextWrapping="Wrap" Text="{Binding loginuser}" FontFamily="Times New Roman" FontWeight="Bold" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding loginuser}" FontFamily="Times New Roman" FontWeight="Bold" FontSize="20" Background="#EDE2FF"/>
             <Border BorderThickness="1" BorderBrush="Black" Height="1"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding email}" FontFamily="Times New Roman" FontSize="16"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding role}" FontFamily="Times New Roman" FontSize="16"/>

@@ -6,6 +6,12 @@
     <Compile Update="Views\Album.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AlbumList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AlbumListUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AlbumUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +24,12 @@
     <Compile Update="Views\Playlist.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PlaylistList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PlaylistListUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PlaylistUserController.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -27,6 +39,12 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Album.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AlbumList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AlbumListUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AlbumUserControl.xaml">
@@ -42,6 +60,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Playlist.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PlaylistList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\PlaylistListUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PlaylistUserController.xaml">

@@ -9,6 +9,7 @@ using System.Windows.Controls.Primitives;
 using Microsoft.EntityFrameworkCore;
 using Spotify_wpf.Context;
 using Spotify_wpf.Views;
+using static Spotify_wpf.ViewModels.AlbumViewModel;
 
 namespace Spotify_wpf.ViewModels
 {
@@ -27,6 +28,7 @@ namespace Spotify_wpf.ViewModels
             }
         }
 
+
         public PlaylistViewModel()
         {
             LoadPlaylists();
@@ -36,8 +38,9 @@ namespace Spotify_wpf.ViewModels
 
         public class PlaylistView
         {
-            
-         
+
+
+            public string id { get; set; }
             public string likes { get; set; }
             public string datecreate { get; set; }
             public string track {  get; set; }
@@ -46,6 +49,30 @@ namespace Spotify_wpf.ViewModels
             public string title { get; set; }
 
             public string time { get; set; }
+
+
+        }
+
+        private PlaylistView _selectedPlaylist { get; set; }
+        public PlaylistView selectedPlaylist
+        {
+            get => _selectedPlaylist;
+            set
+            {
+                _selectedPlaylist = value;
+                ViewPlaylist(int.Parse(_selectedPlaylist.id));
+                OnPropertyChanged();
+            }
+        }
+
+        public void ViewPlaylist(int id)
+        {
+            var w = new Views.PlaylistList();
+            if (selectedPlaylist != null)
+            {
+                w.DataContext = new PlaylistListViewModel(id);
+            }
+            w.Show();
 
 
         }
@@ -60,6 +87,7 @@ namespace Spotify_wpf.ViewModels
                 .Include(p => p.User)
                 .Select(p => new PlaylistView
                 {
+                    id = p.PlayListId.ToString(),
                     title = $"{p.PlaylistName} | {p.User.FullName}",
                     sub = p.PlaylistUsers.Where(up => up.PlaylistId == p.PlayListId).Count().ToString(),
                     likes = $"Нравится: {p.Likes}",

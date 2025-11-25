@@ -9,7 +9,7 @@
       Title="Playlist">
 
     <Grid Background="White">
-        <ListBox ItemsSource="{Binding playlists}" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding playlists}" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" SelectedItem="{Binding selectedPlaylist}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:PlaylistUserController/>

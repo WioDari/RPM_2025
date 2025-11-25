@@ -145,3 +145,11 @@ C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Vi
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\UserList.baml
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\UserListUserControl.g.cs
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\UserListUserControl.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\AlbumList.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\AlbumListUC.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\AlbumList.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\AlbumListUC.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\PlaylistList.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\PlaylistListUC.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\PlaylistList.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\PlaylistListUC.baml
