@@ -126,7 +126,8 @@ namespace Spotify_wpf.ViewModels
             likes = $"Понравилось: {context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().Likes.ToString()}";
             dur = $"Продолжительность: {0.ToString()}";
 
-            _playlistList = new ObservableCollection<PlaylistListView>(context.Tracks.Include(p => p.PlayListTracks.Where(p => p.PlaylistId == id).FirstOrDefault())
+            _playlistList = new ObservableCollection<PlaylistListView>(context.Tracks
+                .Where(t => t.PlayListTracks.Any(pt => pt.PlaylistId == id))
                 .Include(p => p.Album)
                 .Include(p => p.PlayListTracks)
                 .Include(p => p.TrackArtists) 
