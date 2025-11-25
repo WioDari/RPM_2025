@@ -17,6 +17,18 @@ namespace SpotApp_wpf.ViewModels
             LoadAlbums();
         }
 
+        private AlbTemplate _selectedAlbum {  get; set; }
+        public AlbTemplate selectedAlbum
+        {
+            get => _selectedAlbum;
+            set
+            {
+                _selectedAlbum = value;
+                ShowDetails(int.Parse(selectedAlbum.id));
+                OnPropertyChanged();
+            }
+        }
+
         public class AlbTemplate
         {
             public string id { get; set; }
@@ -26,6 +38,16 @@ namespace SpotApp_wpf.ViewModels
             public string tracksCount { get; set; }
         };
         public ObservableCollection<AlbTemplate> albums { get; set; }
+
+        public void ShowDetails(int id)
+        {
+            var win = new Views.AlbumDetails();
+            if(selectedAlbum != null)
+            {
+                win.DataContext = new AlbumDetailViewModel(id);
+            }
+            win.Show();
+        }
 
         private void LoadAlbums()
         {

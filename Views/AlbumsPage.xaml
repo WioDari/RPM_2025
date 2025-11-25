@@ -10,7 +10,7 @@
       Title="AlbumsPage">
 
     <Grid Background="White">
-        <ListBox ItemsSource="{Binding albums}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox ItemsSource="{Binding albums}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding selectedAlbum}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />

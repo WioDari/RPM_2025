@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpotApp_wpf.Views"
         mc:Ignorable="d"
+        Style="{StaticResource window}"
         Title="AlbumDetails" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -15,6 +16,17 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-
+        <Image Source="/Resources/placeholder_cover.png" HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150"/>
+        <Image Source="{Binding albumCover}" HorizontalAlignment="Center" Height="150" VerticalAlignment="Center" Width="150"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0,21,0,0" TextWrapping="Wrap" Text="{Binding albumName}" VerticalAlignment="Top" Height="28" Width="620" FontSize="22" FontWeight="Bold"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0,49,0,0" TextWrapping="Wrap" Text="{Binding author}" VerticalAlignment="Top" Height="28" Width="620" FontSize="20"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="0,77,0,0" TextWrapping="Wrap" Text="{Binding genres, StringFormat=Жанры: {0}}" VerticalAlignment="Top" Height="auto" Width="620" FontSize="20"/>
+        <ListBox Grid.Row="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" ItemsSource="{Binding albDetails}"  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:TrackDetailsTemplate/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

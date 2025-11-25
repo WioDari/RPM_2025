@@ -26,6 +26,9 @@
     <Compile Update="Views\PlayListTemplate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TrackDetailsTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UsersPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
