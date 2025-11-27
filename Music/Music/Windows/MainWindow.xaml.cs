@@ -41,7 +41,7 @@ public partial class MainWindow : Window
 
         if (!string.IsNullOrEmpty(Settings.Default.UserId.ToString()) && Settings.Default.UserId != 0)
         {
-            new MenuWindow(context.Users.First(x => x.Id == Settings.Default.UserId)).Show();
+            new MenuWindow(context.Users.Include(x => x.Role).First(x => x.Id == Settings.Default.UserId)).Show();
             Close();
             return;
         }
@@ -91,7 +91,7 @@ public partial class MainWindow : Window
 
         await using MusicContext context = new();
 
-        User? user = await context.Users.FirstOrDefaultAsync(u => u.Login == LoginTextBox.Text);
+        User? user = await context.Users.Include(x => x.Role).FirstOrDefaultAsync(u => u.Login == LoginTextBox.Text);
         if (user != null)
         {
             if (PasswordBox.Password != user.Password)
@@ -158,8 +158,6 @@ public partial class MainWindow : Window
         using (var dc = image.RenderOpen())
         {
             double x = 30;
-
-            //dc.DrawRectangle(Brushes.Red, null, new Rect(0, 0, width, height));
 
             foreach (char c in text)
             {
@@ -252,4 +250,5 @@ public partial class MainWindow : Window
         PasswordBox.Visibility = Visibility.Visible;
         ShowPasswordImage.Source = new BitmapImage(new Uri("pack://application:,,,/Music;component/Resources/hide.png"));
     }
+
 }

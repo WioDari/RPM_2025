@@ -30,4 +30,6 @@ public partial class Track
     public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
+
+    public override string ToString() => TrackName;
 }

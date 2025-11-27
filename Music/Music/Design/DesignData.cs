@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Documents;
+using System.Linq;
 using Music.Models;
 using Music.Context;
 using Microsoft.EntityFrameworkCore;
@@ -11,9 +12,12 @@ public class DesignData
 {
     public List<Playlist> Playlists { get; }
     public List<Album> Albums { get; }
+
+    public Album TestAlbum { get; }
     public DesignData()
     {
         MusicContext context = new MusicContext();
+
         Playlists = context.Playlists
             .Include(x => x.Tracks)
             .Include(x => x.Tags)
@@ -26,5 +30,7 @@ public class DesignData
             .Include(x => x.Artist)
             .Include(x => x.Genres)
             .ToList();
+
+        TestAlbum = Albums.First();
     }
 }

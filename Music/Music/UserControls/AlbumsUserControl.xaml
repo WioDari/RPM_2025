@@ -1,0 +1,60 @@
+﻿<UserControl x:Class="Music.UserControls.AlbumsUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Music.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="665" d:DesignWidth="1244"
+             xmlns:design="clr-namespace:Music.Design"
+             d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}">
+    
+    <Grid>
+        <ListBox Name="AlbumsListBox" 
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+            Margin="0" 
+            HorizontalContentAlignment="Stretch" 
+            VerticalContentAlignment="Top" HorizontalAlignment="Stretch" 
+            ItemsSource="{Binding Albums}">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ClipToBounds="True" Margin="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Row="0" Stretch="Uniform" MaxHeight="255" MaxWidth="255" Source="/Resources/placeholder_cover.png"/>
+                        <Image Grid.Row="0" Stretch="Uniform" MaxHeight="255" MaxWidth="255" Source="{Binding Image}"/>
+
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="205" MaxWidth="205"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid Grid.Column="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="{Binding Title}" FontWeight="Bold" TextAlignment="Center" TextWrapping="NoWrap" 
+                                           Margin="0 10" TextTrimming="CharacterEllipsis"  FontSize="20"/>
+                                <TextBlock Grid.Row="1" Text="{Binding Artist.Name}" TextAlignment="Center" TextWrapping="NoWrap" 
+                                           VerticalAlignment="Bottom" TextTrimming="CharacterEllipsis" FontSize="20"/>
+                            </Grid>
+
+                            <TextBlock Grid.Column="1" Text="{Binding Tracks.Count}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

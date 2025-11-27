@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Music.UserControls.AutoCompleteBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Music.UserControls"
+             xmlns:design="clr-namespace:Music.Design"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="72" d:DesignWidth="430">
+    <Grid>
+        <TextBox x:Name="PART_TextBox"
+                 VerticalContentAlignment="Center"
+                 TextChanged="PART_TextBox_TextChanged"
+                 PreviewKeyDown="PART_TextBox_PreviewKeyDown"
+                 GotFocus="PART_TextBox_GotFocus"
+                 LostFocus="PART_TextBox_LostFocus"/>
+
+        <Popup x:Name="PART_Popup"
+               Placement="Bottom"
+               StaysOpen="False"
+               AllowsTransparency="True"
+               Width="{Binding ActualWidth, ElementName=PART_TextBox}"
+               d:IsOpen="True">
+            <Border MinWidth="{Binding ActualWidth, ElementName=PART_TextBox}" 
+                    MaxWidth="{Binding ActualWidth, ElementName=PART_TextBox}"
+                    Background="{StaticResource SecondaryAccentColorBrush}"
+                    BorderBrush="{StaticResource PrimaryAccentColorBrush}"
+                    BorderThickness="2">
+                <ListBox x:Name="PART_ListBox"
+                         MouseLeftButtonUp="PART_ListBox_MouseLeftButtonUp"
+                         PreviewKeyDown="PART_ListBox_PreviewKeyDown"
+                         LostFocus="PART_ListBox_LostFocus"
+                         Background="#ede2ff"
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                         d:ItemsSource="{Binding Albums}"
+                         SelectedIndex="-1">
+                    
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" 
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Center"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

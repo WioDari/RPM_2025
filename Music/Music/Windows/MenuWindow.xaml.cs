@@ -2,6 +2,7 @@
 using Music.Context;
 using Music.Models;
 using Music.Properties;
+using Music.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,8 +33,8 @@ namespace Music.Windows
         public MenuWindow()
         {
             InitializeComponent();
-            _user = new() { Id = 0, FullName = "Гость" };
-            Load();
+            _user = new() { Id = 0, FullName = "Гость", RoleId = 2 };
+            LoadGuest();
         }
 
         public MenuWindow(User user)
@@ -43,7 +44,7 @@ namespace Music.Windows
             Load();
         }
 
-        public async void Load()
+        private void Load()
         {
             Timer.Text = time.ToString(@"mm\:ss");
             timer.Interval = TimeSpan.FromSeconds(1);
@@ -51,18 +52,50 @@ namespace Music.Windows
             timer.Start();
 
             UserFullNameTextBlock.Text = _user.FullName;
+            UserRoleTextBlock.Text = _user.Role.Name;
 
-            await using MusicContext context = new();
-
-            PlaylistsListBox.ItemsSource = await context.Playlists.Include(x => x.Tracks).Include(x => x.Tags).Include(x => x.CreatorUser).Include(x => x.Users).ToListAsync();
-            AlbumsListBox.ItemsSource = context.Albums
-            .Include(x => x.Tracks)
-            .Include(x => x.Artist)
-            .Include(x => x.Genres)
-            .ToList();
+            if (_user.RoleId == 4)
+            {
+                NewPlaylistButton.Visibility = Visibility.Hidden;
+                NewAlbumButton.Visibility = Visibility.Hidden;
+            }
         }
 
-        public void Timer_Tick(object? sender, EventArgs e)
+        private void LoadGuest()
+        {
+            Timer.Visibility = Visibility.Hidden;
+            time = TimeSpan.FromMinutes(5);
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += TimerGuest_Tick;
+            timer.Start();
+            UserRoleTextBlock.Visibility = Visibility.Hidden;
+
+            NewPlaylistButton.Visibility = Visibility.Hidden;
+            NewAlbumButton.Visibility = Visibility.Hidden;
+        }
+
+        private async void TimerGuest_Tick(object? sender, EventArgs e)
+        {
+            time -= TimeSpan.FromSeconds(1);
+            if (time == TimeSpan.Zero)
+            {
+                timer.Stop();
+                var result = MessageBox.Show("Для авторизованых пользователей доступен больший функционал. Открыть окно авторизации?", "Авторизация", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    MainWindow mainWindow = new();
+                    mainWindow.Show();
+                    Close();
+                }
+                else
+                {
+                    time = TimeSpan.FromMinutes(5);
+                    timer.Start();
+                }
+            }
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
         {
             time -= TimeSpan.FromSeconds(1);
             Timer.Text = time.ToString(@"mm\:ss");
@@ -86,9 +119,17 @@ namespace Music.Windows
         {
             Application.Current.Properties["CurrentUser"] = null;
             Settings.Default.Reset();
+            timer.Stop();
             MainWindow mainWindow = new();
             mainWindow.Show();
             Close();
+        }
+
+
+        private void NewAlbumButton_Click(Object sender, RoutedEventArgs e)
+        {
+            var addAlbumWindow = new AddAlbumWindow();
+            addAlbumWindow.ShowDialog();
         }
     }
 }

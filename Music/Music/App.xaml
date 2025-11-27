@@ -48,6 +48,16 @@
             <Setter Property="PasswordChar" Value="•"/>
         </Style>
 
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource SecondaryBackgroundColorBrush}"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="FontSize" Value="30"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentColorBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColorBrush}"/>
+        </Style>
+
         <Style TargetType="ToggleButton">
             <Setter Property="Padding" Value="15"/>
             <Setter Property="BorderThickness" Value="5"/>
@@ -107,7 +117,7 @@
                     <ControlTemplate TargetType="Button">
                         <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}" 
                                 Padding="{TemplateBinding Padding}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <TextBlock x:Name="Text" Foreground="White" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
+                            <TextBlock x:Name="Text" Foreground="{TemplateBinding Foreground}" Text="{Binding Content, RelativeSource={RelativeSource TemplatedParent}}"
                                        VerticalAlignment="Center" HorizontalAlignment="Center"
                                        FontSize="{TemplateBinding FontSize}"/>
                         </Border>
@@ -132,6 +142,25 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="0, 0, 0, 0"/>
+            <Setter Property="BorderThickness" Value="3"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccentColorBrush}"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="{StaticResource SecondaryBackgroundColorBrush}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        </Style>
+
+        <Style TargetType="Image">
+            <EventSetter Event="ImageFailed" Handler="Image_ImageFailed"/>
         </Style>
     </Application.Resources>
 </Application>

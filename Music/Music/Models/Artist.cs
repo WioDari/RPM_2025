@@ -26,4 +26,7 @@ public partial class Artist
     public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
+
+    public override string ToString() => Name;
+    
 }

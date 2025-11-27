@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Media.Imaging;
 
 namespace Music.Models;
 
@@ -24,21 +25,5 @@ public partial class Album
 
     public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
-    public Bitmap? Image => GetCoverImage();
-
-    public Bitmap? GetCoverImage()
-    {
-        if (string.IsNullOrEmpty(CoverPath) || !System.IO.File.Exists(CoverPath))
-        {
-            return null;
-        }
-        try
-        {
-            return new Bitmap(CoverPath);
-        }
-        catch
-        {
-            return null;
-        }
-    }
+    public BitmapImage Image => Img.GetImage(CoverPath);
 }
