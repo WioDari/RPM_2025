@@ -9,7 +9,7 @@ public partial class Track
 
     public string TrackName { get; set; } = null!;
 
-    public TimeOnly Duration { get; set; }
+    public TimeSpan Duration { get; set; }
 
     public DateOnly ReleaseDate { get; set; }
 

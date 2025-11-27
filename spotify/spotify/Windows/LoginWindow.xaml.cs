@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,107 +12,53 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using spotify.Context;
-using System.Runtime.InteropServices;
-using System.Windows.Interop;
+using spotify.Models;
+using spotify.Properties;
 
 namespace spotify.Windows
 {
     /// <summary>
     /// Логика взаимодействия для LoginWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window, INotifyPropertyChanged
+    public partial class LoginWindow : Window
     {
+        private string CapthaText;
         public LoginWindow()
         {
             InitializeComponent();
-            DataContext = this;
             GenerateCaptha();
 
-            var img = new Image {
-                Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/restart.png")),
-                Width = 40, Height = 40
+            //if(Settings.Default.UserId != 0)
+            //{
+            //    int userId = Settings.Default.UserId;
+            //    var context = new SpotifyContext();
+            //    var user = context.Users.FirstOrDefault(u => u.Id == userId);
+            //    Application.Current.Properties["CurrentUser"] = user;
+
+            //    new MainMenuWindow().Show();
+            //    Close();
+
+            //}
+
+            var img = new Image 
+            {
+                Source = new BitmapImage(new Uri("pack://application:,,,/spotify;component/Resources/restart.png")),
+                Width=20, 
+                Height= 20
             };
             NewCapthaButton.Content = img;
-
-            var img1 = new Image
-            {
-                Source = new BitmapImage(new Uri("pack://siteoforigin:,,,/Resources/cross.png")),
-                Width = 40,
-                Height = 40
-            };
-            CloseButton.Content = img1;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void OnPropertyChanged(string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        private string _login;
-        public string Login
-        {
-            get => _login;
-            set
-            {
-                _login = value;
-                OnPropertyChanged(nameof(Login));
-            }
-        }
-
-        private string _password;
-        public string Password
-        {
-            get => _password;
-            set
-            {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
-            }
-        }
-
-        private string _capthaText;
-        public string CapthaText
-        {
-            get => _capthaText;
-            set
-            {
-                _capthaText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private ImageSource _captchaImage;
-        public ImageSource CaptchaImage
-        {
-            get => _captchaImage;
-            set
-            {
-                _captchaImage = value;
-                OnPropertyChanged(nameof(CaptchaImage));
-            }
-        }
-
-        private string _capthaInput;
-        public string CapthaInput
-        {
-            get => _capthaInput;
-            set
-            {
-                _capthaInput = value;
-                OnPropertyChanged(nameof(CapthaInput));
-            }
         }
 
         private void GenerateCaptha()
         {
             CapthaText = GenerateRandomString(6);
-            CaptchaImage = GenerateCaptchaImage(CapthaText);
+            CaptchaTextBox.Text = CapthaText;
+            CaptchaImage.Source = GenerateCaptchaImage(CapthaText);
         }
 
         private string GenerateRandomString(int lenth)
@@ -188,9 +135,11 @@ namespace spotify.Windows
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             var context = new SpotifyContext();
+            string Login = LoginTextBox.Text;
+            string Password = passwordBox.Password;
             var user = context.Users.FirstOrDefault(u => u.Login == Login && u.Password == Password);
 
-            if (!string.Equals(_capthaInput, _capthaText))
+            if (!string.Equals(CaptchaTextBox.Text, CapthaText))
             {
                 MessageBox.Show("Капча введена неправильно!");
                 GenerateCaptha();
@@ -199,13 +148,24 @@ namespace spotify.Windows
 
             if (user == null || LoginTextBox.Text != user.Login || PasswordTextBox.Text != user.Password)
             {
-                MessageBox.Show("Пользователь введен неправильно!");
+                MessageBox.Show("Пользователь или пароль введен неправильно!");
                 GenerateCaptha();
                 return;
             }
             Application.Current.Properties["CurrentUser"] = user;
+            Settings.Default.UserId = user.Id;
+            Settings.Default.Save();
 
-            MainMenuWindow menu = new MainMenuWindow();
+            var userHistory = new UsersHistory()
+            {
+                UserHistoryId = context.UsersHistories.Any() ? context.UsersHistories.Max(x => x.UserHistoryId) + 1 : 1,
+                UserId = user.Id,
+                History = DateTime.Now
+            };
+            context.UsersHistories.Add(userHistory);
+            context.SaveChanges();
+
+            MainMenuWindow menu = new (context.Users.First(x => x.Id == user.Id));
             menu.Show();
             this.Close();
         }
@@ -215,9 +175,21 @@ namespace spotify.Windows
             GenerateCaptha();
         }
 
-        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        private void ShowButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            PasswordTextBox.Text = passwordBox.Password;
+            PasswordTextBox.Visibility = Visibility.Visible;
+            passwordBox.Visibility = Visibility.Hidden;
+            ShowImage.Source = new BitmapImage(new Uri("pack://application:,,,/spotify;component/Resources/show.png"));
+        }
+
+        private void ShowButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            passwordBox.Password = PasswordTextBox.Text;
+            PasswordTextBox.Visibility = Visibility.Hidden;
+            passwordBox.Visibility = Visibility.Visible;
+            ShowImage.Source = new BitmapImage(new Uri("pack://application:,,,/spotify;component/Resources/noshow.png"));
         }
     }
 }
+

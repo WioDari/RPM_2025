@@ -5,8 +5,69 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:spotify.Windows"
         mc:Ignorable="d"
-        Title="MainMenuWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Меню" Height="450" Width="800">
+    <Grid
+        ShowGridLines="False" RenderTransformOrigin="0.728,0.574">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid
+            Grid.ColumnSpan="2"
+            Background="#9C4DFF">
+            <TextBlock Text="Главное меню «Музыка+»" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+        <Grid
+            Background="#EDE2FF"
+            Grid.Row="1">
+            <TextBlock Name="FullNameText" Text="" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <TabControl Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+
+            <TabItem Header="Альбомы" FontSize="20">
+                <TabItem.Content>
+                    <local:UserControlAlbum/>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Header="Артисты" FontSize="20">
+                <TabItem.Content>
+                    <Grid>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Header="Плейлисты" FontSize="20">
+                <TabItem.Content>
+                    <local:UserControlPlaylist/>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Header="Пользователи" FontSize="20">
+                <TabItem.Content>
+                    <Grid>
+
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+
+        <StackPanel
+            Grid.Row="2">
+            <Button Name="NewAlbumButton" Click="NewAlbumButton_Click" Background="#7A00CC" Content="Новый альбом" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
+            <Button Name="NewTrackButton" Click="NewAlbumButton_Click" Background="#7A00CC" Content="Новый трек" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
+
+        </StackPanel>
+
+        <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="Button_Click"/>
     </Grid>
 </Window>

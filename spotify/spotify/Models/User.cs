@@ -29,5 +29,7 @@ public partial class User
 
     public virtual Subscription Subscription { get; set; } = null!;
 
+    public virtual UsersHistory? UsersHistory { get; set; }
+
     public virtual ICollection<Playlist> PlaylistsNavigation { get; set; } = new List<Playlist>();
 }

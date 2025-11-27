@@ -36,6 +36,8 @@ public partial class SpotifyContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<UsersHistory> UsersHistories { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseNpgsql("Host=localhost; Database=spotify; Username=postgres; Password=123;");
@@ -247,6 +249,18 @@ public partial class SpotifyContext : DbContext
                 .HasForeignKey(d => d.SubscriptionId)
                 .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("users_subscriptions_fk");
+        });
+
+        modelBuilder.Entity<UsersHistory>(entity =>
+        {
+            entity.HasKey(e => e.UserHistoryId).HasName("userhistory_pk");
+
+            entity.Property(e => e.UserHistoryId).ValueGeneratedNever();
+            entity.Property(e => e.History).HasColumnType("timestamp without time zone");
+
+            entity.HasOne(d => d.UserHistory).WithOne(p => p.UsersHistory)
+                .HasForeignKey<UsersHistory>(d => d.UserHistoryId)
+                .HasConstraintName("usershistories_users_fk");
         });
 
         OnModelCreatingPartial(modelBuilder);

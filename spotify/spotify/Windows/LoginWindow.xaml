@@ -18,59 +18,75 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel
+        <Grid
             Grid.Row="0" 
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             Background="#9C4DFF">
-        </StackPanel>
+         </Grid>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" FontWeight="Bold"/>
 
         <StackPanel
             Grid.Row="1"
-            Grid.ColumnSpan="2"
+            Grid.ColumnSpan="3"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="Логин:" FontSize="25"  Margin="0 10" />
-            <TextBox Name="LoginTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF" Text="{Binding Login}"/>
+            <TextBlock TextWrapping="Wrap" Text="Логин:" FontSize="25" HorizontalAlignment="Center" Margin="0 10" />
+            <TextBox Name="LoginTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF" Text="leontiy.kozlitin"/>
         </StackPanel>
 
-        <StackPanel
-            Grid.Row="2"
-            Grid.ColumnSpan="2"
-            HorizontalAlignment="Center"
+        <Grid
+            Grid.Row="2" 
+            Grid.ColumnSpan="3" 
+            HorizontalAlignment="Center" 
             VerticalAlignment="Center">
-            <TextBlock TextWrapping="Wrap" Text="Пароль:" FontSize="25"  Margin="0 10" />
-            <TextBox Name="PasswordTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF" Text="{Binding Password}"/>
-        </StackPanel>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock  Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="Пароль:" FontSize="25"  Margin="0 10" />
+            <TextBox Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Name="PasswordTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF" Text="RDJCXFyk"/>
+            <PasswordBox Name="passwordBox" Grid.Row="1" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="40" FontSize="20" Background="#EDE2FF" PasswordChar="•" Password="RDJCXFyk"/>
+
+        </Grid>
+
 
         <StackPanel
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Grid.Row="3"
-            Grid.ColumnSpan="2">
-            <Image Source="{Binding CaptchaImage}" Width="300" Height="40"  Margin="0 10"/>
-            <TextBox Name="CaptchaTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF" Text="{Binding CapthaInput}"/>
+            Grid.ColumnSpan="3">
+            <Image Name="CaptchaImage" Width="300" Height="40"  Margin="0 10"/>
+            <TextBox Name="CaptchaTextBox" Width="300" Height="40" FontSize="20" Background="#EDE2FF"/>
         </StackPanel>
 
         <StackPanel
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Center"
             VerticalAlignment="Center"
-            Grid.Column="1"
+            Grid.Column="2"
             Grid.Row="3">
             <Button Name="NewCapthaButton" Click="NewCapthaButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#7A00CC" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF">
-                <Image Source="pack://siteoforigin:,,,/Resources/restart.png" Width="40" Height="40"/>
+                <Image Source="/Resources/restart.png" MaxWidth="20" MaxHeight="20" MinHeight="20" MinWidth="20"/>
             </Button>
         </StackPanel>
 
-        <Button Name="GuestButton" Click="GuestButton_Click" Content="Гостевой режим" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Background="#7A00CC" FontSize="20" FontWeight="Bold" BorderThickness="2" BorderBrush="#9C4DFF"/>
+        <Button Name="GuestButton" Click="GuestButton_Click" Content="Гостевой режим" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Background="#7A00CC" FontSize="15" FontWeight="Bold" BorderThickness="2" BorderBrush="#9C4DFF"/>
 
-        <Button Name="EnterButton" Click="EnterButton_Click" Content="Войти" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Background="#7A00CC" FontSize="20" FontWeight="Bold" BorderThickness="2" BorderBrush="#9C4DFF"/>
+        <Button Name="EnterButton" Click="EnterButton_Click" Content="Войти" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Background="#7A00CC" FontSize="15" FontWeight="Bold" BorderThickness="2" BorderBrush="#9C4DFF"/>
 
-        <Button Grid.Column="2" Name="CloseButton" Click="CloseButton_Click" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="5" Background="#9C4DFF" BorderBrush="#9C4DFF">
-            <Image Source="pack://siteoforigin:,,,/Resources/cross.png" Width="40" Height="40"/>
-        </Button>
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" Text="" FontSize="25"  Margin="10" />
+            <ToggleButton Grid.Column="2" Name="ShowButton" Checked="ShowButton_Checked" Unchecked="ShowButton_Unchecked" HorizontalAlignment="Right" VerticalAlignment="Center" Background="#7A00CC" BorderBrush="#9C4DFF" BorderThickness="2">
+                <Image Source="/Resources/noshow.png" MaxWidth="20" MaxHeight="20" MinHeight="20" MinWidth="20" Name="ShowImage"/>
+            </ToggleButton>
+        </StackPanel>
     </Grid>
 </Window>

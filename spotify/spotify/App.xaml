@@ -15,5 +15,22 @@
                 Value="12">
             </Setter>
         </Style>
+        <Style TargetType="Button">
+            <Setter Property="Padding" Value="8"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="2"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+        <Style TargetType="ToggleButton">
+            <Setter Property="Padding" Value="8"/>
+            <Style.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="2"/>
+                </Style>
+            </Style.Resources>
+        </Style>
     </Application.Resources>
 </Application>
