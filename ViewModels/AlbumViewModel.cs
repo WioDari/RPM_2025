@@ -43,6 +43,7 @@ namespace SpotApp_wpf.ViewModels
             public string author { get; set; }
             public string tracksCount { get; set; }
             public List<string> genres { get; set; }
+            public TimeSpan duration { get; set; }
         };
         private ObservableCollection<AlbTemplate> _albums { get; set; }
         public ObservableCollection<AlbTemplate> albums
@@ -124,6 +125,7 @@ namespace SpotApp_wpf.ViewModels
                     author = a.Artist.ArtistName,
                     tracksCount = a.TracksInAlbums.Where(t => t.AlbumId == a.AlbumId).Count().ToString(),
                     genres = a.GenresInAlbums.Where(a => a.AlbumId == a.Album.AlbumId).Select(a => a.Genre.GenreTittle).ToList(),
+
                 })
                 .OrderBy(a => a.id)
                 .ToList());
@@ -149,9 +151,9 @@ namespace SpotApp_wpf.ViewModels
 
             tmp = selectedSort switch
             {
-                /*"По возрастанию" => tmp.OrderBy(t => t.dura),
-                "По убыванию" => tmp.OrderByDescending(t => t.Quantity),
-                _ => tmp.OrderBy(t => t.Quantity)*/
+                "По возрастанию" => tmp.OrderBy(t => t.duration),
+                "По убыванию" => tmp.OrderByDescending(t => t.duration),
+                _ => tmp.OrderBy(t => t.duration)
             };
 
             albums.Clear();
