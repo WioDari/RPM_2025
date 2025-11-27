@@ -9,13 +9,19 @@ using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Spotify_wpf.Context;
+using Spotify_wpf.Models;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Spotify_wpf.ViewModels
 {
     class AlbumViewModel :BaseViewModel
     {
         private ObservableCollection<AlbumView> _album;
+        public ObservableCollection<string> genres {  get; set; }
 
+        private ObservableCollection<Genre> _allGenres;
+
+        private ObservableCollection<AlbumView> _allAlbums;
         public ObservableCollection<AlbumView> albums
         {
             get => _album;
@@ -23,9 +29,48 @@ namespace Spotify_wpf.ViewModels
             set
             {
                 _album = value;
+                ApplyFilters();
                 OnPropertyChanged();
             }
         }
+
+        private string _selectedGenres { get; set; } = "Жанры";
+        public string selectedGenres
+        {
+            get => _selectedGenres;
+            set
+            {
+                _selectedGenres = value;
+                ApplyFilters();
+                OnPropertyChanged();
+            }
+        }
+
+        private string _selectedSort { get; set; }
+        public string selectedSort
+        {
+            get => _selectedSort;
+            set
+            {
+                _selectedSort = value;
+                ApplyFilters();
+                OnPropertyChanged();
+            }
+        }
+
+        private string _searchText { get; set; }
+        public string searchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                ApplyFilters();
+                OnPropertyChanged();
+            }
+        }
+
+
         public ICommand ViewAlbumCommand { get; set; }
 
         private AlbumView _selectedAlbim {  get; set; }
@@ -55,6 +100,15 @@ namespace Spotify_wpf.ViewModels
         public AlbumViewModel()
         {
             LoadAlbums();
+
+            var context = new MusicContext();
+            var genresList = context.Genres 
+                .Select(g => g.GenreName)
+                .Distinct()
+                .OrderBy(s => s)
+                .ToList();
+            genresList.Insert(0, "Жанры");
+            genres = new ObservableCollection<string>(genresList);
         }
 
 
@@ -68,7 +122,10 @@ namespace Spotify_wpf.ViewModels
 
             public string trackcount { get; set; }
 
+            public string totdur { get; set; }
             public string imageLink { get; set; }
+
+            public List<string> genreses { get; set; }
             
 
         }
@@ -77,7 +134,8 @@ namespace Spotify_wpf.ViewModels
         public void LoadAlbums()
         {
             var context = new MusicContext();
-            _album = new ObservableCollection<AlbumView>(context.Albums
+
+            _allAlbums = new ObservableCollection<AlbumView>(context.Albums
                 .Include(a => a.AlbumTracks)
                 .Include(a => a.Artist)
                 .Select(a => new AlbumView
@@ -85,15 +143,49 @@ namespace Spotify_wpf.ViewModels
                     id = a.AlbumId.ToString(),
                     nametrack = a.AlbumName,
                     nameartist = a.Artist.ArtistName,
+                    totdur = a.TotalDuration.ToString(),
                     trackcount = $"Треков: {a.AlbumTracks.Where(ab => ab.AlbumId == a.AlbumId).Count().ToString()}",
-                    imageLink = a.CoverPath == null ? $"/data/icon.png" : a.CoverPath
-
+                    imageLink = a.CoverPath == null ? $"/data/icon.png" : a.CoverPath,
+                    genreses = a.AlbumGenres.Where(b => b.AlbumId == a.AlbumId).Select(a => a.Genre.GenreName).ToList()
                 })
                 .ToList());
-                
+            _album = new ObservableCollection<AlbumView>(_allAlbums);
 
                 
         }
+
+        private void ApplyFilters()
+        {
+            //var queryGenr = _allGenres.AsQueryable();
+            var queryAlbum = _allAlbums.AsQueryable();
+
+            if (selectedGenres != "Жанры")
+            {
+                queryAlbum = queryAlbum.Where(g => g.genreses.Contains(selectedGenres));
+
+            }
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                string temp = searchText.ToLower();
+                queryAlbum = queryAlbum.Where(t =>
+                t.nameartist.ToLower().Contains(temp) | 
+                t.nametrack.ToLower().Contains(temp));
+            }
+
+            queryAlbum = selectedSort switch
+            {
+                "По возврастанию" => queryAlbum.OrderBy(a => a.totdur),
+                "По убыванию" => queryAlbum.OrderByDescending(a => a.totdur),
+                _ => queryAlbum
+            };
+
+            albums.Clear();
+            foreach (var a in queryAlbum)
+                albums.Add(a);
+        }
+
+        
           
     
     }

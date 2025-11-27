@@ -9,15 +9,16 @@
     <Grid Background="White" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="141*"/>
-            <RowDefinition Height="17*"/>
-            <RowDefinition Height="42*"/>
-        </Grid.RowDefinitions> 
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="36*"/>
+        </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.RowSpan="2" Grid.Row="1" HorizontalAlignment="Center" Width="0"/>
-        <Image Source="/data/placeholder_cover.png" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="350"/>
+        <Image Source="/Resources/placeholder_cover.png" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="350"/>
         <Image Source="{Binding imageLink}" HorizontalAlignment="Center" Height="400" VerticalAlignment="Center" Width="350"/>
-        <TextBlock Margin="10,10,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding nametrack}" VerticalAlignment="Center" Height="Auto" Width="325" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" Grid.Row="1"/>
-        <TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{Binding nameartist}" VerticalAlignment="Top" Height="32" Width="249" FontFamily="Times New Roman" FontSize="14"/>
-        <TextBlock HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Text="{Binding trackcount}" VerticalAlignment="Top" Height="32" Width="86" FontFamily="Times New Roman" FontSize="14"/>
+        
+        <TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding nametrack}" VerticalAlignment="Center" Height="Auto" Width="325" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold" Grid.Row="1"/>
+        <TextBlock Margin="10,0,0,0" HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{Binding nameartist}" VerticalAlignment="Center" Height="32" Width="249" FontFamily="Times New Roman" FontSize="14"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{Binding trackcount}" VerticalAlignment="Center" Height="32" Width="86" FontFamily="Times New Roman" FontSize="14" Margin="264,0,0,0"/>
         <Border BorderBrush="Black" BorderThickness="1">
             <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,9"/>
         </Border>

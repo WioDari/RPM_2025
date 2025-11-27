@@ -114,8 +114,6 @@ namespace Spotify_wpf.ViewModels
             namealbum = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().AlbumName;
             Image = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().CoverPath;
             genresses = context.AlbumGenres.Include(ag => ag.Genre).Where(ag => ag.AlbumId == id).Select(a => a.Genre.GenreName).ToList();
-            
-
             if (genresses.Count == 0)
             {
                 genre = "";
@@ -130,10 +128,6 @@ namespace Spotify_wpf.ViewModels
             }
             _trackList = new ObservableCollection<TrackView>(context.Tracks.Where(a => a.AlbumId == id)
                 .Include(a => a.TrackArtists)
-
-
-
-
                 .Select(a => new TrackView
                 {
                     tracknam = a.TrackName,

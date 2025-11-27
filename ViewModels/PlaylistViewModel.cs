@@ -50,7 +50,28 @@ namespace Spotify_wpf.ViewModels
 
             public string time { get; set; }
 
+            public string time1 { get; set; }
 
+            public string time2 { get; set; }
+
+            public TimeSpan times { get; set; }
+
+
+        }
+
+        private TimeSpan allDur;
+
+        private string _dur;
+
+        public string dur
+        {
+            get => _dur;
+
+            set
+            {
+                _dur = value;
+                OnPropertyChanged();
+            }
         }
 
         private PlaylistView _selectedPlaylist { get; set; }
@@ -81,10 +102,12 @@ namespace Spotify_wpf.ViewModels
         public void LoadPlaylists()
         {
             var context = new MusicContext();
+            //dur = context.PlayListTracks.Include(t => t.Track).FirstOrDefault().Track.Duration.ToString();
             _playlists = new ObservableCollection<PlaylistView>(context.Playlists
-                .Include(p => p.PlayListTracks)
+                .Include(p => p.PlayListTracks).ThenInclude(pt => pt.Track)
                 .Include(p => p.PlaylistUsers)
                 .Include(p => p.User)
+                
                 .Select(p => new PlaylistView
                 {
                     id = p.PlayListId.ToString(),
@@ -93,7 +116,10 @@ namespace Spotify_wpf.ViewModels
                     likes = $"Нравится: {p.Likes}",
                     track = p.PlayListTracks.Where(pt => pt.PlaylistId == p.PlayListId).Count().ToString(),
                     datecreate = p.DataCreate.ToString("dd.MM.yyy"),
-                    time = "0:00"
+                    time = TimeSpan.FromHours(p.PlayListTracks.Select(pt => pt.Track.Duration).Sum(d => d.Hour)).ToString(@"hh\:") + TimeSpan.FromMinutes(p.PlayListTracks.Select(pt => pt.Track.Duration).Sum(d => d.Minute)).ToString(@"mm\:") + TimeSpan.FromSeconds(p.PlayListTracks.Select(pt => pt.Track.Duration).Sum(d => d.Second)).ToString(@"ss"),
+                    
+                    
+
                 })
                 .ToList());
 

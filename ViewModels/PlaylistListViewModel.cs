@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input.Manipulations;
 using Microsoft.EntityFrameworkCore;
 using Spotify_wpf.Context;
@@ -92,6 +94,8 @@ namespace Spotify_wpf.ViewModels
             }
         }
 
+        public TimeSpan allDur;
+
         public PlaylistListViewModel(int id)
         {
             LoadPlaylistList(id);
@@ -113,6 +117,8 @@ namespace Spotify_wpf.ViewModels
 
             public string duration { get; set; }
 
+            public TimeSpan durations { get; set; }
+
             public List<string> authors { get; set; }
 
         }
@@ -124,13 +130,13 @@ namespace Spotify_wpf.ViewModels
             title = $"{context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().PlaylistName} | {author}";
             datecreate = $"Дата создания: {context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().DataCreate.ToString("dd.MM.yyyy")}";
             likes = $"Понравилось: {context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().Likes.ToString()}";
-            dur = $"Продолжительность: {0.ToString()}";
+
 
             _playlistList = new ObservableCollection<PlaylistListView>(context.Tracks
                 .Where(t => t.PlayListTracks.Any(pt => pt.PlaylistId == id))
                 .Include(p => p.Album)
                 .Include(p => p.PlayListTracks)
-                .Include(p => p.TrackArtists) 
+                .Include(p => p.TrackArtists)
                 .Include(p => p.AlbumTracks)
                 .Select(p => new PlaylistListView
                 {
@@ -140,10 +146,13 @@ namespace Spotify_wpf.ViewModels
                     artistrac = "",
                     rating = p.Rating.ToString(),
                     duration = p.Duration.ToString("mm:ss"),
+                    durations = p.Duration.ToTimeSpan()
 
                 })
                 .ToList());
 
+            
+            
             foreach (var track in playlistList)
             {
                 foreach (string t in track.authors)
@@ -152,10 +161,13 @@ namespace Spotify_wpf.ViewModels
                     string ti = t;
 
                     track.artistrac += ti + " ";
+                    
                 }
 
+                allDur = allDur.Add(track.durations);
+                
             }
-
+            dur = $"Продолжительность: {allDur}";
 
         }
     }

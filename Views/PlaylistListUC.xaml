@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Spotify_wpf.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="800">
+             d:DesignHeight="150" d:DesignWidth="800" Height="100">
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="12*"/>
@@ -17,7 +17,7 @@
             <ColumnDefinition Width="200*"/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Padding="10,0,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding tracknam}" VerticalAlignment="Bottom"  Grid.Column="0" Grid.Row="0" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold"/>
+        <TextBlock Padding="10,0,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding tracknam}" VerticalAlignment="Center"  Grid.Column="0" Grid.Row="0" FontFamily="Times New Roman" FontSize="18" FontWeight="Bold"/>
         <TextBlock Padding="10,0,0,0" HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="{Binding artistrac}" VerticalAlignment="Stretch"  Grid.Column="0" Grid.Row="1" FontFamily="Times New Roman" FontSize="18"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding namealbum}" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" FontFamily="Times New Roman" FontSize="18"/>
         <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding rating}" VerticalAlignment="Center"  Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" FontFamily="Times New Roman" FontSize="18"/>

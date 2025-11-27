@@ -9,7 +9,17 @@
       Title="Album">
 
     <Grid Background="White">
-        <ListBox ItemsSource="{Binding albums}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding selectedAlbim}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="379*"/>
+            <ColumnDefinition Width="168*"/>
+            <ColumnDefinition Width="168*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="127*"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding albums}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding selectedAlbim}"  Grid.Row="1" Grid.ColumnSpan="4">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>
@@ -22,5 +32,17 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
+        <TextBox TextWrapping="Wrap" Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="0" Height="Auto" Width="Auto" Margin="10,0,10,0" MinHeight="30"/>
+        <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="Auto" Height="Auto" MinHeight="30" FontFamily="Times New Roman" ItemsSource="{Binding genres}" FontSize="20" SelectedItem="{Binding selectedGenres}"/>
+        <StackPanel Grid.Column="2" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" MinHeight="30">
+            <RadioButton Content="По возрастанию" Height="14" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="14"/>
+            <RadioButton Grid.Column="2" Content="По убыванию" HorizontalAlignment="Left" VerticalAlignment="Center" Height="14" Width="160"  FontFamily="Times New Roman" FontSize="14"/>
+
+
+        </StackPanel>
+      
+       
+
+
     </Grid>
 </Page>
