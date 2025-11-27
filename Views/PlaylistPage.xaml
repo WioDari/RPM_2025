@@ -10,7 +10,7 @@
       Title="PlaylistPage">
 
     <Grid Background="White">
-        <ListBox ItemsSource="{Binding playlists}" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding playlists}" HorizontalContentAlignment="Stretch" SelectedItem="{Binding selectedPlaylist}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:PlayListTemplate/>

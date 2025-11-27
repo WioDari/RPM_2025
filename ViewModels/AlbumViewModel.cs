@@ -7,6 +7,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SpotApp_wpf.ViewModels
 {
@@ -14,7 +16,11 @@ namespace SpotApp_wpf.ViewModels
     {
         public AlbumViewModel()
         {
+            var context = new SpotifyContext();
             LoadAlbums();
+            genres = new ObservableCollection<string>(context.Genres.OrderBy(g => g.GenreId).Select(g => g.GenreTittle).Distinct().ToList());
+            genres.Insert(0, "Все жанры");
+            
         }
 
         private AlbTemplate _selectedAlbum {  get; set; }
@@ -36,8 +42,63 @@ namespace SpotApp_wpf.ViewModels
             public string imgPath { get; set; }
             public string author { get; set; }
             public string tracksCount { get; set; }
+            public List<string> genres { get; set; }
         };
-        public ObservableCollection<AlbTemplate> albums { get; set; }
+        private ObservableCollection<AlbTemplate> _albums { get; set; }
+        public ObservableCollection<AlbTemplate> albums
+        {
+            get => _albums;
+            set
+            {
+                _albums = value;
+                UseFilters();
+                OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<string> _genres { get; set; }
+        public ObservableCollection<string> genres
+        {
+            get => _genres;
+            set
+            {
+                _genres = value;
+                OnPropertyChanged();
+            }
+        }
+        private string _selectedGenre { get; set; } = "Все жанры";
+        public string selectedGenre
+        {
+            get => _selectedGenre;
+            set
+            {
+                _selectedGenre = value;
+                UseFilters();
+                OnPropertyChanged();
+            }
+        }
+        private string _searchText { get; set; }
+        public string searchText
+        {
+            get => _searchText;
+            set
+            {
+                _searchText = value;
+                UseFilters();
+                OnPropertyChanged();
+            }
+        }
+        private ObservableCollection<AlbTemplate> _allAlbums { get; set; }
+        private string _selectedSort { get; set; }
+        public string selectedSort
+        {
+            get => _selectedSort;
+            set
+            {
+                _selectedSort = value;
+                UseFilters();
+                OnPropertyChanged();
+            }
+        }
 
         public void ShowDetails(int id)
         {
@@ -52,7 +113,7 @@ namespace SpotApp_wpf.ViewModels
         private void LoadAlbums()
         {
             var context = new SpotifyContext();
-            albums = new ObservableCollection<AlbTemplate>(context.Albums
+            _allAlbums = new ObservableCollection<AlbTemplate>(context.Albums
                 .Include(a => a.Artist)
                 .Include(a => a.TracksInAlbums)
                 .Select(a => new AlbTemplate
@@ -61,10 +122,43 @@ namespace SpotApp_wpf.ViewModels
                     title = a.AlbumTitle,
                     imgPath = a.CoverPath == null ? "/Resources/placeholder_cover.png" : a.CoverPath,
                     author = a.Artist.ArtistName,
-                    tracksCount = a.TracksInAlbums.Where(t => t.AlbumId == a.AlbumId).Count().ToString()
+                    tracksCount = a.TracksInAlbums.Where(t => t.AlbumId == a.AlbumId).Count().ToString(),
+                    genres = a.GenresInAlbums.Where(a => a.AlbumId == a.Album.AlbumId).Select(a => a.Genre.GenreTittle).ToList(),
                 })
                 .OrderBy(a => a.id)
                 .ToList());
+            albums = new ObservableCollection<AlbTemplate>(_allAlbums);
+        }
+
+        public void UseFilters()
+        {
+            var tmp = _allAlbums.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchText))
+            {
+                string str = searchText.ToLower();
+                tmp = tmp.Where(t =>
+                t.title.ToLower().Contains(str) ||
+                t.author.ToLower().Contains(str));
+            }
+
+            if (selectedGenre != "Все жанры")
+            {
+                tmp = tmp.Where(t => t.genres.Contains(selectedGenre));
+            }
+
+            tmp = selectedSort switch
+            {
+                /*"По возрастанию" => tmp.OrderBy(t => t.dura),
+                "По убыванию" => tmp.OrderByDescending(t => t.Quantity),
+                _ => tmp.OrderBy(t => t.Quantity)*/
+            };
+
+            albums.Clear();
+            foreach (var album in tmp)
+            {
+                albums.Add(album);
+            }
         }
     }
 }

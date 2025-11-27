@@ -21,7 +21,7 @@
         <Border BorderBrush="Black" BorderThickness="1" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="300" TextWrapping="Wrap" Text="{Binding trackName}" VerticalAlignment="Center" FontSize="20" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="300" TextWrapping="Wrap" Text="{Binding authorsl}" VerticalAlignment="Center" Grid.Row="1" FontSize="16"/>
-        <TextBlock HorizontalAlignment="Center" Height="auto" Width="150" TextWrapping="Wrap" Text="{Binding listenersCount}" VerticalAlignment="Center" Grid.Column="1" Grid.RowSpan="2" FontSize="16" TextAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Height="auto" Width="auto" TextWrapping="Wrap" Text="{Binding param}" VerticalAlignment="Center" Grid.Column="1" Grid.RowSpan="2" FontSize="16" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="150" TextWrapping="Wrap" Text="{Binding rating}" VerticalAlignment="Center" Grid.Column="2" Grid.RowSpan="2" FontSize="16" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="150" TextWrapping="Wrap" Text="{Binding duration}" VerticalAlignment="Center" Grid.Column="3" Grid.RowSpan="2" FontSize="16" TextAlignment="Center"/>
 

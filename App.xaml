@@ -16,7 +16,9 @@
             <Setter Property="Background" Value="#7A00CC"></Setter>
         </Style>
         <Style TargetType="Page" x:Key="page">
-            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="TextBlock.Foreground" Value="#1C1C1C"></Setter>
         </Style>
     </Application.Resources>
 </Application>

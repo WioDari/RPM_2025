@@ -53,7 +53,7 @@ namespace SpotApp_wpf.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;V1.0.0.0;component/views/playlisttemplate.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;component/views/playlisttemplate.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\PlayListTemplate.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

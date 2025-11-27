@@ -53,7 +53,7 @@ namespace SpotApp_wpf.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;V1.0.0.0;component/views/authorize.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpotApp_wpf;component/views/authorize.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\Authorize.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

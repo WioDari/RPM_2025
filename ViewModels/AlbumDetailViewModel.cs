@@ -62,7 +62,7 @@ namespace SpotApp_wpf.ViewModels
             public string trackName { get; set; }
             public List<string> authors { get; set; }
             public string authorsl {  get; set; }
-            public string listenersCount { get; set; }
+            public string param { get; set; }
             public string rating { get; set; }
             public string duration { get; set; }
 
@@ -104,9 +104,9 @@ namespace SpotApp_wpf.ViewModels
                     trackName = t.TrackName,
                     authors = t.ArtistsInTracks.Where(at => at.TrackId == t.TrackId).Select(t => t.Artist.ArtistName).ToList(),
                     authorsl = "",
-                    listenersCount = t.PlayCount.ToString(),
+                    param = t.PlayCount.ToString(),
                     rating = t.Rating.ToString(),
-                    duration = t.Duration.ToString(),
+                    duration = t.Duration.ToString("mm:ss"),
                 })
                 .OrderBy(t => t.id)
                 .ToList());

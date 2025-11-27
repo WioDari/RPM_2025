@@ -149,3 +149,5 @@ C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Vie
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumDetails.baml
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TrackDetailsTemplate.g.cs
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TrackDetailsTemplate.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistDetails.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistDetails.baml

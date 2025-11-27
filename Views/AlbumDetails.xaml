@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SpotApp_wpf.Views"
         mc:Ignorable="d"
         Style="{StaticResource window}"
-        Title="AlbumDetails" Height="450" Width="800">
+        Title="AlbumDetails" Height="450" Width="800"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
