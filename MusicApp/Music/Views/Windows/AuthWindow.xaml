@@ -1,0 +1,32 @@
+﻿<Window x:Class="Music.Views.AuthWindow"
+        Style="{StaticResource AuthWindowStyle}"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music.Views"
+        mc:Ignorable="d"
+        Title="AuthWindow" Height="464" Width="450" ResizeMode="NoResize">
+    <Border Background="#EDE2FF" Height="400" Width="400" CornerRadius="15">
+        <StackPanel>
+            <TextBlock Text="Авторизация" FontSize="30pt" Foreground="#1c1c1c" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+            <TextBlock Text="Введите логин" FontSize="13pt" Margin="15,10,0,0" />
+            <TextBox  Style="{DynamicResource TextBoxStyle}" Margin="10,5,10,10" Text="{Binding login}"/>
+            <TextBlock Text="Введите пароль" FontSize="13pt" Margin="15,10,0,0"/>
+            <TextBox Style="{DynamicResource TextBoxStyle}" Margin="10,5,10,10" Text="{Binding password}"/>
+            <Border Height="10"/>
+            <Image Source="{Binding captchaImage}" Height="50"  Width="200"/>
+            <Button Style="{DynamicResource ButtonStyle}"  Foreground="#4b4b4b" Command="{Binding UpdateCaptchaCommand}"  BorderBrush="Transparent" Background="#4C9C4DFF" Width="150" Content="Обновить капчу" FontSize="13pt"  />
+            <StackPanel Orientation="Horizontal" Margin="0,13,0,0">
+                <TextBlock Text="Введите капчу" FontSize="13pt" Margin="10,0,10,0"/>
+                <TextBox TextWrapping="Wrap"  Style="{DynamicResource TextBoxStyle}" Text="{Binding captchaInput, UpdateSourceTrigger=PropertyChanged}"  Width="150" FontSize="16pt"/>
+            </StackPanel>
+            <Border Height="35"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Style="{DynamicResource ButtonStyle}" Width="150" Command="{Binding LoginCommand}" BorderBrush="Transparent" Background="#7a00cc"  FontSize="30pt" Content="Войти"  VerticalAlignment="Bottom" Margin="125,0,0,0"/>
+                <Button Style="{DynamicResource ButtonStyle}" Command="{Binding GuestCommand}"  BorderBrush="Transparent" Foreground="#4b4b4b" Background="#4C9C4DFF" FontSize="13pt" Content="Пропустить" VerticalAlignment="Bottom" Margin="20,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+
+</Window>
