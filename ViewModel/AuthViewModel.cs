@@ -14,11 +14,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.Net.Mime.MediaTypeNames;
 using Application = System.Windows.Application;
+using MusicWpf.Properties;
 
 namespace MusicWpf.ViewModel
 {
     public class AuthViewModel : BaseViewModel
     {
+
+        private bool _isChecked = false;
+
+        public bool isChecked
+        {
+            get => _isChecked;
+            set
+            {
+                _isChecked = value;
+                Application.Current.Properties["isChecked"] = value;
+                OnPropertyChanged();
+
+            }
+        }
+
         private ImageSource _capchaImage;
         public ImageSource CapchaImage
         {
@@ -80,6 +96,23 @@ namespace MusicWpf.ViewModel
             LoginCommand = new RelayCommand(OnLogin);
             OpenGuestCommand = new RelayCommand(OpenGuest);
             UpdateCapchaCommand = new RelayCommand(GaneratCapcha);
+
+            if(Settings.Default.userid != 0)
+            {
+                int userId = Settings.Default.userid;
+                var context = new MusicContext();
+                var user = context.Users.FirstOrDefault(u => u.UserId == userId);
+                Application.Current.Properties["CurrentUser"] = user;
+                Window menu = new Views.MenuWindow();
+                menu.Show();
+                foreach (Window w in Application.Current.Windows)
+                {
+                    if (w is not Views.MenuWindow)
+                    {
+                        w.Close();
+                    }
+                }
+            }
         }
         public void OpenGuest()
         {
@@ -88,8 +121,17 @@ namespace MusicWpf.ViewModel
 
         public void OnLogin()
         {
+            var date = DateTime.Now.Subtract(Settings.Default.ban_time);
+            if (date != null) //MessageBox.Show(date.TotalHours.ToString());
+
+                if (date.TotalHours < 0)
+                {
+                    MessageBox.Show($"До разблокировки {(int)(date.TotalMinutes * -1)} мин", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+
             if (!string.Equals(_capchaK, _capcha))
             {
+
                 MessageBox.Show("Капча введена не правлено");
                 GaneratCapcha();
                 return;
@@ -99,11 +141,27 @@ namespace MusicWpf.ViewModel
             var user = context.Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
             if (user == null)
             {
+                Settings.Default.count++;
                 MessageBox.Show("Логин или пароль введены неправильно!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                if (Settings.Default.count == 3)
+                {
+                    MessageBox.Show("Осталось 2 попытки для входа до блокировки!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                if (Settings.Default.count == 5)
+                {
+                    MessageBox.Show($"Вы заблокированны \nВремя до разблокировки: {DateTime.Now + TimeSpan.FromHours(1)}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Settings.Default.ban_time = DateTime.Now + TimeSpan.FromHours(1);
+                    Settings.Default.Save();
+                }
                 return;
             }
             MessageBox.Show($"Добро пожаловать, {user.FullName}");
             Application.Current.Properties["CurrentUser"] = user;
+
+            Settings.Default.count = 0;
+            Settings.Default.userid = user.UserId;
+            Settings.Default.Save();
+
             Window menu = new MenuWindow();
             menu.Show();
             foreach (Window w in Application.Current.Windows)
@@ -115,6 +173,11 @@ namespace MusicWpf.ViewModel
             }
 
         }
+
+
+
+
+
         public void GaneratCapcha()
         {
             Capcha = GaneratsRoundString(5);

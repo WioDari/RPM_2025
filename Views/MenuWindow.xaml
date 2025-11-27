@@ -4,26 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicWpf.Views"
+        xmlns:p="clr-namespace:MusicWpf.Properties"
         mc:Ignorable="d"
         Style="{StaticResource GlobalWindowStyle}"
         Title="MenuWindow" Height="600" Width="900">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="77*"/>
-
-
+            <RowDefinition Height="66*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="213*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="43*"/>
-            <ColumnDefinition Width="157*"/>
+            <ColumnDefinition Width="166*"/>
+            <ColumnDefinition Width="629*"/>
+            <ColumnDefinition Width="105*"/>
         </Grid.ColumnDefinitions>
-        <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Background="#FF7A00CC"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="474,23,0,0" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Top" Height="30" Width="206"/>
-        <Button Content="Альбомы" HorizontalAlignment="Center" Margin="0,26,0,0" Grid.Row="1" VerticalAlignment="Top" Height="45" Width="160" Background="#FF9C4DFF"/>
-        <Button Content="Плейлисты" HorizontalAlignment="Center" Margin="0,92,0,0" Grid.Row="1" VerticalAlignment="Top" Height="45" Width="160" Background="#FF9C4DFF"/>
-        <Button Content="Треки" HorizontalAlignment="Center" Margin="0,160,0,0" Grid.Row="1" VerticalAlignment="Top" Height="45" Width="160" Background="#FF9C4DFF"/>
-        <Button Content="Выход" HorizontalAlignment="Center" Margin="0,421,0,0" Grid.Row="1" VerticalAlignment="Top" Height="45" Width="160"  Background="#FF9C4DFF" Command="{Binding Exit}"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3" Background="#7A00CC"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,61,0,0" Grid.RowSpan="7" Background="#EDE2FF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="27,0,0,0" TextWrapping="Wrap" Text="{Binding name}"  VerticalAlignment="Center" Height="24" Width="188" Grid.ColumnSpan="2" Foreground="White"/>
+
+        <Button Content="Плейлисты" Command="{Binding PlayList}" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="32" Width="140" Background="#FF9C4DFF"/>
+
+        <Button Content="Выход" HorizontalAlignment="Center" Margin="0,113,0,0" Grid.Row="6" VerticalAlignment="Top" Height="32" Width="140"  Background="#FF9C4DFF" Command="{Binding LogoutCommand}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="18,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" FontSize="20" Height="34" Width="86" Grid.Column="2" Foreground="White"/>
+        <Button Content="Артисты"  HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="4" VerticalAlignment="Top" Height="32" Width="140" Background="#FF9C4DFF"/>
+        <Frame Grid.Column="1" Content="{Binding page}" Grid.ColumnSpan="2" Grid.RowSpan="6" Margin="0,17,0,0" Grid.Row="1"/>
+        <Button Content="Пользователи" Command="{Binding UserList}" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="32" Width="140" Background="#FF9C4DFF"/>
+        <Button Content="Альбомы" Command="{Binding AlbumList}"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="140"  Height="32" Background="#FF9C4DFF"/>
+
 
 
 

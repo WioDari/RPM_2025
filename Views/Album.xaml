@@ -1,0 +1,37 @@
+﻿<Window x:Class="MusicWpf.Views.Album"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicWpf.Views"
+        mc:Ignorable="d"
+        Title="Album" Height="450" Width="800">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="19*"/>
+            <ColumnDefinition Width="81*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="59*"/>
+            <RowDefinition Height="57*"/>
+            <RowDefinition Height="259*"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Height="168" VerticalAlignment="Top" Width="160" Grid.RowSpan="3" Source="{Binding Image}" Grid.ColumnSpan="2"/>
+
+        <ListBox ItemsSource="{Binding tracks}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="3" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" Margin="0,10,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:AlbumUC/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+
+        <TextBlock Grid.Column="1" Text="{Binding namealbum}" FontSize="24" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="30,0,0,0" TextWrapping="Wrap"  VerticalAlignment="Center" Height="35" Width="600"/>
+        <TextBlock Grid.Column="1" Text="{Binding Name}" FontSize="18" FontFamily="Times New Roman" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="600" Height="35"/>
+        <TextBlock Grid.Column="1" Text="{Binding genre}" FontFamily="Times New Roman" FontSize="18" HorizontalAlignment="Left" Margin="30,0,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="600" Height="35"/>
+
+    </Grid>
+</Window>

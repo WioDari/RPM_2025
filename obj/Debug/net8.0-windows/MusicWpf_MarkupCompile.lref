@@ -1,6 +1,18 @@
 ﻿
 FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\App.xaml;;
 FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\MainWindow.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\Album.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\AlbumPage.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\AlbumUC.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\AlbumUserControl.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\ArtistPage.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\ArtistUserControl.xaml;;
 FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\Auth.xaml;;
 FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\MenuWindow.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\Playlist.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\PlaylistPage.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\PlaylistUC.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\PlaylistUserControl.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\UserPage.xaml;;
+FC:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\Views\UsersUserControl.xaml;;
 

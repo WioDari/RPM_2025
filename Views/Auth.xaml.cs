@@ -25,5 +25,7 @@ namespace MusicWpf.Views
             InitializeComponent();
             DataContext = new AuthViewModel();
         }
+
+      
     }
 }

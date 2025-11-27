@@ -13,16 +13,22 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="378" Margin="24,32,0,0" VerticalAlignment="Top" Width="352" Background="White" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" Margin="138,83,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Top" FontSize="22" Grid.ColumnSpan="2" Height="25" Width="120"/>
-        <TextBox HorizontalAlignment="Left" Margin="96,139,0,0" TextWrapping="Wrap" Text="{Binding login}" VerticalAlignment="Top" Width="204" Height="30" Grid.ColumnSpan="2"  />
-        <TextBox HorizontalAlignment="Left" Margin="98,188,0,0" TextWrapping="Wrap" Text="{Binding password}" VerticalAlignment="Top" Width="204" Height="30" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="138,83,0,0" TextWrapping="Wrap" Text="Авторизация" VerticalAlignment="Top" FontSize="22" Grid.ColumnSpan="2" Height="25" Width="125"/>
+        <TextBox HorizontalAlignment="Left" Margin="96,144,0,0" TextWrapping="Wrap" Text="{Binding login}" VerticalAlignment="Top" Width="204" Height="22" Grid.ColumnSpan="2"  />
+        <TextBox HorizontalAlignment="Left" Margin="98,199,0,0" TextWrapping="Wrap" Text="{Binding password}" VerticalAlignment="Top" Width="204" Height="22" Grid.ColumnSpan="2"/>
         <Button Content="Режим гостя" HorizontalAlignment="Left" Margin="64,340,0,0" VerticalAlignment="Top" Height="32" Width="112" Background="#EDE2FF" Command="{Binding OpenGuestCommand}"/>
         <Button Content="Вход" HorizontalAlignment="Left" Margin="19,340,0,0" VerticalAlignment="Top" Height="32" Width="114" Background="#9C4DFF" Command="{Binding LoginCommand}" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="120,299,0,0" TextWrapping="Wrap" Text="{Binding CapchaK}" VerticalAlignment="Top" Width="162" Height="24" Grid.ColumnSpan="2"  />
-        <Button Content="Обновить" Command="{Binding UpdateCapchaCommand}"  HorizontalAlignment="Left" Margin="87,299,0,0" VerticalAlignment="Top"  Height="24" Width="56" Grid.Column="1"/>
-        <TextBlock HorizontalAlignment="Left" Margin="138,253,0,0" TextWrapping="Wrap" Text="{Binding Capcha}" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="120" Height="30"/>
-        <Image Source="{Binding CapchaImage}" HorizontalAlignment="Left" Height="35" Margin="138,253,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2"/>
-
+        <TextBox HorizontalAlignment="Left" Margin="120,299,0,0" TextWrapping="Wrap" Text="{Binding CapchaK}" VerticalAlignment="Top" Width="162" Height="22" Grid.ColumnSpan="2"  />
+        <Button Content="Обновить" Command="{Binding UpdateCapchaCommand}"  HorizontalAlignment="Left" Margin="87,299,0,0" VerticalAlignment="Top"  Height="24" Width="56" Grid.Column="1" Background="#FFEDE2FF"/>
+        <TextBlock HorizontalAlignment="Left" Margin="138,239,0,0" TextWrapping="Wrap" Text="{Binding Capcha}" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="120" Height="30"/>
+        <Image Source="{Binding CapchaImage}" HorizontalAlignment="Left" Height="35" Margin="128,239,0,0" VerticalAlignment="Top" Width="140" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,125,0,0" TextWrapping="Wrap" Text="Введите логин" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="80,180,0,0" TextWrapping="Wrap" Text="Введите пароль" VerticalAlignment="Top"/>
+        <CheckBox IsChecked="{Binding isChecked}" Content="A" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="111,198,0,0" Height="12" Width="16" RenderTransformOrigin="5.103,-0.137" Grid.Column="1">
+            <CheckBox.LayoutTransform>
+                <ScaleTransform ScaleX="2" ScaleY="2"/>
+            </CheckBox.LayoutTransform>
+        </CheckBox>
 
     </Grid>
 </Window>

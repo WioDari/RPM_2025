@@ -1,0 +1,40 @@
+﻿<Window x:Class="MusicWpf.Views.Playlist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicWpf.Views"
+        mc:Ignorable="d"
+        Title="Playlist" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="199*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="307*"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding nameplaylist}" VerticalAlignment="Center" Width="382" Height="15" FontFamily="Times New Roman" FontSize="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding date}" VerticalAlignment="Center" Width="210" FontFamily="Times New Roman" FontSize="16" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding like}" VerticalAlignment="Center" Width="210" FontFamily="Times New Roman" FontSize="16" Height="18"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding duration}" VerticalAlignment="Center" Width="210" FontFamily="Times New Roman" FontSize="16" Height="19"/>
+        <ListBox Grid.Row="4" ItemsSource="{Binding playlistList}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" Margin="0,11,0,0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <local:PlaylistUC/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+
+
+
+    </Grid>
+</Window>
