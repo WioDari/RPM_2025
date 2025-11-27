@@ -1,0 +1,138 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\covers\As Alive As You Need Me To Be.jpg" />
+    <None Remove="Resources\covers\Baby.jpg" />
+    <None Remove="Resources\covers\Barbara Barbara, we face a shining future.jpg" />
+    <None Remove="Resources\covers\Bloodline %28Bonus Tracks%29.jpg" />
+    <None Remove="Resources\covers\Breed %28feat. REEBZ%29.jpg" />
+    <None Remove="Resources\covers\CHOMPO III.jpg" />
+    <None Remove="Resources\covers\Cinematic Soundscape.jpg" />
+    <None Remove="Resources\covers\Circle.jpg" />
+    <None Remove="Resources\covers\Final Destination.jpg" />
+    <None Remove="Resources\covers\Formula Of Fear.jpg" />
+    <None Remove="Resources\covers\Fuze.jpg" />
+    <None Remove="Resources\covers\Ghost City Daze.jpg" />
+    <None Remove="Resources\covers\GOFASTER %28YANA100%29.jpg" />
+    <None Remove="Resources\covers\Grave.jpg" />
+    <None Remove="Resources\covers\I See Red.jpg" />
+    <None Remove="Resources\covers\Liquid %28Bonus Track Version%29.jpg" />
+    <None Remove="Resources\covers\Never, Never, Land.jpg" />
+    <None Remove="Resources\covers\NO MERCY III.jpg" />
+    <None Remove="Resources\covers\Oblivion With Bells.jpg" />
+    <None Remove="Resources\covers\ORDINARY LOSS.jpg" />
+    <None Remove="Resources\covers\Overload 2K.jpg" />
+    <None Remove="Resources\covers\Repentance.jpg" />
+    <None Remove="Resources\covers\Siren Of The Storm.jpg" />
+    <None Remove="Resources\covers\SOMEWHEREIBELONG.jpg" />
+    <None Remove="Resources\covers\Subhuman.jpg" />
+    <None Remove="Resources\covers\The Day Is My Enemy %28Expanded Edition%29.jpg" />
+    <None Remove="Resources\covers\The Fragile.jpg" />
+    <None Remove="Resources\covers\The Machine.jpg" />
+    <None Remove="Resources\covers\The Masquerade %28Zardonic &amp; Toronto Is Broken Remix%29.jpg" />
+    <None Remove="Resources\covers\The Star.jpg" />
+    <None Remove="Resources\covers\Wall I Was.jpg" />
+    <None Remove="Resources\covers\общедомовой.jpg" />
+    <None Remove="Resources\icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\covers\As Alive As You Need Me To Be.jpg" />
+    <Resource Include="Resources\covers\Baby.jpg" />
+    <Resource Include="Resources\covers\Barbara Barbara, we face a shining future.jpg" />
+    <Resource Include="Resources\covers\Bloodline (Bonus Tracks).jpg" />
+    <Resource Include="Resources\covers\Breed (feat. REEBZ).jpg" />
+    <Resource Include="Resources\covers\CHOMPO III.jpg" />
+    <Resource Include="Resources\covers\Cinematic Soundscape.jpg" />
+    <Resource Include="Resources\covers\Circle.jpg" />
+    <Resource Include="Resources\covers\Final Destination.jpg" />
+    <Resource Include="Resources\covers\Formula Of Fear.jpg" />
+    <Resource Include="Resources\covers\Fuze.jpg" />
+    <Resource Include="Resources\covers\Ghost City Daze.jpg" />
+    <Resource Include="Resources\covers\GOFASTER (YANA100).jpg" />
+    <Resource Include="Resources\covers\Grave.jpg" />
+    <Resource Include="Resources\covers\I See Red.jpg" />
+    <Resource Include="Resources\covers\Liquid (Bonus Track Version).jpg" />
+    <Resource Include="Resources\covers\Never, Never, Land.jpg" />
+    <Resource Include="Resources\covers\NO MERCY III.jpg" />
+    <Resource Include="Resources\covers\Oblivion With Bells.jpg" />
+    <Resource Include="Resources\covers\ORDINARY LOSS.jpg" />
+    <Resource Include="Resources\covers\Overload 2K.jpg" />
+    <Resource Include="Resources\covers\Repentance.jpg" />
+    <Resource Include="Resources\covers\Siren Of The Storm.jpg" />
+    <Resource Include="Resources\covers\SOMEWHEREIBELONG.jpg" />
+    <Resource Include="Resources\covers\Subhuman.jpg" />
+    <Resource Include="Resources\covers\The Day Is My Enemy (Expanded Edition).jpg" />
+    <Resource Include="Resources\covers\The Fragile.jpg" />
+    <Resource Include="Resources\covers\The Machine.jpg" />
+    <Resource Include="Resources\covers\The Masquerade (Zardonic &amp; Toronto Is Broken Remix).jpg" />
+    <Resource Include="Resources\covers\The Star.jpg" />
+    <Resource Include="Resources\covers\Wall I Was.jpg" />
+    <Resource Include="Resources\covers\общедомовой.jpg" />
+    <Resource Include="Resources\icon.ico" />
+    <Resource Include="Resources\icon.png" />
+    <Resource Include="Resources\Flow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Extended.Wpf.Toolkit" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql" Version="9.0.4" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Converters\" />
+    <Folder Include="Новая папка\" />
+  </ItemGroup>
+
+</Project>
