@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="musicc/App.axaml" value="musicc/musicc.csproj" />
+        <entry key="musicc/MainWindow.axaml" value="musicc/musicc.csproj" />
+        <entry key="musicc/Window1.axaml" value="musicc/musicc.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
