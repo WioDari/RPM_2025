@@ -8,7 +8,7 @@
    <Grid>
         
        <TextBox Background="White" Margin="0,150,0,0" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="150" Name="box_name" TextChanged="box_name_TextChanged" BorderBrush="Black" />
-       
+       <!--ujh-->
         <TextBlock HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Foreground="#FF1C1C1C"  Height="50" Width="200" TextAlignment="Center">
         </TextBlock>
         <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
