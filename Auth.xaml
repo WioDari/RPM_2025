@@ -1,0 +1,19 @@
+﻿<Window x:Class="DemoExam.Aurh"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DemoExam"
+        mc:Ignorable="d"
+        Title="Aurh" Height="450" Width="800">
+    <Grid>
+        <TextBox HorizontalAlignment="Left" Height="42" Margin="101,26,0,0" TextWrapping="Wrap" Background="#EDE2FF" Foreground="Black" Text="Авторизация" VerticalAlignment="Top" Width="618" TextChanged="TextBox_TextChanged" SelectionOpacity="-5" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Margin="101,217,0,0" TextWrapping="Wrap" Background="#EDE2FF" Foreground="Black" Text="Пароль 
+                 " VerticalAlignment="Top" Width="138" Height="75" TextChanged="TextBox_TextChanged_1" FontSize="22"/>
+        <TextBox HorizontalAlignment="Left" Margin="101,101,0,0" TextWrapping="Wrap" Text="Логин" Background="#EDE2FF" Foreground="Black" VerticalAlignment="Top" Width="138" Height="75" TextChanged="TextBox_TextChanged_1" FontSize="22"/>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="75" Margin="257,101,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="462" FontSize="24"/>
+        <PasswordBox x:Name="txtPassword" HorizontalAlignment="Left" Height="75" Margin="257,217,0,0" VerticalAlignment="Top" Width="462" FontSize="24"/>
+        <Button Content="Войти (не работает)" HorizontalAlignment="Left" Height="61" Margin="210,330,0,0" VerticalAlignment="Top" Width="334" FontSize="22" Click="Button_Click_1" Background="#7A00CC" Foreground="Black"/>
+        <Button Content="Гость" HorizontalAlignment="Left" Height="61" Margin="578,330,0,0" VerticalAlignment="Top" Width="141" Click="Button_Click" FontSize="22" Background="#9C4DFF" Foreground="Black"/>
+    </Grid>
+</Window>

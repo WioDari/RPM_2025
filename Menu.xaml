@@ -1,0 +1,16 @@
+﻿<Window x:Class="DemoExam.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Меню" Height="500" Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock x:Name="txtUserInfo" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,15,0,0" FontSize="16" FontWeight="Bold" Foreground="#4A00E0"/>
+        <Button Content="Выход" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,20,0" Width="100" Height="50" Click="BtnLogout_Click" Background="#9C4DFF" Foreground="Black" FontSize="22"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Width="800">
+            <Button x:Name="btnAlbums" Content="Альбомы" Height="50" FontSize="18" Click="BtnAlbums_Click" Background="#9C4DFF" Width="130"/>
+            <Button x:Name="btnPlaylists" Content="Плейлисты" Height="50" Margin="0,10" FontSize="18" Click="BtnPlaylists_Click" Background="#9C4DFF" Width="136"/>
+            <Button x:Name="btnAdmin" Content="Управление (админ)" Height="50" Margin="0,10" FontSize="18" Click="BtnAdmin_Click" Visibility="Collapsed" Background="#9C4DFF"/>
+            <Button x:Name="btnSearch" Content="Поиск и фильтрация" Height="50" FontSize="18" Click="BtnSearch_Click" Background="#9C4DFF" Width="187"/>
+        </StackPanel>
+    </Grid>
+</Window>
