@@ -27,6 +27,15 @@
                     <Frame Content="Frame"/>
                 </Grid>
             </TabItem>
+            <TabItem Header="Альбомы">
+                <Grid>
+                    <Frame Content="" Source="/UserElements/AlbumList.xaml"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Плейлисты">
+                <Frame Content="" Source="/UserElements/PlaylistsList.xaml"/>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
+
