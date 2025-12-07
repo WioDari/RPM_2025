@@ -17,13 +17,14 @@ using PracticeWork.ViewModels;
 namespace PracticeWork.UserElements
 {
     /// <summary>
-    /// Логика взаимодействия для AlbumCard.xaml
+    /// Логика взаимодействия для PlaylistsList.xaml
     /// </summary>
-    public partial class AlbumCard : UserControl
+    public partial class PlaylistsList : UserControl
     {
-        public AlbumCard()
+        public PlaylistsList()
         {
             InitializeComponent();
+            DataContext = new PlaylistCardVM();
         }
     }
 }

@@ -12,16 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PracticeWork.ViewModels;
 
 namespace PracticeWork.UserElements
 {
     /// <summary>
-    /// Логика взаимодействия для AlbumCard.xaml
+    /// Логика взаимодействия для PlayListCard.xaml
     /// </summary>
-    public partial class AlbumCard : UserControl
+    public partial class PlayListCard : UserControl
     {
-        public AlbumCard()
+        public PlayListCard()
         {
             InitializeComponent();
         }

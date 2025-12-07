@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using PracticeWork.ViewModels;
 
 namespace PracticeWork.UserElements
 {
@@ -23,6 +24,7 @@ namespace PracticeWork.UserElements
         public AlbumList()
         {
             InitializeComponent();
+            DataContext = new AlbumCardVM();
         }
     }
 }
