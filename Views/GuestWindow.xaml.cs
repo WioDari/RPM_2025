@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using SpotApp_wpf.ViewModels;
 
 namespace SpotApp_wpf.Views
 {
@@ -22,6 +23,7 @@ namespace SpotApp_wpf.Views
         public GuestWindow()
         {
             InitializeComponent();
+            DataContext = new GuestViewModel();
         }
     }
 }

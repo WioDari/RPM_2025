@@ -21,7 +21,7 @@
         <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding likes, StringFormat= Нравится: {0}}" VerticalAlignment="Top" Height="37" Width="570" FontSize="20" Margin="10,0,0,0"/>
         <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding subs, StringFormat= Подписчиков: {0}}" VerticalAlignment="Top" Height="37" Width="570" FontSize="20" Margin="10,38,0,0"/>
         <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding tracksCount, StringFormat= Треков: {0}}" VerticalAlignment="Top" Height="37" Width="570" FontSize="20" Margin="10,75,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding creationDate, StringFormat= Создан: {0}}" VerticalAlignment="Top" Height="37" Width="580" FontSize="20" Margin="0,112,0,0"/>
+        <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding creationDate, StringFormat= Создан: {0}}" VerticalAlignment="Top" Height="37" Width="570" FontSize="20" Margin="10,112,0,0"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="{Binding time}" VerticalAlignment="Center" Height="38" Width="113" FontSize="25" TextAlignment="Center"/>
 
     </Grid>

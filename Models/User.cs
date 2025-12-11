@@ -23,6 +23,8 @@ public partial class User
 
     public DateTime LastLogin { get; set; }
 
+    public int Ban { get; set; }
+
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 
     public virtual Role Role { get; set; } = null!;

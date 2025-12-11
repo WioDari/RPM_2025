@@ -2,15 +2,18 @@
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\App.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\MainWindow.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\AlbumDetails.xaml;;
+FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\AlbumsAddition.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\AlbumsPage.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\AlbumsTemplate.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\Authorize.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\GuestWindow.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\Menu.xaml;;
+FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\PlaylistAddition.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\PlaylistDetails.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\PlaylistPage.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\PlayListTemplate.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\TrackDetailsTemplate.xaml;;
+FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\TracksAddition.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\UsersPage.xaml;;
 FC:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\Views\UserTemplate.xaml;;
 

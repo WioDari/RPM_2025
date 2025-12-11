@@ -97,6 +97,11 @@ namespace SpotApp_wpf.ViewModels
                 var context = new SpotifyContext();
                 var user = context.Users.FirstOrDefault(u => u.UserId == userId);
                 Application.Current.Properties["CurrentUser"] = user;
+                if (user.Ban == 1)
+                {
+                    MessageBox.Show("Вас заблокировали", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
 
                 new Views.Menu().Show();
                 foreach (Window w in Application.Current.Windows)
@@ -113,6 +118,13 @@ namespace SpotApp_wpf.ViewModels
         {
             Window g = new Views.GuestWindow();
             g.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is not Views.GuestWindow)
+                {
+                    w.Close();
+                }
+            }
         }
 
         public void Login()
@@ -147,6 +159,11 @@ namespace SpotApp_wpf.ViewModels
                     
                 }
                 Settings.Default.Save();
+                return;
+            }
+            if (user.Ban == 1)
+            {
+                MessageBox.Show("Вас заблокировали", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

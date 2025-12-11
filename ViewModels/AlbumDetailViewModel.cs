@@ -81,7 +81,7 @@ namespace SpotApp_wpf.ViewModels
             var context = new SpotifyContext();
             string albCover = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().CoverPath;
             albumCover = albCover == null ? "/Resources/placeholder_cover.png" : albCover;
-            author = context.Artists.Include(a => a.Albums.Where(a => a.AlbumId == id)).FirstOrDefault().ArtistName;
+            author = context.Albums.Where(a => a.AlbumId == id).Select(a => a.Artist.ArtistName).FirstOrDefault();
             albumName = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().AlbumTitle;
             genresC = context.GenresInAlbums.Include(g => g.Genre).Where(g => g.AlbumId == id).Select(g => g.Genre.GenreTittle).ToList();
             if (genresC.Count > 0)

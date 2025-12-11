@@ -293,6 +293,9 @@ public partial class SpotifyContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.UserId).HasColumnName("User_id");
+            entity.Property(e => e.Ban)
+                .HasDefaultValue(0)
+                .HasColumnName("ban");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.LastLogin).HasColumnType("timestamp without time zone");
             entity.Property(e => e.RegistrationDate).HasColumnType("timestamp without time zone");

@@ -16,6 +16,8 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,9 +28,9 @@
         <TextBlock TextAlignment="Center" Height="auto" Width="133" Margin="10" Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Роль" VerticalAlignment="Center"/>
         <TextBlock TextAlignment="Center" Height="auto" Width="133" Margin="10" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Подписка" VerticalAlignment="Center"/>
         <TextBlock TextAlignment="Center" Height="auto" Width="133" Margin="10" Grid.Column="4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Дата регистрации" VerticalAlignment="Center"/>
-        <TextBlock TextAlignment="Center" Height="auto" Width="133" Margin="10" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Последний вход" VerticalAlignment="Center"/>
+        <TextBlock TextAlignment="Center" Height="auto" Width="114" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Последний вход" VerticalAlignment="Center"/>
 
-        <ListBox ItemsSource="{Binding userTmps}" Grid.Row="1"  Grid.ColumnSpan="6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+        <ListBox ItemsSource="{Binding userTmps}" SelectedItem="{Binding selectedUser}" Grid.Row="1"  Grid.ColumnSpan="8" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:UserTemplate/>
@@ -40,5 +42,7 @@
         <Border BorderBrush="Black" Grid.Column="2" BorderThickness="0,0,1,0"/>
         <Border BorderBrush="Black" Grid.Column="3" BorderThickness="0,0,1,0"/>
         <Border BorderBrush="Black" Grid.Column="4" BorderThickness="0,0,1,0"/>
+        <Border BorderBrush="Black" Grid.Column="5" BorderThickness="0,0,1,0"/>
+        <TextBlock TextAlignment="Center" Height="auto" Width="114" Grid.Column="6" HorizontalAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Center"><Run Language="ru-ru" Text="Б"/><Run Text="локировки"/></TextBlock>
     </Grid>
 </Page>

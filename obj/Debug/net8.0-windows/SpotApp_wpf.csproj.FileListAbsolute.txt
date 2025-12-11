@@ -151,3 +151,9 @@ C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Vie
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TrackDetailsTemplate.baml
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistDetails.g.cs
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistDetails.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsAddition.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\AlbumsAddition.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TracksAddition.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TracksAddition.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistAddition.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistAddition.baml

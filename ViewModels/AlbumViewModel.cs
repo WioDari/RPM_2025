@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SpotApp_wpf.Context;
+using SpotApp_wpf.Models;
 using SpotApp_wpf.Views;
 using System;
 using System.Collections.Generic;
@@ -43,7 +44,7 @@ namespace SpotApp_wpf.ViewModels
             public string author { get; set; }
             public string tracksCount { get; set; }
             public List<string> genres { get; set; }
-            public TimeSpan duration { get; set; }
+            public TimeOnly duration { get; set; }
         };
         private ObservableCollection<AlbTemplate> _albums { get; set; }
         public ObservableCollection<AlbTemplate> albums
@@ -103,12 +104,20 @@ namespace SpotApp_wpf.ViewModels
 
         public void ShowDetails(int id)
         {
-            var win = new Views.AlbumDetails();
-            if(selectedAlbum != null)
+            User user = (User)Application.Current.Properties["CurrentUser"];
+            if (user.RoleId != 3 || user != null)
             {
-                win.DataContext = new AlbumDetailViewModel(id);
+                var win = new Views.AlbumDetails();
+                if (selectedAlbum != null)
+                {
+                    win.DataContext = new AlbumDetailViewModel(id);
+                }
+                win.Show();
             }
-            win.Show();
+            else
+            {
+                return;
+            }
         }
 
         private void LoadAlbums()
@@ -125,9 +134,8 @@ namespace SpotApp_wpf.ViewModels
                     author = a.Artist.ArtistName,
                     tracksCount = a.TracksInAlbums.Where(t => t.AlbumId == a.AlbumId).Count().ToString(),
                     genres = a.GenresInAlbums.Where(a => a.AlbumId == a.Album.AlbumId).Select(a => a.Genre.GenreTittle).ToList(),
-
+                    duration = a.TotalDuration
                 })
-                .OrderBy(a => a.id)
                 .ToList());
             albums = new ObservableCollection<AlbTemplate>(_allAlbums);
         }

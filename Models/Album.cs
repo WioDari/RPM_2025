@@ -15,7 +15,7 @@ public partial class Album
 
     public int? ArtistId { get; set; }
 
-    public TimeOnly? TotalDuration { get; set; }
+    public TimeOnly TotalDuration { get; set; }
 
     public virtual Artist? Artist { get; set; }
 

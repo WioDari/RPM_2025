@@ -14,6 +14,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="0" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding login}" VerticalAlignment="Center" FontSize="16"/>
         <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding email}" VerticalAlignment="Center" FontSize="16"/>
@@ -21,6 +22,17 @@
         <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding subStatus}" VerticalAlignment="Center" FontSize="16"/>
         <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding regDate}" VerticalAlignment="Center" FontSize="16"/>
         <TextBlock TextAlignment="Center" Height="100" Width="auto" Margin="10" Grid.Column="5" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding lastEntranceDate}" VerticalAlignment="Center" FontSize="16"/>
+        <Button Grid.Column="6" Content="Забанить" Visibility="{Binding banVis}" Command="{Binding DataContext.BanCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}" Background="#cc3366" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="70"/>
+        <Button Grid.Column="6" Content="Разбанить" Visibility="{Binding unBanVis}" Command="{Binding DataContext.BanCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}" Background="#5dcc99" HorizontalAlignment="Center" VerticalAlignment="Center" Height="35" Width="70"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="6"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="5"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="4"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="3"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="2"/>
+        <Border BorderBrush="Black" BorderThickness="1,0,0,0" Grid.Column="1"/>
+        <Border BorderBrush="Black" BorderThickness="0"/>
+
+
 
     </Grid>
 </UserControl>

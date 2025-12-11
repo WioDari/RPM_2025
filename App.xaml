@@ -6,6 +6,9 @@
              >
     <Application.Resources>
         <local:CheckBoxChangeVisibilityConverter x:Key="CheckBoxChangeVisibilityConverter"/>
+        <local:RadioButtonConverter x:Key="RadioButtonConverter"/>
+        <local:FiltersVisibilityConverter x:Key="FiltersVisibilityConverter"/>
+
         <Style TargetType="Window" x:Key="window">
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontSize" Value="12"></Setter>

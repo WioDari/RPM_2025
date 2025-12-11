@@ -5,6 +5,9 @@
     <Compile Update="Views\AlbumDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AlbumsAddition.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AlbumsPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,6 +23,9 @@
     <Compile Update="Views\Menu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\PlaylistAddition.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\PlaylistDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -30,6 +36,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\TrackDetailsTemplate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TracksAddition.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UsersPage.xaml.cs">
