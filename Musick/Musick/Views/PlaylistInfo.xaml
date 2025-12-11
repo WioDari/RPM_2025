@@ -1,0 +1,33 @@
+﻿<Window x:Class="Musick.Views.PlaylistInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Musick.Views"
+        xmlns:n="clr-namespace:Musick.Views.UserControls"
+        mc:Ignorable="d"
+        Style="{DynamicResource GeneralStyle}"
+        Title="PlaylistInfo" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="145*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Name}" FontWeight="Bold"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding DateCreated}"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Likes}"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding Duration}"/>
+        </StackPanel>
+        <ListBox Grid.Row="1"  ItemsSource="{Binding TracksList}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="2" BorderBrush="#FF7A00CC">
+                        <n:TrackItem/>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+</Window>
