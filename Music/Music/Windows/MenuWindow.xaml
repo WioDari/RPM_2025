@@ -62,7 +62,7 @@
             
 
             <TabItem Header="Альбомы">
-                <UserControls:AlbumsUserControl />
+                <ContentPresenter x:Name="Albums"/>
             </TabItem>
 
             <TabItem Header="Плейлисты">

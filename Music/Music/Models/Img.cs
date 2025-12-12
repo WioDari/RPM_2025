@@ -20,7 +20,7 @@ namespace Music
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.UriSource = new Uri(uri, UriKind.RelativeOrAbsolute);
-                bitmap.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+                bitmap.CreateOptions = BitmapCreateOptions.None;
                 bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
 

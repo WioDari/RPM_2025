@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 
@@ -21,9 +22,11 @@ public partial class Album
 
     public virtual Artist Artist { get; set; } = null!;
 
-    public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
+    public virtual ObservableCollection<Track> Tracks { get; set; } = [];
 
-    public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
+    public virtual ObservableCollection<Genre> Genres { get; set; } = [];
 
     public BitmapImage Image => Img.GetImage(CoverPath);
+
+    public string GenresString => string.Join(", ", Genres.Select(x => x.Name));
 }

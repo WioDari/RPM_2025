@@ -28,5 +28,4 @@ public partial class Artist
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public override string ToString() => Name;
-    
 }

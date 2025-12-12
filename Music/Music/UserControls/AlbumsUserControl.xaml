@@ -3,19 +3,28 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:emoji="clr-namespace:Emoji.Wpf;assembly=Emoji.Wpf"
              xmlns:local="clr-namespace:Music.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="665" d:DesignWidth="1244"
              xmlns:design="clr-namespace:Music.Design"
              d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}">
-    
     <Grid>
-        <ListBox Name="AlbumsListBox" 
-            ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
-            Margin="0" 
-            HorizontalContentAlignment="Stretch" 
-            VerticalContentAlignment="Top" HorizontalAlignment="Stretch" 
-            ItemsSource="{Binding Albums}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid HorizontalAlignment="Stretch" Margin="0 7" VerticalAlignment="Center">
+            <TextBox Text="Заглушка поиска" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20" Padding="38 10 10 10" Foreground="#808080"/>
+            <emoji:TextBlock Text="🔍" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="10 0 0 0" Focusable="False" FontFamily="Segoe UI Emoji"/>
+        </Grid>
+        <ListBox Name="AlbumsListBox" Grid.Row="1"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                 Margin="0" 
+                 HorizontalContentAlignment="Stretch" 
+                 VerticalContentAlignment="Top" HorizontalAlignment="Stretch" 
+                 d:ItemsSource="{Binding Albums}"
+                 SelectionChanged="AlbumsListBox_SelectionChanged">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

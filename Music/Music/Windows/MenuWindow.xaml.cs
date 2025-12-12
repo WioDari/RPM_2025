@@ -46,6 +46,8 @@ namespace Music.Windows
 
         private void Load()
         {
+            Albums.Content = new AlbumsUserControl(this);
+
             Timer.Text = time.ToString(@"mm\:ss");
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
@@ -68,6 +70,9 @@ namespace Music.Windows
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += TimerGuest_Tick;
             timer.Start();
+
+            UserFullNameTextBlock.Text = _user.FullName;
+
             UserRoleTextBlock.Visibility = Visibility.Hidden;
 
             NewPlaylistButton.Visibility = Visibility.Hidden;
@@ -126,10 +131,11 @@ namespace Music.Windows
         }
 
 
-        private void NewAlbumButton_Click(Object sender, RoutedEventArgs e)
+        private void NewAlbumButton_Click(object sender, RoutedEventArgs e)
         {
-            var addAlbumWindow = new AddAlbumWindow();
+            var addAlbumWindow = new AddAlbumWindow() { Owner = this };
             addAlbumWindow.ShowDialog();
+            Albums.Content = new AlbumsUserControl(this);
         }
     }
 }

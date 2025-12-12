@@ -24,18 +24,18 @@ namespace Music.UserControls
         public PlaylistsUserControl()
         {
             InitializeComponent();
-            Load();
+            Loaded += Load;
         }
 
-        private async void Load()
+        private void Load(object? sender, RoutedEventArgs e)
         {
-            await using Context.MusicContext context = new();
-            PlaylistsListBox.ItemsSource = await context.Playlists
+            using Context.MusicContext context = new();
+            PlaylistsListBox.ItemsSource = context.Playlists
                 .Include(x => x.Tracks)
                 .Include(x => x.Tags)
                 .Include(x => x.CreatorUser)
                 .Include(x => x.Users)
-                .ToListAsync();
+                .ToList();
         }
     }
 }

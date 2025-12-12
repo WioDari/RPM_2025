@@ -11,6 +11,9 @@
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}"
         Title="Добавление альбома" Height="900" Width="1600" MinHeight="900" MinWidth="1600">
+    <Window.DataContext>
+        <model:Album/>
+    </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="600*"/>
@@ -33,7 +36,10 @@
                    VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="55" Foreground="White"/>
 
         <Border Grid.Row="2" Grid.RowSpan="4" Margin="0" CornerRadius="10">
-            <Image x:Name="Image" d:Source="{Binding TestAlbum.CoverPath}" Source="{Binding CoverPath}" Stretch="Uniform" Margin="25,0,25,0"/>
+            <Grid>
+                <Image Source="/Resources/placeholder_cover.png" Stretch="Uniform" Margin="25,0,25,0"/>
+                <Image x:Name="Image" d:Source="{Binding TestAlbum.CoverPath}" Source="{Binding CoverPath}" Stretch="Uniform" Margin="25,0,25,0"/>
+            </Grid>
         </Border>
 
         <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="50 0">
@@ -46,7 +52,8 @@
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="2" VerticalAlignment="Center" Margin="50 0">
             <TextBlock Text="Артист:"/>
-            <control:AutoCompleteBox x:Name="ArtistBox" FontSize="30" VerticalAlignment="Stretch" SelectedItem="{Binding Artist, Mode=TwoWay}" d:SelectedItem="{Binding TestAlbum.Artist}"/>
+            <control:AutoCompleteBox x:Name="ArtistBox" FontSize="30" VerticalAlignment="Stretch" 
+                                     SelectedItem="{Binding Artist, Mode=TwoWay}" d:SelectedItem="{Binding TestAlbum.Artist}"/>
         </StackPanel>
         <StackPanel Grid.Column="2" Grid.Row="3" VerticalAlignment="Center" Margin="50 0">
             <TextBlock Text="Ссылка на обложку:"/>
@@ -61,11 +68,11 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <control:AutoCompleteBox Grid.Column="0" x:Name="GenreBox"/>
-                <Button Grid.Column="1" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" />
+                <Button Grid.Column="1" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" Click="AddGenreButton_Click"/>
             </Grid>
         </StackPanel>
 
-        <ListBox Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" ItemsSource="{Binding Genres}" d:ItemsSource="{Binding TestAlbum.Genres}" Margin="50 0">
+        <ListBox Name="GenresListBox" Grid.Column="1" Grid.Row="5" Grid.RowSpan="2" ItemsSource="{Binding Genres}" d:ItemsSource="{Binding TestAlbum.Genres}" Margin="50 0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid ShowGridLines="False">
@@ -81,13 +88,13 @@
                                 Margin="10,0,0,0" Padding="10 0 10 8"
                                 VerticalAlignment="Center" VerticalContentAlignment="Center"
                                 HorizontalAlignment="Right" HorizontalContentAlignment="Center"
-                                Click="AddGenreButton_Click"/>
+                                Click="RemoveGenre_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <ListBox Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" ItemsSource="{Binding Tracks}" d:ItemsSource="{Binding TestAlbum.Tracks}" Margin="50 0">
+        <ListBox Grid.Column="2" Grid.Row="5" Grid.RowSpan="2" Name="TracksListBox" ItemsSource="{Binding Tracks}" d:ItemsSource="{Binding TestAlbum.Tracks}" Margin="50 0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid ShowGridLines="False">
@@ -105,13 +112,13 @@
                                 Margin="10,0,0,0" Padding="10 0 10 8"
                                 VerticalAlignment="Center" VerticalContentAlignment="Center"
                                 HorizontalAlignment="Right" HorizontalContentAlignment="Center"
-                                Click="AddGenreButton_Click"/>
+                                Click="RemoveTrack_Click"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <StackPanel Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Margin="50 0">
+        <StackPanel Name="TracksPanel" Grid.Column="2" Grid.Row="4" VerticalAlignment="Center" Margin="50 0">
             <TextBlock Text="Треки:"/>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -119,7 +126,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <control:AutoCompleteBox Grid.Column="0" x:Name="TrackBox"/>
-                <Button Grid.Column="1" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" />
+                <Button Grid.Column="1" Name="AddTrackButton" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" Click="AddTrackButton_Click" />
             </Grid>
         </StackPanel>
 
@@ -138,6 +145,8 @@
                 BorderBrush="{StaticResource SecondaryAccentColorBrush}"
                 Click="SaveButton_Click"/>
         </StackPanel>
+
+        <Button Grid.Column="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Создать трек" Click="CreateTrackButton_Click"/>
 
     </Grid>
 </Window>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Xml.Linq;
 
 namespace Music.Models;
 
@@ -25,11 +27,25 @@ public partial class Track
 
     public virtual Album Album { get; set; } = null!;
 
-    public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();
+    public virtual ObservableCollection<Artist> Artists { get; set; } = new();
 
-    public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
+    public virtual ObservableCollection<Genre> Genres { get; set; } = new();
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 
     public override string ToString() => TrackName;
+
+    public DateTime? ReleaseDateTime
+    {
+        get => ReleaseDate.ToDateTime(TimeOnly.MinValue);
+        set => ReleaseDate = DateOnly.FromDateTime(value!.Value);
+    }
+
+    public string DurationString
+    {   
+        get => Duration.ToString(@"hh\:mm\:ss");
+        set => Duration = TimeSpan.Parse(value);
+    }
+
+    public string ArtistsString => string.Join(", ", Artists.Select(x => x.Name));
 }

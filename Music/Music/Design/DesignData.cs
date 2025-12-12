@@ -26,11 +26,11 @@ public class DesignData
             .ToList();
 
         Albums = context.Albums
-            .Include(x => x.Tracks)
+            .Include(x => x.Tracks).ThenInclude(x => x.Artists)
             .Include(x => x.Artist)
             .Include(x => x.Genres)
             .ToList();
 
-        TestAlbum = Albums.First();
+        TestAlbum = Albums.First(x => x.Id == 39);
     }
 }

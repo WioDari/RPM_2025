@@ -157,6 +157,7 @@
             <Setter Property="Background" Value="{StaticResource SecondaryBackgroundColorBrush}"/>
             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
             <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+            <Setter Property="Cursor" Value="Hand"/>
         </Style>
 
         <Style TargetType="Image">

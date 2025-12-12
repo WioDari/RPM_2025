@@ -38,15 +38,17 @@ public partial class MusicContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost; Password=123; Database=music; Username=postgres;");
+        => optionsBuilder.UseNpgsql("Host=localhost; Username=postgres; Database=music; Password=123;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Track>()
+                .Ignore(a => a.ReleaseDateTime)
+                .Ignore(a => a.DurationString);
+
         modelBuilder.Entity<Album>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_albums__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
 
             entity.HasOne(d => d.Artist).WithMany(p => p.Albums)
                 .HasForeignKey(d => d.ArtistId)
@@ -73,11 +75,8 @@ public partial class MusicContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("_artists__pk");
 
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
-
             entity.HasOne(d => d.Country).WithMany(p => p.Artists)
                 .HasForeignKey(d => d.CountryId)
-                .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("artists_countries_fk");
 
             entity.HasMany(d => d.Genres).WithMany(p => p.Artists)
@@ -99,22 +98,16 @@ public partial class MusicContext : DbContext
         modelBuilder.Entity<Country>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_countries__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
         });
 
         modelBuilder.Entity<Genre>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_genres__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
         });
 
         modelBuilder.Entity<Playlist>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_playlists__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
 
             entity.HasOne(d => d.CreatorUser).WithMany(p => p.Playlists)
                 .HasForeignKey(d => d.CreatorUserId)
@@ -155,27 +148,21 @@ public partial class MusicContext : DbContext
         modelBuilder.Entity<Subscription>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_subscriptions__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
         });
 
         modelBuilder.Entity<Tag>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_tags__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
         });
 
         modelBuilder.Entity<Track>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_tracks__pk");
 
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.Raiting).HasPrecision(3, 2);
 
             entity.HasOne(d => d.Album).WithMany(p => p.Tracks)
                 .HasForeignKey(d => d.AlbumId)
-                .OnDelete(DeleteBehavior.Restrict)
                 .HasConstraintName("tracks_albums_fk");
 
             entity.HasMany(d => d.Artists).WithMany(p => p.Tracks)
@@ -209,11 +196,12 @@ public partial class MusicContext : DbContext
                     });
         });
 
+        
+
         modelBuilder.Entity<User>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_users__pk");
 
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
             entity.Property(e => e.LastLoginDateTime).HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
@@ -245,8 +233,6 @@ public partial class MusicContext : DbContext
         modelBuilder.Entity<UserRole>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("_userroles__pk");
-
-            entity.Property(e => e.Id).UseIdentityAlwaysColumn();
         });
 
         OnModelCreatingPartial(modelBuilder);

@@ -25,18 +25,20 @@ public partial class Playlist
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 
-    public string Duration { get => GetDuration(); }
+    public override string ToString() => Name;
+
+    public string Duration => GetDuration();
 
     private string GetDuration()
     {
-        TimeSpan totalDuration = new TimeSpan();
-        foreach (Track track in Tracks)
+        TimeSpan total = TimeSpan.Zero;
+        foreach (Track t in Tracks)
         {
-            totalDuration += track.Duration;
+            total += t.Duration;
         }
-        if (totalDuration.TotalHours >= 1)
-            return totalDuration.ToString(@"hh\:mm\:ss");
+        if (total < TimeSpan.FromHours(1))
+            return total.ToString(@"mm\:ss");
         else
-            return totalDuration.ToString(@"mm\:ss");
+            return total.ToString(@"hh\:mm\:ss");
     }
 }

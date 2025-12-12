@@ -10,11 +10,13 @@
              d:DesignHeight="72" d:DesignWidth="430">
     <Grid>
         <TextBox x:Name="PART_TextBox"
+                 Text="{Binding Text, RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  VerticalContentAlignment="Center"
                  TextChanged="PART_TextBox_TextChanged"
                  PreviewKeyDown="PART_TextBox_PreviewKeyDown"
                  GotFocus="PART_TextBox_GotFocus"
                  LostFocus="PART_TextBox_LostFocus"/>
+
 
         <Popup x:Name="PART_Popup"
                Placement="Bottom"

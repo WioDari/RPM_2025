@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Music.Models;
+using Music.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,21 +23,33 @@ namespace Music.UserControls
     /// </summary>
     public partial class AlbumsUserControl : UserControl
     {
-        public AlbumsUserControl()
+        Window OwnerWindow;
+        public AlbumsUserControl(Window w)
         {
             InitializeComponent();
-            Load();
+            Loaded += Load;
+            OwnerWindow = w;
         }
 
-        private async void Load()
+        public async void Load(object? sender, RoutedEventArgs e)
         {
             await using Context.MusicContext context = new();
 
-            AlbumsListBox.ItemsSource = context.Albums
-                .Include(x => x.Tracks)
+            AlbumsListBox.ItemsSource = await context.Albums
+                .Include(x => x.Tracks).ThenInclude(x => x.Artists)
                 .Include(x => x.Artist)
                 .Include(x => x.Genres)
-                .ToList();
+                .ToListAsync();
+        }
+
+        private void AlbumsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Album? album = (AlbumsListBox.SelectedItem as Album)!;
+            if (album != null)
+            {
+                AlbumsListBox.SelectedItem = null;
+                new OpenAlbumWindow(album) { Owner = OwnerWindow}.ShowDialog();
+            }
         }
     }
 }

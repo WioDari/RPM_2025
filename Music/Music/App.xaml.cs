@@ -21,5 +21,4 @@ namespace Music
             (sender as Image)!.Source = new BitmapImage(new Uri(@"/Resources/placeholder_cover.png", UriKind.RelativeOrAbsolute));
         }
     }
-
 }
