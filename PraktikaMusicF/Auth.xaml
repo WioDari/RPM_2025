@@ -7,9 +7,53 @@
         mc:Ignorable="d"
         Style="{StaticResource WindowStyleG}"
         Title="Auth" MaxHeight="400" MaxWidth="299">
+    <Window.Resources>
+        <Style x:Key="PurpleButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#7A00CC"/>
+            <Setter Property="BorderBrush" Value="#9C4DFF"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="5"
+                        SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#B88FFF"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9C4DFF"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7A31E0"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#5517C5"/>
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="#D8C7FF"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid Width="300" 
           Height="400"
-          ShowGridLines="True" Margin="0,0,-1,-16">
+          Margin="0,0,-1,-16">
         <Grid.RowDefinitions>
             <RowDefinition Height="55"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -31,7 +75,10 @@
                 Grid.Row="1" 
                 Grid.RowSpan="2" 
                 Grid.ColumnSpan="3"
-                Command="{Binding UpdateCaptchaCommand}" Background="#FF9C4DFF"/>
+                Style="{StaticResource PurpleButtonStyle}"
+                Foreground="Black"
+                Command="{Binding UpdateCaptchaCommand}" 
+                Background="#FF9C4DFF"/>
         <TextBlock TextWrapping="Wrap" 
                    Text="{Binding captchaText}"
                    Margin="65,145,63,64" 
@@ -49,7 +96,7 @@
         <TextBox Grid.ColumnSpan="2" 
                  TextWrapping="Wrap"
                  Text="{Binding login}" 
-                 Margin="3,54,17,158" 
+                 Margin="3,42,17,170" 
                  Grid.Row="1" 
                  Grid.Column="1"/>
         <TextBox Grid.ColumnSpan="2" 
@@ -59,7 +106,7 @@
                  Grid.Row="1" Grid.Column="1"/>
         <TextBlock TextWrapping="Wrap" 
                  Text="Логин:" 
-                 Margin="10,54,13,158" 
+                 Margin="10,42,13,170" 
                  Grid.Row="1"/>
         <TextBlock TextWrapping="Wrap" 
                  Text="Пароль:" 
@@ -70,15 +117,22 @@
                 Margin="74,26,47,47" 
                 Grid.Column="1" 
                 Grid.ColumnSpan="2"
-                Grid.Row="2" Background="#FF7A00CC"/>
-        <Button Content="Гость" Margin="47,26,74,47" Grid.ColumnSpan="2" Grid.Row="2"/>
+                Style="{StaticResource PurpleButtonStyle}"
+                Foreground="Black"
+                Grid.Row="2"
+                Background="#FF7A00CC"/>
+        <Button Content="Гость" 
+                Margin="47,26,74,47" 
+                Grid.ColumnSpan="2" 
+                Grid.Row="2"
+                Style="{StaticResource PurpleButtonStyle}"
+                Foreground="Black"
+                Background="#EDE2FF"/>
         <Grid Grid.ColumnSpan="3" Background="#FFEDE2FF"/>
         <TextBlock Grid.Column="0"
                    Grid.ColumnSpan="3"
                    Text="Авторизация"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center" Margin="82,0,0,0"/>
-
-
     </Grid>
 </Window>

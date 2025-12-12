@@ -7,7 +7,16 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="AddAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddPlaylist.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="AlbumsUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ArtistUC.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Auth.xaml.cs">
@@ -21,7 +30,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="AddAlbum.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="AddPlaylist.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="AlbumsUC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ArtistUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Auth.xaml">

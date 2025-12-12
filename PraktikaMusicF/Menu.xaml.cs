@@ -80,12 +80,31 @@ namespace PraktikaMusicF
                 alItemsControl.Items.Add(aluc);
             }
         }
-    
+
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Auth ah = new Auth();
+            ah.Show();
+            Close();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void AddAlb(object sender, RoutedEventArgs e)
+        {
+            AddAlbum addAlbum = new AddAlbum();
+            addAlbum.Show();
+        }
+
+        private void AddPl(object sender, RoutedEventArgs e)
+        {
+            AddPlaylist addPlaylist = new AddPlaylist();
+            addPlaylist.Show();
         }
     }
 }

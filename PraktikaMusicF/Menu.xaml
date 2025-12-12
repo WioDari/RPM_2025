@@ -13,28 +13,67 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TabItem">
-                        <Border 
-                            Name="Border"
-                            CornerRadius="15,15,0,0"
-                            BorderThickness="1"
-                            BorderBrush="#9C4DFF"
-                            Background="#EDE3FF"
-                            Padding="10,5"
-                            Margin="2,0">
-                            <ContentPresenter 
-                                x:Name="ContentSite"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Center"
-                                ContentSource="Header"/>
+                        <Border x:Name="HeaderBorder"
+                        CornerRadius="15,15,0,0"
+                        BorderThickness="1"
+                        BorderBrush="#9C4DFF"
+                        Background="#EDE3FF"
+                        Padding="10,5"
+                        Margin="2,0">
+                            <ContentPresenter ContentSource="Header"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
                         </Border>
+
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#9C4DFF"/>
-                                <Setter TargetName="Border" Property="BorderBrush" Value="#6A2DEB"/>
+                                <Setter TargetName="HeaderBorder" Property="Background" Value="#9C4DFF"/>
+                                <Setter TargetName="HeaderBorder" Property="BorderBrush" Value="#6A2DEB"/>
                             </Trigger>
+
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="Background" Value="#B88FFF"/>
+                                <Setter TargetName="HeaderBorder" Property="Background" Value="#EDE2FF"/>
                             </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="PurpleButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#7A00CC"/>
+            <Setter Property="BorderBrush" Value="#9C4DFF"/>
+            <Setter Property="Foreground" Value="#EDE2FF"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="15"
+                        SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7A00CC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9C4DFF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#9C4DFF"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9C4DFF"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="Black"/>
+
+                            </Trigger>
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -53,60 +92,84 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.Row="0"
-                    Grid.RowSpan="4"
-                    Grid.Column="0"
-                    Grid.ColumnSpan="3">
-            <TabItem Header="Альбомы" FontSize="36" Margin="530,0,-530,0">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsControl x:Name="alItemsControl">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel Orientation="Horizontal" Margin="10"/>
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                    </ItemsControl>
-                </ScrollViewer>
-            </TabItem>
-            <TabItem Header="Артисты"
-                     FontSize="36"
-                     Margin="526,-2,-530,0">
-            </TabItem>
-            <TabItem Header="Плейлисты" 
-                     FontSize="36"
-                     Margin="526,-2,-530,0">
-                <Frame x:Name="plFrame"
-                       NavigationUIVisibility="Hidden">
-                </Frame>
-            </TabItem>
-            <TabItem Header="Пользователь"
-                     FontSize="36"
-                     Margin="526,-2,-530,0">
-            </TabItem>
-        </TabControl>
+        <Grid VerticalAlignment="Top"
+              Grid.ColumnSpan="3"
+              Background="#7A00CC" 
+              Height="59">
+            <TextBlock Grid.Column="1"
+                       Text="Меню"
+                       Foreground="#EDE2FF"
+                       HorizontalAlignment="Center"
+                       FontSize="46"/>
+        </Grid>
         <TextBlock TextWrapping="Wrap"
                    Text="{Binding NameUsr}" 
                    Margin="5,0,175,296"
                    FontSize="36"
                    Grid.Row="0" 
                    Grid.Column="0"
+                   Foreground="#EDE2FF"
                    RenderTransformOrigin="0.5,0.5">
         </TextBlock>
         <Border Grid.Column="2"
                 Grid.Row="0"
-                Margin="404,0,0,307"
+                Margin="294,0,110,296"
                  Background="#9C4DFF"
-                CornerRadius="20" 
-                BorderBrush="#FF151313"
+                CornerRadius="15" 
                 BorderThickness="1,1,1,1">
-            <Button Content="Выход"
+            <ContentControl Margin="-35,5,45,5">
+                <Button Content="Выход"
                     Grid.Row="0"
                     Grid.Column="2"
                     FontSize="36"
+                    Style="{StaticResource PurpleButtonStyle}"
                     Background="Transparent"
                     BorderThickness="0"
-                    Margin="-1,-1,-1,-1"/>
+                    Margin="33,-6,-47,-10" Click="Exit_Click"/>
+            </ContentControl>
         </Border>
-
+        <TabControl Grid.Row="0"
+                    Grid.RowSpan="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3" Margin="0,46,456,0">
+            <TabItem Header="Альбомы" FontSize="36" Margin="530,0,-530,0">
+                <Grid Margin="0,0,-1,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,10,0">
+                        <ItemsControl x:Name="alItemsControl" Width="1377">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel Orientation="Horizontal" Margin="10"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Артисты"
+                     FontSize="36"
+                     Margin="526,-2,-530,0"/>
+            <TabItem Header="Плейлисты" 
+                     FontSize="36"
+                     Margin="526,-2,-530,0">
+                <Frame x:Name="plFrame"
+                       NavigationUIVisibility="Hidden"/>
+            </TabItem>
+            <TabItem Header="Пользователь"
+                     FontSize="36"
+                     Margin="526,-2,-530,0"/>
+        </TabControl>
+        <Button Content="Добавить альбом" 
+                FontSize="38"
+                Grid.Column="2"
+                Style="{StaticResource PurpleButtonStyle}" 
+                Click="AddAlb" 
+                Margin="245,150,62,150">
+        </Button>
+        <Button Grid.Column="2"
+                FontSize="38"
+                Content="Добавить плейлист"
+                Style="{StaticResource PurpleButtonStyle}" 
+                Margin="246,242,62,54" 
+                Click="AddPl"/>
     </Grid>
 </Window>

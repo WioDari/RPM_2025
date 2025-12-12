@@ -3,56 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\addplaylist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\addplaylist.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\albumsuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\albumsuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\playlistuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\playlistuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\addalbum.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\addalbum.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\menu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\menu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\albumsuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\albumsuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\menu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\addalbum.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\addalbum.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\albumsgenre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\albumsgenre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\album.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\album.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\tracklist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\tracklist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\playlistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\playlistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\playlistcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\playlistcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\auth.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,12 +43,48 @@
       "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\auth.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\playlistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\playlistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\albumsuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\albumsuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\playlist.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\playlistcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\playlistcreator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\artistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\artistuc.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|c:\\users\\damir\\source\\repos\\praktikamusicf\\praktikamusicf\\playlistuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{373E2442-9FC6-40EB-9572-52AC646E4B8B}|PraktikaMusicF\\PraktikaMusicF.csproj|solutionrelative:praktikamusicf\\playlistuc.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -90,58 +106,44 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TrackList.cs",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\TrackList.cs",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\TrackList.cs",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\TrackList.cs",
-              "RelativeToolTip": "PraktikaMusicF\\Models\\TrackList.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T12:49:23.078Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Album.cs",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Album.cs",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\Album.cs",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Album.cs",
-              "RelativeToolTip": "PraktikaMusicF\\Models\\Album.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T12:29:28.801Z",
+              "DocumentIndex": 0,
+              "Title": "AddPlaylist.xaml",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddPlaylist.xaml",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\AddPlaylist.xaml",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddPlaylist.xaml",
+              "RelativeToolTip": "PraktikaMusicF\\AddPlaylist.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-12-12T10:04:30.226Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AlbumsUC.xaml",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\AlbumsUC.xaml",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml",
-              "RelativeToolTip": "PraktikaMusicF\\AlbumsUC.xaml",
+              "Title": "AddAlbum.xaml",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddAlbum.xaml",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\AddAlbum.xaml",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddAlbum.xaml",
+              "RelativeToolTip": "PraktikaMusicF\\AddAlbum.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-18T11:38:26.15Z",
+              "WhenOpened": "2025-12-10T06:09:30.041Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "AlbumsUC.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml.cs",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\AlbumsUC.xaml.cs",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml.cs",
-              "RelativeToolTip": "PraktikaMusicF\\AlbumsUC.xaml.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAuwFoAAAAtAAAAAAAAAA==",
+              "Title": "AddAlbum.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddAlbum.xaml.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\AddAlbum.xaml.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AddAlbum.xaml.cs",
+              "RelativeToolTip": "PraktikaMusicF\\AddAlbum.xaml.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAA5wHkAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T12:28:11.705Z",
+              "WhenOpened": "2025-12-11T08:23:38.691Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 17,
               "Title": "User.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\User.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\User.cs",
@@ -149,62 +151,142 @@
               "RelativeToolTip": "PraktikaMusicF\\Models\\User.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAkwCEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T10:43:37.157Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T10:43:37.157Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "PlaylistUC.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml.cs",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\PlaylistUC.xaml.cs",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml.cs",
-              "RelativeToolTip": "PraktikaMusicF\\PlaylistUC.xaml.cs",
-              "ViewState": "AgIAADAAAAAAAAAAAAA1wFUAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:03:30.69Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 20,
               "Title": "PlaylistUC.xaml",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml",
               "RelativeDocumentMoniker": "PraktikaMusicF\\PlaylistUC.xaml",
               "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml",
               "RelativeToolTip": "PraktikaMusicF\\PlaylistUC.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-18T06:35:27.976Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T06:35:27.976Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "Menu.xaml",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Menu.xaml",
               "RelativeDocumentMoniker": "PraktikaMusicF\\Menu.xaml",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Menu.xaml*",
-              "RelativeToolTip": "PraktikaMusicF\\Menu.xaml*",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Menu.xaml",
+              "RelativeToolTip": "PraktikaMusicF\\Menu.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-11-10T08:26:59.097Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Menu.xaml.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Menu.xaml.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\Menu.xaml.cs",
               "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Menu.xaml.cs",
               "RelativeToolTip": "PraktikaMusicF\\Menu.xaml.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAcwFAAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAmwGoAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-13T10:10:36.403Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AlbumsGenre.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\AlbumsGenre.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\AlbumsGenre.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\AlbumsGenre.cs",
+              "RelativeToolTip": "PraktikaMusicF\\Models\\AlbumsGenre.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T12:57:06.126Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Genre.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Genre.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\Genre.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Genre.cs",
+              "RelativeToolTip": "PraktikaMusicF\\Models\\Genre.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T09:27:30.859Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Auth.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\Auth.xaml.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml.cs",
+              "RelativeToolTip": "PraktikaMusicF\\Auth.xaml.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAzwGwAAAB1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T07:40:33.05Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Album.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Album.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\Album.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Album.cs",
+              "RelativeToolTip": "PraktikaMusicF\\Models\\Album.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T12:29:28.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Auth.xaml",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\Auth.xaml",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml",
+              "RelativeToolTip": "PraktikaMusicF\\Auth.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-05T07:20:40.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ArtistUC.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\ArtistUC.xaml.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\ArtistUC.xaml.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\ArtistUC.xaml.cs",
+              "RelativeToolTip": "PraktikaMusicF\\ArtistUC.xaml.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-27T07:59:32.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AlbumsUC.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\AlbumsUC.xaml.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\AlbumsUC.xaml.cs",
+              "RelativeToolTip": "PraktikaMusicF\\AlbumsUC.xaml.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAuwD0AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T12:28:11.705Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 10,
+              "Title": "PlaylistUC.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml.cs",
+              "RelativeDocumentMoniker": "PraktikaMusicF\\PlaylistUC.xaml.cs",
+              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\PlaylistUC.xaml.cs",
+              "RelativeToolTip": "PraktikaMusicF\\PlaylistUC.xaml.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAmwGAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-18T07:03:30.69Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Playlist.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\Playlist.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\Playlist.cs",
@@ -212,12 +294,11 @@
               "RelativeToolTip": "PraktikaMusicF\\Models\\Playlist.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:15:42.382Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T07:15:42.382Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 16,
               "Title": "PlaylistCreator.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Models\\PlaylistCreator.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\Models\\PlaylistCreator.cs",
@@ -225,12 +306,11 @@
               "RelativeToolTip": "PraktikaMusicF\\Models\\PlaylistCreator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-18T07:23:56.7Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-18T07:23:56.7Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 15,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\MainWindow.xaml",
               "RelativeDocumentMoniker": "PraktikaMusicF\\MainWindow.xaml",
@@ -241,19 +321,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\MainWindow.xaml.cs",
               "RelativeToolTip": "PraktikaMusicF\\MainWindow.xaml.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowDYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-01T08:22:36.754Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 13,
               "Title": "App.xaml",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\App.xaml",
               "RelativeDocumentMoniker": "PraktikaMusicF\\App.xaml",
@@ -265,30 +345,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Auth.xaml",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\Auth.xaml",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml",
-              "RelativeToolTip": "PraktikaMusicF\\Auth.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-05T07:20:40.312Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Auth.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml.cs",
-              "RelativeDocumentMoniker": "PraktikaMusicF\\Auth.xaml.cs",
-              "ToolTip": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\Auth.xaml.cs",
-              "RelativeToolTip": "PraktikaMusicF\\Auth.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAGUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-05T07:40:33.05Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "RelayCommand.cs",
               "DocumentMoniker": "C:\\Users\\damir\\source\\repos\\PraktikaMusicF\\PraktikaMusicF\\RelayCommand.cs",
               "RelativeDocumentMoniker": "PraktikaMusicF\\RelayCommand.cs",

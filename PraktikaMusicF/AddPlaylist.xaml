@@ -1,0 +1,99 @@
+﻿<Window x:Class="PraktikaMusicF.AddPlaylist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PraktikaMusicF"
+        mc:Ignorable="d"
+        Style="{StaticResource WindowStyleG}"
+        Title="AddPlaylist" Height="450" Width="800"
+        MaxHeight="450" MaxWidth="800"
+        MinHeight="450" MinWidth="800">
+    <Window.Resources>
+        <Style x:Key="PurpleButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#7A00CC"/>
+            <Setter Property="BorderBrush" Value="#9C4DFF"/>
+            <Setter Property="Foreground" Value="#EDE2FF"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="Padding" Value="10 5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="15"
+                SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                              VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#7A00CC"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9C4DFF"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="#B88FFF"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="#9C4DFF"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter TargetName="border" Property="Background" Value="Black"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Grid.Column="0"
+              Grid.ColumnSpan="3"
+              Background="#9C4DFF">
+        </Grid>
+        <TextBlock Text="Добавление плейлиста"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="3"
+                   Foreground="#EDE2FF"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="36">
+        </TextBlock>
+        <Button Grid.Column="2"
+                Content="Выход"
+                Style="{StaticResource PurpleButtonStyle}" Margin="89,2,3,2"/>
+        <TextBlock Grid.Row="1" 
+                   Margin="5,25,18,130"
+                   Text="Название плейлисита:">
+        </TextBlock>
+        <TextBlock Grid.Row="1"
+                   Margin="5,96,18,59"
+                   Text="Описание плейлиста:">
+        </TextBlock>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="10,25,10,130"
+                 Name="NamePlaylist">
+        </TextBox>
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Margin="10,96,10,59">
+        </TextBox>
+    </Grid>
+</Window>

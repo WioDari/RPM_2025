@@ -133,3 +133,7 @@ C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windo
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\PlaylistUC.baml
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AlbumsUC.g.cs
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AlbumsUC.baml
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\ArtistUC.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\ArtistUC.baml
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AddAlbum.g.cs
+C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\obj\Debug\net8.0-windows\AddAlbum.baml

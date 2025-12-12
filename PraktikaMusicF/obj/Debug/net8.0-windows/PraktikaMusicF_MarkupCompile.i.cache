@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\damir\source\repos\PraktikaMusicF\PraktikaMusicF\App.xaml
-5416350978
+857517203
 
-30-696552364
+371992013720
 212-1102206946
-AlbumsUC.xaml;Auth.xaml;MainWindow.xaml;Menu.xaml;PlaylistUC.xaml;
+AddAlbum.xaml;AddPlaylist.xaml;AlbumsUC.xaml;ArtistUC.xaml;Auth.xaml;MainWindow.xaml;Menu.xaml;PlaylistUC.xaml;
 
 True
 

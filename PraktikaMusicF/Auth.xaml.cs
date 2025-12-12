@@ -121,6 +121,9 @@ namespace PraktikaMusicF
             MessageBox.Show($"Добро пожаловать, {user.UsrFName}!", "Успешно", MessageBoxButton.OK, MessageBoxImage.Information);
             Application.Current.Properties["CurrentUser"] = user;
             var nameUsr = user.UsrFName;
+            Session.RoleId = (int)user.RoleId;
+            Session.UserId = user.UsrId;
+            MessageBox.Show($"role {Session.RoleId}, usrid {Session.UserId}", "", MessageBoxButton.OK, MessageBoxImage.Information );
             Window menu = new Menu(nameUsr);
             menu.Show();
             foreach (Window w in Application.Current.Windows)

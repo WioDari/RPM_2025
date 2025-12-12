@@ -43,7 +43,6 @@ namespace PraktikaMusicF
 
             using var db = new MusicBdFContext();
 
-            // Автор альбома (по ArtistId)
             string artistName =
                 db.Artists
                   .Where(a => a.ArtId == alb.ArtistId)
@@ -51,39 +50,17 @@ namespace PraktikaMusicF
                   .FirstOrDefault()
                 ?? "Не указан";
 
-            // Количество треков через TrackList
+           
             int trackCount =
                 db.TrackLists.Count(tl => tl.AlbId == alb.AlbId);
 
-            // Картинка
-            string? img = alb.AlbImage;
-            string defaultImage = "/Images/defaultAlbum.png";
+            string? finalImg = null;
 
-            string finalImg;
-
-            if (!string.IsNullOrEmpty(img))
+            if (!string.IsNullOrEmpty(alb.AlbImage))
             {
-                if (Uri.IsWellFormedUriString(img, UriKind.Absolute))
-                {
-                    // ссылка на интернет-картинку
-                    finalImg = img;
-                }
-                else if (File.Exists(img))
-                {
-                    // локальный файл
-                    finalImg = img;
-                }
-                else
-                {
-                    finalImg = "/Images/defaultAlbum.png";
-                }
+                if (Uri.IsWellFormedUriString(alb.AlbImage, UriKind.Absolute))
+                    finalImg = alb.AlbImage;
             }
-            else
-            {
-                finalImg = "/Images/defaultAlbum.png";
-            }
-
-            // Передаём данные в XAML через DataContext
             DataContext = new AlbumView
             {
                 AlbumName = alb.AlbName ?? "Без названия",
