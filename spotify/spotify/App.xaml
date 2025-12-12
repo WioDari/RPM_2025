@@ -12,9 +12,10 @@
             </Setter>
             <Setter
                 Property="FontSize"
-                Value="12">
+                Value="20">
             </Setter>
         </Style>
+        
         <Style TargetType="Button">
             <Setter Property="Padding" Value="8"/>
             <Style.Resources>
@@ -31,6 +32,20 @@
                     <Setter Property="CornerRadius" Value="2"/>
                 </Style>
             </Style.Resources>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="#EDE2FF"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         </Style>
     </Application.Resources>
 </Application>

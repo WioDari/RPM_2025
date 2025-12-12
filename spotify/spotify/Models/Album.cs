@@ -5,7 +5,7 @@ namespace spotify.Models;
 
 public partial class Album
 {
-    public int Id { get; set; }
+    public int? Id { get; set; }
 
     public string AlbumTitle { get; set; } = null!;
 
@@ -15,7 +15,7 @@ public partial class Album
 
     public string CoverPath { get; set; } = null!;
 
-    public TimeOnly TotalDuration { get; set; }
+    public TimeSpan TotalDuration { get; set; }
 
     public virtual Artist Artist { get; set; } = null!;
 

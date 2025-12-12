@@ -14,4 +14,9 @@ public partial class Genre
     public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();
 
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
+
+    public override string ToString()
+    {
+        return Genre1;
+    }
 }

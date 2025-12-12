@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:spotify.Windows"
         mc:Ignorable="d"
-        Title="NewAlbum" Height="450" Width="800">
+        Title="Новый альбом" Height="550" Width="900" MinHeight="550" MinWidth="900">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -20,32 +22,12 @@
         </Grid.RowDefinitions>
 
         <Grid
-            Grid.ColumnSpan="3"
+            Grid.ColumnSpan="5"
             Background="#9C4DFF">
             <TextBlock Text="Добавление нового альбома" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         </Grid>
 
-        <Image Name="AlbumCover" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="5"/>
-
-        <Grid
-            Grid.Row="1"
-            Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-
-            <TextBlock Text="Название альбома:" FontSize="20"/>
-            <TextBox Name="AlbumTextBox" Width="250" Height="40" FontSize="20" Background="#EDE2FF"/>
-
-            <TextBlock Grid.Row="1" Text="Год выпуска:" FontSize="20"/>
-            <TextBox Grid.Row="1" Name="YearTextBox" Width="250" Height="40" FontSize="20" Background="#EDE2FF"/>
-
-            <TextBlock Grid.Row="2" Text="Ссылка на изображение:" FontSize="20"/>
-            <TextBox Grid.Row="2" Name="CoverPathTextBox" Width="250" Height="40" FontSize="20" Background="#EDE2FF"/>
-        </Grid>
+        <Image Grid.Column="1" Name="AlbumCover" Source="/Resources/placeholder_cover.png" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="5" Width="200" Height="200" ImageFailed="AlbumCover_ImageFailed"/>
 
         <Grid
             Grid.Row="1"
@@ -53,23 +35,28 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Исполнитель:" FontSize="20" Margin="5"/>
-            <ComboBox Name="ArtistComboBox" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Width="250" Height="40" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" Background="#EDE2FF">
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding ArtistName}" TextWrapping="Wrap" MaxWidth="250"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+            <StackPanel>
+                <TextBlock Text="Название альбома:" FontSize="20"/>
+                <TextBox Name="AlbumTextBox" Height="40" FontSize="20" Background="#EDE2FF" Margin="5"/>
+            </StackPanel>
 
-            
             <StackPanel Grid.Row="1">
-                <TextBlock Text="Жанр:" FontSize="20" Margin="5"/>
+                <TextBlock Grid.Row="1" Text="Год выпуска:" FontSize="20"/>
+                <TextBox Grid.Row="1" Name="YearTextBox" Height="40" FontSize="20" Background="#EDE2FF" Margin="5"/>
+            </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Margin="5">
-                    <ComboBox Name="GenreComboBox" Grid.Row="1" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Width="200" Height="40" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" Background="#EDE2FF" Margin="5">
+            <StackPanel Grid.Row="2">
+                <TextBlock Grid.Row="2" Text="Жанр:" FontSize="20"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="GenreComboBox" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Height="40" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" Background="#EDE2FF" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
                         <ComboBox.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding Genre1}" TextWrapping="Wrap" MaxWidth="250"/>
@@ -77,21 +64,106 @@
                         </ComboBox.ItemTemplate>
                     </ComboBox>
 
-                    <Button Name="AddGenreButton" Width="40" Height="40" Margin="5" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="AddGenreButton_Click" Padding="0">
-                        <Image Name="Plus" Height="25" Width="25" Source="/Resources/add.png" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform"/>
+                    <Button Grid.Column="1" Name="AddGenreButton" Width="40" Height="40" Margin="5" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="AddGenreButton_Click" Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image Name="Plus" Source="/Resources/add.png" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="2"/>
                     </Button>
-                </StackPanel>
-                
-
-                <ListBox Name="GenreListBox" Grid.Row="1" Width="250" Height="40" Margin="5">
-
-                </ListBox>
+                </Grid>
             </StackPanel>
             
+
+            <ListBox Name="GenreListBox" Grid.Row="3" Height="Auto" Margin="5">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding Genre1}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button Grid.Column="1" Name="DeleteGenre" Content="-" Click="DeleteGenre_Click" Width="20" Height="20" Margin="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" VerticalAlignment="Center" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
         </Grid>
 
-        <Button Name="CloseButton" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="CloseButton_Click"/>
+        <Grid
+            Grid.Row="1"
+            Grid.Column="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Ссылка на изображение:" FontSize="20"/>
+                <TextBox Name="CoverPathTextBox" Height="40" FontSize="20" Background="#EDE2FF" Margin="5" TextChanged="CoverPathTextBox_TextChanged"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Исполнитель:" Grid.Row="1" FontSize="20"/>
+                <ComboBox Name="ArtistComboBox" Grid.Row="1" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Height="40" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" Background="#EDE2FF" Margin="5">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ArtistName}" TextWrapping="Wrap" MaxWidth="250"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <Grid Grid.Row="2">
+                <TextBlock Text="Трек" FontSize="20" Grid.Row="2"/>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="TrackComboBox" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Height="40" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" Background="#EDE2FF" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TrackName}" TextWrapping="Wrap" MaxWidth="250"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Grid.Column="1" Name="AddTrackButton" Click="AddTrackButton_Click" Width="40" Height="40" Margin="5" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image Name="Add" Source="/Resources/add.png" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="2"/>
+                    </Button>
+                </Grid>
+            </Grid>
+            
+            <ListBox Name="TrackListBox" Grid.Row="3" Height="Auto" Margin="5">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.Resources>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding TrackName}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button Grid.Column="1" Click="DeleteTrack_Click" Name="DeleteTrack" Content="-" Width="20" Height="20" Margin="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" VerticalAlignment="Center" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Button Name="CloseButton" Grid.Column="2" Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="CloseButton_Click"/>
         
-        <Button Name="NewAlbumButton"  Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="NewAlbumButton_Click"/>
+        <Button Name="NewAlbumButton"  Grid.ColumnSpan="3" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="NewAlbumButton_Click"/>
     </Grid>
 </Window>

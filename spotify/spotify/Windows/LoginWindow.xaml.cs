@@ -141,6 +141,7 @@ namespace spotify.Windows
 
             if (!string.Equals(CaptchaTextBox.Text, CapthaText))
             {
+                CaptchaTextBox.BorderBrush = Brushes.Red;
                 MessageBox.Show("Капча введена неправильно!");
                 GenerateCaptha();
                 return;
@@ -148,6 +149,15 @@ namespace spotify.Windows
 
             if (user == null || LoginTextBox.Text != user.Login || PasswordTextBox.Text != user.Password)
             {
+                //if (LoginTextBox.Text != user.Login)
+                //{
+                //    LoginTextBox.BorderBrush = Brushes.Red;
+                //}
+
+                //if (PasswordTextBox.Text != user.Password)
+                //{
+                //    passwordBox.BorderBrush = Brushes.Red;
+                //}
                 MessageBox.Show("Пользователь или пароль введен неправильно!");
                 GenerateCaptha();
                 return;

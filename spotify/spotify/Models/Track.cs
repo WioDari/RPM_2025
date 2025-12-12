@@ -21,7 +21,7 @@ public partial class Track
 
     public int PlayCount { get; set; }
 
-    public int AlbumId { get; set; }
+    public int? AlbumId { get; set; }
 
     public virtual Album Album { get; set; } = null!;
 
@@ -30,4 +30,9 @@ public partial class Track
     public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
+
+    public override string ToString()
+    {
+        return TrackName;
+    }
 }

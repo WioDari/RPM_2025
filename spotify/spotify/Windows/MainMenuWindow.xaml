@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:spotify.Windows"
         mc:Ignorable="d"
-        Title="Меню" Height="450" Width="800">
+        Title="Меню" Height="550" Width="900" MinHeight="550" MinWidth="900">
     <Grid
         ShowGridLines="False" RenderTransformOrigin="0.728,0.574">
         <Grid.RowDefinitions>
@@ -64,7 +64,7 @@
         <StackPanel
             Grid.Row="2">
             <Button Name="NewAlbumButton" Click="NewAlbumButton_Click" Background="#7A00CC" Content="Новый альбом" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
-            <Button Name="NewTrackButton" Click="NewAlbumButton_Click" Background="#7A00CC" Content="Новый трек" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
+            <Button Name="NewTrackButton" Click="NewTrackButton_Click" Background="#7A00CC" Content="Новый трек" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
 
         </StackPanel>
 
