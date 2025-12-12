@@ -12,53 +12,52 @@ using Music.Views;
 using Music.Views.Items;
 using Music.Properties;
 using System.Windows.Controls;
+using static Music.ViewModels.AlbumViewModel;
+using System.Collections.ObjectModel;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using static Music.ViewModels.PlaylistViewModel;
 
 
 namespace Music.ViewModels
 {
     class MainViewModel : BaseViewModel
     {
-     
-        private Page _albumPage;
-        public Page albumPage
+        private Page _currentPage;
+        public Page currentPage
         {
-            get => _albumPage;
+            get => _currentPage;
             set
             {
-                _albumPage = value;
+                _currentPage = value;
                 OnPropertyChanged();
             }
         }
-        private Page _playlistPage;
-        public Page playlistPage
+        private string _selectedButton;
+        public string SelectedButton
         {
-            get => _playlistPage;
+            get => _selectedButton;
             set
             {
-                _playlistPage = value;
+                _selectedButton = value;
                 OnPropertyChanged();
             }
-        }
-
-        public class PlaylistView()
-        {
-            public string coverPath { get; set; }
-            public string name { get; set; }
-            public string likes { get; set; }
-            public string numberOfSubscribers { get; set; }
-            public string numberOfTrack { get; set; }
-            public string creationDate { get; set; }
-            public string totalDuration { get; set; }
         }
         public ICommand LogoutCommand { get; }
-
+        public ICommand MainCommand { get; }
+        public ICommand TrackCommand { get; }
+        public ICommand AlbumCommand { get; }
+        public ICommand PlaylistCommand { get; }
         public MainViewModel()
         {
-            playlistPage = new Views.Items.AllPlaylistPage();
-            albumPage = new Views.Items.AllAlbumPage();
-           
+            MainCommand = new RelayCommand(MainNav);
+            TrackCommand = new RelayCommand(TrackNav);
+            AlbumCommand = new RelayCommand(AlbumNav);
+            PlaylistCommand = new RelayCommand(PlaylistNav);
+            MainNav();
             User user = (User)Application.Current.Properties["CurrentUser"];
             name = user.FullName;
+            SelectedButton = "Main";
             LogoutCommand = new RelayCommand(Logout);
         }
         private string _name;
@@ -71,9 +70,26 @@ namespace Music.ViewModels
                     OnPropertyChanged();
                 }
             }
-        
-
-
+        public void MainNav()
+        {
+            currentPage = new Views.Items.MainPage();
+            SelectedButton = "Main";
+        }
+        public void AlbumNav()
+        {
+            currentPage = new Views.Items.AllAlbumPage();
+            SelectedButton = "Album";
+        }
+        public void PlaylistNav()
+        {
+            currentPage = new Views.Items.AllPlaylistPage();
+            SelectedButton = "Playlist";
+        }
+        public void TrackNav()
+        {
+            currentPage = new Views.Items.AllTrackPage();
+            SelectedButton = "Track";
+        }
         public void Logout()
         {
             Application.Current.Properties["CurrentUser"] = null;

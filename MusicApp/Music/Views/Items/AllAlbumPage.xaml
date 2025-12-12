@@ -7,19 +7,19 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AllAlbumPage"  Height="500">
-    <ScrollViewer VerticalScrollBarVisibility="Hidden">
-        <ItemsControl ItemsSource="{Binding data}"  >
-            <ItemsControl.ItemsPanel>
+    <ScrollViewer >
+        <ListBox  ItemsSource="{Binding data}" SelectedItem="{Binding SelectedAlbum}" >
+            <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapPanel>
+                    <WrapPanel Width="590"  >
                     </WrapPanel>
                 </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:AlbumsItem/>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </ScrollViewer>
 </Page>

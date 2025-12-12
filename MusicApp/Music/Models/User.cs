@@ -32,4 +32,6 @@ public partial class User
     public virtual Role Role { get; set; } = null!;
 
     public virtual Subscription Subscription { get; set; } = null!;
+
+    public virtual ICollection<UserPlaylistSubscription> UserPlaylistSubscriptions { get; set; } = new List<UserPlaylistSubscription>();
 }

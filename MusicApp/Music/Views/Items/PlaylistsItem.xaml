@@ -6,8 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Music.Views.Items"
              mc:Ignorable="d" 
-             Height="100"  Width="500"
-                   d:DesignHeight="100" d:DesignWidth="200" Background="White">
+             Height="100"  Width="580"
+                   d:DesignHeight="100" d:DesignWidth="200" >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -31,7 +31,7 @@
             <TextBlock Margin="12,0,0,0" Text="{Binding likes, StringFormat= Нравится: {0}}"  />
         </Border>
         <Border Grid.Row="2" BorderBrush="Black" BorderThickness="1,0,1,0" >
-            <TextBlock Margin="12,0,0,0" Text="Подписчиков: "   />
+            <TextBlock Margin="12,0,0,0" Text="{Binding subscribers, StringFormat= Подписчиков: {0}}"   />
         </Border>
         <Border Grid.Row="3" BorderBrush="Black" BorderThickness="1,0,1,0" >
             <TextBlock Margin="12,0,0,0" Text="{Binding numberOfTrack, StringFormat= Треков: {0}}"   />

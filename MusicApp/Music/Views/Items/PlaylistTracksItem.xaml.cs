@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Music.Views.Items
 {
     /// <summary>
-    /// Логика взаимодействия для AlbumsItem.xaml
+    /// Логика взаимодействия для PlaylistTracksItem.xaml
     /// </summary>
-    public partial class AlbumsItem : UserControl
+    public partial class PlaylistTracksItem : UserControl
     {
-        public AlbumsItem()
+        public PlaylistTracksItem()
         {
             InitializeComponent();
         }
     }
 }
- 

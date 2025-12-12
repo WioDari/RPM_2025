@@ -12,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Music.ViewModels;
 
 namespace Music.Views.Items
 {
     /// <summary>
-    /// Логика взаимодействия для AlbumsItem.xaml
+    /// Логика взаимодействия для MainPage.xaml
     /// </summary>
-    public partial class AlbumsItem : UserControl
+    public partial class MainPage : Page
     {
-        public AlbumsItem()
+        public MainPage()
         {
             InitializeComponent();
+            DataContext = new MainPageViewModel();
         }
     }
 }
- 

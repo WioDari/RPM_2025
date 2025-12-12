@@ -2,12 +2,19 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Music"
+              xmlns:converters="clr-namespace:Music.Views.Converters"
              StartupUri="/Views/Windows/AuthWindow.xaml">
     <Application.Resources>
-    
+        <converters:BackgroundMainBtnConverter x:Key="BackgroundMainBtnConverter"/>
         <Style x:Key="MainWindowStyle" TargetType="Window">
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>
             <Setter Property="FontSize" Value="15pt"></Setter>
+            <Setter Property="Icon" Value="/Resources/icon.ico"/>
+            <Setter Property="Foreground" Value="#1C1C1C"/>
+        </Style>
+        <Style x:Key="AdditionalWindowStyle" TargetType="Window">
+            <Setter Property="FontFamily" Value="Times New Roman"></Setter>
+            <Setter Property="FontSize" Value="18pt"></Setter>
             <Setter Property="Icon" Value="/Resources/icon.ico"/>
             <Setter Property="Foreground" Value="#1C1C1C"/>
         </Style>

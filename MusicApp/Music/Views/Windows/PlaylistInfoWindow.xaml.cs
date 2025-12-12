@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Music.Views.Items
+namespace Music.Views.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AlbumsItem.xaml
+    /// Логика взаимодействия для PlaylistInfoWindow.xaml
     /// </summary>
-    public partial class AlbumsItem : UserControl
+    public partial class PlaylistInfoWindow : Window
     {
-        public AlbumsItem()
+        public PlaylistInfoWindow()
         {
             InitializeComponent();
         }
     }
 }
- 

@@ -8,10 +8,12 @@ using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 using Microsoft.EntityFrameworkCore;
 using Music.Context;
+using Music.Models;
+using Music.Views.Windows;
 
 namespace Music.ViewModels
 {
-    class AlbumViewModel : BaseViewModel
+    public class AlbumViewModel : BaseViewModel
     {
         public class AlbumView()
         {
@@ -20,8 +22,10 @@ namespace Music.ViewModels
             public string name { get; set; }
             public string artistName { get; set; }
             public string numberOfTrack { get; set; }
+            public List<Genre> genres{ get; set; }
            
         }
+       
         public ObservableCollection<AlbumView> data { get; set; }
         private AlbumView _SelectedAlbum;
         public AlbumView SelectedAlbum
@@ -31,9 +35,14 @@ namespace Music.ViewModels
             {
                 _SelectedAlbum = value;
                 if (SelectedAlbum != null)
-
+                    showAlbumInfo(value);
                     OnPropertyChanged();
             }
+        }
+        private void showAlbumInfo(AlbumView album) {
+            var w = new AlbumInfoWindow();
+            w.DataContext = new AlbumInfoViewModel(album);
+            w.ShowDialog();
         }
         public AlbumViewModel()
         {
@@ -53,7 +62,8 @@ namespace Music.ViewModels
                        numberOfTrack = x.Tracks.Count.ToString(),
                        coverPath = File.Exists($"C:\\Users\\glagol\\source\\repos\\Music\\Music\\Resources\\covers\\{x.AlbumName}.jpg")
                        ? $"/Resources/covers/{x.AlbumName}.jpg"
-                       : "/Resources/covers/placeholder_cover.png"
+                       : "/Resources/covers/placeholder_cover.png",
+                       genres = x.Genres.ToList()
 
                    }
                    ).OrderBy(x => x.id).ToList());

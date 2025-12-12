@@ -9,17 +9,17 @@
       
       Title="AllPlaylistPage">
     <ScrollViewer VerticalScrollBarVisibility="Visible">
-        <ItemsControl ItemsSource="{Binding data}"  >
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Vertical"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
+        <ListBox ItemsSource="{Binding data}" SelectedItem="{Binding SelectedPlaylist}">
+            <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:PlaylistsItem/>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </ScrollViewer>
 </Page>

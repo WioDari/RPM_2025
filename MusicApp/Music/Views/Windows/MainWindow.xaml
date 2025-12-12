@@ -7,7 +7,7 @@
         xmlns:Views="clr-namespace:Music.Views" Style="{StaticResource MainWindowStyle}"
         x:Class="Music.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" ResizeMode="NoResize" Height="600" Width="900">
+        Title="MainWindow" ResizeMode="NoResize" Height="650" Width="900">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -24,32 +24,19 @@
                 </StackPanel>
                 
             </Border>
-
-
+            <Border MinHeight="40" MaxWidth="250" Margin="40,10,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Main}" CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Главная" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding MainCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Album}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Альбомы" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding AlbumCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Playlist}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Плейлисты" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding PlaylistCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Track}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Треки" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding TrackCommand}" />
+            </Border>
         </StackPanel>
-        <StackPanel Grid.Column="1">
-            <StackPanel.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFEDE2FF" />
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </StackPanel.Background>
-    
-            <TabControl   Margin="10,20,10,10"  BorderThickness="0" Background="Transparent">
-                <TabItem Style="{DynamicResource MainTabItemStyle}" BorderThickness="0"  Background="#FFEDE2FF"  Header="Альбомы" >
-                   
-                    <TabItem.Content>
-                        <Frame VerticalAlignment="Bottom" HorizontalAlignment="Center" Content="{Binding albumPage}"/>
-                    </TabItem.Content>
-                </TabItem>
-                <TabItem   Style="{DynamicResource MainTabItemStyle}" BorderThickness="0"  Background="#FFEDE2FF"  Header="Плейлисты" >
-
-                    <TabItem.Content>
-                        <Frame VerticalAlignment="Top" HorizontalAlignment="Center" Content="{Binding playlistPage}" />
-                    </TabItem.Content>
-                </TabItem>
-            </TabControl>
-        </StackPanel>
-
+        <Frame Grid.Column="1" Content="{Binding currentPage}" HorizontalAlignment="Left" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

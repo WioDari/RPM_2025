@@ -11,20 +11,28 @@ using static Music.ViewModels.AlbumViewModel;
 
 namespace Music.ViewModels
 {
-    partial class TrackViewModel : ObservableObject
+    public class TrackView()
     {
-        public class TrackView()
-        {
-            public string name { get; set; }
-            public List<Artist> artists { get; set; }
-            public string artistString { get; set; }
-            public string playCount { get; set; }
-            public string rating { get; set; }
-            public double durationMillis {  get; set; } 
-            public string duration { get; set; }
-        }
+        public string name { get; set; }
+        public List<Playlist> playlists { get; set; }
+        public List<Artist> artists { get; set; }
+        public string artistString { get; set; }
+        public string playCount { get; set; }
+        public string rating { get; set; }
+        public double durationMillis { get; set; }
+        public string duration { get; set; }
+        public int albId { get; set; }  
+        public string albumName { get; set; }   
+    }
+    public partial class TrackViewModel : ObservableObject
+    {
+      
         public TrackViewModel() {
             getTracks();
+        }
+        public TrackViewModel(int id)
+        {
+            getTracks(id);
         }
         public ObservableCollection<TrackView> data { get; set; }
         public void getTracks()
@@ -48,6 +56,31 @@ namespace Music.ViewModels
                 TimeSpan timeSpan =  TimeSpan.FromSeconds(d.durationMillis);
                  d.duration = $"{timeSpan:mm\\:ss}";
            
+            }
+        }
+        public void getTracks(int id)
+        {
+            var context = new MusicDbContext();
+            data = new ObservableCollection<TrackView>(context.Tracks
+                    .Select(x => new TrackView
+                    {
+                        name = x.TrackName,
+                        playCount = x.PlayCount.ToString(),
+                        rating = x.Rating.ToString(),
+                        durationMillis = x.Duration,
+                        artists = x.Artists.ToList(),
+                        albId = x.AlbumId,
+                    }).Where(x => x.albId == id).ToList());
+            foreach (var d in data)
+            {
+
+                foreach (var a in d.artists)
+                {
+                    d.artistString += a.ArtistName + " ";
+                }
+                TimeSpan timeSpan = TimeSpan.FromSeconds(d.durationMillis);
+                d.duration = $"{timeSpan:mm\\:ss}";
+                
             }
         }
     }

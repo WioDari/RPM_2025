@@ -19,6 +19,8 @@ public partial class Playlist
 
     public virtual User User { get; set; } = null!;
 
+    public virtual ICollection<UserPlaylistSubscription> UserPlaylistSubscriptions { get; set; } = new List<UserPlaylistSubscription>();
+
     public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
 
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();

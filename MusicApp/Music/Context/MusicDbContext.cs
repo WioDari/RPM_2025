@@ -38,6 +38,8 @@ public partial class MusicDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+    public virtual DbSet<UserPlaylistSubscription> UserPlaylistSubscriptions { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=MusicDB;Username=postgres;Password=3224");
@@ -267,6 +269,25 @@ public partial class MusicDbContext : DbContext
                 .HasForeignKey(d => d.SubscriptionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("Users_SubscriptionId_fkey");
+        });
+
+        modelBuilder.Entity<UserPlaylistSubscription>(entity =>
+        {
+            entity.HasKey(e => new { e.UserId, e.PlaylistId }).HasName("UserPlaylistSubscriptions_pkey");
+
+            entity.Property(e => e.SubscriptionDate)
+                .HasDefaultValueSql("now()")
+                .HasColumnType("timestamp without time zone");
+
+            entity.HasOne(d => d.Playlist).WithMany(p => p.UserPlaylistSubscriptions)
+                .HasForeignKey(d => d.PlaylistId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("UserPlaylistSubscriptions_PlaylistId_fkey");
+
+            entity.HasOne(d => d.User).WithMany(p => p.UserPlaylistSubscriptions)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("UserPlaylistSubscriptions_UserId_fkey");
         });
 
         OnModelCreatingPartial(modelBuilder);
