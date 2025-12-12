@@ -110,7 +110,7 @@ namespace Spotify_wpf.ViewModels
         public void LoadTrackList(int? id = null)
         {
             var context = new MusicContext();
-            Name = context.Artists.Include(a => a.Albums.Where(a => a.AlbumId == id)).FirstOrDefault().ArtistName;
+            Name = context.Albums.Where(a => a.AlbumId == id).Select(a => a.Artist.ArtistName).FirstOrDefault();
             namealbum = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().AlbumName;
             Image = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().CoverPath;
             genresses = context.AlbumGenres.Include(ag => ag.Genre).Where(ag => ag.AlbumId == id).Select(a => a.Genre.GenreName).ToList();

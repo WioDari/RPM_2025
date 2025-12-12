@@ -53,7 +53,7 @@ namespace Spotify_wpf.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Spotify_wpf;V1.0.0.0;component/views/albumusercontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Spotify_wpf;component/views/albumusercontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AlbumUserControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

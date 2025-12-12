@@ -23,6 +23,8 @@ public partial class User
 
     public DateOnly LastLogin { get; set; }
 
+    public int? Block { get; set; }
+
     public virtual ICollection<PlaylistUser> PlaylistUsers { get; set; } = new List<PlaylistUser>();
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();

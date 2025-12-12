@@ -90,13 +90,14 @@ namespace Spotify_wpf
         }
 
         public ICommand AuthCommand { get; }
-
+        public ICommand GuestCommand { get; }
         public ICommand UpdateCaptchaCommand { get; }
 
         public AuthViewModel()
         {
             GenerateCaptcha();
             AuthCommand = new RelayCommand(OnAuth);
+            GuestCommand = new RelayCommand(Guest);
             UpdateCaptchaCommand = new RelayCommand(GenerateCaptcha);
             if (Settings.Default.userid != 0)
             {
@@ -167,6 +168,20 @@ namespace Spotify_wpf
                 }
             }
         }
+
+        public void Guest()
+        {
+            Window g = new Views.Guest();
+            g.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is not Views.Guest)
+                {
+                    w.Close();
+                }
+            }
+        }
+
 
 
 

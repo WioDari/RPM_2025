@@ -323,6 +323,7 @@ public partial class MusicContext : DbContext
             entity.ToTable("User");
 
             entity.Property(e => e.UserId).HasColumnName("User_Id");
+            entity.Property(e => e.Block).HasColumnName("block");
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.RoleId).HasColumnName("Role_Id");
             entity.Property(e => e.SubscriptionId).HasColumnName("Subscription_Id");

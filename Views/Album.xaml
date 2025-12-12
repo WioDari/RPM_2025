@@ -10,10 +10,10 @@
 
     <Grid Background="White">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="379*"/>
-            <ColumnDefinition Width="168*"/>
-            <ColumnDefinition Width="168*"/>
-            <ColumnDefinition Width="75*"/>
+            <ColumnDefinition Width="384*"/>
+            <ColumnDefinition Width="170*"/>
+            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
@@ -32,16 +32,18 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
-        <TextBox TextWrapping="Wrap" Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="0" Height="Auto" Width="Auto" Margin="10,0,10,0" MinHeight="30"/>
-        <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="Auto" Height="Auto" MinHeight="30" FontFamily="Times New Roman" ItemsSource="{Binding genres}" FontSize="20" SelectedItem="{Binding selectedGenres}"/>
-        <StackPanel Grid.Column="2" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="10" MinHeight="30">
-            <RadioButton Content="По возрастанию" Height="14" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="14"/>
-            <RadioButton Grid.Column="2" Content="По убыванию" HorizontalAlignment="Left" VerticalAlignment="Center" Height="14" Width="160"  FontFamily="Times New Roman" FontSize="14"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding searchText, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Grid.Column="0" Height="30" Width="Auto" Margin="10,0,10,0" MinHeight="30" IsEnabled="{Binding ., Converter={StaticResource GuestConverter}}"/>
+        <ComboBox Grid.Column="1" VerticalAlignment="Center" Width="Auto" Height="30" MinHeight="30" FontFamily="Times New Roman" ItemsSource="{Binding genres}" FontSize="20" SelectedItem="{Binding selectedGenres}" IsEnabled="{Binding ., Converter={StaticResource GuestConverter}}"/>
+        <StackPanel Grid.Column="2" Height="30" Width="Auto" VerticalAlignment="Center" Margin="10,0,10,0" MinHeight="30" IsEnabled="{Binding ., Converter={StaticResource GuestConverter}}">
+            <RadioButton Content="По возрастанию" Height="14" Width="160" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Times New Roman" FontSize="14" IsChecked="{Binding selectedSort, Converter={StaticResource RadioButtonConverter}, ConverterParameter=По возрастанию}"/>
+            <RadioButton Grid.Column="2" Content="По убыванию" HorizontalAlignment="Left" VerticalAlignment="Center" Height="14" Width="160"  FontFamily="Times New Roman" FontSize="14" IsChecked="{Binding selectedSort, Converter={StaticResource RadioButtonConverter}, ConverterParameter=По убыванию}"/>
 
 
         </StackPanel>
-      
-       
+        <Button Grid.Column="3" Content="Добавить альбом" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Times New Roman" Margin="10,5,10,5" Command="{Binding GoAddAlbum}"/>
+
+
+
 
 
     </Grid>

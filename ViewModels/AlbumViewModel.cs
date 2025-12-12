@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Spotify_wpf.Context;
 using Spotify_wpf.Models;
+using Spotify_wpf.Views;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace Spotify_wpf.ViewModels
@@ -33,6 +34,8 @@ namespace Spotify_wpf.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        public ICommand GoAddAlbum { get; }
 
         private string _selectedGenres { get; set; } = "Жанры";
         public string selectedGenres
@@ -97,10 +100,16 @@ namespace Spotify_wpf.ViewModels
            
         }
 
+        public void GoAddAlbums()
+        {
+            Window window = new AddAlbum();
+            window.Show();
+        }
+
         public AlbumViewModel()
         {
             LoadAlbums();
-
+            GoAddAlbum = new RelayCommand(GoAddAlbums);
             var context = new MusicContext();
             var genresList = context.Genres 
                 .Select(g => g.GenreName)
@@ -143,10 +152,10 @@ namespace Spotify_wpf.ViewModels
                     id = a.AlbumId.ToString(),
                     nametrack = a.AlbumName,
                     nameartist = a.Artist.ArtistName,
-                    totdur = a.TotalDuration.ToString(),
                     trackcount = $"Треков: {a.AlbumTracks.Where(ab => ab.AlbumId == a.AlbumId).Count().ToString()}",
                     imageLink = a.CoverPath == null ? $"/data/icon.png" : a.CoverPath,
-                    genreses = a.AlbumGenres.Where(b => b.AlbumId == a.AlbumId).Select(a => a.Genre.GenreName).ToList()
+                    genreses = a.AlbumGenres.Where(b => b.AlbumId == a.AlbumId).Select(a => a.Genre.GenreName).ToList(),
+                    totdur = a.TotalDur.ToString(),
                 })
                 .ToList());
             _album = new ObservableCollection<AlbumView>(_allAlbums);
@@ -175,7 +184,7 @@ namespace Spotify_wpf.ViewModels
 
             queryAlbum = selectedSort switch
             {
-                "По возврастанию" => queryAlbum.OrderBy(a => a.totdur),
+                "По возрастанию" => queryAlbum.OrderBy(a => a.totdur),
                 "По убыванию" => queryAlbum.OrderByDescending(a => a.totdur),
                 _ => queryAlbum
             };

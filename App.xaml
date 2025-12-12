@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:Spotify_wpf"
              StartupUri="/Views/Auth.xaml">
     <Application.Resources>
+        <local:RadioButtonConverter x:Key="RadioButtonConverter"/>
         <local:CheckBoxChangeVisibility x:Key="CheckBoxChangeVisibility"/>
+        <local:GuestConverter x:Key="GuestConverter"/>
         <Style TargetType="Window" x:Key="Window">
             <Setter Property="Icon" Value="/Resources/icon.ico"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>

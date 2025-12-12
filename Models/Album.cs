@@ -11,11 +11,13 @@ public partial class Album
 
     public string CoverPath { get; set; } = null!;
 
-    public int TotalDuration { get; set; }
+    public int? TotalDuration { get; set; }
 
     public int ReleaseYear { get; set; }
 
     public int ArtistId { get; set; }
+
+    public TimeOnly? TotalDur { get; set; }
 
     public virtual ICollection<AlbumGenre> AlbumGenres { get; set; } = new List<AlbumGenre>();
 

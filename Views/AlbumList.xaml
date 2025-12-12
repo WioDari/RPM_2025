@@ -37,6 +37,6 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding genre}" FontFamily="Times New Roman" FontSize="18"/>
 
         </StackPanel>
-
+    
     </Grid>
 </Window>

@@ -25,8 +25,9 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding lastenter}" FontFamily="Times New Roman" FontSize="16"/>
 
         </StackPanel>
-        <TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" FontWeight="Bold" FontFamily="Times New Roman" FontSize="20" Text="{Binding time}" VerticalAlignment="Bottom" Height="60" Width="104"/>
-   
+        <!--<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" FontWeight="Bold" FontFamily="Times New Roman" FontSize="20" Text="{Binding time}" VerticalAlignment="Bottom" Height="60" Width="104"/>-->
+        <Button  HorizontalAlignment="Right" FontWeight="Bold" FontFamily="Times New Roman" FontSize="20" VerticalAlignment="Center" Height="23" Width="150" Content="Заблокировать" Margin="10" Background="#FFCC3366" Visibility="{Binding banbut}" Command="{Binding DataContext.BanCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}"/>
+        <Button  HorizontalAlignment="Right" FontWeight="Bold" FontFamily="Times New Roman" FontSize="20" VerticalAlignment="Center" Height="23" Width="150" Content="Разблокировать" Margin="10" Background="#FF5DCC99" Visibility="{Binding unbunbut}" Command="{Binding DataContext.BanCommand, RelativeSource={RelativeSource AncestorType=Page}}" CommandParameter="{Binding}"/>
 
     </Grid>
 </UserControl>

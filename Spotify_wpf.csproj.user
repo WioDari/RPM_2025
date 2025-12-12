@@ -3,6 +3,18 @@
   <PropertyGroup />
   <ItemGroup />
   <ItemGroup>
+    <Compile Update="Views\AddAlbum.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddPlaylist.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddPlaylists.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\AddTrack.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Album.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -16,6 +28,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Auth.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Guest.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\Menu.xaml.cs">
@@ -38,6 +53,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\AddAlbum.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddPlaylist.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddPlaylists.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddTrack.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\Album.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -54,6 +81,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Guest.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Menu.xaml">
