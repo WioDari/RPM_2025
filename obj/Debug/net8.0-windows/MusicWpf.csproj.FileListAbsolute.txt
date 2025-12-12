@@ -155,3 +155,7 @@ C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Pl
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Playlist.baml
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\PlaylistUC.g.cs
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\PlaylistUC.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddAlbum.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddAlbum.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddTrack.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddTrack.baml
