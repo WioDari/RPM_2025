@@ -19,7 +19,7 @@ public partial class User
 
     public DateOnly Registration { get; set; }
 
-    public DateOnly? LastLog { get; set; }
+    public DateTime? LastLog { get; set; }
 
     public bool? Ssubsription { get; set; }
 

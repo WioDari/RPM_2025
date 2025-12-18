@@ -3,11 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="musicc.MainWindow" Background="White"
+        x:Class="musicc.MainWindow" Background="White" Foreground="Black"
         Title="musicc" MinHeight="480" MinWidth="720" FontFamily="Times New Roman">
    <Grid>
         
-       <TextBox Background="White" Margin="0,150,0,0" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="150" Name="box_name" TextChanged="box_name_TextChanged" BorderBrush="Black" />
+       <TextBox Foreground="#FF7A00CC" Background="White" Margin="0,150,0,0" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="150" Name="box_name" TextChanged="box_name_TextChanged" BorderBrush="Black" />
        <!--ujh-->
         <TextBlock HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Foreground="#FF1C1C1C"  Height="50" Width="200" TextAlignment="Center">
         </TextBlock>
@@ -15,14 +15,14 @@
         <Button Content="вход" Foreground="White" HorizontalAlignment="Center" Margin="0,380,0,0" VerticalAlignment="Top" Name="into" Click="into_Click" Background="#FF7A00CC" />
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Height="51" Width="800" TextAlignment="Center" TextWrapping="Wrap" Background="#FF7A00CC" Foreground="White"><Run  Text="Авторизация"/></TextBlock>
         <CheckBox  HorizontalAlignment="Center" Margin="190,210,0,0" VerticalAlignment="Top"  BorderBrush="Black" x:Name="cheker"/>
-        <TextBox Background="White" HorizontalAlignment="Center" Margin="0,210,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black"/>
+        <TextBox Foreground="#FF7A00CC" Background="White" HorizontalAlignment="Center" Margin="0,210,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black"/>
         
             <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="0,250,0,0" Width="145" Height="60" CornerRadius="5">
-                <TextBlock TextWrapping="Wrap" Text="" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="capt"/>
+                <TextBlock TextWrapping="Wrap" Text="" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" x:Name="capt"/>
             </Border>
         <Line x:Name="line_one" Margin="0,250,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"></Line>
         <Line  x:Name="line_two" Margin="0,250,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"></Line>
-        <TextBox Background="White" BorderBrush="Black" x:Name="exit_capt" Margin="0,315,0,0" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBox>
+        <TextBox Foreground="#FF7A00CC" Background="White" BorderBrush="Black" x:Name="exit_capt" Margin="0,315,0,0" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBox>
         <Button Content="Создать" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" Foreground="White" Background="#FF7A00CC" Click="Button_Click_1"/>
         <TextBlock x:Name="errors" Foreground="Crimson" Margin="0,320,0,0" TextAlignment="Center" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBlock>
 

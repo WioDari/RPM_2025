@@ -37,3 +37,9 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [C:/Users/sekibanki/RiderProjects/musicc/musicc/Window1.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/sekibanki/RiderProjects/musicc/musicc/Window2.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[C:/Users/sekibanki/RiderProjects/musicc/musicc/Window3.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
