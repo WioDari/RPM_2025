@@ -1,0 +1,188 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        d:DesignWidth="425" 
+        d:DesignHeight="450"
+		Width="425"
+		Height="450"
+        x:Class="MusicPlusPlus.MainWindow"
+        Title="MusicPlusPlus"
+        CanResize="False"
+		WindowStartupLocation="CenterScreen">
+
+	<Grid
+		ShowGridLines="False"
+		ColumnDefinitions="*,*,*,*,*,*"
+		RowDefinitions="50,25,25,25,25,25,25,35,75,25,25,25,*">
+
+		<!--ШАПКА-->
+		<Grid
+			Grid.ColumnSpan="6"
+			Grid.Row="0"
+			Background="{DynamicResource ResourceKey=SecondaryBackground}">
+
+			<TextBlock
+				Text="АВТОРИЗАЦИЯ"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				FontSize="24"
+				FontWeight="SemiBold">
+			</TextBlock>
+		</Grid>
+
+		
+
+		<!--ВВОД ЛОГИНА, ПАРОЛЯ-->
+		
+			<!--логин-->
+		<TextBlock
+			Text="Введите логин:"
+			Grid.ColumnSpan="6"
+			Grid.Row="2"
+			HorizontalAlignment="Center">
+			</TextBlock>
+		<TextBox
+			x:Name="LoginTB"
+			Text="antonina.pushmenkova"
+			Grid.ColumnSpan="6"
+			Grid.Row="3"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Height="25"
+			Width="275"
+			Watermark="Логин...">
+			</TextBox>
+
+			<!--пароль-->
+		<TextBlock
+			Text="Введите пароль:"
+			Grid.ColumnSpan="6"
+			Grid.Row="5"
+			HorizontalAlignment="Center">
+		</TextBlock>
+		<TextBox
+			x:Name="PasswordTB"
+			Text="it3cySf5"
+			Grid.ColumnSpan="6"
+			Grid.Row="6"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center"
+			Height="25"
+			Width="275"
+			Watermark="Пароль..."
+			PasswordChar="*">
+		</TextBox>
+		
+		<!--ПОКАЗ/СКРЫТИЕ ПАРОЛЯ-->
+		<StackPanel
+			Grid.ColumnSpan="6"
+			Grid.Row="7"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Center"
+			Orientation="Horizontal"
+			Spacing="25">
+
+			<TextBlock
+				Text="Показывать пароль:"
+				VerticalAlignment="Center">
+			</TextBlock>
+			<ToggleButton
+				x:Name="PasswordVisibilityRB"
+				Click="PasswordVisibilityRB_Click"
+				Height="20"
+				Width="20"
+				BorderThickness="1.5"
+				CornerRadius="8">
+			</ToggleButton>
+
+		</StackPanel>
+
+		<!--КАПЧА-->
+		<Border
+		Grid.ColumnSpan="6"
+		Grid.Row="8"
+		VerticalAlignment="Center"
+		HorizontalAlignment="Center"
+		Width="211"
+		Height="56"
+		CornerRadius="8"
+		BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+		BorderThickness="1.5">
+			
+			<Image
+			x:Name="CaptchaImage"
+			Width="200"
+			Height="50">
+			</Image>
+
+
+		</Border>
+
+		
+		<!--ВВОД КАПЧИ-->
+		<TextBlock
+			Text="Введите капчу:"
+			Grid.ColumnSpan="6"
+			Grid.Row="9"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Center">
+		</TextBlock>
+		<TextBox
+			x:Name="CaptchaTB"
+			Grid.Column="1"
+			Grid.ColumnSpan="3"
+			Grid.Row="11"
+			Margin="15,0,0,0"
+			Width="225"
+			Height="25"
+			Watermark="Капча...">
+		</TextBox>
+		
+		<!--ОБНОВИТЬ КАПЧУ-->
+		<Button
+			x:Name="RefreshCaptchaB"
+			Click="RefreshCaptchaB_Click"
+			Grid.Column="4"
+			Grid.Row="11"
+			VerticalAlignment="Center"
+			HorizontalAlignment="Right"
+			Margin="0,0,8,0"
+			Width="32"
+			Content="💞"
+			ToolTip.Tip="Обновить капчу">
+		</Button>
+
+		<!--ВОЙТИ-->
+		<Button
+		x:Name="LoginB"
+		Click="LoginB_Click"
+		Grid.Row="13"
+		Grid.Column="1"
+		Grid.ColumnSpan="2"
+		VerticalAlignment="Center"
+		HorizontalAlignment="Right"
+		Margin="0,0,25,0"
+		Width="75"
+		Content="Войти"
+		FontWeight="SemiBold"
+		IsDefault="True">
+		</Button>
+
+		<!--ГОСТЕВОЙ РЕЖИМ-->
+		<Button
+		x:Name="GuestModeB"
+		Click="GuestModeB_Click"
+		Grid.Row="13"
+		Grid.Column="3"
+		Grid.ColumnSpan="2"
+		VerticalAlignment="Center"
+		HorizontalAlignment="Left"
+		Margin="25,0,0,0"
+		Width="100"
+		Content="Режим гостя">
+		</Button>
+
+	</Grid>
+</Window>

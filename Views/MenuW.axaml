@@ -1,0 +1,217 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        d:DesignWidth="800"
+        MinWidth="800"
+        d:DesignHeight="600"
+        MinHeight="600"
+        x:Class="MusicPlusPlus.MenuW"
+        Title="MenuW">
+
+    <Grid
+    ShowGridLines="False"
+    ColumnDefinitions="*"
+    RowDefinitions="75,*"
+    PointerMoved="Grid_PointerMoved">
+
+        <!--ШАПКА-->
+        <DockPanel
+        Grid.Row="0"
+        Background="{DynamicResource ResourceKey=SecondaryBackground}">
+
+            <!--лого-->
+            <Image
+            Source="/Resources/icon.png"
+            VerticalAlignment="Center"
+            Height="64"
+            Width="64">
+            </Image>
+
+            <!--заголовок-->
+            <TextBlock
+            x:Name="TitleTBlock"
+            Text="Главное меню"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            FontSize="32"
+            FontWeight="SemiBold">
+            </TextBlock>
+
+            <!--кнопка выхода-->
+            <Button
+            x:Name="LogoutB"
+            Click="LogoutB_Click"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,25,0"
+            Height="50"
+            Width="100"
+            FontSize="24"
+            Content="Выйти">
+            </Button>
+
+        </DockPanel>
+
+
+
+        <!--ВКЛАДКИ-->
+        <TabControl
+        x:Name="Tabs"
+        Grid.Row="1"
+        TabStripPlacement="Left">
+
+            <!--Профиль-->
+            <TabItem
+            x:Name="UserNameTab"
+            Header="Имя пользователя">
+
+                <Grid>
+					
+                    <!--информация об авторизованном пользователе-->
+                    <StackPanel
+                    x:Name="UserInfoSP"
+                    Spacing="25"
+                    IsVisible="False">
+
+                        <!--логин пользователя-->
+                        <Border
+                        HorizontalAlignment="Center"
+                        Margin="0,25,0,0"
+                        CornerRadius="8"
+                        Padding="5"
+                        BorderThickness="1.5"
+                        BorderBrush="{DynamicResource ResourceKey=MainAccent}">
+						
+                            <TextBlock
+                            Text="Логин:"
+                            HorizontalAlignment="Center"
+                            FontSize="24">
+                            </TextBlock>
+
+                        </Border>
+                        <TextBlock
+                        x:Name="LoginTBlock"
+                        Text="{Binding login}"
+                        HorizontalAlignment="Center"
+                        FontSize="24">
+                        </TextBlock>
+
+                        <!--имя пользователя-->
+                        <Border
+                        HorizontalAlignment="Center"
+                        Margin="0,25,0,0"
+                        CornerRadius="8"
+                        Padding="5"
+                        BorderThickness="1.5"
+                        BorderBrush="{DynamicResource ResourceKey=MainAccent}">
+						
+                            <TextBlock
+                            Text="Имя:"
+                            HorizontalAlignment="Center"
+                            FontSize="24">
+                            </TextBlock>
+
+                        </Border>
+                        <TextBlock
+                        x:Name="FullnameTBlock"
+                        Text="{Binding fullname}"
+                        HorizontalAlignment="Center"
+                        FontSize="24">
+                        </TextBlock>
+
+                    </StackPanel>
+
+                    <!--сообщение гостю-->
+                    <TextBlock
+                    x:Name="GuestInfoTBlock"
+                    Text="В режиме гостя вы не можете полноценно просматривать информацию об альбомах, исполнителях и плейлистах. Пожалуйста, авторизуйтесь для расширения своих полномочий."
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,0"
+                    TextWrapping="Wrap"
+                    TextAlignment="Justify"
+                    FontSize="28">
+                    </TextBlock>
+
+                </Grid>
+
+            </TabItem>
+
+            <!--Альбомы-->
+            <TabItem
+            x:Name="AlbumsTab"
+            Header="Альбомы">
+
+                <Grid>
+					
+                    <ScrollViewer
+                    VerticalScrollBarVisibility="Hidden">
+						
+                        <ItemsControl
+                        x:Name="AlbumsIC">
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel
+                                    Margin="0,15,0,0"
+                                    Orientation="Horizontal"
+                                    ItemSpacing="15"
+                                    HorizontalAlignment="Center"
+                                    LineSpacing="15">
+                                    </WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                    </ScrollViewer>
+
+                    <!--
+                    <ListBox
+                    x:Name="AlbumsLB"
+                    HorizontalAlignment="Center"
+                    Margin="0,25,0,0">
+						
+                        <ListBox.ItemTemplate>
+							<DataTemplate>
+								<DockPanel
+                                HorizontalSpacing="5">
+									
+                                    <Image
+                                    Source="{Binding Coverpath}">
+                                    </Image>
+                                    
+                                    <TextBlock
+                                    Text="{Binding Albumname}">
+                                    </TextBlock>
+
+                                </DockPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+                    -->
+
+                </Grid>
+
+            </TabItem>
+
+            <TabItem
+            x:Name="PlaylistsTab"
+            Header="Плейлисты">
+            </TabItem>
+
+            <TabItem
+            x:Name="ArtistsTab"
+            Header="Исполнители">
+            </TabItem>
+
+            <TabItem
+            x:Name="UsersTab"
+            Header="Пользователи">
+            </TabItem>
+
+        </TabControl> 
+
+    </Grid>
+
+</Window>

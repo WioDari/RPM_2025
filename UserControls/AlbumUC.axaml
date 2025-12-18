@@ -1,0 +1,80 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignWidth="270" 
+             d:DesignHeight="360"
+             Width="240"
+             Height="320"
+             Background="Transparent"
+             x:Class="MusicPlusPlus.AlbumUC">
+
+    <Border
+    BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+    BorderThickness="1.5">
+		
+        <Grid
+        ShowGridLines="False"
+        ColumnDefinitions="*,*,*,*"
+        RowDefinitions="*,*,*,*">
+
+            <Image
+            x:Name="AlbumCover"
+            Grid.ColumnSpan="4"
+            Grid.Row="0"
+            Grid.RowSpan="3"
+            Stretch="Fill">
+            </Image>
+
+
+            <Border
+            BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+            BorderThickness="1.5"
+            Grid.ColumnSpan="4"
+            Grid.Row="3"
+            Height="80"
+            Width="240">
+				
+                <Grid
+                ShowGridLines="False"
+                ColumnDefinitions="*,75"
+                Background="{DynamicResource ResourceKey=SecondaryBackground}">
+			
+                    <TextBlock
+                    Text="{Binding AlbumName}"
+                    TextWrapping="Wrap"
+                    Grid.Column="0"
+                    Margin="5,5,0,0"
+                    FontSize="12">
+                    </TextBlock>
+
+                    <TextBlock
+                    Text="{Binding ArtistName}"
+                    TextWrapping="Wrap"
+                    Grid.Column="0"
+                    Margin="5,30,0,0"
+                    FontSize="10">
+                    </TextBlock>
+
+                    <TextBlock
+                    Text="{Binding TrackCount}"
+                    TextWrapping="Wrap"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    FontSize="12">
+                    </TextBlock>
+
+                </Grid>
+
+            </Border>
+            
+
+        </Grid>
+
+    </Border>
+
+    
+
+</UserControl>

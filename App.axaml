@@ -1,0 +1,373 @@
+﻿<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MusicPlusPlus.App"
+             RequestedThemeVariant="Light">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+	<!--ЦВЕТА И ТЕМЫ-->
+	<Application.Resources>
+		
+		<!--ЦВЕТА-->
+
+			<!--Основной фон-->
+		<SolidColorBrush
+			x:Key="MainBackground"
+			Color="#FFFFFF">
+		</SolidColorBrush>
+
+			<!--Дополнительный фон-->
+		<SolidColorBrush
+			x:Key="SecondaryBackground"
+			Color="#EDE2FF">
+		</SolidColorBrush>
+
+			<!--Основной акцент-->
+		<SolidColorBrush
+			x:Key="MainAccent"
+			Color="#7A00CC">
+		</SolidColorBrush>
+
+			<!--Дополнительный акцент-->
+		<SolidColorBrush
+			x:Key="SecondaryAccent"
+			Color="#9C4DFF">
+		</SolidColorBrush>
+
+			<!--Основной текст-->
+		<SolidColorBrush
+			x:Key="MainText"
+			Color="#1C1C1C">
+		</SolidColorBrush>
+
+			<!--Дополнительный текст-->
+		<SolidColorBrush
+			x:Key="SecondaryText"
+			Color="#4B4B4B">
+		</SolidColorBrush>
+
+			<!--Ошибка-->
+		<SolidColorBrush
+			x:Key="Error"
+			Color="#CC3366">
+		</SolidColorBrush>
+
+			<!--Успех-->
+		<SolidColorBrush
+			x:Key="Success"
+			Color="#5DCC99">
+		</SolidColorBrush>
+
+
+
+		<!--ТЕМЫ-->
+
+		<!--Кнопка-->
+		<ControlTheme
+		x:Key="{x:Type Button}"
+		TargetType="Button">
+			
+			<Style
+			Selector="^:pointerover">
+				
+				<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=SecondaryBackground}">
+				</Setter>
+
+				<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=SecondaryAccent}">
+				</Setter>
+
+				<Setter
+				Property="Foreground"
+				Value="{DynamicResource ResourceKey=SecondaryAccent}">
+				</Setter>
+
+			</Style>
+
+		</ControlTheme>
+
+		<!--ToggleButton-->
+		<ControlTheme
+		x:Key="{x:Type ToggleButton}"
+		TargetType="ToggleButton">
+			
+			<Style
+			Selector="^:pointerover">
+				
+				<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=SecondaryBackground}">
+				</Setter>
+
+				<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=SecondaryAccent}">
+				</Setter>
+
+			</Style>
+
+			<Style
+			Selector="^:checked">
+				
+				<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=MainAccent}">
+				</Setter>
+
+				<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=SecondaryAccent}">
+				</Setter>
+
+				<Setter
+				Property="BorderThickness"
+				Value="3">
+				</Setter>
+
+			</Style>
+
+		</ControlTheme>
+
+	</Application.Resources>
+	
+    <Application.Styles>
+
+		<!--СТИЛЬ ОКНА-->
+		<Style
+			Selector="Window">
+
+			<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=MainBackground}">
+			</Setter>
+
+			<Setter
+				Property="Foreground"
+				Value="{DynamicResource ResourceKey=MainText}">
+			</Setter>
+
+			<Setter
+				Property="FontFamily"
+				Value="Times New Roman">
+			</Setter>
+			
+		</Style>
+
+
+		<!--СТИЛЬ ТЕКСТБОКСА-->
+		<Style
+			Selector="TextBox">
+
+			<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=SecondaryBackground}">
+			</Setter>
+
+			<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=MainAccent}">
+			</Setter>
+
+			<Setter
+				Property="BorderThickness"
+				Value="1.5">
+			</Setter>
+
+			<Setter
+				Property="CornerRadius"
+				Value="8">
+			</Setter>
+
+			<Setter
+				Property="FontSize"
+				Value="14">
+			</Setter>
+
+			<Setter
+			Property="VerticalContentAlignment"
+			Value="Center">
+			</Setter>
+
+			<Setter
+			Property="BackgroundSizing"
+			Value="InnerBorderEdge">
+			</Setter>
+			
+		</Style>
+
+		<!--текстбокс при наведении-->
+		<Style
+		Selector="TextBox:pointerover /template/ Border">
+			
+			<Setter
+			Property="BorderBrush"
+			Value="{DynamicResource ResourceKey=SecondaryAccent}">
+			</Setter>
+
+			<Setter
+				Property="CornerRadius"
+				Value="8">
+			</Setter>
+
+			<Setter
+			Property="Background"
+			Value="{DynamicResource ResourceKey=SecondaryBackground}">
+			</Setter>
+
+		</Style>
+
+		<!--текстбокс при фокусе-->
+		<Style
+		Selector="TextBox:focus /template/ Border">
+			
+			<Setter
+			Property="BorderBrush"
+			Value="{DynamicResource ResourceKey=SecondaryAccent}">
+			</Setter>
+
+			<Setter
+				Property="CornerRadius"
+				Value="8">
+			</Setter>
+
+			<Setter
+			Property="Background"
+			Value="{DynamicResource ResourceKey=SecondaryBackground}">
+			</Setter>
+
+			
+
+		</Style>
+		
+
+		<!--СТИЛЬ ЧЕКБОКСА-->
+		<Style
+			Selector="ToggleButton">
+
+			<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=SecondaryBackground}">
+			</Setter>
+
+			<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=MainAccent}">
+			</Setter>
+
+			<Setter
+				Property="Cursor"
+				Value="Hand">
+			</Setter>
+
+		</Style>
+
+
+		<!--СТИЛЬ КНОПКИ-->
+		<Style
+			Selector="Button">
+
+			<Setter
+				Property="Background"
+				Value="{DynamicResource ResourceKey=SecondaryBackground}">
+			</Setter>
+
+			<Setter
+				Property="BorderBrush"
+				Value="{DynamicResource ResourceKey=MainAccent}">
+			</Setter>
+
+			<Setter
+				Property="Cursor"
+				Value="Hand">
+			</Setter>
+
+			<Setter
+				Property="CornerRadius"
+				Value="8">
+			</Setter>
+
+			<Setter
+			Property="Height"
+			Value="32">
+			</Setter>
+
+			<Setter
+            Property="VerticalContentAlignment"
+            Value="Center">
+            </Setter>
+
+            <Setter
+            Property="HorizontalContentAlignment"
+            Value="Center">
+            </Setter>
+
+			<Setter
+			Property="BorderThickness"
+			Value="1.5">
+			</Setter>
+			
+		</Style>
+
+		<!--Вкладка при наведении-->
+		<Style
+		Selector="TabItem">
+			
+			<Style
+			Selector="^:pointerover">
+
+				<Setter
+				Property="Cursor"
+				Value="Hand">
+				</Setter>
+
+			</Style>
+
+		</Style>
+
+		<!--ЛИСТБОКС-->
+		<Style
+		Selector="ListBox /template/ ScrollBar">
+
+			<Setter
+			Property="ViewportSize"
+			Value="0">
+			</Setter>
+
+		</Style>
+		
+		<Style
+		Selector="ListBoxItem">
+
+			<Setter
+			Property="BorderBrush"
+			Value="{DynamicResource ResourceKey=MainAccent}">
+			</Setter>
+
+			<Setter
+			Property="BorderThickness"
+			Value="1.5">
+			</Setter>
+
+			<Setter
+			Property="CornerRadius"
+			Value="8">
+			</Setter>
+
+			<Setter
+			Property="FontSize"
+			Value="20">
+			</Setter>
+
+			<Setter
+			Property="Height"
+			Value="64">
+			</Setter>
+
+		</Style>
+
+        <FluentTheme />
+    </Application.Styles>
+	
+</Application>
