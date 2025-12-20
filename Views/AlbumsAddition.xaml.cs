@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpotApp_wpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace SpotApp_wpf.Views
         public AlbumsAddition()
         {
             InitializeComponent();
+            DataContext = new AlbumsAddditionViewModel();
         }
     }
 }

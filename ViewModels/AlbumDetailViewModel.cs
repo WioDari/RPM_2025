@@ -3,6 +3,7 @@ using NpgsqlTypes;
 using SpotApp_wpf.Context;
 using SpotApp_wpf.Models;
 using SpotApp_wpf.ViewModels;
+using SpotApp_wpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace SpotApp_wpf.ViewModels
 {
@@ -71,9 +74,52 @@ namespace SpotApp_wpf.ViewModels
         public ObservableCollection<TrackDetails> albDetails { get; set; }
         public List<string> genresC { get; set; }
 
-        public AlbumDetailViewModel(int? id = null)
+        public ICommand editAlbumCommand { get;  }
+        public ICommand deleteAlbumCommand { get; }
+
+        private int? albumId;
+        public AlbumDetailViewModel(int? id = null, AlbumViewModel alvm = null)
         {
+            _AlbumViewModel = alvm;
             LoadDetails(id);
+            editAlbumCommand = new RelayCommand(EditAlbums);
+            deleteAlbumCommand = new RelayCommand(DeleteAlbum);
+            albumId = id;
+        }
+
+        public void EditAlbums()
+        {
+            Window add = new AlbumsAddition();
+            add.DataContext = new AlbumsAddditionViewModel(albumId, _AlbumViewModel);
+            add.Show();
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.AlbumDetails)
+                {
+                    w.Close();
+                }
+            }
+        }
+
+        private AlbumViewModel _AlbumViewModel;
+        public void DeleteAlbum()
+        {
+            using var context = new SpotifyContext();
+            Album alb = context.Albums.Where(a => a.AlbumId == albumId).FirstOrDefault();
+            List<GenresInAlbum> oldGenres = context.GenresInAlbums.Where(g => g.AlbumId == albumId).ToList();
+            context.GenresInAlbums.RemoveRange(oldGenres);
+            context.Albums.Remove(alb);
+            context.SaveChanges();
+            _AlbumViewModel.LoadAlbums();
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.AlbumDetails)
+                {
+                    w.Close();
+                }
+            }
         }
 
         public void LoadDetails(int? id = null)
@@ -94,7 +140,7 @@ namespace SpotApp_wpf.ViewModels
             }
             else
             {
-                genres = "";
+                genres = "Нет";
             }
             albDetails = new ObservableCollection<TrackDetails>(context.Tracks.Where(t => t.AlbumId == id)
                 .Include(t => t.ArtistsInTracks)

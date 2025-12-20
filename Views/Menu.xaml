@@ -7,6 +7,7 @@
         xmlns:p="clr-namespace:SpotApp_wpf.Properties"
         mc:Ignorable="d"
         Style="{StaticResource window}"
+        WindowState="Maximized"
         Title="Menu" Height="600" Width="1000">
     <Grid ShowGridLines="False">
         <Grid.ColumnDefinitions>

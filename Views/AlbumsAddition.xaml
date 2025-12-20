@@ -22,22 +22,27 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Border Background="#EDE2FF" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Добавление альбомов" VerticalAlignment="Center" Width="320" Height="auto" FontSize="30"/>
-        <Image HorizontalAlignment="Center" Grid.Row="1" Height="140" VerticalAlignment="Center" Width="140"/>
+        <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="{Binding windowTitle}" VerticalAlignment="Center" Width="auto" Height="auto" FontSize="30"/>
         <Image HorizontalAlignment="Center" Grid.Row="1" Source="/Resources/placeholder_cover.png" Height="140" VerticalAlignment="Center" Width="140"/>
+        <Image Source="{Binding coverPath, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" Grid.Row="1" Height="140" VerticalAlignment="Center" Width="140"/>
         <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" HorizontalAlignment="Center" Height="140" VerticalAlignment="Center" Width="140"/>
-        <Button Content="Загрузить изображение" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Height="30" Width="150" Background="#9c4dff"/>
-        <TextBox HorizontalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="320" Height="45" FontSize="25" Grid.Column="1"/>
-        <DatePicker HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Height="45" Width="320" FontSize="25" Grid.Column="1"/>
-        <ComboBox HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Height="45" Width="320" FontSize="25" Grid.Column="1"/>
-        <StackPanel Height="45" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top">
-            <ComboBox Width="250"/>
-            <Button Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+        <StackPanel Grid.Row="2">
+            <TextBox Text="{Binding coverPath}" Height="30" Margin="10,0,10,5" FontSize="18"/>
+            <Button Content="Загрузить изображение" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="30" Width="150" Background="#9c4dff"/>
+
         </StackPanel>
-        <Button Content="Добавить" HorizontalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="45" Width="200" FontSize="18"/>
+        <TextBox HorizontalAlignment="Center" Grid.Row="3" TextWrapping="Wrap" Text="{Binding title}" VerticalAlignment="Center" Width="320" Height="45" FontSize="25" Grid.Column="1"/>
+        <DatePicker SelectedDate="{Binding selectedDate}" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Height="45" Width="320" FontSize="25" Grid.Column="1"/>
+        <ComboBox ItemsSource="{Binding authors}" SelectedItem="{Binding author}" SelectedIndex="0" HorizontalAlignment="Left" Grid.Row="5" VerticalAlignment="Center" Height="45" Width="320" FontSize="20" Grid.Column="1" Margin="76,0,0,0"/>
+        <StackPanel Height="45" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top">
+            <ComboBox SelectedIndex="0" Width="250" SelectedItem="{Binding selectedGenre}" ItemsSource="{Binding genres}" FontSize="20"/>
+            <Button Content="+" Width="50" Command="{Binding GenreAdditionCommand}" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+            <Button Content="-" Width="50" Command="{Binding GenresClearCommand}" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+        </StackPanel>
+        <Button Content="{Binding btnTitle}" Command="{Binding AlbumAdditionCommand}" HorizontalAlignment="Center" Grid.Row="6" Grid.ColumnSpan="2" VerticalAlignment="Center" Height="45" Width="200" FontSize="18"/>
         <StackPanel Grid.Column="1" Grid.Row="1" Margin="10">
             <TextBlock TextWrapping="Wrap" Text="Список жанров:" FontSize="18"/>
-            <TextBox TextWrapping="Wrap" Text="" Width="416" Height="110" FontSize="20" IsReadOnly="True"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding choosenGenre, UpdateSourceTrigger=PropertyChanged}" Width="416" Height="110" FontSize="20" IsReadOnly="True"/>
         </StackPanel>
         <TextBlock HorizontalAlignment="Center" Height="27" Width="220" Grid.Row="3" TextWrapping="Wrap" Text="Название альбома:" VerticalAlignment="Center" FontSize="25" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Height="27" Width="220" Grid.Row="4" TextWrapping="Wrap" Text="Дата выхода:" VerticalAlignment="Center" FontSize="25" TextAlignment="Center"/>

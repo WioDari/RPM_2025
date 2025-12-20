@@ -9,19 +9,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace SpotApp_wpf.ViewModels
 {
-    internal class AlbumViewModel : BaseViewModel
+    public class AlbumViewModel : BaseViewModel
     {
+        public ICommand AddAlbumCommand { get; }
         public AlbumViewModel()
         {
             var context = new SpotifyContext();
             LoadAlbums();
             genres = new ObservableCollection<string>(context.Genres.OrderBy(g => g.GenreId).Select(g => g.GenreTittle).Distinct().ToList());
             genres.Insert(0, "Все жанры");
-            
+            AddAlbumCommand = new RelayCommand(AddAlbum);
         }
 
         private AlbTemplate _selectedAlbum {  get; set; }
@@ -31,7 +33,8 @@ namespace SpotApp_wpf.ViewModels
             set
             {
                 _selectedAlbum = value;
-                ShowDetails(int.Parse(selectedAlbum.id));
+                if (selectedAlbum != null)
+                    ShowDetails(int.Parse(selectedAlbum.id));
                 OnPropertyChanged();
             }
         }
@@ -110,7 +113,7 @@ namespace SpotApp_wpf.ViewModels
                 var win = new Views.AlbumDetails();
                 if (selectedAlbum != null)
                 {
-                    win.DataContext = new AlbumDetailViewModel(id);
+                    win.DataContext = new AlbumDetailViewModel(id, this);
                 }
                 win.Show();
             }
@@ -120,7 +123,7 @@ namespace SpotApp_wpf.ViewModels
             }
         }
 
-        private void LoadAlbums()
+        public void LoadAlbums()
         {
             var context = new SpotifyContext();
             _allAlbums = new ObservableCollection<AlbTemplate>(context.Albums
@@ -138,6 +141,13 @@ namespace SpotApp_wpf.ViewModels
                 })
                 .ToList());
             albums = new ObservableCollection<AlbTemplate>(_allAlbums);
+        }
+
+        public void AddAlbum()
+        {
+            Window add = new AlbumsAddition();
+            add.DataContext = new AlbumsAddditionViewModel(null, this);
+            add.Show();
         }
 
         public void UseFilters()

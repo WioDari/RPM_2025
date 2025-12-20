@@ -29,5 +29,9 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
+            <Button Height="40" Width="100" Content="Редактировать" Command="{Binding editAlbumCommand}"/>
+            <Button Height="40" Width="100" Content="Удалить" Background="#cc3366" Command="{Binding deleteAlbumCommand}"/>
+        </StackPanel>
     </Grid>
 </Window>

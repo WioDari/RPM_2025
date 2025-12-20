@@ -16,6 +16,7 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="3*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="2"/>
@@ -25,6 +26,14 @@
         <StackPanel Grid.Row="3">
             <TextBlock TextWrapping="Wrap" Text="Список тегов:" FontSize="15" TextAlignment="Center"/>
             <TextBox TextWrapping="Wrap" Text="" FontSize="20" Height="60" IsReadOnly="true"/>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <TextBlock TextWrapping="Wrap" Text="Список композиций:" FontSize="15" TextAlignment="Center"/>
+            <TextBox TextWrapping="Wrap" Text="" FontSize="20" Height="60" IsReadOnly="true"/>
+        </StackPanel>
+        <StackPanel Height="45"  Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
+            <ComboBox Width="250"/>
+            <Button Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
         </StackPanel>
         <StackPanel Height="45"  Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
             <ComboBox Width="250"/>
