@@ -23,11 +23,11 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        
+        captcha();        
         
     }
 
-    private void into_Click(object sender, RoutedEventArgs e)
+    private async void into_Click(object sender, RoutedEventArgs e)
     {
         
         if (block == true)
@@ -35,81 +35,67 @@ public partial class MainWindow : Window
             errors.Text = "БАН";
             return;
         }
+
+        if (kd == 5)
+        {
+            block = true;
+            await Task.Delay(60000);
+            errors.Text = "";
+            block = false;
+            kd = 0;
+            captcha();
+            return;
+        }
       using (var bd = new PostgresContext())
         {
-            var user = bd.Users.FirstOrDefault(u => u.UserLogin == box_name.Text);
+            var user = bd.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == box_name.Text);
 
             if (user == null)
             {
-                errors.Text = "invalid data";
+                errors.Text = "error";
                 kd += 1;
-                if (kd == 5)
-                {
-                    block = true;
-                    Task.Delay(1000);
-                    block = false;
-                    errors.Text = "";
-                    return;
-            
-                }
+                
                 return;
             }
-            var userpass = bd.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == user.UserLogin);
-            if (userpass.UserPass == passw_view.Text)
+            if (user.UserPass == passw_view.Text)
             {
-                if (userpass.Role.Role1 == "User" && exit_capt.Text == captch)
+                if (user.RoleId == 1 && exit_capt.Text == captch)
                 {
-                    userpass.LastLog = DateTime.Now;
-                    bd.Users.Update(userpass);
-                    bd.SaveChangesAsync();
+                    user.LastLog = DateTime.UtcNow;
+                    bd.Users.Update(user);
+                    await bd.SaveChangesAsync();
                     var wind = new Window1();
                     wind.Show();
                     this.Close();
                 }
-                else if (userpass.Role.Role1 == "Manager" && exit_capt.Text == captch)
+                else if (user.RoleId == 2 && exit_capt.Text == captch)
                 {
-                    userpass.LastLog = DateTime.Now;
-                    bd.Users.Update(userpass);
-                    bd.SaveChangesAsync();
+                    user.LastLog = DateTime.UtcNow;
+                    bd.Users.Update(user);
+                    await bd.SaveChangesAsync();
                     var wind = new Window2();
                     wind.Show();
                     this.Close();
                 }
-                else if (userpass.Role.Role1 == "Admin" && exit_capt.Text == captch)
+                else if (user.RoleId == 4 && exit_capt.Text == captch)
                 {
-                    userpass.LastLog = DateTime.Now;
-                    bd.Users.Update(userpass);
-                    bd.SaveChangesAsync();
+                    user.LastLog = DateTime.UtcNow;
+                    bd.Users.Update(user);
+                    await bd.SaveChangesAsync();
                     var wind = new Window3();
                     wind.Show();
                     this.Close();
                 }
                 else
                 {
-                    if (kd == 5)
-                    {
-                        block = true;
-                        Task.Delay(1000);
-                        block = false;
-                        errors.Text = "";
-                        return;
-            
-                    }
+                    errors.Text = "ошибка капчи";
                     kd += 1;
                     return;
                 }
             }
             else
             {
-                if (kd == 5)
-                {
-                    block = true;
-                    Task.Delay(1000);
-                    block = false;
-                    errors.Text = "";
-                    return;
-            
-                }
+                errors.Text = "ошибка лог или пароля";  
                 kd += 1;
                 return;
             }

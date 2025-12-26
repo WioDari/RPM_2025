@@ -4,27 +4,70 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="musicc.MainWindow" Background="White" Foreground="Black"
-        Title="musicc" MinHeight="480" MinWidth="720" FontFamily="Times New Roman">
-   <Grid>
+        Title="musicc" MinHeight="480" MaxHeight="480"  MaxWidth="720" MinWidth="720" FontFamily="Times New Roman">
+    <Window.Styles>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#2D3748"/>
+        </Style>
         
-       <TextBox Foreground="#FF7A00CC" Background="White" Margin="0,150,0,0" HorizontalAlignment="Center" Height="30"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="150" Name="box_name" TextChanged="box_name_TextChanged" BorderBrush="Black" />
-       <!--ujh-->
-        <TextBlock HorizontalAlignment="Center" Margin="0,130,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Foreground="#FF1C1C1C"  Height="50" Width="200" TextAlignment="Center">
+        <Style Selector="TextBox">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#4A5568"/>
+            <Setter Property="Padding" Value="12"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+        
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#7A00CC"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+        
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#7A00CC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#6A00B8"/>
+            <Setter Property="Opacity" Value="0.95"/>
+        </Style>
+        
+        <Style Selector="Button:pressed">
+            <Setter Property="Background" Value="#5A00A4"/>
+            <Setter Property="Opacity" Value="0.9"/>
+        </Style>
+    </Window.Styles>
+    
+    <Grid>
+        
+       <TextBox Foreground="#FF7A00CC" Background="White" Margin="0,120,0,0" HorizontalAlignment="Center"  TextWrapping="Wrap"   VerticalAlignment="Top" Width="150" Name="box_name" TextChanged="box_name_TextChanged" BorderBrush="Black" />
+       
+        <TextBlock HorizontalAlignment="Center" Margin="0,100,0,0" TextWrapping="Wrap" Text="Login" VerticalAlignment="Top" Foreground="#FF1C1C1C"  Height="50" Width="200" TextAlignment="Center">
         </TextBlock>
-        <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
-        <Button Content="вход" Foreground="White" HorizontalAlignment="Center" Margin="0,380,0,0" VerticalAlignment="Top" Name="into" Click="into_Click" Background="#FF7A00CC" />
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,170,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
+        <Button Content="вход" Foreground="White" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Name="into" Click="into_Click" Background="#FF7A00CC" />
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Height="51" Width="800" TextAlignment="Center" TextWrapping="Wrap" Background="#FF7A00CC" Foreground="White"><Run  Text="Авторизация"/></TextBlock>
-        <CheckBox  HorizontalAlignment="Center" Margin="190,210,0,0" VerticalAlignment="Top"  BorderBrush="Black" x:Name="cheker"/>
-        <TextBox Foreground="#FF7A00CC" Background="White" HorizontalAlignment="Center" Margin="0,210,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black"/>
+        <CheckBox  HorizontalAlignment="Center" Margin="190,195,0,0" VerticalAlignment="Top"  BorderBrush="Black" x:Name="cheker"/>
+        <TextBox Foreground="#FF7A00CC" Background="White" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black"/>
         
             <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="0,250,0,0" Width="145" Height="60" CornerRadius="5">
                 <TextBlock TextWrapping="Wrap" Text="" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" x:Name="capt"/>
             </Border>
         <Line x:Name="line_one" Margin="0,250,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"></Line>
         <Line  x:Name="line_two" Margin="0,250,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"></Line>
-        <TextBox Foreground="#FF7A00CC" Background="White" BorderBrush="Black" x:Name="exit_capt" Margin="0,315,0,0" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBox>
-        <Button Content="Создать" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" Foreground="White" Background="#FF7A00CC" Click="Button_Click_1"/>
-        <TextBlock x:Name="errors" Foreground="Crimson" Margin="0,320,0,0" TextAlignment="Center" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBlock>
+        <TextBox Foreground="#FF7A00CC" Background="White" BorderBrush="Black" x:Name="exit_capt" Margin="0,315,0,0"  Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBox>
+        <Button Content="Создать" HorizontalAlignment="Center" Margin="0,370,0,0" VerticalAlignment="Top" Foreground="White" Background="#FF7A00CC" Click="Button_Click_1"/>
+        <TextBlock x:Name="errors" Foreground="Crimson" Margin="0,450,0,0" TextAlignment="Center" Height="20" Width="120" HorizontalAlignment="Center" VerticalAlignment="Top" ></TextBlock>
 
 
 
