@@ -163,3 +163,7 @@ C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Vi
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\AddPlaylist.baml
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\Guest.g.cs
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\Guest.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\TrackList.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\TrackListUC.g.cs
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\TrackList.baml
+C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\obj\Debug\net8.0-windows\Views\TrackListUC.baml

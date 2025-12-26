@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Spotify_wpf.Models;
 
 public partial class TagsPlaylist
 {
+    
     public int TagsPlaylistId { get; set; }
 
     public int TagsId { get; set; }

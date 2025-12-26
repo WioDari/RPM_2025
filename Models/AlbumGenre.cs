@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Spotify_wpf.Models;
 
 public partial class AlbumGenre
 {
+   
     public int AlbumGenreId { get; set; }
 
     public int GenreId { get; set; }

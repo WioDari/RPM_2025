@@ -5,7 +5,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using Spotify_wpf.Context;
 using Spotify_wpf.Views;
@@ -28,14 +30,22 @@ namespace Spotify_wpf.ViewModels
             }
         }
 
+        public ICommand AddPlaylistCommand {  get;  }
       
 
 
         public PlaylistViewModel()
         {
             LoadPlaylists();
+            AddPlaylistCommand = new RelayCommand(AddPlaylists);
+
         }
 
+        public void AddPlaylists()
+        {
+            Window window = new AddPlaylist();
+            window.Show();
+        }
 
 
 

@@ -53,7 +53,7 @@ namespace Spotify_wpf.ViewModels
             GoPlaylist = new RelayCommand(GoPlaylists);
             GoAlbum = new RelayCommand(GoAlbums);
             GoUser = new RelayCommand(GoUsers);
-
+            GoTrack = new RelayCommand(GoTracks);
 
         }
 
@@ -63,6 +63,8 @@ namespace Spotify_wpf.ViewModels
         public ICommand GoAlbum { get; }
 
         public ICommand GoUser { get; } 
+
+        public ICommand GoTrack { get; }
 
         public void Logout()
         {
@@ -93,6 +95,11 @@ namespace Spotify_wpf.ViewModels
         public void GoUsers()
         {
             currentPage = new Views.UserList();
+        }
+
+        public void GoTracks()
+        {
+            currentPage = new Views.TrackList();
         }
 
 

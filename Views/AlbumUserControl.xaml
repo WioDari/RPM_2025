@@ -22,7 +22,7 @@
         <Border BorderBrush="Black" BorderThickness="1">
             <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,9"/>
         </Border>
-        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Grid.RowSpan="2"/>
+      
 
 
 

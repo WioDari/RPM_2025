@@ -48,6 +48,12 @@
     <Compile Update="Views\PlaylistUserController.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TrackList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TrackListUC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -99,6 +105,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\PlaylistUserController.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TrackList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TrackListUC.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\UserList.xaml">

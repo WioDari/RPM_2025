@@ -22,6 +22,7 @@ namespace Spotify_wpf.Views
         public AddAlbum()
         {
             InitializeComponent();
+            DataContext = new ViewModels.AddAlbumViewModel();
         }
     }
 }
