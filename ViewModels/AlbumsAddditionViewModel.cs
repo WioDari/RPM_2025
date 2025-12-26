@@ -183,7 +183,22 @@ namespace SpotApp_wpf.ViewModels
 
         public void AddGenre()
         {
-            choosenGenres.Add(selectedGenre);
+            if (string.IsNullOrWhiteSpace(selectedGenre))
+            {
+                MessageBox.Show("Выберите жанр", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                foreach (var g in choosenGenres)
+                {
+                    if (g == selectedGenre)
+                    {
+                        MessageBox.Show("Жанр повторяется", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                }
+                choosenGenres.Add(selectedGenre);
+            }
             UpdateGenres();
         }
         public void ClearGenre()

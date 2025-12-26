@@ -2,19 +2,31 @@
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpotApp_wpf.Context;
 using SpotApp_wpf.Models;
+using SpotApp_wpf.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using static SpotApp_wpf.ViewModels.AlbumViewModel;
 
 namespace SpotApp_wpf.ViewModels
 {
     public class PlaylistViewModel : BaseViewModel
     {
-        public ObservableCollection<PlTemplate> playlists {  get; set; }
+        private ObservableCollection<PlTemplate> _playlists { get; set; }
+        public ObservableCollection<PlTemplate> playlists 
+        {
+            get => _playlists;
+            set
+            {
+                _playlists = value;
+                OnPropertyChanged();
+            }
+        }
 
         public class PlTemplate
         {
@@ -24,7 +36,7 @@ namespace SpotApp_wpf.ViewModels
             public string subs { get; set; }
             public string tracksCount { get; set; }
             public string creationDate { get; set; }
-            public List<TimeOnly> timeA {  get; set; }
+            public List<TimeSpan> timeA {  get; set; }
             public string time {  get; set; }
         }
 
@@ -42,9 +54,12 @@ namespace SpotApp_wpf.ViewModels
             }
         }
 
+        public ICommand addPlaylistCommand { get; set; }
+
         public PlaylistViewModel()
         {
             LoadPlaylists();
+            addPlaylistCommand = new RelayCommand(addPlaylist);
         }
 
         public void ShowDetails(int id)
@@ -52,12 +67,12 @@ namespace SpotApp_wpf.ViewModels
             var win = new Views.PlaylistDetails();
             if (selectedPlaylist != null)
             {
-                win.DataContext = new PlaylistDetailsViewModel(id);
+                win.DataContext = new PlaylistDetailsViewModel(id, this);
             }
             win.Show();
         }
 
-        private void LoadPlaylists()
+        public void LoadPlaylists()
         {
             var context = new SpotifyContext();
             playlists = new ObservableCollection<PlTemplate>(context.Playlists
@@ -72,15 +87,27 @@ namespace SpotApp_wpf.ViewModels
                     subs = p.UsersPlaylists.Where(up => up.PlaylistId == p.PlaylistId).Count().ToString(),
                     creationDate = p.DateCreated.ToString("dd.MM.yyy"),
                     tracksCount = p.TracksInPlaylists.Where(tp => tp.PlaylistId == p.PlaylistId).Count().ToString(),
-                    timeA = p.TracksInPlaylists.Where(p => p.PlaylistId == p.PlaylistId).Select(pt => pt.Track.Duration).ToList(),
-                    time = TimeSpan.FromHours(p.TracksInPlaylists.Select(pt => pt.Track.Duration).Sum(d => d.Hour)).ToString(@"hh\:") + TimeSpan.FromMinutes(p.TracksInPlaylists.Select(pt => pt.Track.Duration).Sum(d => d.Minute)).ToString(@"mm\:") + TimeSpan.FromSeconds(p.TracksInPlaylists.Select(pt => pt.Track.Duration).Sum(d => d.Second)).ToString(@"ss"),
+                    timeA = p.TracksInPlaylists.Where(p => p.PlaylistId == p.PlaylistId).Select(pt => pt.Track.Duration.ToTimeSpan()).ToList(),
+                    time = "",
                 })
                 .OrderBy(p => p.id)
                 .ToList());
             foreach (var item in playlists)
             {
-                
+                TimeSpan t = item.timeA[0];
+                for (int i = 1; i < item.timeA.Count; i++)
+                {
+                    t = t.Add(item.timeA[i]);
+                }
+                item.time = t.ToString(@"hh\:mm\:ss");
             }
+        }
+
+        public void addPlaylist()
+        {
+            Window add = new PlaylistAddition();
+            add.DataContext = new PlaylistAdditionViewModel(null, this);
+            add.Show();
         }
     }
 }

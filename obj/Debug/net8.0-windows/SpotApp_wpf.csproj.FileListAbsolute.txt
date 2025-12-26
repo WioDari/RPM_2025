@@ -157,3 +157,5 @@ C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Vie
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TracksAddition.baml
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistAddition.g.cs
 C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\PlaylistAddition.baml
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TracksPage.g.cs
+C:\Users\Admin\source\repos\SpotApp_wpf\SpotApp_wpf\obj\Debug\net8.0-windows\Views\TracksPage.baml

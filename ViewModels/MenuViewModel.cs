@@ -58,12 +58,14 @@ namespace SpotApp_wpf.ViewModels
             ShowAlbumsCommand = new RelayCommand(ShowAlbumsPage);
             ShowPlaylistsCommand = new RelayCommand(ShowPlaylistsPage);
             ShowUsersCommand = new RelayCommand(ShowUsersPage);
+            ShowTracksCommand = new RelayCommand(ShowTracks);
         }
 
         public ICommand LogoutCommand { get; }
         public ICommand ShowAlbumsCommand { get; }
         public ICommand ShowUsersCommand { get; }
         public ICommand ShowPlaylistsCommand { get; }
+        public ICommand ShowTracksCommand { get; }
         public void Logout()
         {
             Application.Current.Properties["CurrentUser"] = null;
@@ -84,6 +86,11 @@ namespace SpotApp_wpf.ViewModels
         {
             title = "Альбомы";
             page = new Views.AlbumsPage();
+        }
+        public void ShowTracks()
+        {
+            title = "Треки";
+            page = new Views.TracksPage();
         }
         public void ShowPlaylistsPage()
         {

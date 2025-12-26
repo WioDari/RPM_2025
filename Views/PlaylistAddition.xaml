@@ -20,28 +20,30 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" Background="#EDE2FF" BorderThickness="1" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" TextWrapping="Wrap" Text="Добавление Плейлиста" VerticalAlignment="Center"/>
+        <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" FontSize="25" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding title}" VerticalAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Grid.Row="1" Height="auto" Width="180" FontSize="20" TextWrapping="Wrap" Text="Название:" VerticalAlignment="Center" TextAlignment="Center"/>
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" Height="auto" Width="180" FontSize="20" TextWrapping="Wrap" Text="Описание:" VerticalAlignment="Center" TextAlignment="Center"/>
         <StackPanel Grid.Row="3">
             <TextBlock TextWrapping="Wrap" Text="Список тегов:" FontSize="15" TextAlignment="Center"/>
-            <TextBox TextWrapping="Wrap" Text="" FontSize="20" Height="60" IsReadOnly="true"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding tagsOut}" FontSize="20" Height="60" IsReadOnly="true"/>
         </StackPanel>
         <StackPanel Grid.Row="4">
             <TextBlock TextWrapping="Wrap" Text="Список композиций:" FontSize="15" TextAlignment="Center"/>
-            <TextBox TextWrapping="Wrap" Text="" FontSize="20" Height="60" IsReadOnly="true"/>
+            <TextBox TextWrapping="Wrap" Text="{Binding tracksOut}" FontSize="20" Height="60" IsReadOnly="true"/>
         </StackPanel>
         <StackPanel Height="45"  Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Width="250"/>
-            <Button Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+            <ComboBox Width="250" SelectedItem="{Binding selectedTrack}" ItemsSource="{Binding tracks}" FontSize="20"/>
+            <Button Command="{Binding AddTrackCommand}" Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+            <Button Command="{Binding DeleteTrackCommand}" Content="-" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
         </StackPanel>
         <StackPanel Height="45"  Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Width="250"/>
-            <Button Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+            <ComboBox Width="250" SelectedItem="{Binding selectedTag}" ItemsSource="{Binding tags}" FontSize="20"/>
+            <Button Content="+" Command="{Binding AddTagCommand}" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
+            <Button Content="-" Command="{Binding DeleteTagCommand}" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
         </StackPanel>
-        <Button Content="Добавить" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Height="40" Width="200" FontSize="20"/>
+        <Button Content="{Binding btnText}" Command="{Binding AddPlaylistCommand}" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Height="40" Width="200" FontSize="20"/>
 
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <TextBox Text="{Binding name}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <TextBox Text="{Binding description}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
     </Grid>
 </Window>

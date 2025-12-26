@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <ListBox ItemsSource="{Binding albums, UpdateSourceTrigger=PropertyChanged}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectedItem="{Binding selectedAlbum}" Grid.ColumnSpan="4" Grid.Row="2">
             <ListBox.ItemsPanel>
@@ -38,6 +38,6 @@
             <RadioButton Content="По возрастанию" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" IsChecked="{Binding selectedSort, Converter={StaticResource RadioButtonConverter}, ConverterParameter=По возрастанию}"/>
             <RadioButton Content="По убыванию" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" IsChecked="{Binding selectedSort, Converter={StaticResource RadioButtonConverter}, ConverterParameter=По убыванию}"/>
         </StackPanel>
-        <Button Grid.Column="3" Content="Добавить" Command="{Binding AddAlbumCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80"/>
+        <Button Grid.Column="3" Content="Добавить" IsEnabled="{Binding ., Converter={StaticResource FiltersVisibilityConverter}}" Command="{Binding AddAlbumCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="30" Width="80"/>
     </Grid>
 </Page>

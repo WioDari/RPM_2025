@@ -23,16 +23,16 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Text="{Binding name}" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
         <Border BorderBrush="Black" Grid.ColumnSpan="2" Background="#EDE2FF" BorderThickness="1"/>
         <StackPanel Height="45"  Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <ComboBox Width="250"/>
+            <ComboBox Width="250" SelectedItem="{Binding selectedArtist}"/>
             <Button Content="+" Width="50" Margin="15,0,0,0" FontSize="25" FontWeight="Bold" Background="#9c4dff"/>
         </StackPanel>
-        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="duration" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
-        <ComboBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
-        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="bitrate" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
-        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="rating" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding duration}" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <ComboBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="4" VerticalAlignment="Center" SelectedItem="{Binding album}" Width="320" Height="45" FontSize="25"/>
+        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="5" TextWrapping="Wrap" Text="{Binding bitrate}" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
+        <TextBox HorizontalAlignment="Center" Grid.Column="1" Grid.Row="6" TextWrapping="Wrap" Text="{Binding rating}" VerticalAlignment="Center" Width="320" Height="45" FontSize="25"/>
         <Button Content="Добавить" Grid.ColumnSpan="2" HorizontalAlignment="Center" Grid.Row="8" VerticalAlignment="Center" Height="50" Width="200" FontSize="25"/>
         <TextBlock HorizontalAlignment="Center" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Добавление композиции" VerticalAlignment="Center" Width="320" Height="45" FontSize="30"/>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="250" Grid.Row="1" TextWrapping="Wrap" Text="Название композиции:" VerticalAlignment="Center" FontSize="25" TextAlignment="Center"/>
@@ -45,7 +45,7 @@
             <TextBox TextWrapping="Wrap" Text="" FontSize="20" Height="52" IsReadOnly="true"/>
         </StackPanel>
         <TextBlock HorizontalAlignment="Center" Height="auto" Width="250" Grid.Row="7" TextWrapping="Wrap" Text="Дата выхода:" VerticalAlignment="Center" FontSize="25" TextAlignment="Center"/>
-        <DatePicker Grid.Column="1" HorizontalAlignment="Center" Grid.Row="7" VerticalAlignment="Center" Height="45" Width="320" FontSize="25"/>
+        <DatePicker Grid.Column="1" HorizontalAlignment="Center" SelectedDate="{Binding date}" Grid.Row="7" VerticalAlignment="Center" Height="45" Width="320" FontSize="25"/>
 
     </Grid>
 </Window>

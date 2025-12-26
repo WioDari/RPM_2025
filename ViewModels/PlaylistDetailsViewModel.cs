@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SpotApp_wpf.Context;
+using SpotApp_wpf.Models;
 using SpotApp_wpf.Views;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using static SpotApp_wpf.ViewModels.AlbumDetailViewModel;
 
 namespace SpotApp_wpf.ViewModels
@@ -81,26 +83,76 @@ namespace SpotApp_wpf.ViewModels
 
         }
         public ObservableCollection<PlTrackDetails> plDetails { get; set; }
+        private int _playlistId;
+        private PlaylistViewModel _playlistViewModel;
 
-        public PlaylistDetailsViewModel(int id)
+        public ICommand deletePlaylistCommand { get; set; }
+        public ICommand editPlaylistCommand { get; set; }
+        public PlaylistDetailsViewModel(int id, PlaylistViewModel plvm)
         {
             LoadPlDetails(id);
+            _playlistViewModel = plvm;
+            _playlistId = id;
+            deletePlaylistCommand = new RelayCommand(DeletePlaylist);
+            editPlaylistCommand = new RelayCommand(EditPlaylist);
+        }
+
+        public void DeletePlaylist()
+        {
+            var context = new SpotifyContext();
+            Playlist pl = context.Playlists.Where(p => p.PlaylistId == _playlistId).FirstOrDefault();
+            List<TagsInPlaylist> tags = context.TagsInPlaylists.Where(t => t.PlaylistId == _playlistId).ToList();
+            List<TracksInPlaylist> tracks = context.TracksInPlaylists.Where(tr => tr.PlaylistId == _playlistId).ToList();
+            context.TagsInPlaylists.RemoveRange(tags);
+            context.TracksInPlaylists.RemoveRange(tracks);
+            context.SaveChanges();
+            context.Playlists.Remove(pl);
+            context.SaveChanges();
+            _playlistViewModel.LoadPlaylists();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.PlaylistDetails)
+                {
+                    w.Close();
+                }
+            }
+        }
+
+        public void EditPlaylist()
+        {
+            Window edit = new PlaylistAddition();
+            edit.DataContext = new PlaylistAdditionViewModel(_playlistId, _playlistViewModel);
+            edit.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.PlaylistDetails)
+                {
+                    w.Close();
+                }
+            }
         }
 
         public void LoadPlDetails(int id)
         {
             var context = new SpotifyContext();
 
-            int uid = context.Playlists.Include(p => p.User).FirstOrDefault().UserId;
-            playlistName = context.Playlists.FirstOrDefault().PlaylistName + " | " + context.Users.Where(u => u.UserId == uid).FirstOrDefault().FullName;
-            creationDate = context.Playlists.FirstOrDefault().DateCreated.ToString("dd.MM.yyyy");
-            likes = context.Playlists.FirstOrDefault().Likes.ToString();
+            int uid = context.Playlists.Include(p => p.User).Where(p => p.PlaylistId == id).FirstOrDefault().UserId;
+            playlistName = context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().PlaylistName + " | " + context.Users.Where(u => u.UserId == uid).FirstOrDefault().FullName;
+            creationDate = context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().DateCreated.ToString("dd.MM.yyyy");
+            likes = context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().Likes.ToString();
             duration = allDuration.ToString();
             tagsList = context.TagsInPlaylists.Include(t => t.Tag).Where(t => t.PlaylistId == id).Select(t => t.Tag.TagTittle).ToList();
-            tags = tagsList[0];
-            for (int i = 1; i < tagsList.Count; i++)
+            if (tagsList.Count > 0)
             {
-                tags += ", " + tagsList[i];
+                tags = tagsList[0];
+                for (int i = 1; i < tagsList.Count; i++)
+                {
+                    tags += ", " + tagsList[i];
+                }
+            }
+            else
+            {
+                tags = "";
             }
 
             plDetails = new ObservableCollection<PlTrackDetails>(context.Tracks.Where(t => t.TracksInPlaylists.Any(tp => tp.PlaylistId == id))
