@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="BelokonevRPM/App.axaml" value="BelokonevRPM/BelokonevRPM.csproj" />
+        <entry key="FateenkovZadanie/App.axaml" value="FateenkovZadanie/FateenkovZadanie.csproj" />
+        <entry key="FateenkovZadanie/MainWindow.axaml" value="FateenkovZadanie/FateenkovZadanie.csproj" />
+        <entry key="FateenkovZadanie/Windows/MainWindow.axaml" value="FateenkovZadanie/FateenkovZadanie.csproj" />
+        <entry key="FateenkovZadanie/Windows/logWindow.axaml" value="FateenkovZadanie/FateenkovZadanie.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
