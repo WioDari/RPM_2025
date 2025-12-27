@@ -16,7 +16,7 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListBox Name="AlbumListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox Name="AlbumListBox" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseDoubleClick="AlbumListBox_MouseDoubleClick">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

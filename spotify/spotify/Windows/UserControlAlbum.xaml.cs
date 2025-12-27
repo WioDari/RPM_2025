@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
 using spotify.Context;
+using spotify.Models;
 
 namespace spotify.Windows
 {
@@ -32,6 +33,15 @@ namespace spotify.Windows
         {
             SpotifyContext context = new();
             AlbumListBox.ItemsSource = context.Albums.Include(x => x.Artist).Include(x => x.Tracks);
+        }
+
+        private void AlbumListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (AlbumListBox.SelectedItem is Album album && album != null)
+            {
+                AlbumInfoWindow albumInfoWindow = new(album);
+                albumInfoWindow.ShowDialog();
+            }
         }
     }
 }

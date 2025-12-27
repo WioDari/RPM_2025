@@ -24,8 +24,10 @@ namespace spotify.Windows
     public partial class NewAlbum : Window
     {
         User user1 = new();
+        Album album1;
         ObservableCollection<Genre> genres = [];
         ObservableCollection<Track> tracks = [];
+        public SpotifyContext context = new();
         public NewAlbum()
         {
             InitializeComponent();
@@ -33,13 +35,30 @@ namespace spotify.Windows
 
         public NewAlbum(User user)
         {
-            SpotifyContext context = new();
             InitializeComponent();
             user1 = user;
 
             ArtistComboBox.ItemsSource = context.Artists.ToList();
             GenreComboBox.ItemsSource = context.Genres.ToList();
             TrackComboBox.ItemsSource = context.Tracks.Where(x => x.AlbumId == null).ToList();
+        }
+
+        public NewAlbum(Album album)
+        {
+            InitializeComponent();
+            ArtistComboBox.ItemsSource = context.Artists.ToList();
+            GenreComboBox.ItemsSource = context.Genres.ToList();
+            TrackComboBox.ItemsSource = context.Tracks.Where(x => x.AlbumId == null).ToList();
+            Title = "Изменение альбома";
+            TitleTextBlock.Text = "Изменение альбома";
+
+            album1 = album;
+            AlbumTextBox.Text = album1.AlbumTitle;
+            YearTextBox.Text = album1.ReleaseYear.ToString();
+            GenreListBox.ItemsSource = album1.Genres;
+            CoverPathTextBox.Text = album1.CoverPath;
+            ArtistComboBox.Text = album1.Artist.ArtistName;
+            TrackListBox.ItemsSource = album1.Tracks;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
@@ -63,7 +82,96 @@ namespace spotify.Windows
 
         private async void NewAlbumButton_Click(object sender, RoutedEventArgs e)
         {
-            await using SpotifyContext context = new SpotifyContext();
+            var color = new SolidColorBrush(Color.FromRgb(171, 173, 179));
+            var duration = new TimeSpan { };
+
+            if (album1.Id != null)
+            {
+                AlbumTextBox.BorderBrush = color;
+                YearTextBox.BorderBrush = color;
+                CoverPathTextBox.BorderBrush = color;
+                ArtistComboBox.BorderBrush = color;
+                GenreListBox.BorderBrush = color;
+                TrackListBox.BorderBrush = color;
+
+                foreach (var track in album1.Tracks)
+                {
+                    if (track != null) tracks.Add(track);
+                }
+                TrackListBox.ItemsSource = tracks;
+
+                foreach (var genre in album1.Genres)
+                {
+                    if (genre != null) genres.Add(genre);
+                }
+                GenreListBox.ItemsSource = genres;
+
+                if (string.IsNullOrEmpty(AlbumTextBox.Text) || int.TryParse(YearTextBox.Text, out _) == false || string.IsNullOrEmpty(CoverPathTextBox.Text) || string.IsNullOrEmpty(ArtistComboBox.Text) || genres.Count == 0 || tracks.Count == 0)
+                {
+                    if (string.IsNullOrEmpty(AlbumTextBox.Text))
+                    {
+                        AlbumTextBox.BorderBrush = Brushes.Red;
+                    }
+
+                    if (int.TryParse(YearTextBox.Text, out _) == false)
+                    {
+                        YearTextBox.BorderBrush = Brushes.Red;
+                    }
+
+                    if (string.IsNullOrEmpty(CoverPathTextBox.Text))
+                    {
+                        CoverPathTextBox.BorderBrush = Brushes.Red;
+                    }
+
+                    if (string.IsNullOrEmpty(ArtistComboBox.Text))
+                    {
+                        ArtistComboBox.BorderBrush = Brushes.Red;
+                    }
+
+                    if (genres.Count == 0)
+                    {
+                        GenreListBox.BorderBrush = Brushes.Red;
+                    }
+
+                    if (tracks.Count == 0)
+                    {
+                        TrackListBox.BorderBrush = Brushes.Red;
+                    }
+
+                    MessageBox.Show("Какие то из полей не заполенены");
+                    return;
+                }
+
+                foreach (var track in tracks)
+                {
+                    if(track != null)
+                    {
+                        duration += track.Duration;
+                    }
+                }
+
+                album1.AlbumTitle = AlbumTextBox.Text;
+                album1.ArtistId = context.Artists.First(x => x.ArtistName == ArtistComboBox.Text).Id;
+                album1.ReleaseYear = int.Parse(YearTextBox.Text);
+                album1.CoverPath = CoverPathTextBox.Text;
+                album1.TotalDuration = duration;
+                album1.Genres = genres;
+                album1.Tracks = tracks;
+
+                context.Albums.Update(album1);
+                await context.SaveChangesAsync();
+
+                MessageBox.Show("Альбом успешно изменен");
+                return;
+            }
+
+            AlbumTextBox.BorderBrush = color;
+            YearTextBox.BorderBrush = color;
+            CoverPathTextBox.BorderBrush = color;
+            ArtistComboBox.BorderBrush = color;
+            GenreListBox.BorderBrush = color;
+            TrackListBox.BorderBrush = color;
+
 
             if ( string.IsNullOrEmpty(AlbumTextBox.Text) || int.TryParse(YearTextBox.Text, out _) == false || string.IsNullOrEmpty(CoverPathTextBox.Text) || string.IsNullOrEmpty(ArtistComboBox.Text) || genres.Count == 0 || tracks.Count == 0)
             {
@@ -101,8 +209,6 @@ namespace spotify.Windows
                 return;
             }
 
-            var duration = new TimeSpan();
-
             foreach (var track in tracks)
             {
                 duration += track.Duration;
@@ -115,8 +221,7 @@ namespace spotify.Windows
                 ArtistId = context.Artists.First(x => x.ArtistName == ArtistComboBox.Text).Id,
                 ReleaseYear = int.Parse(YearTextBox.Text),
                 CoverPath = CoverPathTextBox.Text,
-                TotalDuration = duration,
-                Genres = new List<Genre>()
+                TotalDuration = duration
             };
             context.Albums.Add(album);
             context.SaveChanges();

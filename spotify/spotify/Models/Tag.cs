@@ -10,4 +10,9 @@ public partial class Tag
     public string Tag1 { get; set; } = null!;
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
+
+    public override string ToString()
+    {
+        return Tag1;
+    }
 }

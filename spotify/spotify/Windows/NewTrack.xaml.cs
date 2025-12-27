@@ -146,6 +146,31 @@ namespace spotify.Windows
                 MessageBox.Show("Какие то из полей не заполенены");
                 return;
             }
+
+            var track = new Track()
+            {
+                Id = context.Tracks.Any() ? context.Tracks.Max(x => x.Id) + 1 : 1,
+                TrackName = TrackTextBox.Text,
+                Duration = TimeSpan.Parse(DurationTextBox.Text),
+                ReleaseDate = DateOnly.FromDateTime(ReleaseDatePicker.SelectedDate.Value),
+                Bitrate = int.Parse(BitrateTextBox.Text),
+                FilePath = FilePathTextBox.Text,
+                Rating = 0,
+                PlayCount = 0,
+                AlbumId = null
+            };
+
+            context.Tracks.Add(track);
+            context.SaveChanges();
+
+            track.Genres = genres;
+            context.Tracks.Update(track);
+            track.Artists = artists;
+            context.Tracks.Update(track);
+            await context.SaveChangesAsync();
+
+            MessageBox.Show("Трек успешно добавлен");
+            return;
         }
 
         private void DeleteGenre_Click(object sender, RoutedEventArgs e)

@@ -23,7 +23,7 @@ public partial class Track
 
     public int? AlbumId { get; set; }
 
-    public virtual Album Album { get; set; } = null!;
+    public virtual Album Album { get; set; } = null;
 
     public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();
 
@@ -34,5 +34,13 @@ public partial class Track
     public override string ToString()
     {
         return TrackName;
+    }
+
+    public string ArtistsToString
+    {
+        get
+        {
+            return string.Join(", ", Artists);
+        }
     }
 }

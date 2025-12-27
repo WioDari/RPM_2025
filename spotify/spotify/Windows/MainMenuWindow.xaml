@@ -65,7 +65,7 @@
             Grid.Row="2">
             <Button Name="NewAlbumButton" Click="NewAlbumButton_Click" Background="#7A00CC" Content="Новый альбом" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
             <Button Name="NewTrackButton" Click="NewTrackButton_Click" Background="#7A00CC" Content="Новый трек" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
-
+            <Button Name="NewPlaylistButton" Click="NewPlaylistButton_Click" Background="#7A00CC" Content="Новый плейлист" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="16" Margin="5" BorderThickness="2" BorderBrush="#9C4DFF"/>
         </StackPanel>
 
         <Button Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="Button_Click"/>

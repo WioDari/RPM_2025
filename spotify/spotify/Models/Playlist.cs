@@ -24,4 +24,32 @@ public partial class Playlist
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
+
+    public string PlaylistNameAndFullName
+    {
+        get
+        {
+            if (User != null)
+            {
+                return $"{PlaylistName} | {User.FullName}";
+            }
+            else
+            {
+                return PlaylistName;
+            }
+        }
+    }
+
+    public string Duration
+    {
+        get
+        {
+            TimeSpan total = TimeSpan.Zero;
+            foreach (var track in Tracks)
+            {
+                total += track.Duration;
+            }
+            return total.ToString(@"hh\:mm\:ss");
+        }
+    }
 }

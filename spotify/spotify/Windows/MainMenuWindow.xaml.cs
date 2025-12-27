@@ -69,5 +69,12 @@ namespace spotify.Windows
             newTrack.Show();
             this.Close();
         }
+
+        private void NewPlaylistButton_Click(object sender, RoutedEventArgs e)
+        {
+            NewPlaylistWindow newPlaylist = new(user1);
+            newPlaylist.Show();
+            this.Close();
+        }
     }
 }

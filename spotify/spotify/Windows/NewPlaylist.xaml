@@ -1,0 +1,143 @@
+﻿<Window x:Class="spotify.Windows.NewPlaylistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:spotify.Windows"
+        mc:Ignorable="d"
+        Title="Новый плейлист" Height="550" Width="900" MinHeight="550" MinWidth="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.ColumnSpan="4" Background="#9C4DFF">
+            <TextBlock Name="TitleTextBox" Text="Добавление нового плейлиста" FontSize="30" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Название плейлиста:" FontSize="20" Margin="5"/>
+                <TextBox Name="PlaylistNameTextBox" Height="40" FontSize="20" Background="#EDE2FF" Margin="5"/>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock Text="Описание:" FontSize="20" Margin="5"/>
+                <TextBox Name="DescriptionTextBox" Height="40" FontSize="20" Background="#EDE2FF" Margin="5"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Column="2" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Тэги плейлиста:" FontSize="20" Margin="5"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="TagComboBox" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Height="40" Background="#EDE2FF" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Tag1}" TextWrapping="Wrap" MaxWidth="250"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Grid.Column="1" Name="AddTagButton" Click="AddTagButton_Click" Width="40" Height="40" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                        <Image Name="Plus" Source="/Resources/add.png" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="2"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <ListBox Grid.Row="1" Name="TagListBox" Margin="5" Height="Auto">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.Resources>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding Tag1}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button Grid.Column="1" Name="DeleteTag" Content="-" Click="DeleteTag_Click" Width="20" Height="20" Margin="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" VerticalAlignment="Center" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <StackPanel Grid.Row="2">
+                <TextBlock Text="Треки плейлиста:" FontSize="20" Margin="5"/>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox Name="TrackComboBox" GotFocus="ComboBox_GotFocus" LostFocus="ComboBox_LostFocus" IsTextSearchEnabled="False" IsEditable="True" StaysOpenOnEdit="True" Height="40" Background="#EDE2FF" HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding TrackName}" TextWrapping="Wrap" MaxWidth="250"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <Button Grid.Column="1" Name="AddTrackButton" Click="AddTrackButton_Click" Width="40" Height="40" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Padding="0" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5">
+                        <Image Name="Add" Source="/Resources/add.png" VerticalAlignment="Center" HorizontalAlignment="Center" Stretch="Uniform" Margin="2"/>
+                    </Button>
+                </Grid>
+            </StackPanel>
+
+            <ListBox Grid.Row="3" Name="TrackListBox" Margin="5" Height="Auto">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.Resources>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding TrackName}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Button Grid.Column="1" Name="DeleteTrack" Content="-" Click="DeleteTrack_Click" Width="20" Height="20" Margin="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" VerticalAlignment="Center" Padding="5"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <Button Name="NewPlaylistButton" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Сохранить" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="NewPlaylistButton_Click"/>
+
+        <Button Name="CloseButton" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="CloseButton_Click"/>
+    </Grid>
+</Window>

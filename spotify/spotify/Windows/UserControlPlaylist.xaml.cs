@@ -29,10 +29,19 @@ namespace spotify.Windows
             Load();
         }
 
-        public void Load()
+        private void Load()
         {
             SpotifyContext context = new();
-            PlaylistListBox.ItemsSource = context.Playlists.Include(x => x.Tracks).Include(x => x.Tags).Include(x => x.Users).Include(x => x.Users).ToList();
+            PlaylistListBox.ItemsSource = context.Playlists.Include(x => x.Tracks).ThenInclude(x => x.Artists).Include(x => x.Users).ToList();
+        }
+
+        private void PlaylistListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (PlaylistListBox.SelectedItem is Playlist playlist && playlist != null)
+            {
+                PlaylistInfoWindow playlistInfoWindow = new(playlist);
+                playlistInfoWindow.ShowDialog();
+            }
         }
     }
 }

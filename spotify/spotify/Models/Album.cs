@@ -22,4 +22,17 @@ public partial class Album
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public virtual ICollection<Genre> Genres { get; set; } = new List<Genre>();
+
+    public override string ToString()
+    {
+        return AlbumTitle;
+    }
+
+    public string GenresToString
+    {
+        get
+        { 
+            return string.Join(", ", Genres);
+        }
+    }
 }

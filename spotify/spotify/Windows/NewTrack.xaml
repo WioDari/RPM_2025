@@ -155,7 +155,7 @@
 
         <Button Name="CloseButton" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Выход" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="CloseButton_Click"/>
 
-        <Button Name="NewTrackButton"  Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="NewTrackButton_Click"/>
+        <Button Name="NewTrackButton"  Grid.ColumnSpan="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Сохранить" FontSize="20" Background="#7A00CC" BorderThickness="2" BorderBrush="#9C4DFF" Click="NewTrackButton_Click"/>
 
     </Grid>
 </Window>
