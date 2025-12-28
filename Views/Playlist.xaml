@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MusicWpf.Views"
         mc:Ignorable="d"
+         Style="{StaticResource GlobalWindowStyle}"
         Title="Playlist" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,6 +33,7 @@
             </ListBox.ItemTemplate>
 
         </ListBox>
+        <Button Grid.Column="1" Content="Редактировать" Command="{Binding EditPaylisyCommand}" HorizontalAlignment="Left" Margin="212,20,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Height="38" Width="126" Background="#FF9C4DFF" Foreground="White"/>
 
 
 

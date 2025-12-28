@@ -143,10 +143,6 @@ C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Us
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\UsersUserControl.baml
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\UserPage.g.cs
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\UserPage.baml
-C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\ArtistPage.g.cs
-C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\ArtistUserControl.g.cs
-C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\ArtistPage.baml
-C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\ArtistUserControl.baml
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Album.g.cs
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Album.baml
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AlbumUC.g.cs
@@ -159,3 +155,15 @@ C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Ad
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddAlbum.baml
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddTrack.g.cs
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddTrack.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddPlaylist.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\AddPlaylist.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\TrackPage.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\TrackPage.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\TrackUserControl.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\TrackUserControl.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\EditPlaylist.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\EditPlaylist.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Gost.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\GostUserControl.g.cs
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\Gost.baml
+C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\obj\Debug\net8.0-windows\Views\GostUserControl.baml

@@ -7,13 +7,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace MusicWpf.ViewModel
 {
     public class TracksViewModel : BaseViewModel
     {
-        private ObservableCollection<TracksVM> _tracks;
-        public ObservableCollection<TracksVM> tracks
+        private ObservableCollection<TrackVM> _tracks;
+        public ObservableCollection<TrackVM> track
         {
             get => _tracks;
             set
@@ -22,188 +24,87 @@ namespace MusicWpf.ViewModel
                 OnPropertyChanged();
             }
         }
-        private string _image;
-        public string Image
-        {
-            get => _image;
 
+        private TrackVM _selectedTrack;
+        public TrackVM selectedTrack
+        {
+            get => _selectedTrack;
             set
             {
-                _image = value;
+                _selectedTrack = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _name;
-
-        public string Name
+        public TracksViewModel()
         {
-            get => _name;
+            LoadTracks();
+        }
 
-            set
+        public class TrackVM
+        {
+            public string nameTrack { get; set; }
+            public string artistTrack { get; set; }
+            public string durationTrack { get; set; }
+            public string image { get; set; }
+        }
+
+        public ICommand AddTrackCommand { get; private set; }
+
+
+        private void LoadTracks()
+        {
+
+            try
             {
-                _name = value;
-                OnPropertyChanged();
-            }
-        }
-        private string _namealbum;
-        public string namealbum
-        {
-            get => _namealbum;
+                using var context = new MusicContext();
 
-            set
-            {
-                _namealbum = value;
-                OnPropertyChanged();
-            }
-        }
+                var tracksData = context.Tracks
+                    .Include(t => t.ArtistTracks)
+                        .ThenInclude(at => at.Artist)
+                    .Select(t => new TrackVM
+                    {
+                        nameTrack = t.TrackName,
+                        artistTrack = //GetArtistsForTrack(t)
+                        string.Join(", ", t.ArtistTracks
+                                .Where(at => at.Artist != null)
+                                .Select(at => at.Artist.ArtistName)
+                                .ToList()),
 
-        public List<string> _genresses;
-
-        public List<string> genresses
-        {
-            get => _genresses;
-
-            set
-            {
-                _genresses = value;
-                OnPropertyChanged();
-            }
-        }
-
-      
-
-        public TracksViewModel(int id)
-        {
-            LoadTracks(id);
-        }
-
-
-
-        public string genre { get; set; }
-
-        public class TracksVM
-        {
-            public string id { get; set; }
-            public string countlisten { get; set; }
-
-
-            public string tracknam { get; set; }
-
-            public string artistrac { get; set; }
-
-
-            public string rating { get; set; }
-
-            public string duration { get; set; }
-
-            public List<string> authors { get; set; }
-        }
-
-        private void LoadTracks(int? id = null) 
-        {
-            var context = new MusicContext();
-            var album = context.Albums
-                .Include(a => a.Artist)
-                .FirstOrDefault(a => a.AlbumId == id);
-
-            if (album != null)
-            {
-                Name = album.Artist?.ArtistName ?? string.Empty;
-                namealbum = album.AlbumTitle;
-                Image = album.CoverPath;
-                genresses = context.AlbumGenres
-                    .Include(ag => ag.Genre)
-                    .Where(ag => ag.AlbumId == id)
-                    .Select(ag => ag.Genre.GenreName)
+                        durationTrack = FormatDuration(t.Duration),
+                        image = t.AlbumCoverPath
+                    })
+                    .OrderBy(t => t.nameTrack)
                     .ToList();
 
-                genre = genresses.Count > 0 ? string.Join(", ", genresses) : "";
+                track = new ObservableCollection<TrackVM>(tracksData);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при загрузке треков: {ex.Message}");
+                track = new ObservableCollection<TrackVM>();
             }
 
-           
-            var tracksData = context.AlbumTracks
-                .Where(at => at.AlbumId == id)
-                .Include(at => at.Tracks)
-                    .ThenInclude(t => t.ArtistTracks)
-                    .ThenInclude(at => at.Artist)
-                .Select(at => new TracksVM
-                {
-                    tracknam = at.Tracks.TrackName,
-                    countlisten = at.Tracks.PlayCount.ToString(),
-                    authors = at.Tracks.ArtistTracks.Select(ta => ta.Artist.ArtistName).ToList(),
-                    artistrac = "",
-                    rating = at.Tracks.Rating.ToString(),
-                    duration = at.Tracks.Duration.ToString(@"mm\:ss"),
-                })
-                .ToList();
+            AddTrackCommand = new RelayCommand(OpenAddTrackWindow);
+        }
 
-            _tracks = new ObservableCollection<TracksVM>(tracksData);
+        private void OpenAddTrackWindow()
+        {
+            var window = new Views.AddTrack();
+            window.Show();
 
-            
-            foreach (var track in _tracks)
+        }
+
+        private static string FormatDuration(TimeOnly duration)
+        {
+            if (duration.Hour > 0)
             {
-                track.artistrac = string.Join(" ", track.authors);
-            }
-            /*var context = new MusicContext();
-            Name = context.Artists.Include(a => a.Albums.Where(a => a.AlbumId == id)).FirstOrDefault().ArtistName;
-            namealbum = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().AlbumTitle;
-            Image = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().CoverPath;
-            genresses = context.AlbumGenres.Include(ag => ag.Genre).Where(ag => ag.AlbumId == id).Select(a => a.Genre.GenreName).ToList();
-
-
-            if (genresses.Count == 0)
-            {
-                genre = "";
+                return duration.ToString(@"hh\:mm\:ss");
             }
             else
             {
-                genre = genresses[0];
+                return duration.ToString(@"mm\:ss");
             }
-
-            for (int i = 1; i < genresses.Count; i++)
-            {
-                genre += ", " + genresses[i];
-            }
-            _tracks = new ObservableCollection<TracksVM>(context.Tracks.Where(a => a.AlbumId == id)
-                .Include(a => a.TrackArtists).Select(a => new TracksVM
-                {
-                    tracknam = a.TrackName,
-                    countlisten = a.Playcount.ToString(),
-                    authors = a.TrackArtists.Where(tr => tr.TrackId == a.TrackId).Select(a => a.Artist.ArtistName).ToList(),
-                    artistrac = "",
-                    rating = a.Rating.ToString(),
-                    duration = a.Duration.ToString("mm:ss"),
-
-                })
-                .ToList());
-
-
-            foreach (var track in tracks)
-            {
-                foreach (string t in track.authors)
-                {
-
-                    string ti = t;
-
-                    track.artistrac += ti + " ";
-                }  
-
-            }*/
-
-            /* var context = new MusicContext();
-             _tracks = new ObservableCollection<TracksVM>(context.Tracks
-                 .Include(a => a.ArtistTracks)
-                 .ThenInclude(at => at.Artist)
-                 .Select(a => new TracksVM
-                 {
-                     id = a.TracksId,
-                     imageTrack = a.AlbumCoverPath,
-                     nameTrack = a.TrackName,
-                     artistTrack = string.Join(", ", a.ArtistTracks.Select(at => at.Artist.ArtistName)),
-                     timeTrack = a.Duration,
-                 })
-                 .ToList());*/
         }
 
     }

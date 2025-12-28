@@ -53,7 +53,7 @@ namespace MusicWpf.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MusicWpf;component/views/albumuc.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MusicWpf;V1.0.0.0;component/views/albumuc.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AlbumUC.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

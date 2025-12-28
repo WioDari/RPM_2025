@@ -41,6 +41,7 @@ namespace MusicWpf.ViewModel
         public ICommand LogoutCommand { get; }
         public ICommand UserList { get; }
 
+        public ICommand TrackList { get; }
         //public ICommand TrackList { get; }
         public MenuViewModel()
         {
@@ -51,6 +52,7 @@ namespace MusicWpf.ViewModel
             PlayList = new RelayCommand(PlayLists);
             AlbumList = new RelayCommand(AlbumsLists);
             UserList = new RelayCommand(UsersLists);
+            TrackList = new RelayCommand(TracksLists);
             //TrackList = new RelayCommand(TracksLists);
         }
         public void Logout()
@@ -83,6 +85,11 @@ namespace MusicWpf.ViewModel
        public void UsersLists()
         {
             page = new Views.UserPage();
+        }
+
+        public void TracksLists()
+        {
+            page = new Views.TrackPage();
         }
 
        /* public void TracksLists()

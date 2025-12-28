@@ -26,5 +26,7 @@ namespace MusicWpf.Views
             InitializeComponent();
             DataContext = new AlbumViewModel();
         }
+
+
     }
 }

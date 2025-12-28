@@ -16,7 +16,7 @@
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Margin="0,2,0,0" Grid.RowSpan="2" Background="#EDE2FF" Grid.Row="1"/>
-        <Image HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="300" Source="/data/placeholder_cover.png"/>
+        <Image HorizontalAlignment="Center" Height="300" VerticalAlignment="Center" Width="300" Grid.Column="0" Grid.Row="0" Source="/data/placeholder_cover.png"/>
         <Image Grid.Column="0" Source="{Binding image}" Grid.Row="0"/>
         <TextBlock HorizontalAlignment="Left" Grid.Row="1" TextWrapping="Wrap" Text="{Binding title}" VerticalAlignment="Center" Height="35" Width="220"  Margin="18,0,0,0" FontSize="16" FontFamily="Times New Roman"/>
         <TextBlock HorizontalAlignment="Left" Grid.Row="2" TextWrapping="Wrap" Text="{Binding author}" VerticalAlignment="Center" Height="30" Width="220" Margin="18,0,0,0" FontSize="16" FontFamily="Times New Roman"/>

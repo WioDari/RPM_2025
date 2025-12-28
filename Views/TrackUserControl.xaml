@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="MusicWpf.Views.TrackUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MusicWpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="130" d:DesignWidth="800">
+
+    <Grid Background="White"  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="29*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="132*"/>
+            <ColumnDefinition Width="525*"/>
+            <ColumnDefinition Width="143*"/>
+        </Grid.ColumnDefinitions>
+        <Image HorizontalAlignment="Center"   Source="/data/placeholder_cover.png" Grid.RowSpan="2" Width="130"/>
+        <Image HorizontalAlignment="Center" Height="130" Grid.RowSpan="2" VerticalAlignment="Top"  Source="{Binding image}" Width="130"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="26,24,0,0" TextWrapping="Wrap" Text="{Binding nameTrack}" VerticalAlignment="Top" Height="35" Width="430" FontSize="20" FontFamily="Times New Roman"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="26,14,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding artistTrack}" VerticalAlignment="Top" Height="20" Width="430" FontFamily="Times New Roman" FontSize="16"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Margin="0,49,0,0" TextWrapping="Wrap" Text="{Binding durationTrack}" VerticalAlignment="Top" Height="41" Grid.RowSpan="2" Width="83" FontSize="18" FontFamily="Times New Roman"/>
+
+    </Grid>
+</UserControl>

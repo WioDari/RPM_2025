@@ -11,7 +11,7 @@ public partial class Track
 
     public string? AlbumInfo { get; set; }
 
-    public TimeOnly Duration { get; set; } 
+    public TimeOnly Duration { get; set; }
 
     public DateOnly ReleaseDate { get; set; }
 

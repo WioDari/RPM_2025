@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 C:\Users\Lenovo\source\repos\MusicWpf\MusicWpf\App.xaml
-17961146658
+21553573318
 
-57-1369281609
+662016356627
 212-1631575519
-MainWindow.xaml;Views\AddAlbum.xaml;Views\AddTrack.xaml;Views\Album.xaml;Views\AlbumPage.xaml;Views\AlbumUC.xaml;Views\AlbumUserControl.xaml;Views\ArtistPage.xaml;Views\ArtistUserControl.xaml;Views\Auth.xaml;Views\MenuWindow.xaml;Views\Playlist.xaml;Views\PlaylistPage.xaml;Views\PlaylistUC.xaml;Views\PlaylistUserControl.xaml;Views\UserPage.xaml;Views\UsersUserControl.xaml;
+MainWindow.xaml;Views\AddAlbum.xaml;Views\AddPlaylist.xaml;Views\AddTrack.xaml;Views\Album.xaml;Views\AlbumPage.xaml;Views\AlbumUC.xaml;Views\AlbumUserControl.xaml;Views\Auth.xaml;Views\EditPlaylist.xaml;Views\Gost.xaml;Views\GostUserControl.xaml;Views\MenuWindow.xaml;Views\Playlist.xaml;Views\PlaylistPage.xaml;Views\PlaylistUC.xaml;Views\PlaylistUserControl.xaml;Views\TrackPage.xaml;Views\TrackUserControl.xaml;Views\UserPage.xaml;Views\UsersUserControl.xaml;
 
 True
 

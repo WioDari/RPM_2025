@@ -12,42 +12,33 @@
             <RowDefinition Height="67*"/>
             <RowDefinition Height="67*"/>
             <RowDefinition Height="66*"/>
-            <RowDefinition Height="68*"/>
-            <RowDefinition Height="67*"/>
-            <RowDefinition Height="100*"/>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="77*"/>
+            <RowDefinition Height="86*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="93*"/>
             <ColumnDefinition Width="134*"/>
             <ColumnDefinition Width="123*"/>
         </Grid.ColumnDefinitions>
-        <Image HorizontalAlignment="Left" Height="130" Margin="26,34,0,0" VerticalAlignment="Top" Width="130" Grid.Row="1" Grid.RowSpan="3"/>
+        <Image HorizontalAlignment="Center" Height="153" VerticalAlignment="Top" Width="160" Grid.RowSpan="3" Grid.Row="1" Source="/data/placeholder_cover.png" Margin="0,19,0,0"/>
+        <Image HorizontalAlignment="Left" Height="154" Margin="12,19,0,0" VerticalAlignment="Top" Width="156" Grid.Row="1" Grid.RowSpan="3" Source="{Binding CoverPath}"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Название альбома" VerticalAlignment="Top" Height="18" Width="302" Grid.ColumnSpan="2" />
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TitleAlbum}" VerticalAlignment="Top" Width="317" TextChanged="TextBox_TextChanged" Height="20" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TitleAlbum}" VerticalAlignment="Top" Width="270"  Height="20" Grid.ColumnSpan="2"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="14,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Дата выпуска альбома" VerticalAlignment="Top" Width="196" Height="18"/>
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Выбор артиста" VerticalAlignment="Top" Height="18" Width="132"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding RelayDate}" VerticalAlignment="Top" Width="317" Height="20" Grid.ColumnSpan="2"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="3" VerticalAlignment="Top" Width="207" Height="24" BorderBrush="#FFEDE2FF" />
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding ReleaseYear, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="270" Height="20" Grid.ColumnSpan="2"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="3" VerticalAlignment="Top" Width="207" Height="24" BorderBrush="#FFEDE2FF"  ItemsSource="{Binding Genres}" SelectedItem="{Binding SelectedGenre}" DisplayMemberPath="GenreName" />
         <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="14,8,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выбор жанров" VerticalAlignment="Top" Height="18" Width="100" RenderTransformOrigin="0.447,0.394"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="4" VerticalAlignment="Top" Width="200" Height="24" BorderBrush="#FFEDE2FF"  ItemsSource="{Binding Artists}" SelectedItem="{Binding SelectedArtist}">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1">
-                    <GradientStop Color="#FFF0F0F0"/>
-                    <GradientStop Color="#FFEDE2FF" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-        </ComboBox>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="3" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="212" Height="52" Grid.RowSpan="2"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,34,0,0" Grid.Row="4" VerticalAlignment="Top" Width="200" Height="24" BorderBrush="#FFEDE2FF"  ItemsSource="{Binding Artists}" SelectedItem="{Binding SelectedArtist}" DisplayMemberPath="ArtistName"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="10,35,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding SelectedGenresText}" VerticalAlignment="Top" Width="212" Height="52" Grid.RowSpan="2"/>
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3" Margin="0,0,0,2" Background="#FF7A00CC"></Border>
-        <Button Content="Добавить изображение" HorizontalAlignment="Center" Margin="0,8,0,0" Grid.Row="4" VerticalAlignment="Top" Height="23" Width="160" Background="#FF9C4DFF" Foreground="White"/>
-        <Button Grid.Column="1" Content="Создание альбома" HorizontalAlignment="Left" Margin="89,0,0,0" Grid.Row="5" VerticalAlignment="Center" Height="27" Width="128" Background="#FF9C4DFF" Foreground="White"/>
-        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выбраные жанры" VerticalAlignment="Top"/>
-        <Button Grid.Column="2" Content="Убрать все жанры" HorizontalAlignment="Left" Margin="53,34,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Background="#FF9C4DFF" Foreground="White"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Создание альбомов" VerticalAlignment="Center" FontSize="22" Foreground="White"/>
-
-
-
-
+        <Button Content="Добавить изображение" Command="{Binding AddImageCommand}" HorizontalAlignment="Center" Margin="0,8,0,0" Grid.Row="4" VerticalAlignment="Top" Height="23" Width="160" Background="#FF9C4DFF" Foreground="White"/>
+        <Button Grid.Column="1" Content="Создание альбома"  Command="{Binding AlbumCommand}" HorizontalAlignment="Left" Margin="89,0,0,0" Grid.Row="5" VerticalAlignment="Center" Height="27" Width="128" Background="#FF9C4DFF" Foreground="White"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3"  TextWrapping="Wrap" Text="Выбраные жанры"  VerticalAlignment="Top" Height="19" Width="121"/>
+        <Button Grid.Column="2" Content="Убрать все жанры" Command="{Binding ClearGenresCommand}" HorizontalAlignment="Left" Margin="53,34,0,0" Grid.Row="4" VerticalAlignment="Top" Height="26" Background="#FF9C4DFF" Foreground="White" Width="127"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Создать альбом" VerticalAlignment="Center" FontSize="24" Foreground="White" Height="27" Width="160"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="160" Margin="0,19,0,0" Grid.RowSpan="3" Grid.Row="1" VerticalAlignment="Top" Width="160"/>
 
     </Grid>
 </Window>

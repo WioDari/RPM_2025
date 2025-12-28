@@ -1,0 +1,48 @@
+﻿<Window x:Class="MusicWpf.Views.AddPlaylist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MusicWpf.Views"
+        mc:Ignorable="d"
+        Style="{StaticResource GlobalWindowStyle}"
+        Title="AddPlaylist" Height="450" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="119*"/>
+
+            <ColumnDefinition Width="181*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="93*"/>
+            <RowDefinition Height="78*"/>
+
+            <RowDefinition Height="76*"/>
+            <RowDefinition Height="53*"/>
+        </Grid.RowDefinitions>
+
+        <Border BorderBrush="Black" BorderThickness="1"  Background="#FF7A00CC" Grid.ColumnSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Создание плейлиста" VerticalAlignment="Center" Foreground="White" FontSize="22" Height="26" Width="210" Grid.ColumnSpan="2" Margin="195,0,0,0" />
+
+        <TextBlock HorizontalAlignment="Left" Margin="36,8,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выбор тегов" VerticalAlignment="Top" FontSize="16" Height="18" Width="111"/>
+
+        <TextBox HorizontalAlignment="Left" Margin="35,41,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding TitlePlaylist}" VerticalAlignment="Top" Width="402" Height="20" Grid.ColumnSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Margin="35,18,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Введите название трека" VerticalAlignment="Top" Height="18" Width="161"/>
+        <TextBlock HorizontalAlignment="Left" Margin="35,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Описание" VerticalAlignment="Top" Height="19" Width="249" Grid.ColumnSpan="2"/>
+        <TextBox HorizontalAlignment="Left" Margin="35,38,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding DescriptionPlaylist}" VerticalAlignment="Top" Width="402" Height="45" Grid.ColumnSpan="2"/>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,12,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выбраные теги" VerticalAlignment="Top" Height="19" Width="114" />
+
+        <Button Content="Создать плейлистов" HorizontalAlignment="Left" Margin="229,10,0,0" Grid.Row="5" Command="{Binding AddPlaylistCommand}"  VerticalAlignment="Top" Width="142" Height="23" Background="#FF9C4DFF" Grid.ColumnSpan="2" Foreground="White"/>
+        <ComboBox HorizontalAlignment="Left" Margin="38,33,0,0" Grid.Row="3" VerticalAlignment="Top" Width="144" ItemsSource="{Binding Tags}"  SelectedItem="{Binding SelectedTag}" DisplayMemberPath="TagsName" Height="25"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,36,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding SelectedTagsText}" VerticalAlignment="Top" Height="38" Width="276"/>
+        
+        <TextBlock HorizontalAlignment="Left" Margin="36,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Выбор треков" VerticalAlignment="Top" Height="19" Width="124"/>
+        <ComboBox HorizontalAlignment="Left" Margin="40,38,0,0" Grid.Row="4" VerticalAlignment="Top" Width="140" ItemsSource="{Binding Tracks}" SelectedItem="{Binding SelectedTrack}" DisplayMemberPath="TrackName" Height="25"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="11,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Выбранные треки" VerticalAlignment="Top" Height="19" Width="188"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,38,0,0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding SelectedTracksText}" VerticalAlignment="Top" Height="38" Width="277"/>
+
+    </Grid>
+</Window>

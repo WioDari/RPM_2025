@@ -9,13 +9,23 @@
       Title="PlaylistPage">
 
     <Grid Background="White">
-        <ListBox ItemsSource="{Binding playlists}" VerticalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Stretch" SelectedItem="{Binding selectedPlaylist}">
-          
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="337*"/>
+            <ColumnDefinition Width="88*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="8*"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding playlists}" ScrollViewer.HorizontalScrollBarVisibility="Disabled"  HorizontalContentAlignment="Stretch" SelectedItem="{Binding selectedPlaylist}" Grid.RowSpan="1" Grid.Row="1" Grid.ColumnSpan="2">
+
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:PlaylistUserControl/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Content="Создание плейлистов" HorizontalAlignment="Center" VerticalAlignment="Center" Width="154" Height="20" Background="#FF9C4DFF" FontFamily="Times New Roman" Command="{Binding AddPlaylistCommand}" Foreground="White" Grid.Column="1"/>
+
     </Grid>
 </Page>

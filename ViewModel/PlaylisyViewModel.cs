@@ -44,49 +44,104 @@ namespace MusicWpf.ViewModel
             set
             {
                 _selectedPlaylist = value;
-                ViewPlaylist(int.Parse(selectedPlaylist.id));
+                if (value != null)
+                {
+                    ViewPlaylist(int.Parse(value.id));
+                }
+
                 OnPropertyChanged();
             }
         }
 
         public ICommand ViewPlaylistCommand { get; set; }
+        public ICommand AddPlaylistCommand { get; private set; }
 
         public void ViewPlaylist(int id)
         {
             var w = new Views.Playlist();
-           if (selectedPlaylist != null)
-            {
-                w.DataContext = new PlaylistViewModel2(id);
-            }
+            w.DataContext = new PlaylistViewModel2(id);
             w.Show();
 
 
         }
 
+        private void OpenAddPlaylistWindow()
+        {
+            var window = new Views.AddPlaylist();
+            window.Show();
+
+        }
+
         public PlaylisyViewModel()
         {
+            AddPlaylistCommand = new RelayCommand(OpenAddPlaylistWindow);
             LoadPlaylists();
         }
 
         private void LoadPlaylists()
         {
             var context = new MusicContext();
-            playlists = new ObservableCollection<PlaylistVM>(context.Playlists
+
+            var playlistsData = context.Playlists
                 .Include(p => p.User)
                 .Include(p => p.PlaylistsUsers)
-                .Include(t => t.TracksPlaylists)
-                .Select(p => new PlaylistVM
+                .Include(p => p.TracksPlaylists)
+                    .ThenInclude(tp => tp.Tracks)
+                .ToList();
+
+            var playlistVMs = playlistsData.Select(p => new PlaylistVM
+            {
+                id = p.PlaylistId.ToString(),
+                title = $"{p.PlaylistName} | {p.User?.FullName ?? "Неизвестный автор"}",
+                likes = $"Нравится: {p.Likes}",
+                subs = $"Подписчиков: {p.PlaylistsUsers?.Count(up => up.PlaylistsId == p.PlaylistId) ?? 0}",
+                creationDate = $"Создан: {p.DateCreated:dd.MM.yyyy}",
+                tracksCount = $"Количество треков: {p.TracksPlaylists?.Count(tp => tp.PlaylistId == p.PlaylistId) ?? 0}",
+                 time = CalculateDuration(p)
+            })
+            .OrderBy(p => int.Parse(p.id))
+            .ToList();
+
+            playlists = new ObservableCollection<PlaylistVM>(playlistVMs);
+        }
+        private string CalculateDuration(Models.Playlist playlist)
+        {
+            try
+            {
+                var tracks = playlist.TracksPlaylists?
+                    .Where(tp => tp.Tracks != null)
+                    .Select(tp => tp.Tracks)
+                    .ToList();
+
+                if (tracks == null || !tracks.Any())
                 {
-                    id = p.PlaylistId.ToString(),
-                    title = $"{p.PlaylistName} | {p.User.FullName}",
-                    likes = $"Нравиться: {p.Likes.ToString()}",
-                    subs = $"Подписчиков: { p.PlaylistsUsers.Where(up => up.PlaylistsId == p.PlaylistId).Count().ToString() }",
-                    creationDate = $"Создан: {p.DateCreated.ToString("dd.MM.yyy")}",
-                    tracksCount = $"Количество треков: {p.TracksPlaylists.Where(tp => tp.PlaylistId == p.PlaylistId).Count().ToString()}",
-                    time = "0:00"
-                })
-                .OrderBy(p => p.id)
-                .ToList());  
+                    return "0:00";
+                }
+
+                var totalSeconds = tracks.Sum(t =>
+                {
+                    var timeOnly = t.Duration;
+                    return timeOnly.Hour * 3600 + timeOnly.Minute * 60 + timeOnly.Second;
+                });
+
+
+
+                var timeSpan = TimeSpan.FromSeconds(totalSeconds);
+
+                if (timeSpan.TotalHours >= 1)
+                {
+                    return $"{(int)timeSpan.TotalHours}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+                }
+                else
+                {
+                    return $"{timeSpan.Minutes}:{timeSpan.Seconds:D2}";
+                }
+            }
+            catch (Exception)
+            {
+                return "0:00";
+            }
         }
     }
 }
+

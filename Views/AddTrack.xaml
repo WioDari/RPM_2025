@@ -6,33 +6,59 @@
         xmlns:local="clr-namespace:MusicWpf.Views"
         mc:Ignorable="d"
         Style="{StaticResource GlobalWindowStyle}"
-        Title="AddTrack" Height="450" Width="600">
+        Title="AddTrack" Height="450" Width="700">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="209*"/>
+            <ColumnDefinition Width="283*"/>
+            <ColumnDefinition Width="208*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="57*"/>
-            <RowDefinition Height="67*"/>
-            <RowDefinition Height="64*"/>
-            <RowDefinition Height="67*"/>
-            <RowDefinition Height="66*"/>
-            <RowDefinition Height="115*"/>
+            <RowDefinition Height="74*"/>
+            <RowDefinition Height="69*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="72*"/>
+            <RowDefinition Height="93*"/>
         </Grid.RowDefinitions>
-        <Border BorderBrush="Black" BorderThickness="1" Background="#FF7A00CC" Margin="0,0,0,67" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Создание треков" VerticalAlignment="Center" Foreground="White" FontSize="22" Height="26" Width="156" Grid.ColumnSpan="2" Margin="222,0,0,0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Введите название трека" VerticalAlignment="Top" Height="18" Width="223"/>
-        <TextBlock HorizontalAlignment="Left" Margin="74,0,0,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Height="18" Width="0"/>
-        <ComboBox HorizontalAlignment="Left" Margin="55,27,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" Height="24"/>
-        <ComboBox HorizontalAlignment="Center" Margin="0,27,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" Height="24" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="24,38,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding NameTrack}" VerticalAlignment="Top" Width="263" Height="20"/>
-        <TextBox HorizontalAlignment="Left" Margin="24,34,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding ProdolTrack}" VerticalAlignment="Top" Width="263" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Введите продолжительость трека" VerticalAlignment="Top" Height="18" Width="228"/>
-        <TextBox HorizontalAlignment="Left" Margin="24,29,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Bitret}" VerticalAlignment="Top" Width="166" Height="20"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Введите битрейт" VerticalAlignment="Top" Height="18" Width="182"/>
-        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="30,5,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Введите рейтин" VerticalAlignment="Top" Width="187" Height="18"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="30,27,0,0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding Reiting}" VerticalAlignment="Top" Width="172" Height="20"/>
+
+        <Border BorderBrush="Black" BorderThickness="1" Background="#FF7A00CC" Margin="0,0,0,74" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Создание треков" VerticalAlignment="Center" Foreground="White" FontSize="22" Height="26" Width="156" Margin="59,0,0,0" Grid.Column="1"/>
+
+        <Image HorizontalAlignment="Center" Height="160" VerticalAlignment="Top" Width="160" Grid.RowSpan="3" Grid.Row="1" Source="/data/placeholder_cover.png" Margin="0,33,0,0"/>
+        <Border BorderBrush="Black" BorderThickness="1" Grid.Row="1" Margin="26,31,17,23" Grid.RowSpan="3" Height="160"/>
+        <Image HorizontalAlignment="Left" Height="160" Grid.Row="1" VerticalAlignment="Top" Width="160" Source="{Binding CoverPath}" Margin="26,33,0,0" Grid.RowSpan="3"/>
+
+
+
+        <TextBlock HorizontalAlignment="Left" Margin="10,15,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Введите название трека" VerticalAlignment="Top" Height="18" Width="223" Grid.Column="1"/>
+        <TextBox HorizontalAlignment="Left" Margin="6,37,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding  TitleTrack}" VerticalAlignment="Top" Width="263" Height="20" Grid.Column="1"/>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="10,8,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выберите артистов" VerticalAlignment="Top" Height="18" Width="148"/>
+        <ComboBox HorizontalAlignment="Left" Margin="10,33,0,0" Grid.Row="3" VerticalAlignment="Top" Width="175" Height="24" Grid.Column="1" ItemsSource="{Binding Artists}" SelectedItem="{Binding SelectedArtist}" DisplayMemberPath="ArtistName"/>
+
+        <TextBox HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding ProdolTrack}" VerticalAlignment="Top" Width="259" Height="20" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Продолжительость трека в секнудах" VerticalAlignment="Top" Height="24" Width="265" Grid.Column="1"/>
+
+        <TextBox HorizontalAlignment="Left" Margin="10,33,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding Bitret}" VerticalAlignment="Top" Width="166" Height="20" Grid.Column="2"/>
+        <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Введите битрейт" VerticalAlignment="Top" Height="18" Width="182" Grid.Column="2"/>
+
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" Margin="0,9,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Введите рейтин" VerticalAlignment="Top" Width="188" Height="18"/>
+        <TextBox Grid.Column="2" HorizontalAlignment="Left" Margin="10,37,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding Reiting}" VerticalAlignment="Top" Width="172" Height="20" />
+
+        <DatePicker HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" Width="174" Height="27" SelectedDate="{Binding ReleaseDate}"/>
+
+        <Button Grid.Column="1" Content="Создать Трек" HorizontalAlignment="Left" Margin="77,53,0,0" Grid.Row="5" VerticalAlignment="Top" Width="117" Command="{Binding AddTrackCommand}" Height="22" Background="#FF9C4DFF" Foreground="#FFFDFDFD"/>
+
+
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="13,8,0,0" Grid.Row="3" TextWrapping="Wrap" Text="Выбратные артисты" VerticalAlignment="Top"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Left" Margin="10,33,0,0" Grid.Row="3" TextWrapping="Wrap"  Text="{Binding SelectedArtistText}" VerticalAlignment="Top" Width="176" Height="55" Grid.RowSpan="2"/>
+
+        <TextBlock Grid.Column="1" HorizontalAlignment="Left" Margin="14,10,0,0" Grid.Row="4" TextWrapping="Wrap" Text="Выбирите альбом" VerticalAlignment="Top" Width="140"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,36,0,0" Grid.Row="4" VerticalAlignment="Top" Width="175" ItemsSource="{Binding Albums}" SelectedItem="{Binding SelectedAlbum}" DisplayMemberPath="AlbumTitle" />
+
+
+
 
     </Grid>
 </Window>

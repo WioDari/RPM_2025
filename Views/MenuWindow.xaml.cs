@@ -25,5 +25,10 @@ namespace MusicWpf.Views
             InitializeComponent();
             DataContext = new MenuViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -5,6 +5,9 @@
     <Compile Update="Views\AddAlbum.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\AddPlaylist.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\AddTrack.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -20,13 +23,16 @@
     <Compile Update="Views\AlbumUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\ArtistPage.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\ArtistUserControl.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\Auth.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\EditPlaylist.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Gost.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\GostUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\MenuWindow.xaml.cs">
@@ -42,6 +48,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\PlaylistUserControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TrackPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\TrackUserControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserPage.xaml.cs">

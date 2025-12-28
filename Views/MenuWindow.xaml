@@ -31,7 +31,7 @@
 
         <Button Content="Выход" HorizontalAlignment="Center" Margin="0,113,0,0" Grid.Row="6" VerticalAlignment="Top" Height="32" Width="140"  Background="#FF9C4DFF" Command="{Binding LogoutCommand}"/>
         <TextBlock HorizontalAlignment="Left" Margin="18,0,0,0" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" FontSize="20" Height="34" Width="86" Grid.Column="2" Foreground="White"/>
-        <Button Content="Артисты"  HorizontalAlignment="Center" Margin="0,15,0,0" Grid.Row="4" VerticalAlignment="Top" Height="32" Width="140" Background="#FF9C4DFF"/>
+        <Button Content="Треки"  HorizontalAlignment="Center" Margin="0,15,0,0" Command="{Binding TrackList}" Grid.Row="4" VerticalAlignment="Top" Height="32" Width="140" Background="#FF9C4DFF" Click="Button_Click"/>
         <Frame Grid.Column="1" Content="{Binding page}" Grid.ColumnSpan="2" Grid.RowSpan="6" Margin="0,17,0,0" Grid.Row="1"/>
         <Button Content="Пользователи" Command="{Binding UserList}" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Height="32" Width="140" Background="#FF9C4DFF"/>
         <Button Content="Альбомы" Command="{Binding AlbumList}"  HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="140"  Height="32" Background="#FF9C4DFF"/>

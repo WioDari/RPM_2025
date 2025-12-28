@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicWpf.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,8 @@ namespace MusicWpf.Views
         public AddAlbum()
         {
             InitializeComponent();
+            DataContext = new AddAlbumViewModel();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
     }
 }

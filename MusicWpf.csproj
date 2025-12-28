@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="data\placeholder_cover.png" />
     <None Remove="Resources\icon.ico" />
   </ItemGroup>
 
@@ -27,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="data\placeholder_cover.png" />
     <Resource Include="Resources\icon.ico" />
   </ItemGroup>
 

@@ -26,5 +26,10 @@ namespace MusicWpf.Views
             InitializeComponent();
             DataContext = new PlaylisyViewModel();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

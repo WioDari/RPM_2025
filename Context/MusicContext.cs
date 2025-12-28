@@ -231,8 +231,6 @@ public partial class MusicContext : DbContext
 
             entity.ToTable("TracksPlaylist");
 
-            entity.Property(e => e.TracksPlaylistId).ValueGeneratedNever();
-
             entity.HasOne(d => d.Playlist).WithMany(p => p.TracksPlaylists)
                 .HasForeignKey(d => d.PlaylistId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

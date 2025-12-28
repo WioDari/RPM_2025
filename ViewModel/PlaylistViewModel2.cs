@@ -7,30 +7,27 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace MusicWpf.ViewModel
 {
     internal class PlaylistViewModel2 : BaseViewModel
     {
-
-        private ObservableCollection<PlaylistViewModel2> _playlistList;
-
-        public ObservableCollection<PlaylistViewModel2> playlistList
+        private ObservableCollection<PlayTrackVM> _playlistList;
+        public ObservableCollection<PlayTrackVM> playlistList
         {
             get => _playlistList;
-
             set
             {
                 _playlistList = value;
                 OnPropertyChanged();
             }
         }
-        private string _nameplaylist;
 
+        private string _nameplaylist;
         public string nameplaylist
         {
             get => _nameplaylist;
-
             set
             {
                 _nameplaylist = value;
@@ -39,11 +36,9 @@ namespace MusicWpf.ViewModel
         }
 
         private string _nameavtor;
-
         public string nameavtor
         {
             get => _nameavtor;
-
             set
             {
                 _nameavtor = value;
@@ -52,11 +47,9 @@ namespace MusicWpf.ViewModel
         }
 
         private string _date;
-
         public string date
         {
             get => _date;
-
             set
             {
                 _date = value;
@@ -64,13 +57,10 @@ namespace MusicWpf.ViewModel
             }
         }
 
-
         private string _like;
-
         public string like
         {
             get => _like;
-
             set
             {
                 _like = value;
@@ -78,13 +68,10 @@ namespace MusicWpf.ViewModel
             }
         }
 
-
         private string _duration;
-
         public string duration
         {
             get => _duration;
-
             set
             {
                 _duration = value;
@@ -92,70 +79,122 @@ namespace MusicWpf.ViewModel
             }
         }
 
-        public PlaylistViewModel2(int id)
+
+        public PlaylistViewModel2(int playlistId)
         {
-            LoadPlaylist2(id);
-        }
-        public class PlaylistListView
-        {
-            public string id { get; set; }
-
-            public string namealbum { get; set; }
-
-
-            public string tracknam { get; set; }
-
-            public string artistrac { get; set; }
-
-
-            public string rating { get; set; }
-
-            public string duration { get; set; }
-
-            public List<string> authors { get; set; }
-
+            _playlistId = playlistId;
+            LoadPlaylist2(playlistId);
+            EditPaylisyCommand = new RelayCommand(OpenEditPlaylisyWindow);
         }
 
-        public void LoadPlaylist2(int? id = null)
+        public class PlayTrackVM
         {
-            var context = new MusicContext();
-            nameavtor = context.Playlists.Include(p => p.User).FirstOrDefault().User.FullName;
-            nameplaylist = $"{context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().PlaylistName} | {nameavtor}";
-            date = $"Дата создания: {context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().DateCreated.ToString("dd.MM.yyyy")}";
-            like = $"Понравилось: {context.Playlists.Where(p => p.PlaylistId == id).FirstOrDefault().Likes.ToString()}";
-            duration = $"Продолжительность: {0.ToString()}";
+            public string trackNamePl { get; set; }
+            public string trackArtistPl { get; set; }
+            public string countlistenPl { get; set; }
+            public string ratingPl { get; set; }
+            public string durationPl { get; set; }
+        }
 
-                /*  _playlistList = new ObservableCollection<PlaylistListView>(context.Tracks
-                       .Where(t => t.TracksPlaylists.Any(pt => pt.PlaylistId == id))
-                       .Include(p => p.Album)
-                       .Include(p => p.PlayListTracks)
-                       .Include(p => p.TrackArtists)
-                       .Include(p => p.AlbumTracks)
-                       .Select(p => new PlaylistListView
-                       {
-                           tracknam = p.TrackName,
-                           namealbum = p.Album.AlbumName,
-                           authors = p.TrackArtists.Where(tr => tr.TrackId == p.TrackId).Select(a => a.Artist.ArtistName).ToList(),
-                           artistrac = "",
-                           rating = p.Rating.ToString(),
-                           duration = p.Duration.ToString("mm:ss"),
+        public ICommand EditPaylisyCommand { get; set; }
+        private int _playlistId;
 
-                       })
-                       .ToList());
-*/
-            /*  foreach (var track in playlistList)
-              {
-                  foreach (string t in track.authors)
-                  {
+        private void OpenEditPlaylisyWindow()
+        {
+            var window = new EditPlaylist(_playlistId);
+            window.Show();
 
-                      string ti = t;
+            if (window.DialogResult == true)
+            {
+                LoadPlaylist2(_playlistId);
+            }
 
-                      track.artistrac += ti + " ";
-                  }
+        }
+        public void LoadPlaylist2(int id)
+        {
+            try
+            {
+                var context = new MusicContext();
 
-              }*/
+                var playlist = context.Playlists
+                    .Include(p => p.User)
+                    .Include(p => p.TracksPlaylists)
+                        .ThenInclude(tp => tp.Tracks)
+                    .FirstOrDefault(p => p.PlaylistId == id);
 
+                if (playlist == null)
+                {
+                    nameplaylist = "Плейлист не найден";
+                    return;
+                }
 
+                nameavtor = playlist.User?.FullName ?? "Неизвестный автор";
+                nameplaylist = $"{playlist.PlaylistName} | {nameavtor}";
+                date = $"Дата создания: {playlist.DateCreated:dd.MM.yyyy}";
+                like = $"Понравилось: {playlist.Likes}";
+
+                var tracksData = context.TracksPlaylists
+                    .Where(tp => tp.PlaylistId == id)
+                    .Include(tp => tp.Tracks)
+                        .ThenInclude(t => t.ArtistTracks)
+                        .ThenInclude(at => at.Artist)
+                    .Select(tp => new PlayTrackVM
+                    {
+                        trackNamePl = tp.Tracks.TrackName,
+                        countlistenPl = tp.Tracks.PlayCount.ToString(),
+                        ratingPl = tp.Tracks.Rating.ToString("F1"),
+                        durationPl = tp.Tracks.Duration.ToString(@"mm\:ss"),
+                        trackArtistPl = string.Join(", ", tp.Tracks.ArtistTracks.Select(at => at.Artist.ArtistName))
+                    })
+                    .ToList();
+
+                playlistList = new ObservableCollection<PlayTrackVM>(tracksData);
+
+                var totalDuration = CalculateTotalDuration(playlist);
+                duration = $"Продолжительность: {totalDuration}";
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Ошибка при загрузке плейлиста: {ex.Message}");
+            }
+        }
+
+        private string CalculateTotalDuration(Models.Playlist playlist)
+        {
+            try
+            {
+                var tracks = playlist.TracksPlaylists?
+                    .Where(tp => tp.Tracks != null)
+                    .Select(tp => tp.Tracks)
+                    .ToList();
+
+                if (tracks == null || !tracks.Any())
+                {
+                    return "0:00";
+                }
+
+                var totalSeconds = tracks.Sum(t =>
+                {
+                    var timeOnly = t.Duration;
+                    return timeOnly.Hour * 3600 + timeOnly.Minute * 60 + timeOnly.Second;
+                });
+
+                var timeSpan = TimeSpan.FromSeconds(totalSeconds);
+
+                if (timeSpan.TotalHours >= 1)
+                {
+                    return $"{(int)timeSpan.TotalHours}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+                }
+                else
+                {
+                    return $"{timeSpan.Minutes}:{timeSpan.Seconds:D2}";
+                }
+            }
+            catch (Exception)
+            {
+                return "0:00";
+            }
         }
     }
 }
+

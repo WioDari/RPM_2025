@@ -116,13 +116,14 @@ namespace MusicWpf.ViewModel
         }
         public void OpenGuest()
         {
-
+            Window gues = new Gost();
+            gues.Show();
         }
 
         public void OnLogin()
         {
             var date = DateTime.Now.Subtract(Settings.Default.ban_time);
-            if (date != null) //MessageBox.Show(date.TotalHours.ToString());
+            if (date != null) 
 
                 if (date.TotalHours < 0)
                 {

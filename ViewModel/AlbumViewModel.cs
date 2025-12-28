@@ -92,15 +92,18 @@ namespace MusicWpf.ViewModel
             var w = new Views.Album();
             if (selectedAlbim != null)
             {
-                w.DataContext = new TracksViewModel(id);
+                w.DataContext = new AlbumViewModel_track_(id);
             }
             w.Show();
 
 
         }
+
+        public ICommand AddAlbumCommand { get; private set; }
         public AlbumViewModel()
         {
             LoadAlbums();
+            AddAlbumCommand = new RelayCommand(OpenAddAlbumWindow);
 
             var context = new MusicContext();
             var generes = context.Genres
@@ -110,6 +113,13 @@ namespace MusicWpf.ViewModel
                 .ToList();
             generes.Insert(0, "Жанры");
             genres = new ObservableCollection<string>(generes);
+        }
+
+        private void OpenAddAlbumWindow()
+        {
+            var window = new Views.AddAlbum();
+            window.Show();                     
+                                             
         }
         public class AlbumVM
         { 
@@ -180,6 +190,7 @@ namespace MusicWpf.ViewModel
 
 
         }
+
 
 
         private void ApplyFilters()
