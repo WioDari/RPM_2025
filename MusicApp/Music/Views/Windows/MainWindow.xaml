@@ -1,0 +1,42 @@
+﻿<Window xmlns:Items="clr-namespace:Music.Views.Items" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music"
+        xmlns:Views="clr-namespace:Music.Views" Style="{StaticResource MainWindowStyle}"
+        x:Class="Music.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" ResizeMode="NoResize" Height="650" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="White">
+
+            <Border MinHeight="40" Margin="10,30,10,10" Background="#ede2ff" CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding LogoutCommand}" MaxHeight="20" MaxWidth="20">
+                        <Image  Source="/Resources/BackArrow.png"/>
+                    </Button>
+                    <TextBlock  Text="{Binding name}" TextTrimming ="CharacterEllipsis"  Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                </StackPanel>
+                
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,10,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Main}" CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Главная" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding MainCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Album}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Альбомы" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding AlbumCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Playlist}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Плейлисты" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding PlaylistCommand}" />
+            </Border>
+            <Border MinHeight="40" MaxWidth="250" Margin="40,0,10,10" Background="{Binding SelectedButton, Converter={StaticResource BackgroundMainBtnConverter}, ConverterParameter=Track}"  CornerRadius="10" BorderBrush="Black" BorderThickness="0,0,0,2">
+                <Button Content="Треки" Width="250" Margin="8,0,0,0" HorizontalAlignment="Left" BorderBrush="Transparent" Background="Transparent"  Command="{Binding TrackCommand}" />
+            </Border>
+        </StackPanel>
+        <Frame Grid.Column="1" Content="{Binding currentPage}" HorizontalAlignment="Left" NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>
