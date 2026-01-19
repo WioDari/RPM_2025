@@ -1,0 +1,181 @@
+<UserControl x:Class="MusicPlus.Views.PlaylistsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1200">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" 
+                       Text="Плейлисты" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+            
+            <Button Grid.Column="1" 
+                    Content="+ Добавить плейлист"
+                    Visibility="{Binding CanAddEdit, Converter={StaticResource BoolToVisibilityConverter}}"
+                    Click="AddPlaylist_Click"/>
+        </Grid>
+
+        
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            
+            <StackPanel Grid.Column="0" Margin="0,0,10,0">
+                <Label Content="Поиск:" FontSize="12"/>
+                <TextBox Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding IsGuest, Converter={StaticResource InverseBoolConverter}}"
+                         Padding="10,8"
+                         FontSize="14"/>
+            </StackPanel>
+
+            
+            <StackPanel Grid.Column="1" Margin="10,0,0,0">
+                <Label Content="Сортировка:" FontSize="12"/>
+                <ComboBox ItemsSource="{Binding SortOptions}"
+                          SelectedItem="{Binding SelectedSortOrder}"
+                          IsEnabled="{Binding IsGuest, Converter={StaticResource InverseBoolConverter}}"
+                          Padding="10,8"/>
+            </StackPanel>
+        </Grid>
+
+        
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Playlists}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="#FFFFFF"
+                                BorderBrush="#E0E0E0"
+                                BorderThickness="0,0,0,1"
+                                Padding="15,10"
+                                Margin="0,5">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                
+                                <StackPanel Grid.Column="0">
+                                    
+                                    <TextBlock FontSize="18" 
+                                               FontWeight="Bold"
+                                               Margin="0,0,0,5"
+                                               Cursor="Hand"
+                                               MouseLeftButtonDown="PlaylistName_Click">
+                                        <TextBlock.Text>
+                                            <Binding Path="PlaylistName"/>
+                                        </TextBlock.Text>
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsPremium}" Value="True">
+                                                        <Setter Property="Foreground" Value="#ff943d"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsPremium}" Value="False">
+                                                        <Setter Property="Foreground" Value="#1C1C1C"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                    
+                                    <TextBlock FontSize="14" 
+                                               Foreground="#4B4B4B"
+                                               Margin="0,0,0,3">
+                                        <Run Text="Автор: "/>
+                                        <Run Text="{Binding CreatorName}"/>
+                                        <Run Text=" | "/>
+                                        <Run Text="{Binding DateCreated, StringFormat='Дата создания: {0:dd.MM.yyyy}'}"/>
+                                    </TextBlock>
+
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                                        <TextBlock FontSize="12" 
+                                                   Foreground="#4B4B4B"
+                                                   FontFamily="Segoe UI"
+                                                   Margin="0,0,15,0">
+                                            <Run Text="Подписчики: "/>
+                                            <Run Text="{Binding SubscriberCount}"/>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12" 
+                                                   Foreground="#4B4B4B"
+                                                   FontFamily="Segoe UI"
+                                                   Margin="0,0,15,0">
+                                            <Run Text="Лайки: "/>
+                                            <Run Text="{Binding Likes}"/>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12" 
+                                                   FontFamily="Segoe UI"
+                                                   Margin="0,0,15,0">
+                                            <Run Text="Треки: "/>
+                                            <Run Text="{Binding TrackCount}">
+                                                <Run.Foreground>
+                                                    <Binding Path="TrackCount" Converter="{StaticResource ZeroTracksToColorConverter}"/>
+                                                </Run.Foreground>
+                                            </Run>
+                                        </TextBlock>
+                                        <TextBlock FontSize="12" 
+                                                   Foreground="#4B4B4B"
+                                                   FontFamily="Segoe UI">
+                                            <Run Text="Продолжительность: "/>
+                                            <Run>
+                                                <Run.Text>
+                                                    <Binding Path="TotalDuration" Converter="{StaticResource DurationToStringConverter}"/>
+                                                </Run.Text>
+                                            </Run>
+                                        </TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                
+                                <StackPanel Grid.Column="1" 
+                                            Orientation="Horizontal"
+                                            VerticalAlignment="Center"
+                                            Margin="15,0,0,0">
+                                    <Button Content="Просмотр"
+                                            Command="{Binding DataContext.ViewPlaylistDetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Margin="5,0"
+                                            Padding="10,5"/>
+                                    <Button Content="Редактировать"
+                                            Command="{Binding DataContext.EditPlaylistCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Visibility="{Binding CanEdit, Converter={StaticResource BoolToVisibilityConverter}}"
+                                            Margin="5,0"
+                                            Padding="10,5"/>
+                                    <Button Content="Удалить"
+                                            Command="{Binding DataContext.DeletePlaylistCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}"
+                                            Visibility="{Binding CanDelete, Converter={StaticResource BoolToVisibilityConverter}}"
+                                            Background="#CC3366"
+                                            Margin="5,0"
+                                            Padding="10,5"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

@@ -1,0 +1,70 @@
+<Window x:Class="MusicPlus.Views.MenuView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Музыка+ - Главное меню" 
+        Height="700" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        
+        <Border Grid.Row="0" Background="#EDE2FF" Padding="15">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <Image x:Name="LogoImage" Width="40" Height="40" Margin="0,0,15,0" Loaded="LogoImage_Loaded"/>
+                    <TextBlock Text="{Binding CurrentUserFullName}" 
+                               FontSize="16" 
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Foreground="#1C1C1C"/>
+                </StackPanel>
+
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button Content="Альбомы" 
+                            Command="{Binding NavigateToAlbumsCommand}"
+                            Background="{Binding IsAlbumsActive, Converter={StaticResource ActiveMenuButtonConverter}}"
+                            Visibility="{Binding CanViewAlbums, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Margin="5,0"/>
+                    <Button Content="Артисты" 
+                            Command="{Binding NavigateToArtistsCommand}"
+                            Background="{Binding IsArtistsActive, Converter={StaticResource ActiveMenuButtonConverter}}"
+                            Visibility="{Binding CanViewArtists, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Margin="5,0"/>
+                    <Button Content="Плейлисты" 
+                            Command="{Binding NavigateToPlaylistsCommand}"
+                            Background="{Binding IsPlaylistsActive, Converter={StaticResource ActiveMenuButtonConverter}}"
+                            Visibility="{Binding CanViewPlaylists, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Margin="5,0"/>
+                    <Button Content="Пользователи" 
+                            Command="{Binding NavigateToUsersCommand}"
+                            Background="{Binding IsUsersActive, Converter={StaticResource ActiveMenuButtonConverter}}"
+                            Visibility="{Binding CanViewUsers, Converter={StaticResource BoolToVisibilityConverter}}"
+                            Margin="5,0"/>
+                    <Button Content="Выход" 
+                            Command="{Binding LogoutCommand}"
+                            Background="#CC3366"
+                            Margin="15,0,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        
+        <ContentControl x:Name="ContentArea" 
+                        Grid.Row="1" 
+                        Margin="20"/>
+    </Grid>
+</Window>

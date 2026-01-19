@@ -1,0 +1,197 @@
+<Window x:Class="MusicPlus.Views.AlbumDetailView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" 
+        Title="Детали альбома" 
+        Height="700" 
+        Width="900"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="30" Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" 
+                       Text="{Binding Album.AlbumTitle, StringFormat='Альбом: {0}'}" 
+                       FontSize="24" 
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"/>
+            
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button Content="+ Добавить трек"
+                        IsEnabled="{Binding CanEdit}"
+                        Click="AddTrack_Click"
+                        Background="#5DCC99"
+                        Margin="5,0"/>
+                <Button Content="Редактировать альбом"
+                        IsEnabled="{Binding CanEdit}"
+                        Click="EditAlbum_Click"
+                        Margin="5,0"/>
+                <Button Content="Удалить альбом"
+                        IsEnabled="{Binding CanDelete}"
+                        Click="DeleteAlbum_Click"
+                        Background="#CC3366"
+                        Margin="5,0"/>
+                <Button Content="Назад"
+                        Click="Back_Click"
+                        Margin="5,0"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+                    Background="#EDE2FF" 
+                    CornerRadius="8" 
+                    Padding="10"
+                    Margin="0,0,20,0">
+                <Image x:Name="AlbumCoverImage"
+                       Width="280" 
+                       Height="280"
+                       Stretch="Uniform"
+                       Loaded="AlbumCoverImage_Loaded"/>
+            </Border>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Top">
+                <TextBlock Text="Исполнитель:" 
+                           FontSize="14" 
+                           Foreground="#4B4B4B"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding Album.Artist.ArtistName}" 
+                           FontSize="18" 
+                           FontWeight="Bold"
+                           Margin="0,0,0,15"/>
+
+                <TextBlock Text="Год выпуска:" 
+                           FontSize="14" 
+                           Foreground="#4B4B4B"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding Album.ReleaseYear}" 
+                           FontSize="16"
+                           Margin="0,0,0,15"/>
+
+                <TextBlock Text="Жанры:" 
+                           FontSize="14" 
+                           Foreground="#4B4B4B"
+                           Margin="0,0,0,5"/>
+                <TextBlock Text="{Binding GenresText}" 
+                           FontSize="16"
+                           TextWrapping="Wrap"
+                           Margin="0,0,0,15"/>
+
+                <TextBlock Text="Общая продолжительность:" 
+                           FontSize="14" 
+                           Foreground="#4B4B4B"
+                           Margin="0,0,0,5"/>
+                <TextBlock FontSize="16"
+                           FontFamily="Segoe UI">
+                    <TextBlock.Text>
+                        <Binding Path="Album.TotalDuration" Converter="{StaticResource DurationToStringConverter}"/>
+                    </TextBlock.Text>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="2" 
+                BorderBrush="#E0E0E0" 
+                BorderThickness="1" 
+                CornerRadius="8"
+                Padding="15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" 
+                           Text="Треки:" 
+                           FontSize="18" 
+                           FontWeight="Bold"
+                           Margin="0,0,0,15"/>
+
+                <ListView Grid.Row="1" 
+                          ItemsSource="{Binding Tracks}"
+                          BorderThickness="0"
+                          ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#FFFFFF"
+                                    BorderBrush="#E0E0E0"
+                                    BorderThickness="0,0,0,1"
+                                    Padding="10,8">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Grid.Column="0">
+                                        <TextBlock Text="{Binding TrackName}" 
+                                                   FontSize="16" 
+                                                   FontWeight="Bold"
+                                                   Margin="0,0,0,3"/>
+                                        <TextBlock FontSize="14"
+                                                   Foreground="#4B4B4B">
+                                            <TextBlock.Text>
+                                                <Binding Path="ArtistsText"/>
+                                            </TextBlock.Text>
+                                        </TextBlock>
+                                    </StackPanel>
+
+                                    <TextBlock Grid.Column="1" 
+                                               VerticalAlignment="Center"
+                                               Margin="15,0"
+                                               FontFamily="Segoe UI">
+                                        <TextBlock.Text>
+                                            <Binding Path="Rating" StringFormat="Рейтинг: {0:F1}"/>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+
+                                    <TextBlock Grid.Column="2" 
+                                               VerticalAlignment="Center"
+                                               Margin="15,0"
+                                               FontFamily="Segoe UI">
+                                        <TextBlock.Text>
+                                            <Binding Path="Duration" Converter="{StaticResource DurationToStringConverter}"/>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+
+                                    <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="10,0,0,0">
+                                        <Button Content="Редактировать"
+                                                Visibility="{Binding DataContext.CanEdit, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                Click="EditTrack_Click"
+                                                Background="#9C4DFF"
+                                                Padding="10,5"
+                                                Margin="0,0,5,0"/>
+                                        <Button Content="Удалить"
+                                                Visibility="{Binding DataContext.CanDelete, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource BoolToVisibilityConverter}}"
+                                                Click="DeleteTrack_Click"
+                                                Background="#CC3366"
+                                                Padding="10,5"/>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

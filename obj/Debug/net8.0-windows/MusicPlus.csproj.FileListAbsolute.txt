@@ -1,0 +1,342 @@
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditArtistView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditPlaylistView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddTracksToPlaylistView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AlbumDetailView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AlbumsView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\ArtistsView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AuthView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\MenuView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\PlaylistDetailView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\PlaylistsView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\TracksView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\UsersView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditAlbumView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditArtistView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditPlaylistView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditTrackView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddTracksToPlaylistView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AlbumDetailView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AlbumsView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\ArtistsView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AuthView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\MenuView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\PlaylistDetailView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\PlaylistsView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\TracksView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\UsersView.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus_Content.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus_MarkupCompile.cache
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus_MarkupCompile.lref
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\icon.png
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\placeholder_cover.png
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\123.png
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\123_1.png
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\As Alive As You Need Me To Be.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Baby.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Barbara Barbara, we face a shining future.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Bloodline (Bonus Tracks).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Breed (feat. REEBZ).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\CHOMPO III.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Cinematic Soundscape.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Circle.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Final Destination.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Formula Of Fear.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Fuze.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Ghost City Daze.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\GOFASTER (YANA100).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Grave.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\heavy metal 3.png
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\I See Red.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Liquid (Bonus Track Version).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Never, Never, Land.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\NO MERCY III.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Oblivion With Bells.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\ORDINARY LOSS.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Overload 2K.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Repentance.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Siren Of The Storm.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\SOMEWHEREIBELONG.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Subhuman.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\The Day Is My Enemy (Expanded Edition).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\The Fragile.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\The Machine.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\The Masquerade (Zardonic & Toronto Is Broken Remix).jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\The Star.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\Wall I Was.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Resources\covers\общедомовой.jpg
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MusicPlus.exe
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MusicPlus.deps.json
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MusicPlus.runtimeconfig.json
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MusicPlus.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MusicPlus.pdb
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Humanizer.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Mono.TextTemplating.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\MySqlConnector.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.Composition.AttributedModel.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.Composition.Convention.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.Composition.Hosting.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.Composition.Runtime.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.Composition.TypedParts.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\App.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditAlbumView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\Views\AddEditTrackView.baml
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.g.resources
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.AssemblyInfo.cs
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.csproj.Up2Date
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.dll
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\refint\MusicPlus.dll
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.pdb
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\MusicPlus.genruntimeconfig.cache
+C:\Users\User\Desktop\1\obj\Debug\net8.0-windows\ref\MusicPlus.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\icon.png
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\placeholder_cover.png
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\123.png
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\123_1.png
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\As Alive As You Need Me To Be.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Baby.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Barbara Barbara, we face a shining future.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Bloodline (Bonus Tracks).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Breed (feat. REEBZ).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\CHOMPO III.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Cinematic Soundscape.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Circle.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Final Destination.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Formula Of Fear.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Fuze.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Ghost City Daze.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\GOFASTER (YANA100).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Grave.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\heavy metal 3.png
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\I See Red.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Liquid (Bonus Track Version).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Never, Never, Land.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\NO MERCY III.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Oblivion With Bells.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\ORDINARY LOSS.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Overload 2K.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Repentance.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Siren Of The Storm.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\SOMEWHEREIBELONG.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Subhuman.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\The Day Is My Enemy (Expanded Edition).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\The Fragile.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\The Machine.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\The Masquerade (Zardonic & Toronto Is Broken Remix).jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\The Star.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\Wall I Was.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Resources\covers\общедомовой.jpg
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MusicPlus.exe
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MusicPlus.deps.json
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MusicPlus.runtimeconfig.json
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MusicPlus.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MusicPlus.pdb
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Humanizer.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.DependencyModel.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Mono.TextTemplating.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\MySqlConnector.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.Composition.AttributedModel.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.Composition.Convention.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.Composition.Hosting.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.Composition.Runtime.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.Composition.TypedParts.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\System.IO.Pipelines.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.csproj.AssemblyReference.cache
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditArtistView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditPlaylistView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddTracksToPlaylistView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AlbumDetailView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AlbumsView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\ArtistsView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AuthView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\MenuView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\PlaylistDetailView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\PlaylistsView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\TracksView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\UsersView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MainWindow.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditAlbumView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditArtistView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditPlaylistView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditTrackView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddTracksToPlaylistView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AlbumDetailView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AlbumsView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\ArtistsView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AuthView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\MenuView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\PlaylistDetailView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\PlaylistsView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\TracksView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\UsersView.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\App.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus_Content.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus_MarkupCompile.cache
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus_MarkupCompile.lref
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\App.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MainWindow.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditAlbumView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\Views\AddEditTrackView.baml
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.g.resources
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.AssemblyInfo.cs
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.csproj.Up2Date
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.dll
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\refint\MusicPlus.dll
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.pdb
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\MusicPlus.genruntimeconfig.cache
+C:\Users\User\Desktop\музыка\obj\Debug\net8.0-windows\ref\MusicPlus.dll

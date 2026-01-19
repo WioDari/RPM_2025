@@ -1,0 +1,165 @@
+<Window x:Class="MusicPlus.Views.AddEditTrackView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MusicPlus.Converters"
+        mc:Ignorable="d" 
+        Title="{Binding Title}" 
+        Height="700" 
+        Width="700"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="30" Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding Title}" 
+                   FontSize="20" 
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Название трека *" FontSize="14"/>
+                    <TextBox Text="{Binding TrackName, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Исполнители *" FontSize="14"/>
+                    <ListBox x:Name="ArtistsListBox"
+                             ItemsSource="{Binding Artists}"
+                             SelectionMode="Multiple"
+                             Height="150"
+                             DisplayMemberPath="ArtistName"
+                             SelectionChanged="ArtistsListBox_SelectionChanged"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Альбом" FontSize="14"/>
+                    <ComboBox ItemsSource="{Binding Albums}"
+                              SelectedItem="{Binding SelectedAlbum}"
+                              Padding="10,8"
+                              FontSize="14"
+                              SelectionChanged="AlbumComboBox_SelectionChanged">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock>
+                                    <Run Text="{Binding AlbumTitle}"/>
+                                    <Run Text=" ("/>
+                                    <Run Text="{Binding Artist.ArtistName}"/>
+                                    <Run Text=")"/>
+                                </TextBlock>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <TextBlock Text="При выборе альбома автоматически заполняются дата и обложка"
+                               FontSize="11"
+                               Foreground="#4B4B4B"
+                               Margin="0,5,0,0"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Продолжительность (секунды) *" FontSize="14"/>
+                    <TextBox FontSize="14"
+                             Padding="10,8"
+                             Text="{Binding DurationString, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="Или введите в формате ММ:СС, Ч:М или ЧЧ:ММ:СС"
+                               FontSize="11"
+                               Foreground="#4B4B4B"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Дата выпуска" FontSize="14"/>
+                    <DatePicker SelectedDate="{Binding ReleaseDate}"
+                                FontSize="14"
+                                Padding="10,8"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Битрейт (kbps)" FontSize="14"/>
+                    <TextBox FontSize="14"
+                             Padding="10,8">
+                        <TextBox.Text>
+                            <Binding Path="Bitrate" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource NullableIntConverter}"/>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Рейтинг (0.0 - 5.0)" FontSize="14"/>
+                    <TextBox FontSize="14"
+                             Padding="10,8">
+                        <TextBox.Text>
+                            <Binding Path="Rating" UpdateSourceTrigger="PropertyChanged" Converter="{StaticResource NullableDecimalConverter}"/>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Обложка трека (необязательно)" FontSize="14"/>
+                    
+                    
+                    <Border Background="#EDE2FF" 
+                            CornerRadius="8" 
+                            Padding="10"
+                            Margin="0,10,0,10"
+                            Visibility="{Binding CoverImage, Converter={StaticResource ObjectToVisibilityConverter}}">
+                        <Image Source="{Binding CoverImage}" 
+                               Width="200" 
+                               Height="200"
+                               Stretch="Uniform"/>
+                    </Border>
+
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <Button Content="Загрузить из файла (PNG, макс. 1000x1000)"
+                                Command="{Binding LoadCoverFromFileCommand}"
+                                Margin="0,0,10,0"
+                                Padding="10,8"/>
+                        <Button Content="Указать URL"
+                                Command="{Binding ApplyUrlCommand}"
+                                Padding="10,8"/>
+                    </StackPanel>
+
+                    
+                    <TextBox Text="{Binding CoverUrlInput, UpdateSourceTrigger=PropertyChanged}"
+                             FontSize="14"
+                             Padding="10,8"
+                             Margin="0,10,0,0"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+            <Button Content="Сохранить" 
+                    Command="{Binding SaveCommand}"
+                    Background="#5DCC99"
+                    Padding="20,10"
+                    Margin="0,0,10,0"/>
+            <Button Content="Отмена" 
+                    Command="{Binding CancelCommand}"
+                    Background="#CC3366"
+                    Padding="20,10"/>
+        </StackPanel>
+    </Grid>
+</Window>

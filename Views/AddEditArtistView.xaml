@@ -1,0 +1,104 @@
+<Window x:Class="MusicPlus.Views.AddEditArtistView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        mc:Ignorable="d" 
+        Title="{Binding Title}" 
+        Height="500" 
+        Width="500"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="30" Background="#FFFFFF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" 
+                   Text="{Binding Title}" 
+                   FontSize="20" 
+                   FontWeight="Bold"
+                   Margin="0,0,0,20"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Название артиста *" FontSize="14"/>
+                    <TextBox Text="{Binding ArtistName, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Страна" FontSize="14"/>
+                    <TextBox Text="{Binding Country, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Годы активности" FontSize="14"/>
+                    <TextBox Text="{Binding YearsActive, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"/>
+                    <TextBlock Text="Например: 2000-2025 или 2000–2025"
+                               FontSize="11"
+                               Foreground="#4B4B4B"
+                               Margin="0,5,0,0"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Описание" FontSize="14"/>
+                    <TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             Height="100"
+                             VerticalScrollBarVisibility="Auto"/>
+                </StackPanel>
+
+                
+                <StackPanel Margin="0,0,0,15">
+                    <Label Content="Фото (URL или файл)" FontSize="14"/>
+                    <TextBox Text="{Binding PhotoPathInput, UpdateSourceTrigger=PropertyChanged}" 
+                             FontSize="14"
+                             Padding="10,8"
+                             Margin="0,0,0,10"/>
+                    <Button Content="Загрузить из файла"
+                            Command="{Binding LoadPhotoFromFileCommand}"
+                            Margin="0,0,0,10"/>
+                    <Button Content="Применить URL"
+                            Command="{Binding ApplyUrlCommand}"
+                            Margin="0,0,0,10"/>
+                    <Image Source="{Binding PhotoImage}"
+                           Width="200"
+                           Height="200"
+                           Stretch="Uniform"
+                           Margin="0,10,0,0"
+                           Visibility="{Binding PhotoImage, Converter={StaticResource ObjectToVisibilityConverter}}"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+        
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right"
+                    Margin="0,20,0,0">
+            <Button Content="Сохранить" 
+                    Command="{Binding SaveCommand}"
+                    Margin="0,0,10,0"
+                    Width="120"/>
+            <Button Content="Отмена" 
+                    Command="{Binding CancelCommand}"
+                    Background="#CC3366"
+                    Width="120"/>
+        </StackPanel>
+    </Grid>
+</Window>
