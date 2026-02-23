@@ -2,8 +2,103 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:musicc="clr-namespace:musicc"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="musicc.Window1"
-        Title="Window1">
-    
+        Title="YouMain"
+        x:DataType="musicc:Window1" FontFamily="Times New Roman" FontSize="12">
+        <Window.Styles>
+                <Style Selector="TextBlock">
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Foreground" Value="#2D3748"/>
+                </Style>
+        
+                <Style Selector="TextBox">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="#E2E8F0"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#4A5568"/>
+                        <Setter Property="Padding" Value="12"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontSize" Value="14"/>
+                </Style>
+        
+                <Style Selector="TextBox:focus">
+                        <Setter Property="BorderBrush" Value="#7A00CC"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+        
+                <Style Selector="Button">
+                        <Setter Property="Background" Value="#7A00CC"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="16,12"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+        
+                <Style Selector="Button:pointerover">
+                        <Setter Property="Background" Value="#6A00B8"/>
+                        <Setter Property="Opacity" Value="0.95"/>
+                </Style>
+        
+                <Style Selector="Button:pressed">
+                        <Setter Property="Background" Value="#5A00A4"/>
+                        <Setter Property="Opacity" Value="0.9"/>
+                </Style>
+                <Style Selector="TabItem:selected /template/ Border#PART_SelectedPipe">
+                        <Setter Property="Height" Value="0"/>
+                </Style>
+        </Window.Styles>
+        
+        
+        
+        <TabControl >
+                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Boxname}" TextWrapping="Wrap" 
+                           Background="#EDE2FF"   TextAlignment="Center" ></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Boxname}" TextWrapping="Wrap" 
+                           Background="#EDE2FF"   TextAlignment="Center" ></TextBlock>
+                <TabItem Header="Playlists" Foreground="#7A00CC">
+                        <StackPanel >
+                                <!-- Если DataContext = this -->
+                                <TextBlock Text="{Binding CurrentPlaylist.Name}" FontSize="20" FontWeight="Bold"/>
+        
+                                <!-- Или если DataContext = CurrentPlaylist, то просто: -->
+                                <!-- <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/> -->
+        
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Автор:" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding CurrentPlaylist.author}"/>
+                                </StackPanel>
+        
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Лайки:" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding CurrentPlaylist.like}"/>
+                                </StackPanel>
+                
+        
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Треки:" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding CurrentPlaylist.track}"/>
+                                </StackPanel>
+        
+                                <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <TextBlock Text="Дата создания:" FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding CurrentPlaylist.data}"/>
+                                </StackPanel>
+                        </StackPanel>
+                </TabItem>
+                <TabItem Header="Albums" Foreground="#7A00CC">
+                        
+                </TabItem>
+                <TabItem Header="Music" Foreground="#7A00CC"></TabItem>
+                <TabItem Header="Artist" Foreground="#7A00CC"></TabItem>
+                
+        </TabControl>
+        
+       
+        
+        
 </Window>

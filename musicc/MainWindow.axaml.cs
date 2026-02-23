@@ -49,7 +49,8 @@ public partial class MainWindow : Window
       using (var bd = new PostgresContext())
         {
             var user = bd.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == box_name.Text);
-
+            string namepeop = user.FullName;
+            bool? subs = user.Ssubsription;
             if (user == null)
             {
                 errors.Text = "error";
@@ -64,7 +65,7 @@ public partial class MainWindow : Window
                     user.LastLog = DateTime.UtcNow;
                     bd.Users.Update(user);
                     await bd.SaveChangesAsync();
-                    var wind = new Window1();
+                    var wind = new Window1(namepeop, subs);
                     wind.Show();
                     this.Close();
                 }
@@ -157,4 +158,13 @@ public void captcha()
     line_two.StrokeThickness = 5;
 }
 
+private void Cheker_OnChecked(object? sender, RoutedEventArgs e)
+{
+    passw_view.PasswordChar = '\0';
+}
+
+private void Cheker_OnUnchecked(object? sender, RoutedEventArgs e)
+{
+    passw_view.PasswordChar = '*';
+}
 }

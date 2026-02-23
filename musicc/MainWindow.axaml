@@ -57,8 +57,8 @@
         <TextBlock Foreground="Black" HorizontalAlignment="Center" Margin="0,170,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top"/>
         <Button Content="вход" Foreground="White" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Name="into" Click="into_Click" Background="#FF7A00CC" />
         <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="30" Height="51" Width="800" TextAlignment="Center" TextWrapping="Wrap" Background="#FF7A00CC" Foreground="White"><Run  Text="Авторизация"/></TextBlock>
-        <CheckBox  HorizontalAlignment="Center" Margin="190,195,0,0" VerticalAlignment="Top"  BorderBrush="Black" x:Name="cheker"/>
-        <TextBox Foreground="#FF7A00CC" Background="White" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black"/>
+        <CheckBox  HorizontalAlignment="Center" Margin="190,195,0,0" VerticalAlignment="Top"  BorderBrush="Black" x:Name="cheker" Checked="Cheker_OnChecked" Unchecked="Cheker_OnUnchecked"/>
+        <TextBox Foreground="#FF7A00CC" Background="White" HorizontalAlignment="Center" Margin="0,190,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="150" x:Name="passw_view"  BorderBrush="Black" PasswordChar="*"/>
         
             <Border HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" VerticalAlignment="Top" Margin="0,250,0,0" Width="145" Height="60" CornerRadius="5">
                 <TextBlock TextWrapping="Wrap" Text="" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" x:Name="capt"/>

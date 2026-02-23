@@ -6,6 +6,8 @@
         <entry key="musicc/App.axaml" value="musicc/musicc.csproj" />
         <entry key="musicc/MainWindow.axaml" value="musicc/musicc.csproj" />
         <entry key="musicc/Window1.axaml" value="musicc/musicc.csproj" />
+        <entry key="musicc/Window2.axaml" value="musicc/musicc.csproj" />
+        <entry key="musicc/Window3.axaml" value="musicc/musicc.csproj" />
       </map>
     </option>
   </component>
