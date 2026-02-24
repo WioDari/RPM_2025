@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="PracticeWork.UserElements.ArtistCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PracticeWork.UserElements"
+             mc:Ignorable="d" 
+             d:DesignHeight="176" d:DesignWidth="643">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="176*"/>
+            <ColumnDefinition Width="299*"/>
+            <ColumnDefinition Width="168*"/>
+        </Grid.ColumnDefinitions>
+        <Image HorizontalAlignment="Center" Height="176" VerticalAlignment="Center" Width="176" Source="{Binding ArtistPhoto}"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Country}" VerticalAlignment="Center" Height="32" Width="168"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Name}" VerticalAlignment="Top" Height="33" Width="168" Margin="0,34,0,0"/>
+        <TextBlock Grid.Column="2" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Activeyears}" VerticalAlignment="Top" Height="33" Width="168" Margin="0,109,0,0"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Center" Height="156" Width="279"/>
+
+    </Grid>
+</UserControl>
