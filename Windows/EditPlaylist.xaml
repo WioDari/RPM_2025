@@ -1,0 +1,107 @@
+﻿<Window x:Class="PracticeWork.Windows.EditPlaylist"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:local="clr-namespace:PracticeWork.Windows"
+        mc:Ignorable="d"
+        Title="EditPlaylist" Height="664" Width="450"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34*"/>
+            <RowDefinition Height="233*"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Изменение информации о плейлисте" VerticalAlignment="Center" Height="48" Width="430" FontSize="27"/>
+        <Grid Grid.Row="1" Margin="0,5,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="63*"/>
+                <RowDefinition Height="67*"/>
+                <RowDefinition Height="104*"/>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="131*"/>
+                <RowDefinition Height="95*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock TextWrapping="Wrap" Text="Название:" Width="119" FontSize="22" Height="25"/>
+                <TextBox TextWrapping="Wrap" Width="322" Height="40" VerticalAlignment="Center" Text="{Binding title}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,63,0,0" Grid.RowSpan="2">
+                <TextBlock TextWrapping="Wrap" Text="Создатель:" Width="119" Height="25" FontSize="20"/>
+                <ComboBox Width="322" Height="40" VerticalAlignment="Center"
+                          ItemsSource="{Binding autors, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="AuName"
+                          SelectedValue="ID"
+                          SelectedValuePath="{Binding selectedAutor}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding ChangeAutorCommand}"
+                                                   CommandParameter="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,67,0,0" Grid.RowSpan="2">
+                <ComboBox HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="3" VerticalAlignment="Top" Width="203" Height="32"
+                          ItemsSource="{Binding tracks, UpdateSourceTrigger=PropertyChanged}"
+                          DisplayMemberPath="NameTr"
+                          SelectedValue="ID"
+                          SelectedValuePath="{Binding selectedTrack}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction Command="{Binding AddTrackCommand}"
+                                                   CommandParameter="{Binding}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <ListBox ItemsSource="{Binding selectedTracks, UpdateSourceTrigger=PropertyChanged}" Width="226" Height="91" Margin="10,0">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameTr}">
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick"
+                                                  CommandParameter="{Binding}"
+                                                  Command="{Binding DataContext.RemoveTrackCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+            <Button Click="Button_Click" Content="Отменить изменения" HorizontalAlignment="Left" Height="65" Margin="40,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="158" FontSize="16"/>
+            <Button Command="{Binding AcseptChangesCommand}" Content="Сохранить изменения" HorizontalAlignment="Left" Height="65" Margin="252,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="158" FontSize="16"/>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="0,6,0,0">
+                <TextBlock Text="Создан:" Width="82" Height="33" FontSize="24"/>
+                <DatePicker SelectedDate="{Binding selectedDate}" Height="26" Width="214"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
+                <ComboBox Width="203" Height="32" Margin="10,10" VerticalAlignment="Top"
+                          ItemsSource="{Binding tags}"
+                          DisplayMemberPath="NameTa"
+                          SelectedValue="ID"
+                          SelectedValuePath="{Binding selectedTag}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectionChanged">
+                            <i:InvokeCommandAction />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ComboBox>
+                <ListBox ItemsSource="{Binding selectedTags, UpdateSourceTrigger=PropertyChanged}" Width="226" Height="91">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding NameTa}">
+                                <TextBlock.InputBindings>
+                                    <MouseBinding Gesture="LeftDoubleClick"
+                                                  CommandParameter="{Binding}"
+                                                  Command="{Binding DataContext.RemoveTagCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                                </TextBlock.InputBindings>
+                            </TextBlock>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>
