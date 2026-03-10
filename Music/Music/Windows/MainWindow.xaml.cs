@@ -29,18 +29,23 @@ namespace Music.Windows;
 public partial class MainWindow : Window
 {
     private string captchaText = "";
+
     public MainWindow()
     {
         InitializeComponent();
         Load();
         GenerateCaptcha();
     }
+
     private async void Load()
     {
         await using MusicContext context = new();
 
         if (!string.IsNullOrEmpty(Settings.Default.UserId.ToString()) && Settings.Default.UserId != 0)
         {
+            var user = context.Users.Include(x => x.Role).First(x => x.Id == Settings.Default.UserId);
+            if (user.BanDateTime + user.BanInterval - DateTime.Now > TimeSpan.Zero)
+                return;
             new MenuWindow(context.Users.Include(x => x.Role).First(x => x.Id == Settings.Default.UserId)).Show();
             Close();
             return;
@@ -53,6 +58,7 @@ public partial class MainWindow : Window
         PasswordBox.Password = u.Password;
     }
 
+    [Obsolete]
     private void GenerateCaptcha()
     {
         captchaText = GenerateRandomString(6);
@@ -73,19 +79,17 @@ public partial class MainWindow : Window
 
     private async void LoginButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!string.Equals(CaptchaInputTextBox.Text, captchaText))
+        var unbanTime = (Settings.Default.LastEntryDateTime + Settings.Default.BanInterval) - DateTime.Now;
+
+        if (unbanTime > TimeSpan.Zero)
         {
-            MessageBox.Show("Каптча введена неверно", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-            GenerateCaptcha();
+            MessageBox.Show($"Доступ для вашего устройства временно ограничен из-за большого количества неверных попыток входа.\nПовторите попытку через {unbanTime:mm\\:ss}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
-        var unBanTime = (Settings.Default.LastEntryDateTime + Settings.Default.BanInterval) - DateTime.Now;
-
-        if ((Settings.Default.FailedEntriesCount >= 5) && (unBanTime >= TimeSpan.Zero))
+        if (!string.Equals(CaptchaInputTextBox.Text, captchaText))
         {
-            MessageBox.Show($"Ваш аккаунт заблокирован из-за слишком большого количества неудачных попыток входа.\nПовторите попытку через {unBanTime}",
-                "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"Неверно введена каптча.\n{FailedEntryAttempt(null)}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
             return;
         }
 
@@ -96,46 +100,77 @@ public partial class MainWindow : Window
         {
             if (PasswordBox.Password != user.Password)
             {
-                Settings.Default.LastEntryDateTime = DateTime.Now;
-                Settings.Default.FailedEntriesCount += 1;
-                Settings.Default.Save();
-
-                if (Settings.Default.FailedEntriesCount == 3)
-                    MessageBox.Show("Неверный логин или пароль\nОсталось 2 попытки", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-                else
-                    MessageBox.Show("Неверный логин или пароль", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                /*LoginTextBox.Text = "";
-                PasswordBox.Password = "";*/
-
-                GenerateCaptcha();
+                MessageBox.Show($"Неверный логин или пароль{FailedEntryAttempt(user)}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+                context.Users.Update(user);
+                await context.SaveChangesAsync();
                 return;
             }
-            Settings.Default.UserId = user.Id;
-            Settings.Default.FailedEntriesCount = 0;
-            Settings.Default.LastEntryDateTime = DateTime.Now;
-            Settings.Default.Save();
+            var banTimeSpan = user.BanDateTime + user.BanInterval - DateTime.Now;
 
-            user.LastLoginDateTime = DateTime.Now;
-            context.Users.Update(user);
-            await context.SaveChangesAsync();
+            if (banTimeSpan < TimeSpan.Zero)
+            {
+                Settings.Default.UserId = user.Id;
+                Settings.Default.FailedEntriesCount = 0;
+                Settings.Default.BanInterval = TimeSpan.Zero;
+                Settings.Default.LastEntryDateTime = DateTime.Now;
+                Settings.Default.Save();
 
-            MenuWindow menuWindow = new(user);
-            menuWindow.Show();
-            Close();
+                user.LastLoginDateTime = DateTime.Now;
+                context.Users.Update(user);
+                await context.SaveChangesAsync();
+
+                MenuWindow menuWindow = new(user);
+                menuWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show($"Ваш аккаунт временно заблокирован.\nПовторите попытку через {banTimeSpan:mm\\:ss}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
         }
         else
         {
-            Settings.Default.FailedEntriesCount += 1;
-            Settings.Default.LastEntryDateTime = DateTime.Now;
-            if (Settings.Default.FailedEntriesCount >= 3)
-                Settings.Default.BanInterval = TimeSpan.FromMinutes(45);
-            Settings.Default.Save();
-            MessageBox.Show("Неверный логин или пароль", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
-            /*LoginTextBox.Text = "";
-            PasswordBox.Password = "";*/
-            GenerateCaptcha();
+            MessageBox.Show($"Неверный логин или пароль\n{FailedEntryAttempt(null)}", "Ошибка входа", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+    }
+
+    private string FailedEntryAttempt(User? user)
+    {
+        int maxFailedAttemps = 3;
+
+        /*LoginTextBox.Text = "";
+        PasswordBox.Password = "";*/
+        GenerateCaptcha();
+
+        Settings.Default.FailedEntriesCount += 1;
+        Settings.Default.Save();
+
+        if (Settings.Default.FailedEntriesCount < maxFailedAttemps)
+        {
+            return $"\nОсталось попыток: {maxFailedAttemps - Settings.Default.FailedEntriesCount}";
+        }
+
+        if (Settings.Default.FailedEntriesCount == maxFailedAttemps)
+        {
+            if (user != null)
+            {
+                user.BanInterval = TimeSpan.FromHours(1);
+                user.BanDateTime = DateTime.Now;
+                return $"\nВаш аккаунт временно заблокирован.\nПовторите попытку через {(user.BanDateTime + user.BanInterval - DateTime.Now):mm\\:ss}";
+            }
+            else
+            {
+                Settings.Default.BanInterval = TimeSpan.FromHours(1);
+                Settings.Default.LastEntryDateTime = DateTime.Now;
+                Settings.Default.Save();
+                return $"\nДоступ для вашего устройства временно ограничен из-за большого количества неверных попыток входа.\nПовторите попытку через {(Settings.Default.LastEntryDateTime + Settings.Default.BanInterval - DateTime.Now):mm\\:ss}";
+            }
+
+        }
+
+        return "";
     }
 
     private void GuestLoginButton_Click(object sender, RoutedEventArgs e)

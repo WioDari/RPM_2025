@@ -14,10 +14,50 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
         <Grid HorizontalAlignment="Stretch" Margin="0 7" VerticalAlignment="Center">
-            <TextBox Text="Заглушка поиска" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20" Padding="38 10 10 10" Foreground="#808080"/>
-            <emoji:TextBlock Text="🔍" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="10 0 0 0" Focusable="False" FontFamily="Segoe UI Emoji"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="180"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Name="SortingComboBox" SelectedIndex="0" Padding="10" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SortingComboBox_SelectionChanged">
+                <ComboBoxItem>
+                    <TextBlock Text="По умолчанию" FontSize="20"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="По возрастанию" FontSize="20"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="По убыванию" FontSize="20"/>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <Grid Grid.Column="1" Name="SearchField">
+                <TextBox Name="SearchBox" VerticalAlignment="Center" HorizontalAlignment="Stretch" FontSize="20" Padding="38 10 10 10" Foreground="#808080" TextChanged="TextBox_TextChanged" Margin="5,0,5,0"/>
+                <emoji:TextBlock Text="🔍" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="20" Margin="10 0 0 0" Focusable="False" FontFamily="Segoe UI Emoji"/>
+            </Grid>
+
+            <ToggleButton Name="FiltersButton" Grid.Column="2" Padding="0" Checked="FiltersButton_Checked" Unchecked="FiltersButton_Unchecked">
+                <TextBlock FontSize="20" Text="Фильтры" Foreground="White"/>
+            </ToggleButton>
+
+            <Popup x:Name="FiltersPopup" Placement="Bottom" StaysOpen="False" PlacementTarget="{Binding ElementName=FiltersButton}" AllowsTransparency="True" Closed="FiltersPopup_Closed" Width="360">
+                <Border BorderBrush="{StaticResource PrimaryAccentColorBrush}" BorderThickness="3" Background="White">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+                            <TextBlock Text="Фильтр по жанру:" Margin="10 5"/>
+                            <local:AutoCompleteBox x:Name="GenreBox" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10 5" TextChanged="TextBox_TextChanged"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Popup>
         </Grid>
+        
         <ListBox Name="AlbumsListBox" Grid.Row="1"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                  Margin="0" 
@@ -39,6 +79,7 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
+                        
                         <Image Grid.Row="0" Stretch="Uniform" MaxHeight="255" MaxWidth="255" Source="/Resources/placeholder_cover.png"/>
                         <Image Grid.Row="0" Stretch="Uniform" MaxHeight="255" MaxWidth="255" Source="{Binding Image}"/>
 
@@ -52,7 +93,9 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
+                                
                                 <TextBlock Grid.Row="0" Text="{Binding Title}" FontWeight="Bold" TextAlignment="Center" TextWrapping="NoWrap" 
                                            Margin="0 10" TextTrimming="CharacterEllipsis"  FontSize="20"/>
                                 <TextBlock Grid.Row="1" Text="{Binding Artist.Name}" TextAlignment="Center" TextWrapping="NoWrap" 

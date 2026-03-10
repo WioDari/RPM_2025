@@ -4,15 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Music.UserControls"
+             xmlns:m="clr-namespace:Music.Models"
              mc:Ignorable="d" 
              d:DesignHeight="655" d:DesignWidth="1244"
              xmlns:design="clr-namespace:Music.Design"
              d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}">
-    <ListBox Name="PlaylistsListBox" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" ItemsSource="{Binding Playlists}">
-
+    <ListBox Name="PlaylistsListBox" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:ItemsSource="{Binding Playlists}" SelectionChanged="PlaylistsListBox_SelectionChanged">
         <ListBox.ItemTemplate>
-            <DataTemplate>
-
+            <DataTemplate DataType="m:Playlist">
                 <Grid ShowGridLines="False">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -24,15 +23,18 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold" Foreground="{Binding ColorName}"/>
                         <TextBlock Text=" | " FontWeight="Bold"/>
-                        <TextBlock Text="{Binding CreatorUser.FullName}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding CreatorUser.FullName}" FontWeight="Bold" />
                     </StackPanel>
 
                     <StackPanel Grid.Column="0" Grid.Row="1">
                         <TextBlock Text="{Binding Likes, StringFormat='Нравятся: {0}'}"/>
                         <TextBlock Text="{Binding Users.Count, StringFormat='Подписчиков: {0}'}"/>
-                        <TextBlock Text="{Binding Tracks.Count, StringFormat='Треков: {0}'}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Треков: "/>
+                            <TextBlock Text="{Binding Tracks.Count}" Foreground="{Binding ColorTracksCount}"/>
+                        </StackPanel>
                         <TextBlock Text="{Binding DateCreated, StringFormat='Создан: {0:dd.MM.yyyy}'}"/>
                     </StackPanel>
 

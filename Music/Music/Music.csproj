@@ -81,7 +81,6 @@
     </Resource>
     <Resource Include="Resources\icon.ico" />
     <Resource Include="Resources\icon.png" />
-    <Resource Include="Resources\no_image.png" />
     <Resource Include="Resources\placeholder_cover.png" />
     <Resource Include="Resources\show.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>

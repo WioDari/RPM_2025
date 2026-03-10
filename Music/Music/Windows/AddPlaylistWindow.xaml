@@ -1,0 +1,139 @@
+﻿<Window x:Class="Music.Windows.AddPlaylistWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Music.Windows"
+        xmlns:control="clr-namespace:Music.UserControls"
+        xmlns:design="clr-namespace:Music.Design"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}"
+        WindowStartupLocation="CenterOwner"
+        Title="Добавление нового плейлиста" Height="900" Width="1600" MinHeight="900" MinWidth="1600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2000*"/>
+            <ColumnDefinition Width="1000*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.15*"/>
+            <RowDefinition Height="105"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Background="{StaticResource PrimaryAccentColorBrush}" Grid.ColumnSpan="3"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="3" Text="Музыка+" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" FontSize="55" Foreground="White"/>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Название плейлиста:"/>
+            <TextBox Name="NameBox" VerticalAlignment="Center" d:Text="{Binding TestPlaylist.Name}" Text="{Binding Name}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="2" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Дата выпуска:"/>
+            <DatePicker Name="CreatedDateTimePicker" 
+                Style="{DynamicResource DatePickerStyle1}" 
+                VerticalContentAlignment="Center" 
+                BorderThickness="3"
+                SelectedDate="{Binding CreatedDateTime}" d:SelectedDate="{Binding TestPlaylist.CreatedDateTime}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Создатель плейлиста:"/>
+            <control:AutoCompleteBox x:Name="CreatorBox" FontSize="30" VerticalAlignment="Stretch" IsEnabled="False"
+                     SelectedItem="{Binding CreatorUser}" d:SelectedItem="{Binding TestPlaylist.CreatorUser}"/>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Описание:"/>
+            <TextBox Name="DescBox" VerticalAlignment="Center" Text="{Binding Description}" d:Text="{Binding TestPlaylist.Description}"/>
+        </StackPanel>
+
+        <StackPanel Name="TracksPanel" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Треки:"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <control:AutoCompleteBox Grid.Column="0" x:Name="TrackBox"/>
+                <Button Grid.Column="1" Name="AddTrackButton" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" Click="AddTrackButton_Click" />
+            </Grid>
+        </StackPanel>
+
+        <ListBox Grid.Column="0" Grid.Row="4" Grid.RowSpan="2" Name="TracksListBox" ItemsSource="{Binding Tracks}" d:ItemsSource="{Binding TestPlaylist.Tracks}" Margin="50 0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ShowGridLines="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding TrackName}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" HorizontalAlignment="Stretch"/>
+
+                        <Button Grid.Column="1" Content="—" 
+                            FontWeight="Black" FontSize="40" 
+                            Width="50" Height="50" 
+                            Margin="10,0,0,0" Padding="10 0 10 8"
+                            VerticalAlignment="Center" VerticalContentAlignment="Center"
+                            HorizontalAlignment="Right" HorizontalContentAlignment="Center"
+                            Click="RemoveTrack_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Name="TagsPanel" Grid.Column="1" Grid.Row="3" VerticalAlignment="Center" Margin="50 0">
+            <TextBlock Text="Теги:"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <control:AutoCompleteBox Grid.Column="0" x:Name="TagBox"/>
+                <Button Grid.Column="1" Name="AddTagButton" Content="+" FontWeight="Black" FontSize="60" Height="70" Width="70" Margin="10,0,0,0" Click="AddTagButton_Click" />
+            </Grid>
+        </StackPanel>
+
+        <ListBox Grid.Column="1" Grid.Row="4" Grid.RowSpan="2" Name="TagsListBox" ItemsSource="{Binding Tags}" d:ItemsSource="{Binding TestPlaylist.Tags}" Margin="50 0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid ShowGridLines="False">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="{Binding Name}" VerticalAlignment="Center" TextTrimming="CharacterEllipsis" HorizontalAlignment="Stretch"/>
+
+                        <Button Grid.Column="1" Content="—" 
+                            FontWeight="Black" FontSize="40" 
+                            Width="50" Height="50" 
+                            Margin="10,0,0,0" Padding="10 0 10 8"
+                            VerticalAlignment="Center" VerticalContentAlignment="Center"
+                            HorizontalAlignment="Right" HorizontalContentAlignment="Center"
+                            Click="RemoveTag_Click"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" >
+            <Button
+                Content="Отмена" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Click="ExitButton_Click"
+                Background="{StaticResource ErrorColorBrush}"
+                BorderBrush="{StaticResource SecondaryAccentColorBrush}" Margin="0,0,20,0"/>
+            <Button 
+                Name="SaveButton" 
+                Content="Сохранить" 
+                Foreground="White" Margin="20,0,0,0"
+                Background="{StaticResource SuccessColorBrush}"
+                BorderBrush="{StaticResource SecondaryAccentColorBrush}"
+                Click="SaveButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

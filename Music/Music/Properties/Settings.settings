@@ -14,5 +14,8 @@
     <Setting Name="LastEntryDateTime" Type="System.DateTime" Scope="User">
       <Value Profile="(Default)">11/11/2025 13:40:25</Value>
     </Setting>
+    <Setting Name="FailedUserEntriesCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

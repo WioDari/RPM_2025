@@ -17,34 +17,29 @@ using System.Windows.Shapes;
 namespace Music.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для OpenAlbumWindow.xaml
+    /// Логика взаимодействия для OpenPlaylistWindow.xaml
     /// </summary>
-    public partial class OpenAlbumWindow : Window
+    public partial class OpenPlaylistWindow : Window
     {
-        public OpenAlbumWindow()
+        public OpenPlaylistWindow()
         {
             InitializeComponent();
         }
-        public OpenAlbumWindow(Album album, User user)
+
+        public OpenPlaylistWindow(Playlist playlist, User user)
         {
             InitializeComponent();
-            DataContext = album;
-
-            if (user.RoleId != 1)
-            {
-                EditButton.Visibility = Visibility.Hidden;
-            }
+            DataContext = playlist;
+            EditButton.Visibility = Visibility.Hidden;
+            if (playlist.CreatorUserId == user.Id || user.RoleId == 1)
+                EditButton.Visibility = Visibility.Visible;
         }
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            EditAlbumWindow editAlbumWindow = new((DataContext as Album)!.Id) { Owner = this.Owner };
-            editAlbumWindow.ShowDialog();
-            if (Owner is MenuWindow menu && menu.AlbumsUC is AlbumsUserControl uc)
-            {
-                uc = new();
-            }
+            EditPlaylistWindow editPlaylistWindow = new((DataContext as Playlist)!.Id) { Owner = this.Owner };
             Close();
+            editPlaylistWindow.ShowDialog();
         }
     }
 }

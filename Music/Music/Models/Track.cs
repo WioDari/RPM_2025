@@ -42,8 +42,20 @@ public partial class Track
     }
 
     public string DurationString
-    {   
+    {
         get => Duration.ToString(@"hh\:mm\:ss");
+        set => Duration = TimeSpan.Parse(value);
+    }
+
+    public string DurationString2
+    {
+        get
+        {
+            if (Duration.Hours > 0)
+                return Duration.ToString(@"hh\:mm\:ss");
+            else
+                return Duration.ToString(@"mm\:ss");
+        }
         set => Duration = TimeSpan.Parse(value);
     }
 

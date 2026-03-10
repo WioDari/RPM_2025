@@ -7,7 +7,8 @@
         xmlns:UserControls="clr-namespace:Music.UserControls"
         mc:Ignorable="d"
         Title="Музыка+" Height="900" Width="1600" MinHeight="900" MinWidth="1600"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        >
     <Window.Resources>
         <Style TargetType="TabPanel">
             <Setter Property="HorizontalAlignment" Value="Center"/>
@@ -46,7 +47,7 @@
                 <TextBlock Name="UserRoleTextBlock" Text="Роль пользователя"  TextAlignment="Center" VerticalAlignment="Top" Margin="20,0,20,20" TextWrapping="Wrap"/>
             </StackPanel>
 
-            <Button Grid.Row="2" Name="NewPlaylistButton" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить плейлист"/>
+            <Button Grid.Row="2" Name="NewPlaylistButton" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить плейлист" Click="NewPlaylistButton_Click"/>
             <Button Grid.Row="3" Name="NewAlbumButton" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Добавить альбом" Click="NewAlbumButton_Click"/>
 
             <Button
@@ -56,17 +57,28 @@
                 Click="ExitButton_Click"
                 Background="{StaticResource PrimaryAccentColorBrush}"
                 BorderBrush="{StaticResource SecondaryAccentColorBrush}"/>
+
         </Grid>
 
         <TabControl Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" HorizontalAlignment="Stretch" Margin="0 0 0 30">
-            
-
             <TabItem Header="Альбомы">
-                <ContentPresenter x:Name="Albums"/>
+                <ContentPresenter Name="Albums">
+                    <d:ContentPresenter.Content>
+                        <UserControls:AlbumsUserControl/>
+                    </d:ContentPresenter.Content>
+                </ContentPresenter>
             </TabItem>
 
             <TabItem Header="Плейлисты">
-                <UserControls:PlaylistsUserControl/>
+                <ContentPresenter Name="Playlists"/>
+            </TabItem>
+
+            <TabItem Header="Пользователи" Name="UsersTabItem">
+                <ContentPresenter x:Name="Users">
+                    <d:ContentPresenter.Content>
+                        <UserControls:UsersUserControl/>
+                    </d:ContentPresenter.Content>
+                </ContentPresenter>
             </TabItem>
         </TabControl>
 

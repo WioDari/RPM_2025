@@ -44,7 +44,8 @@ public partial class MusicContext : DbContext
     {
         modelBuilder.Entity<Track>()
                 .Ignore(a => a.ReleaseDateTime)
-                .Ignore(a => a.DurationString);
+                .Ignore(a => a.DurationString)
+                .Ignore(a => a.DurationString2);
 
         modelBuilder.Entity<Album>(entity =>
         {
@@ -107,6 +108,9 @@ public partial class MusicContext : DbContext
 
         modelBuilder.Entity<Playlist>(entity =>
         {
+            entity.Ignore(a => a.ColorName);
+            entity.Ignore(a => a.CreatedDateTime);
+
             entity.HasKey(e => e.Id).HasName("_playlists__pk");
 
             entity.HasOne(d => d.CreatorUser).WithMany(p => p.Playlists)
@@ -203,6 +207,10 @@ public partial class MusicContext : DbContext
             entity.HasKey(e => e.Id).HasName("_users__pk");
 
             entity.Property(e => e.LastLoginDateTime).HasColumnType("timestamp without time zone");
+
+            entity.Property(e => e.BanDateTime)
+                .HasDefaultValueSql("'0001-01-01 00:00:00'::timestamp without time zone")
+                .HasColumnType("timestamp without time zone");
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)

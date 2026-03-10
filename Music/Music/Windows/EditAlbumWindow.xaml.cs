@@ -1,12 +1,11 @@
-﻿using AutoCompleteTextBox.Editors;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Music.Context;
 using Music.Models;
+using Music.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,27 +21,35 @@ using System.Windows.Shapes;
 namespace Music.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddAlbumWindow.xaml
+    /// Логика взаимодействия для EditAlbumWindow.xaml
     /// </summary>
-    public partial class AddAlbumWindow : Window
+    public partial class EditAlbumWindow : Window
     {
-        private ObservableCollection<Models.Track> _availibleTracks = new();
+        private ObservableCollection<Models.Track> _availibleTracks = null!;
+
+        private Album _album = null!;
 
         private MusicContext _context = null!;
 
-        private Album _album = new();
-
-        public AddAlbumWindow()
+        public EditAlbumWindow()
         {
             InitializeComponent();
-            Loaded += OnLoaded;
         }
 
-        private async void OnLoaded(object? sender, RoutedEventArgs e)
+        public EditAlbumWindow(int albumId)
         {
-            ReleaseYearBox.Text = DateTime.Now.Year.ToString();
+            InitializeComponent();
+            Loaded += (_, _) => OnLoaded(albumId);
+        }
 
+        private async void OnLoaded(int albumId)
+        {
             _context = new MusicContext();
+
+            _album = await _context.Albums.Include(x => x.Tracks).Include(x => x.Genres).Include(x => x.Artist).FirstAsync(x => x.Id == albumId);
+            DataContext = _album;
+
+            _availibleTracks = new ObservableCollection<Models.Track>(_album.Tracks);
 
             ArtistBox.ItemsSource = await _context.Artists.Include(x => x.Tracks).ToListAsync();
             GenreBox.ItemsSource = await _context.Genres.ToListAsync();
@@ -50,11 +57,6 @@ namespace Music.Windows
 
             GenresListBox.ItemsSource = _album.Genres;
             TracksListBox.ItemsSource = _album.Tracks;
-        }
-
-        private void UriBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            Image.Source = Img.GetImage((sender as TextBox)!.Text);
         }
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -84,14 +86,12 @@ namespace Music.Windows
                     sb.AppendLine("Добавьте хотя бы один трек");
                 }
 
-
-                _album.Id = await _context.Albums.AnyAsync() ? (await _context.Albums.MaxAsync(a => a.Id) + 1) : 1;
                 _album.Title = TitleBox.Text;
                 _album.ReleaseYear = int.Parse(ReleaseYearBox.Text);
                 _album.ArtistId = (ArtistBox.SelectedItem as Artist)!.Id;
                 _album.CoverPath = UriBox.Text;
 
-
+                _album.TotalDuration = TimeSpan.Zero;
                 foreach (var t in _album.Tracks)
                     _album.TotalDuration += t.Duration;
 
@@ -103,14 +103,13 @@ namespace Music.Windows
                 {
                     IsEnabled = false;
 
-                    await _context.AddAsync(_album);
                     await _context.SaveChangesAsync();
 
                     IsEnabled = true;
 
-                    MessageBox.Show($"Альбом {_album.Title} был успешно добавлен!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                    MessageBox.Show($"Альбом {_album.Title} был успешно изменён!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                     Close();
+
 
                 }
             }
@@ -126,6 +125,10 @@ namespace Music.Windows
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+        private async void UriBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Image.Source = Img.GetImage((sender as TextBox)!.Text);
         }
 
         private void ArtistBox_GotFocus(object sender, RoutedEventArgs e)
@@ -185,11 +188,25 @@ namespace Music.Windows
 
             if (addTrackWindow.ShowDialog() == true)
             {
+                addTrackWindow.CurrentTrack.AlbumId = _album.Id;
                 _album.Tracks.Add(addTrackWindow.CurrentTrack);
                 _availibleTracks.Add(addTrackWindow.CurrentTrack);
                 TrackBox.ItemsSource = _availibleTracks;
             }
         }
-    }
 
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show("Вы уверены, что хотите удалить этот альбом со всеми его треками?", "Внимание", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result != MessageBoxResult.Yes)
+            {
+                return;
+            }
+            _context.Albums.Remove(_album);
+            await _context.SaveChangesAsync();
+            Close();
+            MessageBox.Show($"Альбом {_album.Title} был успешно удалён.", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        }
+    }
 }

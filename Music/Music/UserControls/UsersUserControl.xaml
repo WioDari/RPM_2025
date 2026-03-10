@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="Music.UserControls.UsersUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Music.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="655" d:DesignWidth="1244"
+             xmlns:m="clr-namespace:Music.Models"
+             xmlns:design="clr-namespace:Music.Design"
+             d:DataContext="{d:DesignInstance Type=design:DesignData, IsDesignTimeCreatable=True}">
+    <Grid>
+        <ListBox Name="UsersListBox" HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" d:ItemsSource="{Binding Users}">
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="m:User">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="220"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <TextBlock  Text="Логин: "/>
+                            <TextBlock  Text="{Binding Login}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal">
+                            <TextBlock  Text="Почта: "/>
+                            <TextBlock  Text="{Binding Email}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal">
+                            <TextBlock  Text="ФИО: "/>
+                            <TextBlock  Text="{Binding FullName}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal">
+                            <TextBlock  Text="Роль: "/>
+                            <TextBlock  Text="{Binding Role.Name}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal">
+                            <TextBlock  Text="Подписка: "/>
+                            <TextBlock  Text="{Binding Subscription.Name}"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="5" Orientation="Horizontal">
+                            <TextBlock Text="Последний вход: "/>
+                            <TextBlock Text="{Binding LastLoginDateTime, StringFormat={}{0:dd.MM.yyyy HH:MM}}"/>
+                        </StackPanel>
+
+                        <TextBlock Grid.Row="0" Grid.Column="1" Text="Блокировка:" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding UnbanTime}" HorizontalAlignment="Center"/>
+
+                        <Button Name="UnbanUserButton" 
+                                Grid.Row="2" Grid.Column="1" Grid.RowSpan="2" 
+                                VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                Content="Разблокировать" 
+                                FontSize="24" 
+                                Padding="10 8" 
+                                Background="{StaticResource SuccessColorBrush}"
+                                Click="UnbanUserButton_Click"
+                                Visibility="{Binding UnbanButtonVisibility}"/>
+
+                        <Button Name="BanUserButton" 
+                                Grid.Row="4" Grid.Column="1" Grid.RowSpan="2" 
+                                VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                Content="Заблокировать" 
+                                FontSize="24" 
+                                Padding="10 8" 
+                                Background="{StaticResource ErrorColorBrush}"
+                                Click="BanUserButton_Click"
+                                Visibility="{Binding BanButtonVisibility}"/>
+
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</UserControl>

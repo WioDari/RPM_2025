@@ -26,13 +26,17 @@ namespace Music.Windows
     {
         public Track CurrentTrack = new Track();
 
-        private ObservableCollection<Artist> _artists = new();
-        private ObservableCollection<Genre> _genres = new();
+        private MusicContext _context = null!;
 
         public AddTrackWindow()
         {
             InitializeComponent();
-            IsEnabled = false;
+        }
+
+        public AddTrackWindow(MusicContext context)
+        {
+            InitializeComponent();
+            _context = context;
             Loaded += OnLoaded;
         }
 
@@ -42,14 +46,11 @@ namespace Music.Windows
             DurationStringBox.Text = "00:00:00";
             ReleaseDateTimePicker.SelectedDate = DateTime.Now;
 
-            //await using Context.MusicContext context = new();
-            ArtistBox.ItemsSource = await DB.Context.Artists.ToListAsync();
-            GenresBox.ItemsSource = await DB.Context.Genres.ToListAsync();
+            ArtistBox.ItemsSource = await _context.Artists.ToListAsync();
+            GenresBox.ItemsSource = await _context.Genres.ToListAsync();
 
-            ArtistsListBox.ItemsSource = _artists;
-            GenresListBox.ItemsSource = _genres;
-
-            IsEnabled = true;
+            ArtistsListBox.ItemsSource = CurrentTrack.Artists;
+            GenresListBox.ItemsSource = CurrentTrack.Genres;
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -60,8 +61,6 @@ namespace Music.Windows
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //CurrentTrack = (DataContext as Track)!;
-
             StringBuilder sb = new("Неверно введены данные:\n");
 
             if (string.IsNullOrEmpty(TrackNameBox.Text))
@@ -74,75 +73,70 @@ namespace Music.Windows
             }
             if (!int.TryParse(BitrateBox.Text, out int b) || b <= 0)
             {
-                sb.AppendLine("Введите битрейт трека");
+                sb.AppendLine("Введите корректный битрейт трека");
             }
-            if (_artists.Count == 0)
+            if (CurrentTrack.Artists.Count == 0)
             {
                 sb.AppendLine("Добавьте хотя бы одного исполнителя");
             }
-            if (_genres.Count == 0)
+            if (CurrentTrack.Genres.Count == 0)
             {
                 sb.AppendLine("Добавьте хотя бы один жанр");
             }
-            
+
             if (sb.ToString() != "Неверно введены данные:\n")
             {
                 MessageBox.Show(sb.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            else
-            {
-                //await using Context.MusicContext context = new();
-                CurrentTrack = new Track
-                {
-                    Id = 0,
-                    TrackName = TrackNameBox.Text,
-                    AlbumId = 0,
-                    DurationString = DurationStringBox.Text,
-                    ReleaseDateTime = ReleaseDateTimePicker.SelectedDate,
-                    Bitrate = int.Parse(BitrateBox.Text),
-                    FilePath = FilePathBox.Text,
-                    Raiting = 0m,
-                    PlayCount = 0,
-                    Artists = _artists,
-                    Genres = _genres
-                };
 
-                DialogResult = true;
-            }
+            CurrentTrack = new Track
+            {
+                TrackName = TrackNameBox.Text,
+                DurationString = DurationStringBox.Text,
+                ReleaseDateTime = ReleaseDateTimePicker.SelectedDate,
+                Bitrate = int.Parse(BitrateBox.Text),
+                FilePath = FilePathBox.Text,
+                Raiting = 0m,
+                PlayCount = 0,
+                Artists = CurrentTrack.Artists,
+                Genres = CurrentTrack.Genres
+            };
+
+            DialogResult = true;
 
         }
 
         private void AddGenreButton_Click(object sender, RoutedEventArgs e)
         {
             var genre = (GenresBox.SelectedItem as Genre)!;
-            if (genre == null || _genres.Contains(genre) == true)
+            if (genre == null || CurrentTrack.Genres.Contains(genre) == true)
             {
                 return;
             }
-            _genres.Add(genre) ;
+            CurrentTrack.Genres.Add(genre);
         }
 
         private void AddArtistButton_Click(object sender, RoutedEventArgs e)
         {
             var artist = ArtistBox.SelectedItem as Artist;
-            if (artist == null || _artists.Contains(artist) == true)
+            if (artist == null || CurrentTrack.Artists.Contains(artist) == true)
             {
                 return;
             }
-            _artists.Add(artist);
+            CurrentTrack.Artists.Add(artist);
         }
 
         private void RemoveGenre_Click(object sender, RoutedEventArgs e)
         {
             var button = (sender as Button);
-            _genres.Remove(button.DataContext as Genre);
+            CurrentTrack.Genres.Remove(button.DataContext as Genre);
         }
 
         private void RemoveArtist_Click(object sender, RoutedEventArgs e)
         {
             var button = (sender as Button);
-            _artists.Remove(button.DataContext as Artist);
+            CurrentTrack.Artists.Remove(button.DataContext as Artist);
         }
     }
 }
