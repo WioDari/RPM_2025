@@ -27,25 +27,7 @@ public partial class Album
 
     public virtual ObservableCollection<Genre> Genres { get; set; } = [];
 
-    //public BitmapImage Image
-    //{
-    //    get
-    //    {
-    //        try
-    //        {
-    //            if (CoverPath == null)
-    //                return new BitmapImage(new Uri("pack://application:,,,/Resources/placeholder_cover.png"));
-
-    //            return new BitmapImage(new Uri(CoverPath));
-    //        }
-    //        catch
-    //        {
-    //            return new BitmapImage(new Uri("pack://application:,,,/Resources/placeholder_cover.png"));
-    //        }
-    //    }
-    //}
-
-    public ImageSource Image => Img.GetImage(CoverPath);
+    public BitmapImage Image => Img.GetImage(CoverPath);
 
     public string GenresString => string.Join(", ", Genres.Select(x => x.Name));
 

@@ -84,7 +84,7 @@ namespace Music.Windows
 
                 MessageBox.Show($"Плейлист {_playlist.Name} был успешно изменён!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                ((Owner as MenuWindow)!.PlaylistsUC as PlaylistsUserControl)!.Load();
+                ((Owner as MenuWindow)!.PlaylistsUC)!.Load();
 
                 Close();
             }

@@ -12,7 +12,7 @@ namespace Music
 {
     public static class Img
     {
-        public static ImageSource GetImage(string? uri)
+        public static BitmapImage GetImage(string? uri)
         {
             if (string.IsNullOrWhiteSpace(uri))
                 return GetPlaceholder();
@@ -33,13 +33,7 @@ namespace Music
                     (sender as BitmapImage)!.UriSource = new Uri(@"/Resources/placeholder_cover.png", UriKind.RelativeOrAbsolute);
                 };
 
-                int size = Math.Min(bitmap.PixelWidth, bitmap.PixelHeight);
-                int x = (bitmap.PixelWidth - size) / 2;
-                int y = (bitmap.PixelHeight - size) / 2;
-
-                var cropped = new CroppedBitmap(bitmap, new Int32Rect(x, y, size, size));
-
-                return cropped;
+                return bitmap;
             }
             catch
             {

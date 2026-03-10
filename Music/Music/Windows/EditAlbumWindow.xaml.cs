@@ -105,6 +105,8 @@ namespace Music.Windows
 
                     await _context.SaveChangesAsync();
 
+                    ((Owner as MenuWindow)!.AlbumsUC)!.Load();
+
                     IsEnabled = true;
 
                     MessageBox.Show($"Альбом {_album.Title} был успешно изменён!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);

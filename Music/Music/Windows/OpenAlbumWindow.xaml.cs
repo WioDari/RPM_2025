@@ -40,10 +40,6 @@ namespace Music.Windows
         {
             EditAlbumWindow editAlbumWindow = new((DataContext as Album)!.Id) { Owner = this.Owner };
             editAlbumWindow.ShowDialog();
-            if (Owner is MenuWindow menu && menu.AlbumsUC is AlbumsUserControl uc)
-            {
-                uc = new();
-            }
             Close();
         }
     }
