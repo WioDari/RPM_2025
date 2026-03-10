@@ -166,7 +166,7 @@ public partial class MenuW : Window
             {
                 var albumuc = new AlbumUC();
 
-                albumuc.LoadAlbum(album, $"Resources/covers/{album.Albumname}.jpg");
+                albumuc.LoadAlbum(album, album.Coverpath);
                 AlbumsIC.Items.Add(albumuc);
             }
 
@@ -183,4 +183,6 @@ public partial class MenuW : Window
         }
     }
 
+
 }
+

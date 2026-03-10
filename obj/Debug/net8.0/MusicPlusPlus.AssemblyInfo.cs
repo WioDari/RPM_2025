@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MusicPlusPlus")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f0c71f99847b647c23979729280fda1c605c190")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f19776ffc5d6d7c02dcc7ce17e70907438f7a37")]
 [assembly: System.Reflection.AssemblyProductAttribute("MusicPlusPlus")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MusicPlusPlus")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

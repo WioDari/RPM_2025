@@ -4,17 +4,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
         d:DesignWidth="600" 
-        d:DesignHeight="450"
+        d:DesignHeight="800"
         Width="600"
-        Height="600"
+        Height="800"
         CanResize="False"
         x:Class="MusicPlusPlus.AlbumCreationWindow"
         Title="AlbumCreationWindow">
 
     <Grid
-    ShowGridLines="False"
+    ShowGridLines="True"
     ColumnDefinitions="*,*"
-    RowDefinitions="50,8,32,8,32,8,32,8,32,8,32,8,125,8,*">
+    RowDefinitions="50,8,200,32,8,32,8,32,8,32,8,32,8,200,8,*">
 		
         <!--ШАПКА-->
         <StackPanel
@@ -36,10 +36,53 @@
 
         </StackPanel>
 
+        <!--обложка-->
+        <Image
+        Name="CoverI"
+        Grid.Column="0"
+        Grid.Row="2"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Left"
+        Margin="15,0,0,0"
+        Width="150">
+        </Image>
+
+            <!--ввод пути к обложке-->
+            <StackPanel
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,5,0"
+            Orientation="Horizontal">
+				
+                <TextBox
+                Name="CoverPathTB"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Margin="0,0,5,0"
+                Width="300"
+                Watermark="Путь к обложке...">
+                </TextBox>
+
+                <Button
+                Name="FindCoverB"
+                Click="FindCoverB_Click"
+                Width="32"
+                Content="🔎"
+                ToolTip.Tip="Найти">
+                </Button>
+
+            </StackPanel>
+            
+
+        
 
         <!--ввод названия альбома-->
             <TextBlock
-            Grid.Row="2"
+            Grid.Row="3"
             VerticalAlignment="Center"
             Margin="15,0,0,0"
             Text="Название: "
@@ -47,7 +90,7 @@
             </TextBlock>
             <TextBox
             Name="NameTB"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.ColumnSpan="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
@@ -57,7 +100,7 @@
 
         <!--ввод года выхода-->
             <TextBlock
-            Grid.Row="4"
+            Grid.Row="5"
             VerticalAlignment="Center"
             Margin="15,0,0,0"
             Text="Год выхода: "
@@ -66,7 +109,7 @@
             <DatePicker
             Name="YearDP"
             SelectedDateChanged="YearDP_SelectedDateChanged"
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.ColumnSpan="2"
             VerticalAlignment="Center"
             HorizontalAlignment="Right"
@@ -76,29 +119,13 @@
             MonthVisible="False">
             </DatePicker>
 
-        <!--ввод пути к обложке-->
-            <TextBlock
-            Grid.Row="6"
-            VerticalAlignment="Center"
-            Margin="15,0,0,0"
-            Text="Путь к обложке: "
-            FontSize="18">
-            </TextBlock>
-            <TextBox
-            Name="CoverPathTB"
-            Grid.Row="6"
-            Grid.ColumnSpan="2"
-            VerticalAlignment="Center"
-            HorizontalAlignment="Right"
-            Margin="0,0,5,0"
-            Width="450">
-            </TextBox>
+
 
         <!--выбор исполнителя из существующих-->
         <ComboBox
         Name="ArtistsCB"
         Grid.ColumnSpan="2"
-        Grid.Row="8"
+        Grid.Row="9"
         VerticalAlignment="Center"
         HorizontalAlignment="Left"
         Margin="15,0,0,0"
@@ -111,7 +138,7 @@
         Name="AddArtistB"
         Click="AddArtistB_Click"
         Grid.Column="1"
-        Grid.Row="8"
+        Grid.Row="9"
         VerticalAlignment="Center"
         HorizontalAlignment="Right"
         Margin="0,0,5,0"
@@ -124,7 +151,7 @@
         Name="GenresACB"
         SelectionChanged="GenresACB_SelectionChanged"
         Grid.ColumnSpan="2"
-        Grid.Row="10"
+        Grid.Row="11"
         HorizontalAlignment="Left"
         VerticalAlignment="Center"
         Margin="15,0,0,0"
@@ -136,12 +163,24 @@
         <ListBox
         Name="SelectedGenresLB"
         Grid.Column="0"
-        Grid.Row="12"
+        Grid.Row="13"
         HorizontalAlignment="Left"
         Margin="15,0,0,0"
         Width="375"
-        Height="125">
+        Height="200">
         </ListBox>
+
+        <Button
+        Name="GenreDeleteB"
+        Click="GenreDeleteB_Click"
+        Grid.Column="1"
+        Grid.Row="13"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Right"
+        Margin="0,0,5,0"
+        Width="150"
+        Content="Убрать выбранное">
+        </Button>
 
         <!--кнопка сохранения-->
         <Button
