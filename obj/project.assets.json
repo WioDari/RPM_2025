@@ -379,22 +379,6 @@
           "lib/net6.0/ColorTextBlock.Avalonia.dll": {}
         }
       },
-      "DialogHost.Avalonia/0.8.1": {
-        "type": "package",
-        "dependencies": {
-          "Avalonia": "11.1.0"
-        },
-        "compile": {
-          "lib/netstandard2.0/DialogHost.Avalonia.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/netstandard2.0/DialogHost.Avalonia.dll": {
-            "related": ".xml"
-          }
-        }
-      },
       "EntityFramework/6.5.1": {
         "type": "package",
         "dependencies": {
@@ -640,19 +624,6 @@
         },
         "runtime": {
           "lib/net6.0/Markdown.Avalonia.dll": {}
-        }
-      },
-      "MessageBox.Avalonia/3.3.0": {
-        "type": "package",
-        "dependencies": {
-          "Avalonia": "11.1.5",
-          "DialogHost.Avalonia": "0.8.1"
-        },
-        "compile": {
-          "lib/netstandard2.0/MsBox.Avalonia.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard2.0/MsBox.Avalonia.dll": {}
         }
       },
       "MicroCom.Runtime/0.11.0": {
@@ -2749,21 +2720,6 @@
         "lib/netstandard2.0/ColorTextBlock.Avalonia.dll"
       ]
     },
-    "DialogHost.Avalonia/0.8.1": {
-      "sha512": "RLBOMqjJPgSmwe0i1pzX3Q7Pn0i4xE/E1b774krd4VyEkaorz1AYMdYQHyIfuhtQv5NntZyS0MuQbxJl/PhzBg==",
-      "type": "package",
-      "path": "dialoghost.avalonia/0.8.1",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "dialoghost.avalonia.0.8.1.nupkg.sha512",
-        "dialoghost.avalonia.nuspec",
-        "icon.png",
-        "lib/netstandard2.0/DialogHost.Avalonia.dll",
-        "lib/netstandard2.0/DialogHost.Avalonia.xml"
-      ]
-    },
     "EntityFramework/6.5.1": {
       "sha512": "sQRP2lWg1i3aAGWqdliAM8zrGx7LHMUk+9/MoxUjwfTZYGMXvZ2JYZTlyTm1PqDxvn3c9E3U76TWDON7Y5+CVA==",
       "type": "package",
@@ -3176,19 +3132,6 @@
         "lib/netstandard2.0/Markdown.Avalonia.dll",
         "markdown.avalonia.tight.11.0.2.nupkg.sha512",
         "markdown.avalonia.tight.nuspec"
-      ]
-    },
-    "MessageBox.Avalonia/3.3.0": {
-      "sha512": "4btMa3Q5S/gZxqfi18tZYixnP9vy0KK/WyXYegQU+2/bfl5OFU56oS2bS7g5xNabXfRysl7Z7qoY/2ELLl4k5A==",
-      "type": "package",
-      "path": "messagebox.avalonia/3.3.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.jpg",
-        "lib/netstandard2.0/MsBox.Avalonia.dll",
-        "messagebox.avalonia.3.3.0.nupkg.sha512",
-        "messagebox.avalonia.nuspec"
       ]
     },
     "MicroCom.Runtime/0.11.0": {
@@ -6959,7 +6902,6 @@
       "Avalonia.Themes.Fluent >= 11.3.0",
       "EntityFramework >= 6.5.1",
       "Markdown.Avalonia >= 11.0.2",
-      "MessageBox.Avalonia >= 3.3.0",
       "Microsoft.EntityFrameworkCore >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.11",
@@ -6969,23 +6911,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DT\\.nuget\\packages\\": {},
+    "C:\\Users\\GoosE\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DT\\source\\repos\\MusicPlusPlus\\MusicPlusPlus.csproj",
+      "projectUniqueName": "C:\\Users\\GoosE\\source\\repos\\MusicPlusPlus\\MusicPlusPlus.csproj",
       "projectName": "MusicPlusPlus",
-      "projectPath": "C:\\Users\\DT\\source\\repos\\MusicPlusPlus\\MusicPlusPlus.csproj",
-      "packagesPath": "C:\\Users\\DT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DT\\source\\repos\\MusicPlusPlus\\obj\\",
+      "projectPath": "C:\\Users\\GoosE\\source\\repos\\MusicPlusPlus\\MusicPlusPlus.csproj",
+      "packagesPath": "C:\\Users\\GoosE\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\GoosE\\source\\repos\\MusicPlusPlus\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\DT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\GoosE\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -7013,7 +6955,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net8.0": {
@@ -7050,10 +6992,6 @@
           "Markdown.Avalonia": {
             "target": "Package",
             "version": "[11.0.2, )"
-          },
-          "MessageBox.Avalonia": {
-            "target": "Package",
-            "version": "[3.3.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -7100,7 +7038,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

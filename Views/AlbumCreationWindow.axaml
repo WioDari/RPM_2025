@@ -1,0 +1,158 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        d:DesignWidth="600" 
+        d:DesignHeight="450"
+        Width="600"
+        Height="600"
+        CanResize="False"
+        x:Class="MusicPlusPlus.AlbumCreationWindow"
+        Title="AlbumCreationWindow">
+
+    <Grid
+    ShowGridLines="False"
+    ColumnDefinitions="*,*"
+    RowDefinitions="50,8,32,8,32,8,32,8,32,8,32,8,125,8,*">
+		
+        <!--ШАПКА-->
+        <StackPanel
+        Grid.Row="0"
+        Grid.ColumnSpan="2"
+        Orientation="Horizontal"
+        Background="{DynamicResource ResourceKey=SecondaryBackground}">
+			
+            <!--заголовок-->
+            <TextBlock
+            x:Name="TitleTBlock"
+            Text="Добавление альбома"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            Margin="15,0,0,0"
+            FontSize="32"
+            FontWeight="SemiBold">
+            </TextBlock>
+
+        </StackPanel>
+
+
+        <!--ввод названия альбома-->
+            <TextBlock
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            Margin="15,0,0,0"
+            Text="Название: "
+            FontSize="18">
+            </TextBlock>
+            <TextBox
+            Name="NameTB"
+            Grid.Row="2"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,5,0"
+            Width="450">
+            </TextBox>
+
+        <!--ввод года выхода-->
+            <TextBlock
+            Grid.Row="4"
+            VerticalAlignment="Center"
+            Margin="15,0,0,0"
+            Text="Год выхода: "
+            FontSize="18">
+            </TextBlock>
+            <DatePicker
+            Name="YearDP"
+            SelectedDateChanged="YearDP_SelectedDateChanged"
+            Grid.Row="4"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,5,0"
+            Width="450"
+            DayVisible="False"
+            MonthVisible="False">
+            </DatePicker>
+
+        <!--ввод пути к обложке-->
+            <TextBlock
+            Grid.Row="6"
+            VerticalAlignment="Center"
+            Margin="15,0,0,0"
+            Text="Путь к обложке: "
+            FontSize="18">
+            </TextBlock>
+            <TextBox
+            Name="CoverPathTB"
+            Grid.Row="6"
+            Grid.ColumnSpan="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Right"
+            Margin="0,0,5,0"
+            Width="450">
+            </TextBox>
+
+        <!--выбор исполнителя из существующих-->
+        <ComboBox
+        Name="ArtistsCB"
+        Grid.ColumnSpan="2"
+        Grid.Row="8"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Left"
+        Margin="15,0,0,0"
+        Width="375"
+        PlaceholderText="Имя исполнителя">
+        </ComboBox>
+
+        <!--кнопка добавления нового исполнителя в бд-->
+        <Button
+        Name="AddArtistB"
+        Click="AddArtistB_Click"
+        Grid.Column="1"
+        Grid.Row="8"
+        VerticalAlignment="Center"
+        HorizontalAlignment="Right"
+        Margin="0,0,5,0"
+        Width="150"
+        Content="Новый исполнитель...">
+        </Button>
+
+        <!--выбор жанра-->
+        <AutoCompleteBox
+        Name="GenresACB"
+        SelectionChanged="GenresACB_SelectionChanged"
+        Grid.ColumnSpan="2"
+        Grid.Row="10"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Center"
+        Margin="15,0,0,0"
+        Width="375"
+        Watermark="Жанр...">
+        </AutoCompleteBox>
+
+        <!--показ выбранных жанров-->
+        <ListBox
+        Name="SelectedGenresLB"
+        Grid.Column="0"
+        Grid.Row="12"
+        HorizontalAlignment="Left"
+        Margin="15,0,0,0"
+        Width="375"
+        Height="125">
+        </ListBox>
+
+        <!--кнопка сохранения-->
+        <Button
+        Name="SaveB"
+        Click="SaveB_Click"
+        Grid.ColumnSpan="2"
+        Grid.Row="15"
+        Width="100"
+        Content="Сохранить">
+        </Button>
+
+    </Grid>
+
+</Window>

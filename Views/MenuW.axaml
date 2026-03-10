@@ -62,7 +62,7 @@
         Grid.Row="1"
         TabStripPlacement="Left">
 
-            <!--Профиль-->
+            <!--ПРОФИЛЬ-->
             <TabItem
             x:Name="UserNameTab"
             Header="Имя пользователя">
@@ -121,6 +121,29 @@
                         FontSize="24">
                         </TextBlock>
 
+                        <!--подписка-->
+                        <Border
+                        HorizontalAlignment="Center"
+                        Margin="0,25,0,0"
+                        CornerRadius="8"
+                        Padding="5"
+                        BorderThickness="1.5"
+                        BorderBrush="{DynamicResource ResourceKey=MainAccent}">
+						
+                            <TextBlock
+                            Text="Активная подписка:"
+                            HorizontalAlignment="Center"
+                            FontSize="24">
+                            </TextBlock>
+
+                        </Border>
+                        <TextBlock
+                        x:Name="SubscriptionTBlock"
+                        Text="{Binding subscription}"
+                        HorizontalAlignment="Center"
+                        FontSize="24">
+                        </TextBlock>
+
                     </StackPanel>
 
                     <!--сообщение гостю-->
@@ -138,14 +161,28 @@
 
             </TabItem>
 
-            <!--Альбомы-->
+            <!--АЛЬБОМЫ-->
             <TabItem
             x:Name="AlbumsTab"
             Header="Альбомы">
 
-                <Grid>
+                <Grid
+                ShowGridLines="False"
+                RowDefinitions="50,*">
+                    
+                    <!--кнопка добавления альбома-->
+                    <Button
+                    Click="AddAlbumB_Click"
+                    x:Name="AddAlbumB"
+                    Grid.Row="0"
+                    Width="100"
+                    Content="Добавить">
+                    </Button>
 					
+
+                    <!--Сами альбомы-->
                     <ScrollViewer
+                    Grid.Row="1"
                     VerticalScrollBarVisibility="Hidden">
 						
                         <ItemsControl
@@ -165,39 +202,39 @@
 
                     </ScrollViewer>
 
-                    <!--
-                    <ListBox
-                    x:Name="AlbumsLB"
-                    HorizontalAlignment="Center"
-                    Margin="0,25,0,0">
-						
-                        <ListBox.ItemTemplate>
-							<DataTemplate>
-								<DockPanel
-                                HorizontalSpacing="5">
-									
-                                    <Image
-                                    Source="{Binding Coverpath}">
-                                    </Image>
-                                    
-                                    <TextBlock
-                                    Text="{Binding Albumname}">
-                                    </TextBlock>
-
-                                </DockPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-
-                    </ListBox>
-                    -->
-
                 </Grid>
 
             </TabItem>
 
+            <!--ПЛЕЙЛИСТЫ-->
             <TabItem
             x:Name="PlaylistsTab"
             Header="Плейлисты">
+
+                <Grid>
+					
+                    <ScrollViewer
+                    VerticalScrollBarVisibility="Hidden">
+						
+                        <ItemsControl
+                        x:Name="PlaylistsIC">
+							<ItemsControl.ItemsPanel>
+								<ItemsPanelTemplate>
+									<WrapPanel
+                                    Margin="0,15,0,0"
+                                    Orientation="Horizontal"
+                                    ItemSpacing="15"
+                                    HorizontalAlignment="Center"
+                                    LineSpacing="15">
+                                    </WrapPanel>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                    </ScrollViewer>
+
+                </Grid>
+
             </TabItem>
 
             <TabItem

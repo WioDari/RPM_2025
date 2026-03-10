@@ -19,6 +19,7 @@
         ColumnDefinitions="*,*,*,*"
         RowDefinitions="*,*,*,*">
 
+            <!--обложка-->
             <Image
             x:Name="AlbumCover"
             Grid.ColumnSpan="4"
@@ -41,22 +42,32 @@
                 ColumnDefinitions="*,75"
                 Background="{DynamicResource ResourceKey=SecondaryBackground}">
 			
-                    <TextBlock
-                    Text="{Binding AlbumName}"
-                    TextWrapping="Wrap"
-                    Grid.Column="0"
-                    Margin="5,5,0,0"
-                    FontSize="12">
-                    </TextBlock>
+                    
 
-                    <TextBlock
-                    Text="{Binding ArtistName}"
-                    TextWrapping="Wrap"
+                    <WrapPanel
                     Grid.Column="0"
-                    Margin="5,30,0,0"
-                    FontSize="10">
-                    </TextBlock>
+                    Orientation="Vertical"
+                    Margin="5,5,0,0">
 
+                        <!--имя альбома-->
+                        <TextBlock
+                        Text="{Binding AlbumName}"
+                        TextWrapping="Wrap"
+                        FontSize="12">
+                        </TextBlock>
+
+                        <!--имя исполнителей-->
+                        <TextBlock
+                        Text="{Binding ArtistName}"
+                        TextWrapping="Wrap"
+                        FontSize="10">
+                        </TextBlock>
+						
+                    </WrapPanel>
+
+                    
+
+                    <!--число треков-->
                     <TextBlock
                     Text="{Binding TrackCount}"
                     TextWrapping="Wrap"

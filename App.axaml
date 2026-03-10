@@ -57,6 +57,11 @@
 			Color="#5DCC99">
 		</SolidColorBrush>
 
+		<SolidColorBrush
+		x:Key="PremiumUser"
+		Color="#ff943d">
+		</SolidColorBrush>
+
 
 
 		<!--ТЕМЫ-->

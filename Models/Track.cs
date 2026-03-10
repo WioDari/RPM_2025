@@ -21,7 +21,9 @@ public partial class Track
 
     public int Playcount { get; set; }
 
-    public virtual ICollection<Album> Albums { get; set; } = new List<Album>();
+    public int? Albumid { get; set; }
+
+    public virtual Album? Album { get; set; }
 
     public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();
 

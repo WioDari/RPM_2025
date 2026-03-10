@@ -5,7 +5,8 @@ using Avalonia.Markup.Xaml;
 using MusicPlusPlus.Context;
 using MusicPlusPlus.Models;
 using System;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
+//using System.Data.Entity;
 using System.Linq;
 using Avalonia.Media.Imaging;
 
@@ -29,35 +30,37 @@ public partial class AlbumUC : UserControl
 
     public void LoadAlbum (Album album, string imagepath)
     {
-        
 
-        using (var context = new SpotifyContext())
-        {
-            album = context.Albums.Include(x => x.Artists).Include(x => x.Tracks).FirstOrDefault(x => x.Albumid == album.Albumid);
 
-            string artistname = string.Join(", ", album.Artists.Select(x => x.Artistname)) ?? "Неизвестен";
 
-            string zxc = "";
-            foreach (var artist in album.Artists.Select(x => x.Artistname).ToList())
+        string artistname = "";
+        using(var context = new MusicdbContext())
+    {
+            var fullAlbum = context.Albums
+                .Include(a => a.Artists)
+                .AsSplitQuery()
+                .FirstOrDefault(a => a.Albumid == album.Albumid);
+
+            artistname = fullAlbum != null && fullAlbum.Artists.Any()
+                ? string.Join(", ", fullAlbum.Artists.Select(a => a.Artistname))
+                : "Неизвестный исполнитель";
+        }
+
+
+        //подсчёт треков в альбоме
+        int trackcount = 0;
+            using (var context = new MusicdbContext())
             {
-                zxc = zxc + artist + " | " ?? "Неизвестен";
-            }
-            
-            
-
-            int trackcount = album.Tracks.Count;
-
-            /*
-            if (!string.IsNullOrEmpty(album.Coverpath))
-            {
-                if(Uri.IsWellFormedUriString(album.Coverpath, UriKind.Absolute))
+                var tracks = context.Tracks.Where(x => x.Albumid == album.Albumid);
+                foreach (var track in tracks)
                 {
-                    imagepath = album.Coverpath;
+
+                    trackcount ++;
                 }
             }
-            */
+            
+            
 
-            //string imagepath = $"Resources/covers/{album.Albumname}.jpg" ?? "Resources/placeholder_cover.png";
             try
             {
                 AlbumCover.Source = new Bitmap(imagepath);
@@ -66,15 +69,16 @@ public partial class AlbumUC : UserControl
             {
                 AlbumCover.Source = new Bitmap("Resources/placeholder_cover.png");
             }
+
             
 
             DataContext = new AlbumView
             {
                 AlbumName = album.Albumname ?? "Без названия",
-                ArtistName = zxc,
-                TrackCount = $"{trackcount}",
+                ArtistName = artistname,
+                TrackCount = trackcount.ToString(),
                 ImagePath = imagepath
             };
-        }
+        
     }
 }

@@ -1,0 +1,135 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             d:DesignWidth="600" 
+             d:DesignHeight="125"
+             Width="575"
+             Height="125"
+             x:Class="MusicPlusPlus.PlaylistUC">
+
+    <Border
+    BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+    BorderThickness="1.5">
+		
+        <Grid
+        ShowGridLines="False"
+        RowDefinitions="50,*"
+        ColumnDefinitions="*,100">
+			
+            <!--название и автор плейлиста-->
+            <Border
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+            BorderThickness="1.5"
+            Height="52"
+            Width="600">
+				
+                <WrapPanel
+                Orientation="Horizontal"
+                VerticalAlignment="Center">
+					
+                    <TextBlock
+                    Text="{Binding PlaylistName}"
+                    Margin="15,0,0,0"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    </TextBlock>
+
+                    <TextBlock
+                    Text=" | "
+                    FontWeight="SemiBold"
+                    FontSize="20">
+                    </TextBlock>
+
+                    <TextBlock
+                    x:Name="AuthorTBlock"
+                    Text="{Binding PlaylistAuthor}"
+                    FontSize="20"
+                    FontWeight="SemiBold">
+                    </TextBlock>
+
+                </WrapPanel>
+
+            </Border>
+
+            <!--штуки-->
+            <WrapPanel
+            Grid.Row="1"
+            Margin="5,5,0,0"
+            Orientation="Vertical">
+
+                <!--лайки-->
+                <StackPanel
+                Orientation="Horizontal">
+					
+                    <TextBlock
+                    Text="Нравится: "
+                    FontSize="18">
+                    </TextBlock>
+
+                    <TextBlock
+                    Text="{Binding LikesCount}"
+                    FontSize="18">
+                    </TextBlock>
+
+                </StackPanel>
+
+                <!--счётчик треков-->
+                <StackPanel
+                Orientation="Horizontal">
+					
+                    <TextBlock
+                    Text="Треков: "
+                    FontSize="18">
+                    </TextBlock>
+
+                    <TextBlock
+                    x:Name="TracksTBlock"
+                    Text="{Binding TrackCount}"
+                    FontSize="18">
+                    </TextBlock>
+
+                </StackPanel>
+
+                <!--дата создания-->
+                <StackPanel
+                Orientation="Horizontal">
+					
+                    <TextBlock
+                    Text="Создан: "
+                    FontSize="18">
+                    </TextBlock>
+
+                    <TextBlock
+                    Text="{Binding CreationDate}"
+                    FontSize="18">
+                    </TextBlock>
+
+                </StackPanel>
+
+            </WrapPanel>
+
+            <Border
+            Grid.Row="1"
+            Grid.Column="1"
+            BorderBrush="{DynamicResource ResourceKey=MainAccent}"
+            BorderThickness="1.5"
+            Height="73.5">
+				
+                <TextBlock
+                Text="{Binding Duration}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                FontSize="18">
+                </TextBlock>
+
+            </Border>
+
+        </Grid>
+
+    </Border>
+
+</UserControl>
