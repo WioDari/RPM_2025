@@ -77,6 +77,14 @@ public partial class AlbumCreationWindow : Window
                 var album = context.Albums.OrderBy(x => x.Albumid).LastOrDefault();
                 var artist = context.Artists.FirstOrDefault(x => x.Artistname == ArtistsCB.SelectedItem);
 
+                Artistalbums newlink = new Artistalbums
+                {
+                    Albumid = album.Albumid,
+                    Artistid = artist.Artistid
+                };
+                context.Artistalbums.Add(newlink);
+                context.SaveChanges();
+
             }
             this.Close();
         }
@@ -120,6 +128,12 @@ public partial class AlbumCreationWindow : Window
         string imagepath;
         if (CoverPathTB.Text != null || CoverPathTB.Text.Trim() != "")
         {
+            if (!CoverPathTB.Text.Trim().ToLower().EndsWith(".png"))
+            {
+                new MessageWindow("Некорректный ввод", "Поддерживаются только изображения формата .png").Show();
+                CoverPathTB.Clear();
+                return;
+            }
             imagepath = CoverPathTB.Text.Trim();
         }
         else
@@ -135,14 +149,14 @@ public partial class AlbumCreationWindow : Window
                 using (var stream = new MemoryStream(imagedata))
                 {
                     Bitmap image = new Bitmap(stream);
-                    /*
+                    
                      if (image.PixelSize.Width > 1000 || image.PixelSize.Height > 1000)
                     {
                         new MessageWindow("Некорректный ввод", "Изображение не должно превышать 1000x1000").Show();
                         CoverPathTB.Clear();
                         return;
                     }
-                     */
+                     
                     CoverI.Source = image;
                 }
             }
