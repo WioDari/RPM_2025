@@ -20,11 +20,13 @@ public partial class PostgresContext : DbContext
 
     public virtual DbSet<Artist> Artists { get; set; }
 
-    public virtual DbSet<Gener> Geners { get; set; }
+    public virtual DbSet<Genre> Genres { get; set; }
 
     public virtual DbSet<Playlist> Playlists { get; set; }
 
     public virtual DbSet<Role> Roles { get; set; }
+
+    public virtual DbSet<Subscription> Subscriptions { get; set; }
 
     public virtual DbSet<Tag> Tags { get; set; }
 
@@ -40,293 +42,217 @@ public partial class PostgresContext : DbContext
     {
         modelBuilder.Entity<Album>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("album_pkey");
+            entity.HasKey(e => e.AlbumId).HasName("Album_pkey");
 
-            entity.ToTable("album", "music");
+            entity.ToTable("Album", "wff");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.AlbumTitle)
-                .HasMaxLength(255)
-                .HasColumnName("album_title");
-            entity.Property(e => e.Coverpath)
-                .HasMaxLength(255)
-                .HasColumnName("coverpath");
-            entity.Property(e => e.Duration).HasColumnName("duration");
-            entity.Property(e => e.Realease).HasColumnName("realease");
+            entity.Property(e => e.AlbumId).HasColumnName("AlbumID");
+            entity.Property(e => e.ArtistId).HasColumnName("ArtistID");
+            entity.Property(e => e.TotalDuration).HasDefaultValue(0);
 
-            entity.HasMany(d => d.Tracks).WithMany(p => p.Albums)
-                .UsingEntity<Dictionary<string, object>>(
-                    "AlbumTrack",
-                    r => r.HasOne<Track>().WithMany()
-                        .HasForeignKey("TrackId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("album_track_track_id_fkey"),
-                    l => l.HasOne<Album>().WithMany()
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("album_track_album_id_fkey"),
-                    j =>
-                    {
-                        j.HasKey("AlbumId", "TrackId").HasName("album_track_pkey");
-                        j.ToTable("album_track", "music");
-                        j.IndexerProperty<int>("AlbumId").HasColumnName("album_id");
-                        j.IndexerProperty<int>("TrackId").HasColumnName("track_id");
-                    });
+            entity.HasOne(d => d.Artist).WithMany(p => p.Albums)
+                .HasForeignKey(d => d.ArtistId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Album_ArtistID_fkey");
         });
 
         modelBuilder.Entity<Artist>(entity =>
         {
-            entity.HasKey(e => e.ArtistId).HasName("artist_pkey");
+            entity.HasKey(e => e.ArtistId).HasName("Artist_pkey");
 
-            entity.ToTable("artist", "music");
+            entity.ToTable("Artist", "wff");
 
-            entity.Property(e => e.ArtistId).HasColumnName("artist_id");
-            entity.Property(e => e.AlbumId).HasColumnName("album_id");
-            entity.Property(e => e.ArtName)
-                .HasMaxLength(255)
-                .HasColumnName("art_name");
-            entity.Property(e => e.Country)
-                .HasMaxLength(255)
-                .HasColumnName("country");
-            entity.Property(e => e.Description).HasColumnName("description");
-            entity.Property(e => e.Photo)
-                .HasMaxLength(255)
-                .HasColumnName("photo");
-            entity.Property(e => e.YearActive)
-                .HasMaxLength(255)
-                .HasColumnName("year_active");
+            entity.HasIndex(e => e.ArtistName, "Artist_ArtistName_key").IsUnique();
 
-            entity.HasMany(d => d.Albums).WithMany(p => p.Artists)
+            entity.Property(e => e.ArtistId).HasColumnName("ArtistID");
+
+            entity.HasMany(d => d.Genres).WithMany(p => p.Artists)
                 .UsingEntity<Dictionary<string, object>>(
-                    "ArtistAlbum",
-                    r => r.HasOne<Album>().WithMany()
-                        .HasForeignKey("AlbumId")
+                    "ArtistGenre",
+                    r => r.HasOne<Genre>().WithMany()
+                        .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("artist_album_album_id_fkey"),
+                        .HasConstraintName("ArtistGenre_GenreID_fkey"),
                     l => l.HasOne<Artist>().WithMany()
                         .HasForeignKey("ArtistId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("artist_album_artist_id_fkey"),
+                        .HasConstraintName("ArtistGenre_ArtistID_fkey"),
                     j =>
                     {
-                        j.HasKey("ArtistId", "AlbumId").HasName("artist_album_pkey");
-                        j.ToTable("artist_album", "music");
-                        j.IndexerProperty<int>("ArtistId").HasColumnName("artist_id");
-                        j.IndexerProperty<int>("AlbumId").HasColumnName("album_id");
-                    });
-
-            entity.HasMany(d => d.Tracks).WithMany(p => p.Artists)
-                .UsingEntity<Dictionary<string, object>>(
-                    "TrackArtist",
-                    r => r.HasOne<Track>().WithMany()
-                        .HasForeignKey("TrackId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("track_artist_track_id_fkey"),
-                    l => l.HasOne<Artist>().WithMany()
-                        .HasForeignKey("ArtistId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("track_artist_artist_id_fkey"),
-                    j =>
-                    {
-                        j.HasKey("ArtistId", "TrackId").HasName("track_artist_pkey");
-                        j.ToTable("track_artist", "music");
-                        j.IndexerProperty<int>("ArtistId").HasColumnName("artist_id");
-                        j.IndexerProperty<int>("TrackId").HasColumnName("track_id");
+                        j.HasKey("ArtistId", "GenreId").HasName("ArtistGenre_pkey");
+                        j.ToTable("ArtistGenre", "wff");
+                        j.IndexerProperty<int>("ArtistId").HasColumnName("ArtistID");
+                        j.IndexerProperty<int>("GenreId").HasColumnName("GenreID");
                     });
         });
 
-        modelBuilder.Entity<Gener>(entity =>
+        modelBuilder.Entity<Genre>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("geners_pkey");
+            entity.HasKey(e => e.GenreId).HasName("Genre_pkey");
 
-            entity.ToTable("geners", "music");
+            entity.ToTable("Genre", "wff");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Geners)
-                .HasMaxLength(255)
-                .HasColumnName("geners");
+            entity.HasIndex(e => e.GenreName, "Genre_GenreName_key").IsUnique();
 
-            entity.HasMany(d => d.Albums).WithMany(p => p.Geners)
-                .UsingEntity<Dictionary<string, object>>(
-                    "GenerAlbum",
-                    r => r.HasOne<Album>().WithMany()
-                        .HasForeignKey("AlbumId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("gener_album_album_id_fkey"),
-                    l => l.HasOne<Gener>().WithMany()
-                        .HasForeignKey("GenerId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("gener_album_gener_id_fkey"),
-                    j =>
-                    {
-                        j.HasKey("GenerId", "AlbumId").HasName("gener_album_pkey");
-                        j.ToTable("gener_album", "music");
-                        j.IndexerProperty<int>("GenerId").HasColumnName("gener_id");
-                        j.IndexerProperty<int>("AlbumId").HasColumnName("album_id");
-                    });
+            entity.Property(e => e.GenreId).HasColumnName("GenreID");
+            entity.Property(e => e.GenreName).HasMaxLength(100);
         });
 
         modelBuilder.Entity<Playlist>(entity =>
         {
-            entity.HasKey(e => e.PlaylistId).HasName("playlist_pkey");
+            entity.HasKey(e => e.PlaylistId).HasName("Playlist_pkey");
 
-            entity.ToTable("playlist", "music");
+            entity.ToTable("Playlist", "wff");
 
-            entity.Property(e => e.PlaylistId).HasColumnName("playlist_id");
-            entity.Property(e => e.DateCreate).HasColumnName("date_create");
-            entity.Property(e => e.Likes).HasColumnName("likes");
-            entity.Property(e => e.PlayName)
-                .HasMaxLength(255)
-                .HasColumnName("play_name");
+            entity.Property(e => e.PlaylistId).HasColumnName("PlaylistID");
+            entity.Property(e => e.Likes).HasDefaultValue(0);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
 
-            entity.HasMany(d => d.IdTracks).WithMany(p => p.IdPlaylists)
-                .UsingEntity<Dictionary<string, object>>(
-                    "PlaylistTrack",
-                    r => r.HasOne<Track>().WithMany()
-                        .HasForeignKey("IdTrack")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("playlist_track_id_track_fkey"),
-                    l => l.HasOne<Playlist>().WithMany()
-                        .HasForeignKey("IdPlaylist")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("playlist_track_id_playlist_fkey"),
-                    j =>
-                    {
-                        j.HasKey("IdPlaylist", "IdTrack").HasName("playlist_track_pkey");
-                        j.ToTable("playlist_track", "music");
-                        j.IndexerProperty<int>("IdPlaylist").HasColumnName("id_playlist");
-                        j.IndexerProperty<int>("IdTrack").HasColumnName("id_track");
-                    });
+            entity.HasOne(d => d.User).WithMany(p => p.Playlists)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Playlist_UserID_fkey");
 
             entity.HasMany(d => d.Tags).WithMany(p => p.Playlists)
                 .UsingEntity<Dictionary<string, object>>(
-                    "TagsPlaylist",
+                    "PlaylistTag",
                     r => r.HasOne<Tag>().WithMany()
-                        .HasForeignKey("TagsId")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("tags_playlist_tags_id_fkey"),
+                        .HasConstraintName("PlaylistTag_TagID_fkey"),
                     l => l.HasOne<Playlist>().WithMany()
                         .HasForeignKey("PlaylistId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("tags_playlist_playlist_id_fkey"),
+                        .HasConstraintName("PlaylistTag_PlaylistID_fkey"),
                     j =>
                     {
-                        j.HasKey("PlaylistId", "TagsId").HasName("tags_playlist_pkey");
-                        j.ToTable("tags_playlist", "music");
-                        j.IndexerProperty<int>("PlaylistId").HasColumnName("playlist_id");
-                        j.IndexerProperty<int>("TagsId").HasColumnName("tags_id");
+                        j.HasKey("PlaylistId", "TagId").HasName("PlaylistTag_pkey");
+                        j.ToTable("PlaylistTag", "wff");
+                        j.IndexerProperty<int>("PlaylistId").HasColumnName("PlaylistID");
+                        j.IndexerProperty<int>("TagId").HasColumnName("TagID");
                     });
         });
 
         modelBuilder.Entity<Role>(entity =>
         {
-            entity.HasKey(e => e.RoleId).HasName("role_pkey");
+            entity.HasKey(e => e.RoleId).HasName("Role_pkey");
 
-            entity.ToTable("role", "music");
+            entity.ToTable("Role", "wff");
 
-            entity.Property(e => e.RoleId).HasColumnName("role_id");
-            entity.Property(e => e.Role1)
-                .HasMaxLength(255)
-                .HasColumnName("role");
+            entity.HasIndex(e => e.RoleName, "Role_RoleName_key").IsUnique();
+
+            entity.Property(e => e.RoleId).HasColumnName("RoleID");
+            entity.Property(e => e.RoleName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<Subscription>(entity =>
+        {
+            entity.HasKey(e => e.SubscriptionId).HasName("Subscription_pkey");
+
+            entity.ToTable("Subscription", "wff");
+
+            entity.HasIndex(e => e.SubscriptionName, "Subscription_SubscriptionName_key").IsUnique();
+
+            entity.Property(e => e.SubscriptionId).HasColumnName("SubscriptionID");
+            entity.Property(e => e.SubscriptionName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.HasKey(e => e.TagsId).HasName("tags_pkey");
+            entity.HasKey(e => e.TagId).HasName("Tags_pkey");
 
-            entity.ToTable("tags", "music");
+            entity.ToTable("Tags", "wff");
 
-            entity.Property(e => e.TagsId).HasColumnName("tags_id");
-            entity.Property(e => e.Tag1)
-                .HasMaxLength(255)
-                .HasColumnName("tag");
+            entity.HasIndex(e => e.TagName, "Tags_TagName_key").IsUnique();
+
+            entity.Property(e => e.TagId).HasColumnName("TagID");
+            entity.Property(e => e.TagName).HasMaxLength(50);
         });
 
         modelBuilder.Entity<Track>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("track_pkey");
+            entity.HasKey(e => e.TrackId).HasName("Track_pkey");
 
-            entity.ToTable("track", "music");
+            entity.ToTable("Track", "wff");
 
-            entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Bitrate).HasColumnName("bitrate");
-            entity.Property(e => e.Duration).HasColumnName("duration");
-            entity.Property(e => e.Filepath)
-                .HasMaxLength(255)
-                .HasColumnName("filepath");
-            entity.Property(e => e.PlayCount).HasColumnName("play_count");
-            entity.Property(e => e.Rating).HasColumnName("rating");
-            entity.Property(e => e.Realise).HasColumnName("realise");
-            entity.Property(e => e.TrackName)
-                .HasColumnType("character varying")
-                .HasColumnName("track_name");
+            entity.Property(e => e.TrackId).HasColumnName("TrackID");
+            entity.Property(e => e.AlbumId).HasColumnName("AlbumID");
+            entity.Property(e => e.ArtistId).HasColumnName("ArtistID");
+            entity.Property(e => e.Rating).HasPrecision(3, 2);
 
-            entity.HasMany(d => d.Geners).WithMany(p => p.Tracks)
+            entity.HasOne(d => d.Album).WithMany(p => p.Tracks)
+                .HasForeignKey(d => d.AlbumId)
+                .HasConstraintName("Track_AlbumID_fkey");
+
+            entity.HasOne(d => d.Artist).WithMany(p => p.Tracks)
+                .HasForeignKey(d => d.ArtistId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Track_ArtistID_fkey");
+
+            entity.HasMany(d => d.Playlists).WithMany(p => p.Tracks)
                 .UsingEntity<Dictionary<string, object>>(
-                    "GenerTrack",
-                    r => r.HasOne<Gener>().WithMany()
-                        .HasForeignKey("GenerId")
+                    "TrackPlaylist",
+                    r => r.HasOne<Playlist>().WithMany()
+                        .HasForeignKey("PlaylistId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("gener_track_gener_id_fkey"),
+                        .HasConstraintName("TrackPlaylist_PlaylistID_fkey"),
                     l => l.HasOne<Track>().WithMany()
                         .HasForeignKey("TrackId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("gener_track_track_id_fkey"),
+                        .HasConstraintName("TrackPlaylist_TrackID_fkey"),
                     j =>
                     {
-                        j.HasKey("TrackId", "GenerId").HasName("gener_track_pkey");
-                        j.ToTable("gener_track", "music");
-                        j.IndexerProperty<int>("TrackId").HasColumnName("track_id");
-                        j.IndexerProperty<int>("GenerId").HasColumnName("gener_id");
+                        j.HasKey("TrackId", "PlaylistId").HasName("TrackPlaylist_pkey");
+                        j.ToTable("TrackPlaylist", "wff");
+                        j.IndexerProperty<int>("TrackId").HasColumnName("TrackID");
+                        j.IndexerProperty<int>("PlaylistId").HasColumnName("PlaylistID");
                     });
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("user_pkey");
+            entity.HasKey(e => e.UserId).HasName("User_pkey");
 
-            entity.ToTable("user", "music");
+            entity.ToTable("User", "wff");
 
-            entity.Property(e => e.UserId).HasColumnName("user_id");
-            entity.Property(e => e.Email)
-                .HasMaxLength(255)
-                .HasColumnName("email");
-            entity.Property(e => e.FullName)
-                .HasMaxLength(255)
-                .HasColumnName("full_name");
-            entity.Property(e => e.LastLog).HasColumnName("last_log");
-            entity.Property(e => e.Registration).HasColumnName("registration");
-            entity.Property(e => e.RoleId).HasColumnName("role_id");
-            entity.Property(e => e.Ssubsription).HasColumnName("ssubsription");
-            entity.Property(e => e.UserLogin)
-                .HasMaxLength(255)
-                .HasColumnName("user_login");
-            entity.Property(e => e.UserPass)
-                .HasMaxLength(255)
-                .HasColumnName("user_pass");
+            entity.HasIndex(e => e.Email, "User_Email_key").IsUnique();
+
+            entity.HasIndex(e => e.UserLogin, "User_UserLogin_key").IsUnique();
+
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.RoleId).HasColumnName("RoleID");
+            entity.Property(e => e.SubscriptionId).HasColumnName("SubscriptionID");
+            entity.Property(e => e.UserLogin).HasMaxLength(255);
+            entity.Property(e => e.UserPassword).HasMaxLength(255);
 
             entity.HasOne(d => d.Role).WithMany(p => p.Users)
                 .HasForeignKey(d => d.RoleId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("user_role_fkey");
+                .HasConstraintName("User_RoleID_fkey");
 
-            entity.HasMany(d => d.Playlists).WithMany(p => p.Users)
+            entity.HasOne(d => d.Subscription).WithMany(p => p.Users)
+                .HasForeignKey(d => d.SubscriptionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("User_SubscriptionID_fkey");
+
+            entity.HasMany(d => d.PlaylistsNavigation).WithMany(p => p.Users)
                 .UsingEntity<Dictionary<string, object>>(
                     "UserPlaylist",
                     r => r.HasOne<Playlist>().WithMany()
                         .HasForeignKey("PlaylistId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("user_playlist_playlist_id_fkey"),
+                        .HasConstraintName("UserPlaylist_PlaylistID_fkey"),
                     l => l.HasOne<User>().WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("user_playlist_user_id_fkey"),
+                        .HasConstraintName("UserPlaylist_UserID_fkey"),
                     j =>
                     {
-                        j.HasKey("UserId", "PlaylistId").HasName("user_playlist_pkey");
-                        j.ToTable("user_playlist", "music");
-                        j.IndexerProperty<int>("UserId").HasColumnName("user_id");
-                        j.IndexerProperty<int>("PlaylistId").HasColumnName("playlist_id");
+                        j.HasKey("UserId", "PlaylistId").HasName("UserPlaylist_pkey");
+                        j.ToTable("UserPlaylist", "wff");
+                        j.IndexerProperty<int>("UserId").HasColumnName("UserID");
+                        j.IndexerProperty<int>("PlaylistId").HasColumnName("PlaylistID");
                     });
         });
 

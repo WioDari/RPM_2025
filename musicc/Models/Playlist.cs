@@ -7,15 +7,19 @@ public partial class Playlist
 {
     public int PlaylistId { get; set; }
 
-    public string PlayName { get; set; } = null!;
+    public string PlaylistName { get; set; } = null!;
 
-    public DateOnly DateCreate { get; set; }
+    public int UserId { get; set; }
+
+    public DateOnly DateCreated { get; set; }
 
     public int Likes { get; set; }
 
-    public virtual ICollection<Track> IdTracks { get; set; } = new List<Track>();
+    public virtual User User { get; set; } = null!;
 
     public virtual ICollection<Tag> Tags { get; set; } = new List<Tag>();
+
+    public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.VisualBasic;
 
 namespace musicc.Models;
 
@@ -10,7 +9,7 @@ public partial class User
 
     public string UserLogin { get; set; } = null!;
 
-    public string UserPass { get; set; } = null!;
+    public string UserPassword { get; set; } = null!;
 
     public string FullName { get; set; } = null!;
 
@@ -18,13 +17,17 @@ public partial class User
 
     public int RoleId { get; set; }
 
-    public DateOnly Registration { get; set; }
+    public int SubscriptionId { get; set; }
 
-    public DateTime? LastLog { get; set; }
+    public DateOnly RegistrationDate { get; set; }
 
-    public bool? Ssubsription { get; set; }
+    public DateOnly LastLogin { get; set; }
+
+    public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 
     public virtual Role Role { get; set; } = null!;
 
-    public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
+    public virtual Subscription Subscription { get; set; } = null!;
+
+    public virtual ICollection<Playlist> PlaylistsNavigation { get; set; } = new List<Playlist>();
 }

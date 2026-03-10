@@ -5,27 +5,29 @@ namespace musicc.Models;
 
 public partial class Track
 {
-    public int Id { get; set; }
+    public int TrackId { get; set; }
 
     public string TrackName { get; set; } = null!;
 
-    public int Duration { get; set; }
+    public int? AlbumId { get; set; }
 
-    public DateOnly Realise { get; set; }
+    public int ArtistId { get; set; }
+
+    public TimeSpan Duration { get; set; }
+
+    public DateOnly ReleaseDate { get; set; }
 
     public int Bitrate { get; set; }
 
-    public string Filepath { get; set; } = null!;
+    public string FilePath { get; set; } = null!;
 
     public decimal Rating { get; set; }
 
-    public int PlayCount { get; set; }
+    public long PlayCount { get; set; }
 
-    public virtual ICollection<Album> Albums { get; set; } = new List<Album>();
+    public virtual Album? Album { get; set; }
 
-    public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();
+    public virtual Artist Artist { get; set; } = null!;
 
-    public virtual ICollection<Gener> Geners { get; set; } = new List<Gener>();
-
-    public virtual ICollection<Playlist> IdPlaylists { get; set; } = new List<Playlist>();
+    public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 }

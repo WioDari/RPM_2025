@@ -5,9 +5,9 @@ namespace musicc.Models;
 
 public partial class Tag
 {
-    public int TagsId { get; set; }
+    public int TagId { get; set; }
 
-    public string? Tag1 { get; set; }
+    public string TagName { get; set; } = null!;
 
     public virtual ICollection<Playlist> Playlists { get; set; } = new List<Playlist>();
 }

@@ -1,9 +1,15 @@
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using musicc.Context;
@@ -15,7 +21,8 @@ public partial class Window1 : Window
 {
     public string Boxname { get; set; } = "none";
     public string Premium { get; set; } = "none";
-    public Playlist CurrentPlaylist { get; set; }
+    public ObservableCollection<Playlist> Playlists { get; set; } = new ObservableCollection<Playlist>();
+    public ObservableCollection<Album> Albums { get; set; } = new ObservableCollection<Album>();
     public Window1()
     {
        
@@ -24,19 +31,61 @@ public partial class Window1 : Window
         
     }
 
-    public Window1(string boxname, bool? premium)
+    public Window1(string boxname, string premium, int Inv_role)
     {
         Boxname = boxname;
         Premium = premium?.ToString() ?? "none";
         InitializeComponent();
-
-        LoadPlay();
+        DataContext = this;
+        _ = LoadPlay();
+        _ = LoadAlbum();
     }
 
-    private async void LoadPlay()
+    private async Task LoadAlbum()
     {
-        CurrentPlaylist = await Playlist.CreatePl(Boxname);
-        DataContext = this;
+        using (var bd = new PostgresContext())
+        {
+            var albus = await bd.Albums.AsNoTracking().OrderBy(a => a.AlbumId).Select(a => new 
+            {
+                Name = a.AlbumTitle,
+                author = a.Artist.ArtistName,
+                photo = a.CoverPath?? @"C:\Users\sekibanki\RiderProjects\musicc\musicc\photo\icon(1).png",
+                track = a.Tracks.Count
+            }).ToListAsync();
+            Albums.Clear();
+            foreach (var alb in albus)
+                {
+                Albums.Add(new Album
+                {
+                    Name = alb.Name,
+                    author = alb.author,
+                    photo = await Bis(alb.photo),
+                    track =  alb.track
+                });
+                }
+            
+        }
+      
+    }
+
+    private async Task LoadPlay()
+    {
+        using (var bd = new PostgresContext())
+        {
+            var plays = await bd.Playlists.AsNoTracking().OrderBy(p => p.PlaylistId).Select(p => new Playlist
+            {
+                Name = p.PlaylistName,
+                author = p.Users.Select(u => u.FullName).FirstOrDefault(),
+                like = p.Likes,
+                track = p.Tracks.Count,
+                data = p.DateCreated,
+                subs = p.Users.Count
+            }).ToListAsync();
+            Playlists.Clear();
+            
+            foreach (var pl in plays)
+                Playlists.Add(pl);
+        }
     }
     public class Playlist
     {
@@ -45,29 +94,29 @@ public partial class Window1 : Window
         public  int like { get; set; }
         public int track { get; set; }
         public System.DateOnly data { get; set; }
+        public int subs {get; set;}
+    }
+    public class Album
+    {
+        public string Name { get; set; }
+        public string author { get; set; }
+        public Bitmap photo { get; set; }
+        public int track { get; set; }
+    }
 
-        public static async Task<Playlist> CreatePl(string Boxname)
+    private async Task<Bitmap> Bis(string paths)
+    {
+        using var httpc = new HttpClient();
+        try
         {
-            var playlist = new Playlist();
-            await playlist.NEWe(Boxname);
-            return playlist;
+            var date = await httpc.GetAsync(paths);
+            date.EnsureSuccessStatusCode();
+            var ste = await date.Content.ReadAsByteArrayAsync();
+            return new Bitmap(new MemoryStream(ste));
         }
-        public async Task NEWe(string Boxname)
+        catch
         {
-            using ( var bd = new PostgresContext())
-            {
-                var viewPlay = await bd.Users.Include(u => u.Playlists).FirstOrDefaultAsync(u => u.FullName == Boxname);
-                if (viewPlay != null && viewPlay.Playlists != null && viewPlay.Playlists.Any())
-                {
-                    var firstPlaylist = viewPlay.Playlists.First();
-                
-                    Name = firstPlaylist.PlayName;
-                    author = firstPlaylist.Users.First().FullName;
-                    like = firstPlaylist.Likes;
-                    data = firstPlaylist.DateCreate;
-                }
-            }
-
+            return null;
         }
     }
 }

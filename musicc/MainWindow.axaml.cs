@@ -29,7 +29,7 @@ public partial class MainWindow : Window
 
     private async void into_Click(object sender, RoutedEventArgs e)
     {
-        
+        int Indfv_role = 3;
         if (block == true)
         {
             errors.Text = "БАН";
@@ -50,7 +50,7 @@ public partial class MainWindow : Window
         {
             var user = bd.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == box_name.Text);
             string namepeop = user.FullName;
-            bool? subs = user.Ssubsription;
+            string subs = user.Subscription?.SubscriptionName ?? "none";
             if (user == null)
             {
                 errors.Text = "error";
@@ -58,32 +58,35 @@ public partial class MainWindow : Window
                 
                 return;
             }
-            if (user.UserPass == passw_view.Text)
+            if (user.UserPassword == passw_view.Text)
             {
                 if (user.RoleId == 1 && exit_capt.Text == captch)
                 {
-                    user.LastLog = DateTime.UtcNow;
+                    user.LastLogin = DateOnly.FromDateTime(DateTime.Now);
                     bd.Users.Update(user);
                     await bd.SaveChangesAsync();
-                    var wind = new Window1(namepeop, subs);
+                    Indfv_role = 1;
+                    var wind = new Window1(namepeop, subs, Indfv_role);
                     wind.Show();
                     this.Close();
                 }
                 else if (user.RoleId == 2 && exit_capt.Text == captch)
                 {
-                    user.LastLog = DateTime.UtcNow;
+                    user.LastLogin = DateOnly.FromDateTime(DateTime.Now);
                     bd.Users.Update(user);
                     await bd.SaveChangesAsync();
-                    var wind = new Window2();
+                    Indfv_role = 2;
+                    var wind = new Window1(namepeop, subs, Indfv_role);
                     wind.Show();
                     this.Close();
                 }
                 else if (user.RoleId == 4 && exit_capt.Text == captch)
                 {
-                    user.LastLog = DateTime.UtcNow;
+                    user.LastLogin = DateOnly.FromDateTime(DateTime.Now);
                     bd.Users.Update(user);
                     await bd.SaveChangesAsync();
-                    var wind = new Window3();
+                    Indfv_role = 4;
+                    var wind = new Window1(namepeop, subs, Indfv_role);
                     wind.Show();
                     this.Close();
                 }

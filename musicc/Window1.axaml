@@ -6,7 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="musicc.Window1"
         Title="YouMain"
-        x:DataType="musicc:Window1" FontFamily="Times New Roman" FontSize="12">
+        x:DataType="musicc:Window1" FontFamily="Times New Roman" FontSize="12" MinHeight="480" MinWidth="480">
         <Window.Styles>
                 <Style Selector="TextBlock">
                         <Setter Property="FontSize" Value="14"/>
@@ -61,37 +61,67 @@
                 <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Boxname}" TextWrapping="Wrap" 
                            Background="#EDE2FF"   TextAlignment="Center" ></TextBlock>
                 <TabItem Header="Playlists" Foreground="#7A00CC">
-                        <StackPanel >
-                                <!-- Если DataContext = this -->
-                                <TextBlock Text="{Binding CurrentPlaylist.Name}" FontSize="20" FontWeight="Bold"/>
-        
-                                <!-- Или если DataContext = CurrentPlaylist, то просто: -->
-                                <!-- <TextBlock Text="{Binding Name}" FontSize="20" FontWeight="Bold"/> -->
-        
-                                <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock Text="Автор:" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding CurrentPlaylist.author}"/>
-                                </StackPanel>
-        
-                                <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock Text="Лайки:" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding CurrentPlaylist.like}"/>
-                                </StackPanel>
-                
-        
-                                <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock Text="Треки:" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding CurrentPlaylist.track}"/>
-                                </StackPanel>
-        
-                                <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <TextBlock Text="Дата создания:" FontWeight="Bold"/>
-                                        <TextBlock Text="{Binding CurrentPlaylist.data}"/>
-                                </StackPanel>
-                        </StackPanel>
+                        <ListBox ItemsSource="{Binding Playlists}" Margin="5">
+                                <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                                <Border BorderBrush="Black" BorderThickness="2">
+                                                <StackPanel Margin="5">
+                                                        <StackPanel Orientation="Horizontal" Spacing="5" >
+                                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
+                                                        <TextBlock Text="| " FontWeight="Bold" FontSize="16"/>
+                                                        <TextBlock Text="{Binding author}" FontSize="16" FontWeight="Bold"/>
+                                                        </StackPanel>
+                                                        <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*">
+                                                        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5" HorizontalAlignment="Right" Grid.Column="1">
+                                                                <TextBlock Text="Время:" FontWeight="Bold"></TextBlock>
+                                                        </StackPanel>
+                                                                <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Grid.Column="0">
+                                                                <TextBlock Text="Нравится:" FontWeight="Bold"/>
+                                                                <TextBlock Text="{Binding like}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5" Grid.Column="0">
+                                                                <TextBlock Text="Подписчиков:" FontWeight="Bold"/>
+                                                                <TextBlock Text="{Binding subs}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="5" Grid.Column="0">
+                                                                <TextBlock Text="Треков:" FontWeight="Bold"/>
+                                                                <TextBlock Text="{Binding track}"/>
+                                                        </StackPanel>
+                                                        <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="5" Grid.Column="0">
+                                                                <TextBlock Text="Создан:" FontWeight="Bold"/>
+                                                                <TextBlock Text="{Binding data}"/>
+                                                        </StackPanel>
+                                                        </Grid>
+                                                </StackPanel>
+                                                </Border>
+                                        </DataTemplate>
+                                </ListBox.ItemTemplate>
+                        </ListBox>
                 </TabItem>
                 <TabItem Header="Albums" Foreground="#7A00CC">
-                        
+                        <ScrollViewer HorizontalAlignment="Right" Foreground="#9C4DFF" HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl ItemsSource="{Binding Albums}">
+                                <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                                <WrapPanel Orientation="Horizontal" ItemWidth="150" ItemHeight="200"></WrapPanel>
+                                        </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                                <StackPanel>
+                                                        <Border Width="140" ClipToBounds="True" Height="190" Background="#9C4DFF"  CornerRadius="10">
+                                                                <StackPanel>
+                                                                <Image Source="{Binding photo}" Height="130" Width="130" Margin="0,5,0,0" ></Image>
+                                                                <TextBlock Foreground="White" Text="{Binding Name}" TextAlignment="Center"></TextBlock>
+                                                                <TextBlock Foreground="White" Text="{Binding author}" TextAlignment="Center"></TextBlock>
+                                                                <TextBlock Foreground="White" Text="{Binding track}" TextAlignment="Right"></TextBlock>        
+                                                                </StackPanel>
+                                                        </Border>
+                                                </StackPanel>
+                                        </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        </ScrollViewer>
                 </TabItem>
                 <TabItem Header="Music" Foreground="#7A00CC"></TabItem>
                 <TabItem Header="Artist" Foreground="#7A00CC"></TabItem>
