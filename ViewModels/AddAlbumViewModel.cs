@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Win32;
 using Spotify_wpf.Context;
 using Spotify_wpf.Models;
 
@@ -21,13 +23,13 @@ namespace Spotify_wpf.ViewModels
         public ObservableCollection<string> artists { get; set; }
         private ObservableCollection<Artist> _allArtists;
 
-       
+        private int? _albumId;
 
         public Album selectedAlbum { get; set; }
         private int _id {  get; set; }
         public int id
         {
-            get => id;
+            get => _id;
             set
             {
                 _id = value;
@@ -54,7 +56,7 @@ namespace Spotify_wpf.ViewModels
             set
             {
                 _selectedartist = value;
-                OnPropertyChanged();
+                OnPropertyChanged(); 
             }
         }
 
@@ -122,6 +124,8 @@ namespace Spotify_wpf.ViewModels
 
         public ICommand AddGenre { get; }
 
+        public ICommand AddImageCommand { get; }
+
         private ObservableCollection<string> chooseGenres { get; set; } = new ObservableCollection<string>();
         private string _chooseGenres {  get; set; }
         public string chooseGenre
@@ -145,16 +149,51 @@ namespace Spotify_wpf.ViewModels
 
         public void AddGenres()
         {
-            chooseGenres.Add(_chooseGenres);
+            chooseGenres.Add(selectedGenre);
             _chooseGenres += selectedGenre + ", "; 
             
             OnPropertyChanged(nameof(chooseGenre));
 
         }
 
-        public AddAlbumViewModel()
+        public AddAlbumViewModel(int? id = null)
         {
+            
             var context = new MusicContext();
+            _albumId = id;
+
+            if (id != null)
+            {
+                selectedAlbum = context.Albums
+                    .Include(a => a.Artist)
+                    .FirstOrDefault(a => a.AlbumId == id);
+
+                if (selectedAlbum != null)
+                {
+                    nameAlbum = selectedAlbum.AlbumName;
+                    selectedArtist = selectedAlbum.Artist?.ArtistName;
+                    releaseYears = selectedAlbum.ReleaseYear;
+                    totaldur = selectedAlbum.TotalDur ?? TimeOnly.FromTimeSpan(TimeSpan.Zero);
+                    imagePath = selectedAlbum.CoverPath;
+
+                    var albumGenres = context.AlbumGenres
+                        .Where(ag => ag.AlbumId == id)
+                        .Select(ag => ag.Genre.GenreName)
+                        .ToList();
+
+                    foreach (var g in albumGenres)
+                    {
+                        chooseGenres.Add(g);
+                        _chooseGenres += g + ", ";
+                    }
+
+                    OnPropertyChanged(nameof(chooseGenre));
+                }
+            }
+            else
+            {
+                selectedAlbum = new Album(); 
+            }
             var genresList = context.Genres
                 .Select(g => g.GenreName)
                 .Distinct()
@@ -171,60 +210,100 @@ namespace Spotify_wpf.ViewModels
             LoadData();
             AddGenre = new RelayCommand(AddGenres);
             SaveAlbumCommand = new RelayCommand(SaveAlbum);
-
+            AddImageCommand = new RelayCommand(AddImage);
         }
 
         private void SaveAlbum()
         {
-            MusicContext context = new MusicContext();
-            Album album = new Album
+         
+            using var context = new MusicContext();
+
+            Album album;
+
+            if (_albumId != null) 
             {
-                AlbumId = context.Albums.OrderBy(s => s.AlbumId).LastOrDefault().AlbumId + 1,
-                AlbumName = nameAlbum,
-                //ReleaseYear = Convert.ToInt32(releaseYear.ToString("yyyy")),
-                ReleaseYear = releaseYears,
-                TotalDur = TimeOnly.FromTimeSpan(TimeSpan.Zero),
-                CoverPath = "/nety",
-                ArtistId = context.Artists.Where(a => a.ArtistName == selectedArtist).FirstOrDefault().ArtistId,
+                album = context.Albums.FirstOrDefault(a => a.AlbumId == _albumId);
 
-            };
-            context.Albums.Add(album);
-            context.SaveChanges();
-            int albumIds = album.AlbumId;
+                if (album == null) return;
 
-            var genreIds = context.Genres.Where(g => chooseGenre.Contains(g.GenreName)).Select(g => g.GenreId).ToList();
+                album.AlbumName = nameAlbum;
+                album.ReleaseYear = releaseYears;
+                album.TotalDur = totaldur;
+                album.ArtistId = context.Artists.Where(a => a.ArtistName == selectedArtist).Select(a => a.ArtistId).FirstOrDefault();
+                album.CoverPath = imagePath;
+                context.Albums.Update(album);
 
-           /* for (int i = 0; i < genres.Count; i++)
+                var oldGenres = context.AlbumGenres.Where(ag => ag.AlbumId == album.AlbumId);
+
+                context.AlbumGenres.RemoveRange(oldGenres);
+                LoadData();
+            }
+            else 
             {
-                AlbumGenre albgenre = new AlbumGenre
+                album = new Album
                 {
-                    AlbumGenreId = context.AlbumGenres.OrderBy(o => o.AlbumGenreId).LastOrDefault().AlbumGenreId + 1,
-                    AlbumId = context.Albums.OrderBy(a => a.AlbumId).FirstOrDefault().AlbumId,
-                    GenreId = context.Genres.Where(g => g.GenreName == genres[i]).Select(g => g.GenreId).FirstOrDefault(),
-
+                    AlbumId = context.Albums.OrderBy(s => s.AlbumId).LastOrDefault().AlbumId + 1,
+                    AlbumName = nameAlbum,
+                    ReleaseYear = releaseYears,
+                    TotalDur = totaldur,
+                    CoverPath = imagePath,
+                    ArtistId = context.Artists
+                        .Where(a => a.ArtistName == selectedArtist)
+                        .Select(a => a.ArtistId)
+                        .FirstOrDefault()
                 };
-                context.AlbumGenres.Add(albgenre);
+
+                context.Albums.Add(album);
                 context.SaveChanges();
-            }*/
+                LoadData();
+            }
+
+            int albumId = album.AlbumId;
+
+            var genreIds = context.Genres
+                .Where(g => chooseGenres.Contains(g.GenreName))
+                .Select(g => g.GenreId)
+                .ToList();
 
             foreach (var genreId in genreIds)
             {
                 context.AlbumGenres.Add(new AlbumGenre
                 {
                     AlbumGenreId = context.AlbumGenres.OrderBy(o => o.AlbumGenreId).LastOrDefault().AlbumGenreId + 1,
-                    AlbumId = albumIds,
-                    GenreId = genreId,
-
+                    AlbumId = albumId,
+                    GenreId = genreId
                 });
-               
                 context.SaveChanges();
-
             }
-            MessageBox.Show("Успех", "Вы успешно добавили альбом");
+
+            context.SaveChanges();
+
+            MessageBox.Show("Альбом сохранён");
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.AddAlbum or Views.AlbumList)
+                {
+                    w.Close();
+                }
+            }
+           
+
         }
 
+        public void AddImage()
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image files (*.jpg;*.jpeg;*.png;*.bmp)|*.jpg;*.jpeg;*.png;*.bmp",
+                Title = "Выберите обложку альбома"
+            };
 
-
+            if (openFileDialog.ShowDialog() == true)
+            {
+                imagePath = openFileDialog.FileName;
+                
+            }
+        }
 
 
     }

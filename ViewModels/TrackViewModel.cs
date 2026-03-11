@@ -4,15 +4,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
 using Spotify_wpf.Context;
+using Spotify_wpf.Models;
 using Spotify_wpf.Views;
 
 namespace Spotify_wpf.ViewModels
 {
     class TrackViewModel : BaseViewModel
     {
+        private int _albId;
         private ObservableCollection<TrackView> _trackList;
 
         public ObservableCollection<TrackView> trackLists
@@ -25,7 +29,7 @@ namespace Spotify_wpf.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public string _image;
 
         public string Image
@@ -79,10 +83,15 @@ namespace Spotify_wpf.ViewModels
         public TrackViewModel(int id)
         {
             LoadTrackList(id);
-           
+            _albId = id;
+            EditAlbumCommand = new RelayCommand(EditAlbum);
+            DeleteAlbumCommand = new RelayCommand(DeleteAlbum);
         }
 
-        public string genre { get; set; } 
+        public ICommand EditAlbumCommand { get; set; }
+        public ICommand DeleteAlbumCommand { get; set; }
+
+        public string genre { get; set; }
 
         public class TrackView
         {
@@ -101,7 +110,7 @@ namespace Spotify_wpf.ViewModels
 
             public List<string> authors { get; set; }
 
-            
+
 
 
         }
@@ -111,18 +120,19 @@ namespace Spotify_wpf.ViewModels
         {
             var context = new MusicContext();
             Name = context.Albums.Where(a => a.AlbumId == id).Select(a => a.Artist.ArtistName).FirstOrDefault();
-            namealbum = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().AlbumName;
-            Image = context.Albums.Where (a => a.AlbumId == id).FirstOrDefault().CoverPath;
+            namealbum = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().AlbumName;
+            Image = context.Albums.Where(a => a.AlbumId == id).FirstOrDefault().CoverPath;
             genresses = context.AlbumGenres.Include(ag => ag.Genre).Where(ag => ag.AlbumId == id).Select(a => a.Genre.GenreName).ToList();
             if (genresses.Count == 0)
             {
                 genre = "";
             }
-            else {
-            genre = genresses[0];
+            else
+            {
+                genre = genresses[0];
             }
 
-            for (int i= 1; i < genresses.Count; i++ )
+            for (int i = 1; i < genresses.Count; i++)
             {
                 genre += ", " + genresses[i];
             }
@@ -145,9 +155,9 @@ namespace Spotify_wpf.ViewModels
             {
                 foreach (string t in track.authors)
                 {
-                    
+
                     string ti = t;
-                    
+
                     track.artistrac += ti + " ";
                 }
 
@@ -155,6 +165,21 @@ namespace Spotify_wpf.ViewModels
 
 
 
+
+        }
+
+        public void EditAlbum()
+        {
+            Window edit = new Views.AddAlbum();
+            edit.DataContext = new AddAlbumViewModel(_albId);
+            edit.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.PlaylistList)
+                {
+                    w.Close();
+                }
+            }
         }
 
         /* public class AlbumView
@@ -199,6 +224,60 @@ namespace Spotify_wpf.ViewModels
          }
 
      } */
-    }
+        public void DeleteAlbum()
+        {
+            using var context = new MusicContext();
 
+            if (_albId == null)
+                return;
+
+            var result = MessageBox.Show("Удалить альбом?", "Подтверждение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            var album = context.Albums.FirstOrDefault(p => p.AlbumId == _albId);
+
+            if (album == null)
+                return;
+
+
+            var genre = context.AlbumGenres.Where(pt => pt.AlbumId == _albId);
+            context.AlbumGenres.RemoveRange(genre);
+            context.SaveChanges();
+
+
+            var track = context.AlbumTracks.Where(tp => tp.AlbumId == _albId);
+            context.AlbumTracks.RemoveRange(track);
+            context.SaveChanges();
+
+            List<Track> removableTracks = context.Tracks.Where(t => t.AlbumId == _albId).ToList();
+            for (int i = 0; i < removableTracks.Count; i++)
+            {
+                removableTracks[i].AlbumId = null;
+                context.Tracks.Update(removableTracks[i]);
+                context.SaveChanges();
+            }
+
+            context.Albums.Remove(album);
+
+            context.SaveChanges();
+
+            MessageBox.Show("Альбом удалён");
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.AlbumList)
+                {
+                    w.Close();
+                }
+            }
+
+
+
+        }
+
+    }
 }

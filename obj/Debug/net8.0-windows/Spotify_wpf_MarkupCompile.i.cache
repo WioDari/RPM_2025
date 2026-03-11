@@ -12,9 +12,9 @@ TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\glagol\source\repos\Spotify_wpf\Spotify_wpf\App.xaml
 201214206717
 
-65142211044
+661542495072
 213-168926900
 MainWindow.xaml;Views\AddAlbum.xaml;Views\AddPlaylist.xaml;Views\AddPlaylists.xaml;Views\AddTrack.xaml;Views\Album.xaml;Views\AlbumList.xaml;Views\AlbumListUC.xaml;Views\AlbumUserControl.xaml;Views\Auth.xaml;Views\Guest.xaml;Views\Menu.xaml;Views\Playlist.xaml;Views\PlaylistList.xaml;Views\PlaylistListUC.xaml;Views\PlaylistUserController.xaml;Views\TrackList.xaml;Views\TrackListUC.xaml;Views\UserList.xaml;Views\UserListUserControl.xaml;
 
-False
+True
 

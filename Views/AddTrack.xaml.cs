@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Spotify_wpf.ViewModels;
 
 namespace Spotify_wpf.Views
 {
@@ -22,6 +23,7 @@ namespace Spotify_wpf.Views
         public AddTrack()
         {
             InitializeComponent();
+            DataContext = new AddTrackViewModel();
         }
     }
 }

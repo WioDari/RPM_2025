@@ -21,6 +21,6 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <Button Content="Добавить плейлист" Grid.Column="1" Grid.Row="0" Margin="5" Width="150" HorizontalAlignment="Left" Command="{Binding AddPlaylistCommand}"/>
-
+      
     </Grid>
 </Page>

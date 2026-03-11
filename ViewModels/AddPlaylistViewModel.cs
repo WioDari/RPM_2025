@@ -20,10 +20,12 @@ namespace Spotify_wpf.ViewModels
         public ObservableCollection<string> track { get; set; }
         private ObservableCollection<Track> _allTracks;
 
-     
 
-
+       
         public Playlist selectedPlaylist { get; set; }
+        private int? _playlistId;
+
+       
         private int _id { get; set; }
         public int id
         {
@@ -172,12 +174,56 @@ namespace Spotify_wpf.ViewModels
         }
 
         public ICommand SelectImageCommand { get; }
-        public ICommand DeleteAlbumCommand { get; }
+        public ICommand DeletePlaylistCommand { get; }
         public ICommand SavePlaylistCommand { get; }
 
-        public AddPlaylistViewModel()
+        public ICommand EditPlaylistCommand { get; }
+
+        public AddPlaylistViewModel(int? id = null)
         {
             var context = new MusicContext();
+            _playlistId = id;
+
+            if (id != null)
+            {
+                selectedPlaylist = context.Playlists.FirstOrDefault(p => p.PlayListId == id);
+                nameaPlaylist = selectedPlaylist.PlaylistName;
+                likes = selectedPlaylist.Likes;
+                description = selectedPlaylist.Description;
+                datacreate = selectedPlaylist.DataCreate;
+            }
+            else
+            {
+                selectedPlaylist = new Playlist();
+            }
+
+            if (id != null)
+            {
+                var tracks = context.PlayListTracks
+                    .Where(pt => pt.PlaylistId == id)
+                    .Select(pt => pt.Track.TrackName)
+                    .ToList();
+
+                foreach (var t in tracks)
+                {
+                    chooseTrack.Add(t);
+                    _chooseTrack += t + " ";
+                }
+
+                var tags = context.TagsPlaylists
+                    .Where(tp => tp.PlaylistId == id)
+                    .Select(tp => tp.Tags.TagsName)
+                    .ToList();
+
+                foreach (var t in tags)
+                {
+                    chooseTags.Add(t);
+                    _chooseTags += t + " ";
+                }
+                OnPropertyChanged(nameof(chooseTracks));
+                OnPropertyChanged(nameof(chooseTag));
+            }
+
             var tagsList = context.Tags
                 .Select(g => g.TagsName)
                 .Distinct()
@@ -194,24 +240,49 @@ namespace Spotify_wpf.ViewModels
             AddTagsCommand = new RelayCommand(AddTags);
             AddTrackCommand = new RelayCommand(AddTrack);
             SavePlaylistCommand = new RelayCommand(SavePlaylist);
+            //DeletePlaylistCommand = new RelayCommand(DeletePlaylist);
 
         }
 
         private void SavePlaylist()
         {
-            MusicContext context = new MusicContext();
-            Playlist playlist = new Playlist
+            using var context = new MusicContext();
+
+            Playlist playlist;
+
+            if (_playlistId != null) 
             {
-                UserId = Properties.Settings.Default.userid,
-                PlaylistName = nameaPlaylist,
-                DataCreate = datacreate,
-                Likes = likes,
-                Description = description,
+                playlist = context.Playlists.FirstOrDefault(p => p.PlayListId == _playlistId);
 
+                if (playlist == null) return;
 
-            };
-            context.Playlists.Add(playlist);
-            context.SaveChanges();
+                playlist.PlaylistName = nameaPlaylist;
+                playlist.Description = description;
+                playlist.Likes = likes;
+                playlist.DataCreate = datacreate;
+                context.Playlists.Update(playlist);
+
+                var oldTracks = context.PlayListTracks.Where(pt => pt.PlaylistId == playlist.PlayListId);
+                context.PlayListTracks.RemoveRange(oldTracks);
+
+                var oldTags = context.TagsPlaylists.Where(tp => tp.PlaylistId == playlist.PlayListId);
+                context.TagsPlaylists.RemoveRange(oldTags);
+            }
+            else 
+            {
+                playlist = new Playlist
+                {
+                    UserId = Properties.Settings.Default.userid,
+                    PlaylistName = nameaPlaylist,
+                    DataCreate = datacreate,
+                    Likes = likes,
+                    Description = description
+                };
+
+                context.Playlists.Add(playlist);
+                context.SaveChanges();
+            }
+
             int playlistId = playlist.PlayListId;
 
             var trackIds = context.Tracks
@@ -223,7 +294,7 @@ namespace Spotify_wpf.ViewModels
             {
                 context.PlayListTracks.Add(new PlayListTrack
                 {
-                   PlayListTrackId = context.PlayListTracks.OrderBy(c => c.PlayListTrackId).LastOrDefault().PlayListTrackId + 1,
+                    PlayListTrackId = context.PlayListTracks.OrderBy(c => c.PlayListTrackId).LastOrDefault().PlayListTrackId + 1,
                     PlaylistId = playlistId,
                     TrackId = trackId
                 });
@@ -246,10 +317,23 @@ namespace Spotify_wpf.ViewModels
                 context.SaveChanges();
             }
 
-           
+            context.SaveChanges();
 
-            MessageBox.Show("Успех", "Вы успешно добавили плейлист ");
+            MessageBox.Show("Плейлист сохранён");
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.AddPlaylist)
+                {
+                    w.Close();
+                }
+            }
+            LoadData();
+
         }
 
+        
+
     }
+
+
 }

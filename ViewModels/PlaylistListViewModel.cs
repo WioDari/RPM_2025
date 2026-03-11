@@ -6,6 +6,7 @@ using System.Printing;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Input.Manipulations;
 using Microsoft.EntityFrameworkCore;
 using Spotify_wpf.Context;
@@ -13,8 +14,10 @@ using static Spotify_wpf.ViewModels.TrackViewModel;
 
 namespace Spotify_wpf.ViewModels
 {
-    internal class PlaylistListViewModel :BaseViewModel
+    internal class PlaylistListViewModel : BaseViewModel
     {
+        private int _plId;
+        
         private ObservableCollection<PlaylistListView> _playlistList;
 
         public ObservableCollection<PlaylistListView> playlistList
@@ -99,15 +102,22 @@ namespace Spotify_wpf.ViewModels
         public PlaylistListViewModel(int id)
         {
             LoadPlaylistList(id);
+            //_playlistViewModel = plwm;
+            _plId = id;
+            EditCommand = new RelayCommand(EditPlaylist);
+            DeletePlaylistCommand = new RelayCommand(DeletePlaylist);
+
         }
 
+        public ICommand EditCommand { get; set; }
+        public ICommand DeletePlaylistCommand {  get; set; }
         public class PlaylistListView
         {
             public string id { get; set; }
 
             public string namealbum { get; set; }
 
-           
+
             public string tracknam { get; set; }
 
             public string artistrac { get; set; }
@@ -151,8 +161,8 @@ namespace Spotify_wpf.ViewModels
                 })
                 .ToList());
 
-            
-            
+
+
             foreach (var track in playlistList)
             {
                 foreach (string t in track.authors)
@@ -161,13 +171,75 @@ namespace Spotify_wpf.ViewModels
                     string ti = t;
 
                     track.artistrac += ti + " ";
-                    
+
                 }
 
                 allDur = allDur.Add(track.durations);
-                
+
             }
             dur = $"Продолжительность: {allDur}";
+
+        }
+
+
+
+
+
+        public void EditPlaylist()
+        {
+            Window edit = new Views.AddPlaylist();
+            edit.DataContext = new AddPlaylistViewModel(_plId);
+            edit.Show();
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.PlaylistList)
+                {
+                    w.Close();
+                }
+            }
+        }
+        public void DeletePlaylist()
+        {
+            using var context = new MusicContext();
+
+            if (_plId == null)
+                return;
+
+            var result = MessageBox.Show("Удалить плейлист?", "Подтверждение",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result != MessageBoxResult.Yes)
+                return;
+
+            var playlist = context.Playlists.FirstOrDefault(p => p.PlayListId == _plId);
+
+            if (playlist == null)
+                return;
+
+
+            var tracks = context.PlayListTracks.Where(pt => pt.PlaylistId == _plId);
+            context.PlayListTracks.RemoveRange(tracks);
+
+
+            var tags = context.TagsPlaylists.Where(tp => tp.PlaylistId == _plId);
+            context.TagsPlaylists.RemoveRange(tags);
+
+
+            context.Playlists.Remove(playlist);
+
+            context.SaveChanges();
+
+            MessageBox.Show("Плейлист удалён");
+
+            foreach (Window w in Application.Current.Windows)
+            {
+                if (w is Views.PlaylistList)
+                {
+                    w.Close();
+                }
+            }
+
 
         }
     }

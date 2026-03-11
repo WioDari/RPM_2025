@@ -83,7 +83,7 @@ namespace Spotify_wpf.ViewModels
             set
             {
                 _selectedAlbim = value;
-                ViewAlbum(int.Parse(selectedAlbim.id));
+               ViewAlbum(int.Parse(selectedAlbim.id));
                 OnPropertyChanged();
             }
         }

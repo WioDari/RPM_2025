@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Spotify_wpf.Views"
         mc:Ignorable="d"
         Style="{StaticResource Window}"
-        Title="AddPlaylist" Height="400" Width="350">
+        Title="AddPlaylist" MaxHeight="400" MaxWidth="400">
     <Grid>
         <Grid.RowDefinitions>
 

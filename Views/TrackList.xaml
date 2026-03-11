@@ -13,14 +13,15 @@
             <RowDefinition Height="17*"/>
             <RowDefinition Height="133*"/>
         </Grid.RowDefinitions>
-        <ListBox ItemsSource="{Binding trackLists}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch" SelectedItem="{}" Margin="0,12,0,0" Grid.Row="1">
+        <ListBox ItemsSource="{Binding trackLists}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch"  Margin="0,12,0,0" Grid.Row="1" SelectedItem="{Binding selectedTrack}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <local:TrackListUC/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Добавить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Command="{Binding GoTrack}"/>
+        <Button Content="Добавить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Command="{Binding GoTrack}" FontFamily="Times New Roman"/>
+        <Button Content="Удалить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="128,0,0,0" Command="{Binding DeleteTrackCommand}" FontFamily="Times New Roman"/>
 
     </Grid>
 
