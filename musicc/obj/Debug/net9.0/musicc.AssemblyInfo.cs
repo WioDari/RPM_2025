@@ -13,10 +13,10 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("musicc")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be8767e259d38333c4c57efddbf26743d900b170")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e9a5c9bfb68e9b3b32a533315f4d2bb7d8a58bb")]
 [assembly: System.Reflection.AssemblyProductAttribute("musicc")]
 [assembly: System.Reflection.AssemblyTitleAttribute("musicc")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
-// Создано классом WriteCodeFragment MSBuild.
+// MSBuild WriteCodeFragment クラスによって生成されました。
 

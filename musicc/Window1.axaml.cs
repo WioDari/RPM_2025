@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
@@ -21,6 +22,7 @@ public partial class Window1 : Window
 {
     public string Boxname { get; set; } = "none";
     public string Premium { get; set; } = "none";
+    public string Role { get; set; } = "none";
     public ObservableCollection<Playlist> Playlists { get; set; } = new ObservableCollection<Playlist>();
     public ObservableCollection<Album> Albums { get; set; } = new ObservableCollection<Album>();
     public Window1()
@@ -35,6 +37,18 @@ public partial class Window1 : Window
     {
         Boxname = boxname;
         Premium = premium?.ToString() ?? "none";
+        if (Inv_role == 0)
+        {
+            Role = "Manager";
+        }
+        else if (Inv_role == 1)
+        {
+            Role = "User";
+        }
+        else if (Inv_role == 4)
+        {
+            Role = "Administrator";
+        }
         InitializeComponent();
         DataContext = this;
         _ = LoadPlay();
@@ -118,5 +132,22 @@ public partial class Window1 : Window
         {
             return null;
         }
+    }
+
+    private void Button_OnClick(object? sender, RoutedEventArgs e)
+    {
+        var win = new MainWindow();
+        win.Show();
+        this.Close();
+    }
+
+    private void Button_OnClick1(object? sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void Button_OnClick2(object? sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }

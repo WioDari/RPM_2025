@@ -56,40 +56,64 @@
         
         
         <TabControl >
-                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Boxname}" TextWrapping="Wrap" 
-                           Background="#EDE2FF"   TextAlignment="Center" ></TextBlock>
-                <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="{Binding Boxname}" TextWrapping="Wrap" 
-                           Background="#EDE2FF"   TextAlignment="Center" ></TextBlock>
+                <TabItem Header="Main" Foreground="#7A00CC">
+                        <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
+                                <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" BorderThickness="5" BorderBrush="#9C4DFF" Background="#9C4DFF" CornerRadius="5" Height="60" Width="250">
+                                <StackPanel>
+                                        <TextBlock Foreground="White" Text="Имя" HorizontalAlignment="Center"></TextBlock>
+                                        <TextBlock Foreground="White" Text="{Binding Boxname}" HorizontalAlignment="Center"></TextBlock>
+                                </StackPanel>
+                                </Border>
+                                <Border Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" BorderThickness="5" BorderBrush="#9C4DFF" Background="#9C4DFF" CornerRadius="5" Height="60" Width="250">
+                                        <StackPanel>
+                                                <TextBlock Foreground="White" Text="Роль" HorizontalAlignment="Center"></TextBlock>
+                                                <TextBlock Foreground="White" Text="{Binding Role}" HorizontalAlignment="Center"></TextBlock>
+                                        </StackPanel>
+                                </Border>
+                                <Border Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" BorderThickness="5" BorderBrush="#9C4DFF" Background="#9C4DFF" CornerRadius="5" Height="60" Width="250">
+                                        <StackPanel>
+                                                <TextBlock Foreground="White" Text="Подписка" HorizontalAlignment="Center"></TextBlock>
+                                                <TextBlock Foreground="White" Text="{Binding Premium}" HorizontalAlignment="Center"></TextBlock>
+                                        </StackPanel>
+                                </Border>
+                                <Button Grid.Column="2" Grid.Row="2"  Content="Выход" Click="Button_OnClick" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,0,10"></Button>
+                        </Grid>
+                </TabItem>
                 <TabItem Header="Playlists" Foreground="#7A00CC">
-                        <ListBox ItemsSource="{Binding Playlists}" Margin="5">
+                        <StackPanel>
+                                <WrapPanel>
+                                <Button Content="Создать" Click="Button_OnClick1" VerticalAlignment="Bottom"></Button>
+                                <Button Content="Удалить" Click="Button_OnClick2" VerticalAlignment="Bottom" Margin="10,0,0,0"></Button>
+                                </WrapPanel>
+                                <ListBox ItemsSource="{Binding Playlists}" Margin="5" Background="#9C4DFF">
                                 <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                                <Border BorderBrush="Black" BorderThickness="2">
+                                                <Border BorderBrush="White" BorderThickness="2">
                                                 <StackPanel Margin="5">
                                                         <StackPanel Orientation="Horizontal" Spacing="5" >
-                                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
-                                                        <TextBlock Text="| " FontWeight="Bold" FontSize="16"/>
-                                                        <TextBlock Text="{Binding author}" FontSize="16" FontWeight="Bold"/>
+                                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold" Foreground="White"/>
+                                                        <TextBlock Text="| " FontWeight="Bold" FontSize="16" Foreground="White"/>
+                                                        <TextBlock Text="{Binding author}" FontSize="16" FontWeight="Bold" Foreground="White"/>
                                                         </StackPanel>
                                                         <Grid ColumnDefinitions="*,*" RowDefinitions="*,*,*,*">
                                                         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5" HorizontalAlignment="Right" Grid.Column="1">
-                                                                <TextBlock Text="Время:" FontWeight="Bold"></TextBlock>
+                                                                <TextBlock Text="Время:" FontWeight="Bold" Foreground="White"></TextBlock>
                                                         </StackPanel>
                                                                 <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="5" Grid.Column="0">
-                                                                <TextBlock Text="Нравится:" FontWeight="Bold"/>
-                                                                <TextBlock Text="{Binding like}"/>
+                                                                <TextBlock Text="Нравится:" FontWeight="Bold" Foreground="White"/>
+                                                                <TextBlock Text="{Binding like}" Foreground="White"/>
                                                         </StackPanel>
                                                         <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="5" Grid.Column="0">
-                                                                <TextBlock Text="Подписчиков:" FontWeight="Bold"/>
-                                                                <TextBlock Text="{Binding subs}"/>
+                                                                <TextBlock Text="Подписчиков:" FontWeight="Bold" Foreground="White"/>
+                                                                <TextBlock Text="{Binding subs}" Foreground="White"/>
                                                         </StackPanel>
                                                         <StackPanel Grid.Row="2" Orientation="Horizontal" Spacing="5" Grid.Column="0">
-                                                                <TextBlock Text="Треков:" FontWeight="Bold"/>
-                                                                <TextBlock Text="{Binding track}"/>
+                                                                <TextBlock Text="Треков:" FontWeight="Bold" Foreground="White"/>
+                                                                <TextBlock Text="{Binding track}" Foreground="White"/>
                                                         </StackPanel>
                                                         <StackPanel Grid.Row="3" Orientation="Horizontal" Spacing="5" Grid.Column="0">
-                                                                <TextBlock Text="Создан:" FontWeight="Bold"/>
-                                                                <TextBlock Text="{Binding data}"/>
+                                                                <TextBlock Text="Создан:" FontWeight="Bold" Foreground="White"/>
+                                                                <TextBlock Text="{Binding data}" Foreground="White"/>
                                                         </StackPanel>
                                                         </Grid>
                                                 </StackPanel>
@@ -97,6 +121,7 @@
                                         </DataTemplate>
                                 </ListBox.ItemTemplate>
                         </ListBox>
+                        </StackPanel>
                 </TabItem>
                 <TabItem Header="Albums" Foreground="#7A00CC">
                         <ScrollViewer HorizontalAlignment="Right" Foreground="#9C4DFF" HorizontalScrollBarVisibility="Disabled">
@@ -123,8 +148,7 @@
                         </ItemsControl>
                         </ScrollViewer>
                 </TabItem>
-                <TabItem Header="Music" Foreground="#7A00CC"></TabItem>
-                <TabItem Header="Artist" Foreground="#7A00CC"></TabItem>
+
                 
         </TabControl>
         
