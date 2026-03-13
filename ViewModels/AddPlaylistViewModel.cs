@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,8 +21,19 @@ namespace Spotify_wpf.ViewModels
         public ObservableCollection<string> track { get; set; }
         private ObservableCollection<Track> _allTracks;
 
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
 
-       
+
+
         public Playlist selectedPlaylist { get; set; }
         private int? _playlistId;
 
@@ -186,6 +198,7 @@ namespace Spotify_wpf.ViewModels
 
             if (id != null)
             {
+                Title = "Редактирование плейлиста";
                 selectedPlaylist = context.Playlists.FirstOrDefault(p => p.PlayListId == id);
                 nameaPlaylist = selectedPlaylist.PlaylistName;
                 likes = selectedPlaylist.Likes;
@@ -194,6 +207,7 @@ namespace Spotify_wpf.ViewModels
             }
             else
             {
+                Title = "Создание плейлиста";
                 selectedPlaylist = new Playlist();
             }
 

@@ -37,8 +37,8 @@
             <TextBlock TextWrapping="Wrap" Text="{Binding genre}" FontFamily="Times New Roman" FontSize="18"/>
 
         </StackPanel>
-        <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Top" Margin="10" Height="25" Width="80" Command="{Binding EditAlbumCommand}"/>
-        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Bottom" Margin="10" Height="25" Width="80" Command="{Binding DeleteAlbumCommand}"/>
+        <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Top" Margin="10" Height="25" Width="80" Command="{Binding EditAlbumCommand}" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
+        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Bottom" Margin="10" Height="25" Width="80" Command="{Binding DeleteAlbumCommand}" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
 
     </Grid>
 </Window>

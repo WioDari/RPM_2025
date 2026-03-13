@@ -16,11 +16,11 @@
 
         </Border>
         <StackPanel Margin="10,10,10,10">
-            <TextBlock TextWrapping="Wrap" Text="{Binding title}" FontFamily="Times New Roman" FontWeight="Bold" FontSize="20"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding title}" FontFamily="Times New Roman" FontWeight="Bold" FontSize="20" Foreground="{Binding subscription, Converter={StaticResource PremiumColorConverter}}"/>
             <Border BorderThickness="1" BorderBrush="Black" Height="1"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding likes}" FontFamily="Times New Roman" FontSize="16"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding sub, StringFormat=Подписчиков: {0}}" FontFamily="Times New Roman" FontSize="16"/>
-            <TextBlock TextWrapping="Wrap" Text="{Binding track, StringFormat=Треков: {0}}" FontFamily="Times New Roman" FontSize="16"/>
+            <TextBlock TextWrapping="Wrap" Text="{Binding track, StringFormat=Треков: {0}}" FontFamily="Times New Roman" FontSize="16" Foreground="{Binding track, Converter={StaticResource TrackCountColorConverter}}"/>
             <TextBlock TextWrapping="Wrap" Text="{Binding datecreate, StringFormat=Создан: {0}}" FontFamily="Times New Roman" FontSize="16"/>
 
         </StackPanel>

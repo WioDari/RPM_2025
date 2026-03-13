@@ -37,8 +37,8 @@
 
 
         </StackPanel>
-        <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Right" Margin="10" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="80" Command="{Binding EditCommand}"/>
-        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Right" Margin="10" Grid.Row="1" VerticalAlignment="Center" Height="25" Width="80" Command="{Binding DeletePlaylistCommand}"/>
+        <Button Grid.Column="1" Content="Редактировать" HorizontalAlignment="Right" Margin="10" Grid.Row="1" VerticalAlignment="Top" Height="25" Width="80" Command="{Binding EditCommand}" Visibility="{Binding EditVisibility}"/>
+        <Button Grid.Column="1" Content="Удалить" HorizontalAlignment="Right" Margin="10" Grid.Row="1" VerticalAlignment="Center" Height="25" Width="80" Command="{Binding DeletePlaylistCommand}" Visibility="{Binding DeleteVisibility}"/>
 
     </Grid>
 </Window>

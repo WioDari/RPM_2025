@@ -7,6 +7,9 @@
         <local:RadioButtonConverter x:Key="RadioButtonConverter"/>
         <local:CheckBoxChangeVisibility x:Key="CheckBoxChangeVisibility"/>
         <local:GuestConverter x:Key="GuestConverter"/>
+        <local:PremiumColorConverter x:Key="PremiumColorConverter"/>
+        <local:TrackCountColorConverter x:Key="TrackCountColorConverter"/>
+        <local:RoleVisibilityConverter x:Key="RoleVisibilityConverter"/>
         <Style TargetType="Window" x:Key="Window">
             <Setter Property="Icon" Value="/Resources/icon.ico"></Setter>
             <Setter Property="FontFamily" Value="Times New Roman"></Setter>

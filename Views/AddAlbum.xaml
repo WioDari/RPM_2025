@@ -37,7 +37,7 @@
         <ComboBox Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="4" Margin="10,10,10,0" VerticalAlignment="Top" ItemsSource="{Binding genres}" SelectedItem="{Binding selectedGenre}" SelectedIndex="0"/>
         <TextBlock Grid.Column="2" HorizontalAlignment="Center" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Center" Height="Auto" Width="100" Text="{Binding chooseGenre,  UpdateSourceTrigger=PropertyChanged}"/>
         <Button Grid.Column="1" Content="Добавить жанр" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="16" Height="20" Width="148"  Margin="0,33,0,0" Command="{Binding AddGenre}"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Добавление альбома" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" TextAlignment="Center"  Grid.ColumnSpan="2" Grid.Column="0" Margin="157,0,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" TextAlignment="Center"  Grid.ColumnSpan="2" Grid.Column="0" Margin="157,0,0,0"/>
         <Button Grid.Column="1" Content="Сохранить и выйти" HorizontalAlignment="Center"  Grid.Row="5" VerticalAlignment="Center" FontSize="18" Background="#FF5DCC99" Foreground="White" Height="23" Width="148" Command="{Binding SaveAlbumCommand}"/>
         <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="10,5,10,5">
             <TextBlock Text="Название альбома" FontSize="18"/>

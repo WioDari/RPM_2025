@@ -37,7 +37,7 @@
         <Button Content="Плейлисты" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="1" Command="{Binding GoPlaylist}" Grid.Row="1" FontSize="16" FontWeight="Bold"/>
         <Button Content="Треки" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="2" Grid.Row="1" FontWeight="Bold" FontSize="16" Command="{Binding GoTrack }"/>
         <TextBlock Grid.Column="4" HorizontalAlignment="Center" TextWrapping="Wrap" Text="{x:Static p:Resources.Title}" VerticalAlignment="Center" Height="14" Width="104"/>
-        <Button Content="Пользователи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="3" Grid.Row="1" FontSize="16" FontWeight="Bold" Command="{Binding GoUser}"/>
+        <Button Content="Пользователи" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="#FF7A00CC" Grid.Column="3" Grid.Row="1" FontSize="16" FontWeight="Bold" Command="{Binding GoUser}" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
         <Frame Content="{Binding currentPage}" Grid.ColumnSpan="5"  Grid.RowSpan="2" Grid.Column="0" Grid.Row="2" Margin="0,12,0,0" />
        
     </Grid>

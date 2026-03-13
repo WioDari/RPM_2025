@@ -55,6 +55,7 @@ namespace Spotify_wpf.ViewModels
             GoUser = new RelayCommand(GoUsers);
             GoTrack = new RelayCommand(GoTracks);
 
+
         }
 
         public ICommand LogoutCommand { get; }

@@ -20,8 +20,8 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Button Content="Добавить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Command="{Binding GoTrack}" FontFamily="Times New Roman"/>
-        <Button Content="Удалить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="128,0,0,0" Command="{Binding DeleteTrackCommand}" FontFamily="Times New Roman"/>
+        <Button Content="Добавить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" Command="{Binding GoTrack}" FontFamily="Times New Roman" Height="20" Width="100" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
+        <Button Content="Удалить трек" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="120,0,0,0" Command="{Binding DeleteTrackCommand}" FontFamily="Times New Roman" Height="20" Width="100" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
 
     </Grid>
 

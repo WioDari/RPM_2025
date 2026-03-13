@@ -41,7 +41,7 @@
         <TextBox Grid.Column="1" Grid.Row="3" TextWrapping="Wrap" Text="{Binding chooseTag,  UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Height="30" Margin="0, 0,10,0"/>
         <Button Content="Сохранить и выйти" HorizontalAlignment="Center" Grid.Row="5" VerticalAlignment="Center" Grid.ColumnSpan="2" Height="16" Width="140" Command="{Binding SavePlaylistCommand}"/>
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="2" Background="#FFEDE2FF" Margin="0,0,0,13"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Создание плейлиста" VerticalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Height="23" Margin="83,0,0,0" Width="184" />
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Title}" VerticalAlignment="Center" Grid.ColumnSpan="2" FontWeight="Bold" FontSize="20" Height="23" Margin="83,0,0,0" Width="Auto" />
         <ComboBox Grid.Column="1" Grid.Row="4" VerticalAlignment="Top" Height="40" Margin="0,7,10,0" ItemsSource="{Binding track}" SelectedItem="{Binding selectedTrack}"/>
         <Button Grid.Column="1" Content="Добавить тег" Height="16"  Margin="0,0,10,0" Grid.Row="4" VerticalAlignment="Center" Command="{Binding AddTrackCommand}"/>
         <TextBox Grid.Column="1" Grid.Row="4" TextWrapping="Wrap" Text="{Binding chooseTracks,  UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Bottom" Height="30" Margin="0, 0,10,0" />

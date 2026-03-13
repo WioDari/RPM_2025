@@ -40,7 +40,7 @@
 
 
         </StackPanel>
-        <Button Grid.Column="3" Content="Добавить альбом" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Times New Roman" Margin="10,5,10,5" Command="{Binding GoAddAlbum}"/>
+        <Button Grid.Column="3" Content="Добавить альбом" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  FontFamily="Times New Roman" Margin="10,5,10,5" Command="{Binding GoAddAlbum}" Visibility="{Binding Converter={StaticResource RoleVisibilityConverter}, ConverterParameter=Admin}"/>
 
 
 

@@ -118,6 +118,16 @@ namespace Spotify_wpf.ViewModels
             }
         }
 
+        private string _title;
+        public string Title
+        {
+            get => _title;
+            set
+            {
+                _title = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand SelectImageCommand { get; }
         public ICommand DeleteAlbumCommand { get; }
         public ICommand SaveAlbumCommand { get; }
@@ -164,12 +174,11 @@ namespace Spotify_wpf.ViewModels
 
             if (id != null)
             {
-                selectedAlbum = context.Albums
-                    .Include(a => a.Artist)
-                    .FirstOrDefault(a => a.AlbumId == id);
+                selectedAlbum = context.Albums .Include(a => a.Artist).FirstOrDefault(a => a.AlbumId == id);
 
                 if (selectedAlbum != null)
                 {
+                    Title = "Редактирование альбома";
                     nameAlbum = selectedAlbum.AlbumName;
                     selectedArtist = selectedAlbum.Artist?.ArtistName;
                     releaseYears = selectedAlbum.ReleaseYear;
@@ -192,6 +201,7 @@ namespace Spotify_wpf.ViewModels
             }
             else
             {
+                Title = "Добавление альбома";
                 selectedAlbum = new Album(); 
             }
             var genresList = context.Genres

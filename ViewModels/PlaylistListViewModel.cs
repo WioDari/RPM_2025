@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Input.Manipulations;
 using Microsoft.EntityFrameworkCore;
 using Spotify_wpf.Context;
+using Spotify_wpf.Models;
 using static Spotify_wpf.ViewModels.TrackViewModel;
 
 namespace Spotify_wpf.ViewModels
@@ -96,6 +97,28 @@ namespace Spotify_wpf.ViewModels
                 OnPropertyChanged();
             }
         }
+        private Visibility _editVisibility = Visibility.Collapsed;
+        public Visibility EditVisibility
+        {
+            get => _editVisibility;
+            set
+            {
+                _editVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private Visibility _deleteVisibility = Visibility.Collapsed;
+        public Visibility DeleteVisibility
+        {
+            get => _deleteVisibility;
+            set
+            {
+                _deleteVisibility = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         public TimeSpan allDur;
 
@@ -131,15 +154,43 @@ namespace Spotify_wpf.ViewModels
 
             public List<string> authors { get; set; }
 
+           
+
         }
 
         public void LoadPlaylistList(int? id = null)
         {
+
+            var currentUser = Application.Current.Properties["CurrentUser"] as User;
+
+
             var context = new MusicContext();
             author = context.Playlists.Include(p => p.User).FirstOrDefault().User.FullName;
             title = $"{context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().PlaylistName} | {author}";
             datecreate = $"Дата создания: {context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().DataCreate.ToString("dd.MM.yyyy")}";
             likes = $"Понравилось: {context.Playlists.Where(p => p.PlayListId == id).FirstOrDefault().Likes.ToString()}";
+
+            var playlist = context.Playlists.FirstOrDefault(p => p.PlayListId == id);
+
+            if (currentUser != null)
+            {
+                if (currentUser.Role.Role1 == "Admin")
+                {
+                    EditVisibility = Visibility.Visible;
+                    DeleteVisibility = Visibility.Visible;
+                }
+                else if (currentUser.Role.Role1 == "Manager")
+                {
+                    if (playlist.UserId == currentUser.UserId)
+                    {
+                        EditVisibility = Visibility.Visible;
+                        DeleteVisibility = Visibility.Visible;
+                    }
+
+                }
+            }
+
+
 
 
             _playlistList = new ObservableCollection<PlaylistListView>(context.Tracks
@@ -179,8 +230,10 @@ namespace Spotify_wpf.ViewModels
             }
             dur = $"Продолжительность: {allDur}";
 
-        }
+            
 
+            
+        }
 
 
 

@@ -17,6 +17,7 @@ using Spotify_wpf.ViewModels;
 using Spotify_wpf.Views;
 using Spotify_wpf.Properties;
 using System.Net.WebSockets;
+using Microsoft.EntityFrameworkCore;
 
 namespace Spotify_wpf
 {
@@ -103,8 +104,12 @@ namespace Spotify_wpf
             {
                 int userId = Settings.Default.userid;
                 var context = new MusicContext();
-                var user = context.Users.FirstOrDefault(u => u.UserId == userId);
+                var user = context.Users.Include(u => u.Role).FirstOrDefault(u => u.UserId == userId);
+                
+
                 Application.Current.Properties["CurrentUser"] = user;
+                context.Users.Where(u => u.UserId == userId).FirstOrDefault().LastLogin = DateOnly.FromDateTime(DateTime.Now);
+                context.SaveChanges();
                 Window menu = new Views.Menu();
                 menu.Show();
                 foreach (Window w in Application.Current.Windows)
@@ -126,15 +131,15 @@ namespace Spotify_wpf
             {
                 MessageBox.Show($"До разблокировки {(int)(date.TotalMinutes * -1)} мин", "Инфо", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            /* if (!string.Equals(_captchaInput, _captchaText))
+            if (!string.Equals(_captchaInput, _captchaText))
              {
                  MessageBox.Show("Капча введена неправильно!");
                  GenerateCaptcha();
                  return;
-             }*/
+             }
             var context = new MusicContext();
-            var user = context.Users.FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
-
+            var user = context.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == login && u.UserPassword == password);
+            
             if (user == null)
             {
                 Settings.Default.count++;
