@@ -1,0 +1,369 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        d:DesignWidth="1200" d:DesignHeight="700"
+        x:Class="Spotify.UserMenu"
+        Title="UserMenu"
+        x:CompileBindings="False"
+        Background="#FFFFFF"
+        FontFamily="Times New Roman">
+
+    <Window.Styles>
+        <Style Selector="Button.nav-active">
+            <Setter Property="Background" Value="#9C4DFF"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style Selector="Button.nav-inactive">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid ColumnDefinitions="250,*"
+          RowDefinitions="Auto,*,Auto">
+
+        <!-- ЛЕВАЯ ПАНЕЛЬ -->
+        <Border Grid.Column="0"
+                Grid.RowSpan="3"
+                Background="#7A00CC">
+
+            <StackPanel Margin="20">
+
+                <!-- ПРОФИЛЬ -->
+                <StackPanel Margin="0,20,0,30"
+                            HorizontalAlignment="Left">
+                    <Border Width="60"
+                            Height="60"
+                            CornerRadius="30"
+                            Background="#9C4DFF"
+                            HorizontalAlignment="Left">
+                        <TextBlock Text="U"
+                                   Foreground="White"
+                                   FontSize="28"
+                                   FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+
+                    <TextBlock Foreground="White"
+                               FontSize="20"
+                               FontWeight="SemiBold"
+                               Margin="0,20,0,10"
+                               HorizontalAlignment="Left"
+                               Text="{Binding FullName}"/>
+
+                    <TextBlock Text="Premium"
+                               Foreground="Chartreuse"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <!-- НАВИГАЦИЯ -->
+                <StackPanel>
+                    <Button x:Name="HomeBtn"
+                            Content="Главная"
+                            Foreground="White"
+                            FontSize="22"
+                            Height="60"
+                            Padding="20,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Left"
+                            Margin="0,5"
+                            Cursor="Hand"
+                            Classes="nav-active"
+                            Click="HomeBtn_Click"/>
+
+                    <Button x:Name="AlbumsBtn"
+                            Content="Альбомы"
+                            Foreground="White"
+                            VerticalContentAlignment="Center"
+                            FontSize="22"
+                            Height="60"
+                            Padding="20,0"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Margin="0,5"
+                            Cursor="Hand"
+                            Classes="nav-inactive"
+                            Click="AlbumsBtn_Click"/>
+
+                    <Button x:Name="PlaylistsBtn"
+                            Content="Плейлисты"
+                            Foreground="White"
+                            VerticalContentAlignment="Center"
+                            FontSize="22"
+                            Height="60"
+                            Padding="20,0"
+                            HorizontalAlignment="Stretch"
+                            HorizontalContentAlignment="Left"
+                            Margin="0,5"
+                            Cursor="Hand"
+                            Classes="nav-inactive"
+                            Click="PlaylistsBtn_Click"/>
+                </StackPanel>
+
+                <!-- АДМИН ПАНЕЛЬ -->
+                <Border Height="1"
+                        Background="#9C4DFF"
+                        Margin="0 20 0 0"
+                        IsVisible="{Binding IsAdmin}"/>
+
+                <StackPanel IsVisible="{Binding IsAdmin}">
+                    <TextBlock Text="Админ панель"
+                               Foreground="White"
+                               FontSize="20"
+                               Padding="10"
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"/>
+
+                    <Button x:Name="AddAlbumBtn"
+                            Content="+ Добавить альбом"
+                            Foreground="White"
+                            FontSize="18"
+                            Height="60"
+                            Padding="20,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Left"
+                            Margin="0,5"
+                            Classes="nav-inactive"
+                            Cursor="Hand"
+                            Click="AddAlbumBtn_Click"/>
+
+                    <Button x:Name="AddTrackBtn"
+                            Content="+ Добавить трек"
+                            Foreground="White"
+                            FontSize="18"
+                            Height="60"
+                            Padding="20,0"
+                            HorizontalAlignment="Stretch"
+                            VerticalContentAlignment="Center"
+                            HorizontalContentAlignment="Left"
+                            Classes="nav-inactive"
+                            Cursor="Hand"
+                            Click="AddTrackBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+
+
+        <!-- ПРАВАЯ ПАНЕЛЬ -->
+        <ScrollViewer Grid.Column="1"
+                      Grid.Row="0"
+                      Grid.RowSpan="3"
+                      Background="#FFFFFF"
+                      VerticalScrollBarVisibility="Auto">
+
+            <StackPanel x:Name="ContentPanel"
+                        Margin="30">
+
+                <!-- ГЛАВНАЯ -->
+                <StackPanel x:Name="HomeContent"
+                            IsVisible="True">
+                    <TextBlock Text="Главная"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#7A00CC"/>
+
+                    <TextBlock x:Name="WelcomeText"
+                               Text="Добро пожаловать!"
+                               FontSize="20"
+                               Margin="0,20,0,0"/>
+
+                    <Border Background="#EDE2FF"
+                            CornerRadius="10"
+                            Padding="20"
+                            Margin="0,30,0,0">
+                        <StackPanel>
+                            <TextBlock Text="Ваша статистика"
+                                       FontSize="18"
+                                       FontWeight="Bold"
+                                       Foreground="#7A00CC"/>
+
+                            <Grid Margin="0,15,0,0"
+                                  ColumnDefinitions="*,*,*"
+                                  RowDefinitions="Auto,Auto">
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock Text="0"
+                                               FontSize="28"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="прослушано"
+                                               FontSize="14"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock Text="0"
+                                               FontSize="28"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="любимых"
+                                               FontSize="14"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2">
+                                    <TextBlock Text="0"
+                                               FontSize="28"
+                                               FontWeight="Bold"
+                                               HorizontalAlignment="Center"/>
+                                    <TextBlock Text="альбомов"
+                                               FontSize="14"
+                                               HorizontalAlignment="Center"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+
+                <!-- АЛЬБОМЫ -->
+                <StackPanel x:Name="AlbumsContent"
+                            IsVisible="False">
+                    <TextBlock Text="Альбомы"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#7A00CC"/>
+
+                    <TextBlock Text="Ваша коллекция альбомов"
+                               FontSize="18"
+                               Margin="0,10,0,30"/>
+
+                    <WrapPanel x:Name="AlbumsWrapPanel"
+                               Margin="0,0,0,20"/>
+                </StackPanel>
+
+                <!-- ПЛЕЙЛИСТЫ -->
+                <StackPanel x:Name="PlaylistsContent"
+                            IsVisible="False">
+                    <TextBlock Text="Плейлисты"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="#7A00CC"/>
+
+                    <TextBlock Text="Ваши музыкальные подборки"
+                               FontSize="18"
+                               Margin="0,10,0,30"/>
+
+                    <StackPanel x:Name="PlaylistsListPanel"
+                                Spacing="10"/>
+                </StackPanel>
+
+                <!-- АДМИН: ДОБАВИТЬ АЛЬБОМ -->
+                <StackPanel x:Name="AdmAlbumContent"
+                            IsVisible="False" 
+                            Spacing="10">
+                    <TextBlock Text="Добавить новый альбом"
+                               FontSize="32" 
+                               Foreground="#7A00CC"
+                               FontWeight="Bold"/>
+
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Обложка (PNG, максимум 1000×1000)"/>
+                        <StackPanel Orientation="Horizontal" 
+                                    Spacing="8">
+                            <Button Content="Выбрать PNG файл" />
+                            <TextBox x:Name="AlbumCoverUrlBox"
+                                     Width="420" Watermark="или URL на обложку"/>
+                        </StackPanel>
+
+                        <Image x:Name="AlbumCoverPreview" 
+                               Width="200" Height="200"/>
+                        <TextBlock x:Name="AlbumCoverErrorText" 
+                                   Foreground="Red"/>
+                    </StackPanel>
+
+                    <TextBox x:Name="AlbumTitleBox"
+                             Watermark="Название альбома"/>
+                    <DatePicker x:Name="AlbumReleaseDatePicker"/>
+
+                    <TextBlock Text="Артист (1)"/>
+                    <ComboBox x:Name="AlbumArtistCombo"
+                              DisplayMemberBinding="{Binding ArtistName}"/>
+
+                    <TextBlock Text="Жанр"/>
+                    <ListBox x:Name="AlbumGenresList"
+                             SelectionMode="Multiple"
+                             Height="100"
+                             DisplayMemberBinding="{Binding GenreName}"/>
+
+                    <Button Content="Сохранить"
+                            Background="#7A00CC"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Width="140"
+                            Height="40"
+                            Click="SaveAlbum_Click"/>
+                </StackPanel>
+
+                <!-- АДМИН: ДОБАВИТЬ ТРЕК -->
+                <StackPanel x:Name="AdmTrackContent" IsVisible="False" Spacing="10">
+                    <TextBlock Text="Добавить новый трек"
+                               FontSize="32" FontWeight="Bold"
+                               Foreground="#7A00CC"/>
+
+                    <TextBlock Text="Альбом (один)"/>
+                    <ComboBox x:Name="TrackAlbumCombo"
+                              DisplayMemberBinding="{Binding AlbumTitle}"/>
+
+                    <TextBlock Text="Дата выпуска трека: "/>
+                    <DatePicker x:Name="TrackReleaseDatePicker"/>
+
+                    <!-- Обложка трека -->
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Обложка трека (PNG ≤1000×1000)"/>
+                        <StackPanel Orientation="Horizontal" Spacing="8">
+                            <Button Content="Выбрать PNG"/>
+                            
+                            <TextBox x:Name="TrackCoverUrlBox" Width="400"
+                                     Watermark="или URL на обложку"/>
+                            <Button Content="Проверить URL"/>
+                        </StackPanel>
+
+                        <Image x:Name="TrackCoverPreview" 
+                               Width="200" 
+                               Height="200"/>
+                        <TextBlock x:Name="TrackCoverErrorText" 
+                                   Foreground="Red"/>
+                    </StackPanel>
+
+                    <TextBox x:Name="TrackTitleBox"
+                             Watermark="Название композиции"/>
+
+                    <TextBlock Text="Исполнитель"/>
+                    <ListBox x:Name="TrackArtistsList"
+                             Height="100"
+                             SelectionMode="Multiple"
+                             DisplayMemberBinding="{Binding ArtistName}"/>
+
+                    <TextBox x:Name="TrackDurationBox"
+                             Watermark="Продолжительность (сек)"/>
+                    <TextBox x:Name="TrackBitrateBox"
+                             Watermark="Битрейт (например 320)"/>
+                    <TextBox x:Name="TrackRatingBox" 
+                             Watermark="Рейтинг (например 4.98)"/>
+
+                    <Button Content="Сохранить"
+                            Background="#7A00CC"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            HorizontalContentAlignment="Center"
+                            VerticalContentAlignment="Center"
+                            Width="140"
+                            Height="40"
+                            Click="SaveTrack_Click"/>
+                    <TextBlock x:Name="TrackSaveStatusText"/>
+                </StackPanel>
+                </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

@@ -19,6 +19,7 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="EntityFramework" Version="6.5.1" />
+        <PackageReference Include="HeBianGu.AvaloniaUI.Styles.Extension" Version="1.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.9">
           <PrivateAssets>all</PrivateAssets>
@@ -34,5 +35,7 @@
     <ItemGroup>
       <None Remove="Assets\show.png" />
       <AvaloniaResource Include="Assets\show.png" />
+      <None Remove="Assets\icon.png" />
+      <AvaloniaResource Include="Assets\icon.png" />
     </ItemGroup>
 </Project>

@@ -187,3 +187,12 @@
 /Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Security.Cryptography.ProtectedData.dll
 /Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/runtimes/win/lib/net6.0/System.Windows.Extensions.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/obj/Debug/net9.0/Spotify.sourcelink.json
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Application.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.BackgroundImage.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Ioc.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Mvvm.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.ResourceKey.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Setting.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Styles.Extension.dll
+/Users/a1234/RiderProjects/Spotify/Spotify/bin/Debug/net9.0/HeBianGu.AvaloniaUI.Theme.dll

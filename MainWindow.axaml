@@ -1,82 +1,215 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Spotify.MainWindow"
+        x:CompileBindings="False"
         Title="Spotify"
-        Background="#000002">
-        
-        <Grid ColumnDefinitions="*,*,*,*,*,*,*,*" 
-              RowDefinitions="*,*,*,*,*,*,*,*">
-<StackPanel Grid.Column="0" Grid.Row="0">
-        <TextBlock Padding="15 15 15 15"
-                   FontSize="18"
-                Text="Музыка+"
-                Foreground="#9D90AA">
-        </TextBlock>
-</StackPanel>            
-
-            <TextBlock Grid.Row="2" Grid.Column="2"
-                       Grid.ColumnSpan="4"
-                       Text="Авторизация"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Foreground="#E9E9E9"
-                       FontSize="25">
-            </TextBlock>
-            
-            <StackPanel Grid.Column="3" Grid.Row="3"
-                        Grid.ColumnSpan="2">
-            <TextBox Background="#CBC9CC"
-                     Width="250"
-                     Height="40"
-                     Watermark="Login"
-                     HorizontalContentAlignment="Left"
-                     VerticalContentAlignment="Center"
-                     Name="Email">
-            </TextBox>
-            </StackPanel>
-            
-            <StackPanel Grid.Column="3" Grid.Row="4"
-                        Grid.ColumnSpan="2">
-                <TextBox Background="#CBC9CC"
-                         Width="250"
-                         Height="40"
-                         Watermark="Password"
-                         HorizontalContentAlignment="Left"
-                         VerticalContentAlignment="Center"
-                         Name="Password">
-                </TextBox>
-            </StackPanel>
-            
-            <StackPanel Grid.Column="2" Grid.Row="5"
-                        Grid.ColumnSpan="3"
-                        Grid.RowSpan="5">
-                <Button Background="#433A67"
-                        Width="90"
-                        Height="45"
-                        Content="Войти"
-                        Foreground="#E9E9E9"
-                        HorizontalAlignment="Right"
-                        VerticalContentAlignment="Center"
-                        HorizontalContentAlignment="Center"
-                        Click="LogIn_Click">
-                </Button>
-            </StackPanel>
+        Width="900" Height="520"
+        Background="#FFFFFF"
+        FontFamily="Times New Roman">
+    
+        <Window.Styles>
+                <Style Selector="TextBlock.h1">
+                        <Setter Property="FontSize" Value="22"/>
+                        <Setter Property="FontWeight" Value="700"/>
+                        <Setter Property="Foreground" Value="#7A00CC"/>  
+                </Style>
                 
-            <StackPanel Grid.Column="3" Grid.Row="5"
-                        Grid.ColumnSpan="3"
-                        Grid.RowSpan="5">
-                    <Button Background="#9D90AA"
-                            Width="90"
-                            Height="45"
-                            Content="Гость"
-                            Foreground="#E9E9E9"
-                            HorizontalAlignment="Left"
-                            VerticalContentAlignment="Center"
-                            HorizontalContentAlignment="Center">
-                </Button>
-            </StackPanel>
+                <Style Selector="TextBlock.muted">
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="Foreground" Value="#1C1C1C"/>
+                        <Setter Property="Opacity" Value="0.70"/>
+                </Style>
+                
+                <Style Selector="TextBlock.label">
+                        <Setter Property="FontSize" Value="12"/>
+                        <Setter Property="Foreground" Value="#1C1C1C"/>
+                        <Setter Property="Opacity" Value="0.85"/>
+                        <Setter Property="Margin" Value="0,0,0,2"/>
+                </Style>
+                
+                <Style Selector="TextBox.field">
+                        <Setter Property="Height" Value="38"/>
+                        <Setter Property="Background" Value="#EDE2FF"/>
+                        <Setter Property="Foreground" Value="#1C1C1C"/>
+                        <Setter Property="BorderBrush" Value="#1C1C1C"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="CornerRadius" Value="10"/>
+                        <Setter Property="Padding" Value="11,8"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                
+                <Style Selector="Button.primary">
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Background" Value="#7A00CC"/>
+                        <Setter Property="Foreground" Value="#E9E9E9"/>
+                        <Setter Property="CornerRadius" Value="7"/>
+                        <Setter Property="FontWeight" Value="600"/>
+                        <Setter Property="HorizontalAlignment" Value="Left"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                
+                <Style Selector="Button.secondary">
+                        <Setter Property="Height" Value="40"/>
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Background" Value="#9C4DFF"/>
+                        <Setter Property="Foreground" Value="#E9E9E9"/>
+                        <Setter Property="CornerRadius" Value="7"/>
+                        <Setter Property="FontWeight" Value="600"/>
+                        <Setter Property="HorizontalAlignment" Value="Right"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                
+                <Style Selector="Button.icon">
+                        <Setter Property="Width" Value="38"/>
+                        <Setter Property="Height" Value="38"/>
+                        <Setter Property="Background" Value="#EDE2FF"/>
+                        <Setter Property="BorderBrush" Value="#1C1C1C"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="CornerRadius" Value="10"/>
+                        <Setter Property="Foreground" Value="#7A00CC"/>
+                        <Setter Property="FontSize" Value="16"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        <Setter Property="Padding" Value="0"/>
+                </Style>
+                
+                <Style Selector="Border.card">
+                        <Setter Property="Background" Value="#FFFFFF"/>
+                        <Setter Property="BorderBrush" Value="#1C1C1C"/>
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="CornerRadius" Value="18"/>
+                        <Setter Property="Padding" Value="18"/>
+                </Style>
+                
+                
+        </Window.Styles>
+        
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="18">
+                <Grid RowDefinitions="Auto, Auto" RowSpacing="12" Width="520">
+                        
+                        <!-- ШАПКА -->
+                        <Grid ColumnDefinitions="Auto,*" VerticalAlignment="Center">
+                                <Image Source="Assets/icon.png"
+                                       Width="36" Height="36"
+                                       VerticalAlignment="Center">
+                                </Image>
+                                <StackPanel Grid.Column="1" 
+                                            Margin="10 0 0 0"
+                                            VerticalAlignment="Center" Spacing="1">
+                                        <TextBlock Text="Музыка+"
+                                                   FontWeight="700"
+                                                   Foreground="#9C4DFF"/>
+                                        <TextBlock Text="Войдите, чтобы продолжить"
+                                                   Foreground="#1C1C1C"/>
+                                </StackPanel>
+                        </Grid>
+                        
+                        <!-- КОНСТРУКЦИЯ НА КОТОРОЙ ЛЕЖИТ -->
+                        <Border Grid.Row="1"
+                                Classes="card"
+                                Width="520"
+                                MaxHeight="392"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                BoxShadow="0 10 25 0 #1A000000">
+                                
+                                <Grid RowDefinitions="Auto Auto Auto Auto Auto Auto" RowSpacing="10">
+                                        
+                                        <!-- ЗАГОЛОВОК -->
+                                        <TextBlock Grid.Row="0"
+                                                   Classes="h1"
+                                                   Text="Войти в аккаунт"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="0 0 0 2">
+                                        </TextBlock>
+                                        
+                                        <!-- ЛОГИН -->
+                                        <StackPanel Grid.Row="1" Spacing="4">
+                                                <TextBlock Text="Логин"
+                                                           Classes="label"/>
+                                                <TextBox x:Name="Email" 
+                                                         Classes="field" 
+                                                         Watermark="Login"/>
+                                        </StackPanel>
+                                        
+                                        <!-- ПАРОЛЬ -->
+                                        <StackPanel Grid.Row="2" Spacing="4">
+                                                <TextBlock Text="Пароль"/>
+                                                <Grid ColumnDefinitions="* Auto" ColumnSpacing="8">
+                                                        <TextBox 
+                                                                x:Name="Password"
+                                                                Classes="field"
+                                                                Watermark="Password"
+                                                                PasswordChar="*"
+                                                                RevealPassword="False"/>
+                                                        <Button Grid.Column="1"
+                                                                Classes="icon"
+                                                                Content="*"
+                                                                Click="Show_Click"/>
+                                                </Grid>
+                                        </StackPanel>
+                                        
+                                        <!-- КАПЧА -->
+                                        <StackPanel Grid.Row="3" Spacing="6">
+                                                <TextBlock Text="Проверка"
+                                                           Classes="label"/>
+
+                                                <Grid RowDefinitions="Auto,Auto"
+                                                      ColumnDefinitions="*,Auto,Auto"
+                                                      ColumnSpacing="8"
+                                                      RowSpacing="8">
+
+                                                        <Border Grid.Row="0" Grid.Column="0"
+                                                                Background="#EDE2FF"
+                                                                BorderBrush="#1C1C1C"
+                                                                BorderThickness="1"
+                                                                CornerRadius="10"
+                                                                Padding="6">
+                                                                <Image x:Name="CaptchaImage" 
+                                                                       Height="48" 
+                                                                       Stretch="Fill"/> 
+                                                        </Border>
+
+                                                        <Button Grid.Row="0" Grid.Column="1" 
+                                                                x:Name="RefreshBtn" 
+                                                                Classes="icon"
+                                                                Content="⟳"/>
+                                                        <Button Grid.Row="0" Grid.Column="2" 
+                                                                x:Name="CheckCaptcha" 
+                                                                Classes="icon"
+                                                                Content="✓"/>
+
+                                                        <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3"
+                                                                 x:Name="CaptchaInput"
+                                                                 Classes="field"
+                                                                 Watermark="Введите текст с картинки"/>
+                                                </Grid>
+                                        </StackPanel>
+                                        
+                                        
+                                        <!-- ОШИБКА -->
+                                        <TextBlock Grid.Row="4"
+                                                   x:Name="ErrorLabel"
+                                                   Foreground="Red"
+                                                   FontWeight="700"
+                                                   HorizontalAlignment="Center"
+                                                   Margin="0,0,0,0"/>
+                                        
+                                        <!-- КНОПКИ В КОНЦЕ -->
+                                        <Grid Grid.Row="4" ColumnDefinitions="*" ColumnSpacing="10">
+                                                <Button x:Name="LoginBtn" 
+                                                        Classes="primary"
+                                                        Content="Войти"/>
+                                                <Button Grid.Column="1" 
+                                                        Classes="secondary"
+                                                        Content="Гость"/>
+                                        </Grid>
+                                </Grid>
+                        </Border>
+                </Grid>
         </Grid>
-</Window>
+</Window> 

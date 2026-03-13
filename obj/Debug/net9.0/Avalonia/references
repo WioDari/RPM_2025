@@ -25,6 +25,14 @@
 /Users/a1234/.nuget/packages/entityframework/6.5.1/lib/netstandard2.1/EntityFramework.dll
 /Users/a1234/.nuget/packages/entityframework/6.5.1/lib/netstandard2.1/EntityFramework.SqlServer.dll
 /Users/a1234/.nuget/packages/harfbuzzsharp/8.3.1.1/lib/net8.0/HarfBuzzSharp.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.application/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Application.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.backgroundimage/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.BackgroundImage.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.ioc/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Ioc.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.mvvm/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Mvvm.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.resourcekey/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.ResourceKey.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.setting/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Setting.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.styles.extension/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Styles.Extension.dll
+/Users/a1234/.nuget/packages/hebiangu.avaloniaui.theme/1.0.0/lib/net7.0/HeBianGu.AvaloniaUI.Theme.dll
 /Users/a1234/.nuget/packages/microcom.runtime/0.11.0/lib/net5.0/MicroCom.Runtime.dll
 /usr/local/share/dotnet/packs/Microsoft.NETCore.App.Ref/9.0.9/ref/net9.0/Microsoft.CSharp.dll
 /Users/a1234/.nuget/packages/microsoft.entityframeworkcore.abstractions/9.0.9/lib/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll

@@ -14,6 +14,7 @@
           "Avalonia.Fonts.Inter": "11.3.6",
           "Avalonia.Themes.Fluent": "11.3.6",
           "EntityFramework": "6.5.1",
+          "HeBianGu.AvaloniaUI.Styles.Extension": "1.0.0",
           "Microsoft.EntityFrameworkCore": "9.0.9",
           "Microsoft.EntityFrameworkCore.Design": "9.0.9",
           "Microsoft.EntityFrameworkCore.Tools": "9.0.9",
@@ -369,6 +370,109 @@
             "rid": "win-x86",
             "assetType": "native",
             "fileVersion": "0.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Application/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "HeBianGu.AvaloniaUI.Ioc": "1.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.BackgroundImage/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "HeBianGu.AvaloniaUI.Application": "1.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.BackgroundImage.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Ioc/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "Microsoft.Extensions.DependencyInjection": "9.0.9",
+          "Microsoft.Extensions.Options": "9.0.9"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Ioc.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Mvvm/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Mvvm.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.ResourceKey/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.ResourceKey.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Setting/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "HeBianGu.AvaloniaUI.Ioc": "1.0.0",
+          "HeBianGu.AvaloniaUI.Mvvm": "1.0.0",
+          "Microsoft.Extensions.Options": "9.0.9"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Setting.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Styles.Extension/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "HeBianGu.AvaloniaUI.Application": "1.0.0",
+          "HeBianGu.AvaloniaUI.ResourceKey": "1.0.0",
+          "HeBianGu.AvaloniaUI.Theme": "1.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Styles.Extension.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "HeBianGu.AvaloniaUI.Theme/1.0.0": {
+        "dependencies": {
+          "Avalonia": "11.3.6",
+          "HeBianGu.AvaloniaUI.Application": "1.0.0",
+          "HeBianGu.AvaloniaUI.BackgroundImage": "1.0.0",
+          "HeBianGu.AvaloniaUI.Ioc": "1.0.0",
+          "HeBianGu.AvaloniaUI.ResourceKey": "1.0.0",
+          "HeBianGu.AvaloniaUI.Setting": "1.0.0"
+        },
+        "runtime": {
+          "lib/net7.0/HeBianGu.AvaloniaUI.Theme.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       },
@@ -1374,6 +1478,62 @@
       "sha512": "sha512-UsJtQsfAJoFDZrXc4hCUfRPMqccfKZ0iumJ/upcUjz/cmsTgVFGNEL5yaJWmkqsuFYdMWbj/En5/kS4PFl9hBA==",
       "path": "harfbuzzsharp.nativeassets.win32/8.3.1.1",
       "hashPath": "harfbuzzsharp.nativeassets.win32.8.3.1.1.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Application/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ImsT+4J3jtt+Camo350dUehoBtVsRLCQCP7LF8OtkEKSuilbfgJ3iueX7s6rrYzAOGj62JVvhLxtsHkq0WAs4Q==",
+      "path": "hebiangu.avaloniaui.application/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.application.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.BackgroundImage/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vWNate5D8i5yLNlE1Y3FAoCWvmzV29vYwjALAKsxFysnrx7zIMtcpT1cZMUrhCxDbyHUgu1QP5uznW8UDiNZuw==",
+      "path": "hebiangu.avaloniaui.backgroundimage/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.backgroundimage.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Ioc/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-duhOxwQSjkrF0bU6FrbYVnRkrDBGP58/1tJ54az4DbP4orxXIXpZaY97yiosb2+uc+bVZDchSrPCvoledgE9Lg==",
+      "path": "hebiangu.avaloniaui.ioc/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.ioc.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Mvvm/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-S5o3NTmks1KhOh/0dc3E87JICf+BA4dPt5GGrxpNAVTbS4LBdGUEKyfUOR/qwU395L88XzmyWQ75TjInDOWrdA==",
+      "path": "hebiangu.avaloniaui.mvvm/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.mvvm.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.ResourceKey/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ObhQnbIlS0DZySZQ1d+Od3WMrvXa4/ayatpInFfizEMFcU119QzGKBOOWmsZcepLKDxppkbt6gu7jw5CiQW/0A==",
+      "path": "hebiangu.avaloniaui.resourcekey/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.resourcekey.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Setting/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lpjkOzZ9wyUeZx7P06aeZmBiXfu16WMpC/g2FMRxVxEg82SV4psJo6AeVQ0GABBE9frtBuIFDUe5k7GB/PVwzg==",
+      "path": "hebiangu.avaloniaui.setting/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.setting.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Styles.Extension/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rU5GwOrtlItgEFJv6jG6PHNG1NsjyBYW0fuslXOBEr/xppdy+iX2Z7sg3dpA5j+BKXhnNFJdfMSeNqO81JEnlw==",
+      "path": "hebiangu.avaloniaui.styles.extension/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.styles.extension.1.0.0.nupkg.sha512"
+    },
+    "HeBianGu.AvaloniaUI.Theme/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BTgks51WqXYbNQV7ehKpgEMOt4ibGtafL3dyE0GNi1qqeYJPvAQN5xGwaX8JRkZK5nIgcya+5KIfJCzLKXgScQ==",
+      "path": "hebiangu.avaloniaui.theme/1.0.0",
+      "hashPath": "hebiangu.avaloniaui.theme.1.0.0.nupkg.sha512"
     },
     "Humanizer.Core/2.14.1": {
       "type": "package",

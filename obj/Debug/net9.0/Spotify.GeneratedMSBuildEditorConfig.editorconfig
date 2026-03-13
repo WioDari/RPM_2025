@@ -29,11 +29,17 @@ build_property.EnableGeneratedComInterfaceComImportInterop =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
-[/Users/a1234/RiderProjects/Spotify/Spotify/Administrator.axaml]
+[/Users/a1234/RiderProjects/Spotify/Spotify/AlbumDetails.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/a1234/RiderProjects/Spotify/Spotify/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
 [/Users/a1234/RiderProjects/Spotify/Spotify/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/a1234/RiderProjects/Spotify/Spotify/PlaylistDetails.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/a1234/RiderProjects/Spotify/Spotify/UserMenu.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

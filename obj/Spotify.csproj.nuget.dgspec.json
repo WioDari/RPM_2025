@@ -69,6 +69,10 @@
               "target": "Package",
               "version": "[6.5.1, )"
             },
+            "HeBianGu.AvaloniaUI.Styles.Extension": {
+              "target": "Package",
+              "version": "[1.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.9, )"

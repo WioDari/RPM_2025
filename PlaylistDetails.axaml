@@ -1,0 +1,91 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Spotify.PlaylistDetails"
+        Title="PlaylistDetails"
+        Background="White"
+        FontFamily="Times New Roman">
+    
+    <Grid RowDefinitions="Auto,*">
+        <Border Background="#9C4DFF"
+                Padding="25"
+                CornerRadius="10"
+                Margin="20">
+
+            <StackPanel Spacing="10">
+                <TextBlock x:Name="PlaylistTitleText"
+                           FontSize="32"
+                           FontWeight="Bold"
+                           Foreground="White"/>
+
+                <TextBlock x:Name="CreatedDateText"
+                           FontSize="18"
+                           Foreground="White"/>
+
+                <TextBlock x:Name="LikesText"
+                           FontSize="16"
+                           Foreground="#aaaaaa"/>
+
+                <TextBlock x:Name="DurationText"
+                           FontSize="16"
+                           Foreground="#aaaaaa"/>
+
+            </StackPanel>
+        </Border>
+
+        <!-- треки -->
+        <Border Grid.Row="1"
+                Background="#9C4DFF"
+                CornerRadius="10"
+                Margin="20"
+                Padding="10">
+
+            <StackPanel>
+
+                <!-- заголовки -->
+                <Grid ColumnDefinitions="3*,3*,3*,1*,1*"
+                      Margin="10"
+                      Opacity="0.7">
+
+                    <TextBlock Text="Название трека"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="1"
+                               Text="Исполнитель"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="2"
+                               Text="Альбом"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="3"
+                               Text="★"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="4"
+                               Text="⏱"
+                               HorizontalAlignment="Right"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+                </Grid>
+
+                <Border Height="1"
+                        Background="White"
+                        Margin="0,5"/>
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="PlaylistTracksPanel"
+                                Spacing="5"
+                                Margin="10"/>
+                </ScrollViewer>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

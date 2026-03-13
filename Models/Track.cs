@@ -13,7 +13,7 @@ public partial class Track
 
     public int ArtistId { get; set; }
 
-    public TimeSpan Duration { get; set; }
+    public int Duration { get; set; }
 
     public DateOnly ReleaseDate { get; set; }
 

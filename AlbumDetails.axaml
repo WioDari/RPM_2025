@@ -1,0 +1,111 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Spotify.AlbumDetails"
+        Title="AlbumDetails"
+        Background="White"
+        FontFamily="Times New Roman">
+    
+    <Grid RowDefinitions="Auto,*">
+
+        <Border Background="#9C4DFF"
+                Padding="25"
+                CornerRadius="10"
+                Margin="20">
+
+            <Grid ColumnDefinitions="200,*">
+
+                <!-- обложка -->
+                <Border Width="180"
+                        Height="180"
+                        CornerRadius="8"
+                        Background="#2a2a2a">
+
+                    <Image x:Name="CoverImage"
+                           Stretch="UniformToFill"/>
+                </Border>
+
+                <!-- инфо -->
+                <StackPanel Grid.Column="1"
+                            Margin="25,0,0,0"
+                            VerticalAlignment="Center"
+                            Spacing="10">
+
+                    <TextBlock x:Name="AlbumTitleText"
+                               FontSize="32"
+                               FontWeight="Bold"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="ArtistText"
+                               FontSize="18"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="YearText"
+                               FontSize="16"
+                               Foreground="White"/>
+
+                    <TextBlock x:Name="GenresText"
+                               FontSize="16"
+                               Foreground="White"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+        <!-- список -->
+        <Border Grid.Row="1"
+                Background="#9C4DFF"
+                CornerRadius="10"
+                Margin="20"
+                Padding="10">
+
+            <StackPanel>
+
+                <!-- заголовки -->
+                <Grid ColumnDefinitions="3*,3*,1*,1*"
+                      Margin="10"
+                      Opacity="0.7">
+
+                    <TextBlock Text="Название трека"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="1"
+                               Text="Исполнитель"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="2"
+                               Text="Рейтинг"
+                               HorizontalAlignment="Center"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+
+                    <TextBlock Grid.Column="3"
+                               Text="Длительность"
+                               HorizontalAlignment="Right"
+                               Foreground="White"
+                               FontWeight="Bold"/>
+                </Grid>
+
+                <Border Height="1"
+                        Background="White"
+                        Margin="0,5"/>
+
+                <!-- треки -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel x:Name="TracksListPanel"
+                                Spacing="5"
+                                Margin="10"/>
+                </ScrollViewer>
+
+            </StackPanel>
+
+        </Border>
+    </Grid>
+</Window>

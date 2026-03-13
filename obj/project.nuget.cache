@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "P1yZPObMtDU=",
+  "dgSpecHash": "Uv3THMMZSWM=",
   "success": true,
   "projectFilePath": "/Users/a1234/RiderProjects/Spotify/Spotify/Spotify.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,14 @@
     "/Users/a1234/.nuget/packages/harfbuzzsharp.nativeassets.macos/8.3.1.1/harfbuzzsharp.nativeassets.macos.8.3.1.1.nupkg.sha512",
     "/Users/a1234/.nuget/packages/harfbuzzsharp.nativeassets.webassembly/8.3.1.1/harfbuzzsharp.nativeassets.webassembly.8.3.1.1.nupkg.sha512",
     "/Users/a1234/.nuget/packages/harfbuzzsharp.nativeassets.win32/8.3.1.1/harfbuzzsharp.nativeassets.win32.8.3.1.1.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.application/1.0.0/hebiangu.avaloniaui.application.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.backgroundimage/1.0.0/hebiangu.avaloniaui.backgroundimage.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.ioc/1.0.0/hebiangu.avaloniaui.ioc.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.mvvm/1.0.0/hebiangu.avaloniaui.mvvm.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.resourcekey/1.0.0/hebiangu.avaloniaui.resourcekey.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.setting/1.0.0/hebiangu.avaloniaui.setting.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.styles.extension/1.0.0/hebiangu.avaloniaui.styles.extension.1.0.0.nupkg.sha512",
+    "/Users/a1234/.nuget/packages/hebiangu.avaloniaui.theme/1.0.0/hebiangu.avaloniaui.theme.1.0.0.nupkg.sha512",
     "/Users/a1234/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/a1234/.nuget/packages/microcom.runtime/0.11.0/microcom.runtime.0.11.0.nupkg.sha512",
     "/Users/a1234/.nuget/packages/microsoft.bcl.asyncinterfaces/7.0.0/microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
