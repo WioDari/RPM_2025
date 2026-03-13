@@ -17,8 +17,6 @@ public partial class Artist
 
     public string Photopath { get; set; } = null!;
 
-    public virtual ICollection<Artistalbums> Artistalbums { get; set; } = new List<Artistalbums>();
-
     public virtual Country Country { get; set; } = null!;
 
     public virtual ICollection<Album> Albums { get; set; } = new List<Album>();

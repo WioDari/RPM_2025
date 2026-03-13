@@ -18,8 +18,6 @@ public partial class MusicdbContext : DbContext
 
     public virtual DbSet<Album> Albums { get; set; }
 
-    public virtual DbSet<Artistalbums> Artistalbums { get; set; }
-
     public virtual DbSet<Artist> Artists { get; set; }
 
     public virtual DbSet<Country> Countries { get; set; }
@@ -90,26 +88,7 @@ public partial class MusicdbContext : DbContext
             entity.HasMany(a => a.Tracks).WithOne(t => t.Album).HasForeignKey(t => t.Albumid);
         });
         
-        modelBuilder.Entity<Artistalbums>(entity =>
-        {
-            entity.HasKey(e => new { e.Albumid, e.Artistid }).HasName("artistalbums_pkey");
-
-            entity.ToTable("albumartists");
-
-            entity.Property(e => e.Albumid)
-                .HasColumnName("albumid");
-            entity.Property(e => e.Artistid).HasColumnName("artistid");
-
-            entity.HasOne(d => d.Artist).WithMany(p => p.Artistalbums)
-                .HasForeignKey(d => d.Artistid)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("artistalbums_artistid_fkey");
-				
-			entity.HasOne(d => d.Album).WithMany(p => p.Artistalbums)
-				.HasForeignKey(d => d.Albumid)
-				.OnDelete(DeleteBehavior.ClientSetNull)
-				.HasConstraintName("artistalbums_albumid_fkey");
-        });
+        
 
         modelBuilder.Entity<Artist>(entity =>
         {

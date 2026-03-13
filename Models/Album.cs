@@ -15,8 +15,6 @@ public partial class Album
 
     public string Albumduration { get; set; } = null!;
 
-    public virtual ICollection<Artistalbums> Artistalbums { get; set; } = new List<Artistalbums>();
-
     public virtual ICollection<Track> Tracks { get; set; } = new List<Track>();
 
     public virtual ICollection<Artist> Artists { get; set; } = new List<Artist>();

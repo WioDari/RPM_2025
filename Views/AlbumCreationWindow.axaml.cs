@@ -2,6 +2,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media.Imaging;
+using Microsoft.EntityFrameworkCore;
 using MusicPlusPlus.Context;
 using MusicPlusPlus.Models;
 using System;
@@ -49,7 +50,7 @@ public partial class AlbumCreationWindow : Window
     //кнопка сохранения альбома
     private void SaveB_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
     {
-        if (NameTB.Text == "" || NameTB.Text == null || CoverPathTB.Text == "" || ArtistsCB.SelectedItem == null || SelectedGenresLB.Items.Count == 0)
+        if (NameTB.Text == "" || NameTB.Text == null || CoverPathTB.Text == "" || ArtistsCB.SelectedItem == null || SelectedGenresLB.Items == null)
         {
             new MessageWindow("Некорректный ввод", "Заполните все поля!").Show();
             return;
@@ -61,6 +62,7 @@ public partial class AlbumCreationWindow : Window
             {
                 string albumname = NameTB.Text.Trim();
                 string coverpath = CoverPathTB.Text.Trim();
+
 
                 Album newalbum = new Album
                 {
@@ -77,15 +79,25 @@ public partial class AlbumCreationWindow : Window
                 var album = context.Albums.OrderBy(x => x.Albumid).LastOrDefault();
                 var artist = context.Artists.FirstOrDefault(x => x.Artistname == ArtistsCB.SelectedItem);
 
-                Artistalbums newlink = new Artistalbums
-                {
-                    Albumid = album.Albumid,
-                    Artistid = artist.Artistid
-                };
-                context.Artistalbums.Add(newlink);
-                context.SaveChanges();
+                context.Database.ExecuteSqlRaw("INSERT INTO public.artistalbums (albumid, artistid) VALUES ({0}, {1})", album.Albumid, artist.Artistid);
 
+
+                foreach (var selectedgenre in SelectedGenresLB.Items)
+                {
+                    var genrename = selectedgenre.ToString();
+                    var genre = context.Genres.FirstOrDefault(g => g.Genrename == genrename);
+                    if (genre != null)
+                    {
+                        context.Database.ExecuteSqlRaw(
+                            "INSERT INTO public.albumgenres (albumid, genreid) VALUES ({0}, {1})",
+                            album.Albumid,
+                            genre.Genreid
+                        );
+                    }
+                }
+                context.SaveChanges();
             }
+
             this.Close();
         }
         catch (Exception ex)
@@ -128,12 +140,13 @@ public partial class AlbumCreationWindow : Window
         string imagepath;
         if (CoverPathTB.Text != null || CoverPathTB.Text.Trim() != "")
         {
-            if (!CoverPathTB.Text.Trim().ToLower().EndsWith(".png"))
+
+            /*if (!CoverPathTB.Text.Trim().ToLower().EndsWith(".png"))
             {
                 new MessageWindow("Некорректный ввод", "Поддерживаются только изображения формата .png").Show();
                 CoverPathTB.Clear();
                 return;
-            }
+            }*/
             imagepath = CoverPathTB.Text.Trim();
         }
         else
@@ -149,19 +162,19 @@ public partial class AlbumCreationWindow : Window
                 using (var stream = new MemoryStream(imagedata))
                 {
                     Bitmap image = new Bitmap(stream);
-                    
-                     if (image.PixelSize.Width > 1000 || image.PixelSize.Height > 1000)
+
+                    if (image.PixelSize.Width > 1000 || image.PixelSize.Height > 1000)
                     {
                         new MessageWindow("Некорректный ввод", "Изображение не должно превышать 1000x1000").Show();
                         CoverPathTB.Clear();
                         return;
                     }
-                     
+
                     CoverI.Source = image;
                 }
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             try
             {
@@ -172,7 +185,12 @@ public partial class AlbumCreationWindow : Window
                 new MessageWindow("Ошибка", ex.Message).Show();
                 CoverPathTB.Clear();
             }
-            
+
         }
+    }
+
+    private void ClearSelectionB_Click(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        SelectedGenresLB.Items.Clear();
     }
 }

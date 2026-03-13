@@ -12,7 +12,7 @@
         Title="AlbumCreationWindow">
 
     <Grid
-    ShowGridLines="True"
+    ShowGridLines="False"
     ColumnDefinitions="*,*"
     RowDefinitions="50,8,200,8,32,8,32,8,32,8,32,8,32,8,200,8,32,*">
 		
@@ -130,7 +130,7 @@
         HorizontalAlignment="Left"
         Margin="15,0,0,0"
         Width="375"
-        PlaceholderText="Имя исполнителя">
+        PlaceholderText="Исполнитель">
         </ComboBox>
 
         <!--кнопка добавления нового исполнителя в бд-->
@@ -148,7 +148,7 @@
 
         <!--выбор жанра-->
         <AutoCompleteBox
-        Name="GenresACB"
+        x:Name="GenresACB"
         SelectionChanged="GenresACB_SelectionChanged"
         Grid.ColumnSpan="2"
         Grid.Row="12"
@@ -170,18 +170,31 @@
         Height="200">
         </ListBox>
 
-        <!--удаление выбранного жанра из списка-->
-        <Button
-        Name="GenreDeleteB"
-        Click="GenreDeleteB_Click"
+        <StackPanel
         Grid.Column="1"
         Grid.Row="14"
         VerticalAlignment="Center"
         HorizontalAlignment="Right"
         Margin="0,0,5,0"
-        Width="150"
-        Content="Убрать выбранное">
-        </Button>
+        Spacing="15"
+        Orientation="Vertical">
+
+            <Button
+            Name="GenreDeleteB"
+            Click="GenreDeleteB_Click"
+            Width="150"
+            Content="Убрать выбранное">
+            </Button>
+
+            <Button
+            x:Name="ClearSelectionB"
+            Click="ClearSelectionB_Click"
+            Width="150"
+            Content="Очистить список">
+            </Button>
+
+        </StackPanel>
+        
 
         <!--кнопка сохранения-->
         <Button

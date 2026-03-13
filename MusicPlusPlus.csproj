@@ -8,6 +8,9 @@
     <ApplicationIcon>Resources\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Models\Artistalbums.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="Resources\icon.ico" />
     <None Remove="Resources\icon.png" />
   </ItemGroup>

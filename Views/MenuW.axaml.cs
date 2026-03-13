@@ -29,7 +29,7 @@ public partial class MenuW : Window
     {
         base.OnLoaded(e);
 
-        
+
         using (var context = new MusicdbContext())
         {
             var user = context.Users.FirstOrDefault(x => x.Userid == Settings.Default.userid);
@@ -51,9 +51,11 @@ public partial class MenuW : Window
                 switch (user.Roleid)
                 {
                     case 3:
-                        UserInfoSP.IsVisible = true; GuestInfoTBlock.IsVisible = false; break;
+                        UserInfoSP.IsVisible = true; AddPlaylistB.IsVisible = true; GuestInfoTBlock.IsVisible = false; break;
+                    case 2:
+                        UserInfoSP.IsVisible = true; AddPlaylistB.IsVisible = true; UsersTab.IsVisible = false; GuestInfoTBlock.IsVisible = false; break;
                     default:
-                        AddAlbumB.IsVisible = false; UsersTab.IsVisible = false; UserInfoSP.IsVisible = true; GuestInfoTBlock.IsVisible = false; break;
+                        AddAlbumB.IsVisible = false; AddPlaylistB.IsVisible = false; UsersTab.IsVisible = false; UserInfoSP.IsVisible = true; GuestInfoTBlock.IsVisible = false; break;
                 }
 
 
@@ -61,7 +63,7 @@ public partial class MenuW : Window
                 LoginTBlock.Text = user.Login;
                 FullnameTBlock.Text = user.Fullname;
                 SubscriptionTBlock.Text = context.Subscriptions.FirstOrDefault(x => x.Subscriptionid == user.Subscriptionid).Subscriptionname;
-                
+
                 //проверка наличия премиум-подписки и соответствующие изменения цвета элементов
                 if (user.Subscriptionid == 2)
                 {
@@ -93,6 +95,18 @@ public partial class MenuW : Window
     private void AddAlbumB_Click(object? sender, RoutedEventArgs e)
     {
         new AlbumCreationWindow().Show();
+    }
+
+    //обновление страницы
+    private void RefreshB_Click(object? sender, RoutedEventArgs e)
+    {
+        LoadContent();
+    }
+
+    //добавление плейлистов
+    private void AddPlaylistB_Click(object? sender, RoutedEventArgs e)
+    {
+        new PlaylistCreationW().Show();
     }
 
     #endregion
@@ -183,6 +197,8 @@ public partial class MenuW : Window
         }
     }
 
+    
 
+    
 }
 

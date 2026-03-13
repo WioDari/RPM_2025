@@ -170,14 +170,30 @@
                 ShowGridLines="False"
                 RowDefinitions="50,*">
                     
-                    <!--кнопка добавления альбома-->
-                    <Button
-                    Click="AddAlbumB_Click"
-                    x:Name="AddAlbumB"
+                    <!--кнопочки-->
+                    <StackPanel
                     Grid.Row="0"
-                    Width="100"
-                    Content="Добавить">
-                    </Button>
+                    Orientation="Horizontal"
+                    Spacing="15"
+                    Margin="30,0,0,0">
+
+                        <Button
+                        x:Name="RefreshB"
+                        Click="RefreshB_Click"
+                        HorizontalAlignment="Left"
+                        Width="150"
+                        Content="Обновить страницу">
+                        </Button>
+						
+                        <Button
+                        Click="AddAlbumB_Click"
+                        x:Name="AddAlbumB"
+                        Width="125"
+                        Content="Добавить альбом">
+                        </Button>
+
+                    </StackPanel>
+                    
 					
 
                     <!--Сами альбомы-->
@@ -211,9 +227,34 @@
             x:Name="PlaylistsTab"
             Header="Плейлисты">
 
-                <Grid>
+                <Grid
+                RowDefinitions="50,*">
+
+                    <StackPanel
+                    Grid.Row="0"
+                    Orientation="Horizontal"
+                    Spacing="15"
+                    Margin="30,0,0,0">
+						
+                        <Button
+                        x:Name="RefreshPlaylistsB"
+                        Click="RefreshB_Click"
+                        HorizontalAlignment="Left"
+                        Width="150"
+                        Content="Обновить страницу">
+                        </Button>
+
+                        <Button
+                        x:Name="AddPlaylistB"
+                        Click="AddPlaylistB_Click"
+                        Width="150"
+                        Content="Добавить плейлист">
+                        </Button>
+
+                    </StackPanel>
 					
                     <ScrollViewer
+                    Grid.Row="1"
                     VerticalScrollBarVisibility="Hidden">
 						
                         <ItemsControl

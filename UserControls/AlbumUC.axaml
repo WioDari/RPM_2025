@@ -12,7 +12,8 @@
 
     <Border
     BorderBrush="{DynamicResource ResourceKey=MainAccent}"
-    BorderThickness="1.5">
+    BorderThickness="1.5"
+    Cursor="Hand">
 		
         <Grid
         ShowGridLines="False"
