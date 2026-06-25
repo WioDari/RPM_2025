@@ -3,7 +3,68 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="musicc.Window2"
-        Title="Window2">
-    Welcome to Avalonia!
+        xmlns:musicc="clr-namespace:musicc"
+        Title="Window2" FontFamily="Times New Roman" x:Class="musicc.Window2" x:DataType="musicc:Window2">
+    <Window.Styles>
+                <Style Selector="TextBlock">
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="Foreground" Value="#2D3748"/>
+                </Style>
+        
+                <Style Selector="TextBox">
+                        <Setter Property="BorderThickness" Value="1"/>
+                        <Setter Property="BorderBrush" Value="#E2E8F0"/>
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="#4A5568"/>
+                        <Setter Property="Padding" Value="12"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontSize" Value="14"/>
+                </Style>
+        
+                <Style Selector="TextBox:focus">
+                        <Setter Property="BorderBrush" Value="#7A00CC"/>
+                        <Setter Property="BorderThickness" Value="2"/>
+                </Style>
+        
+                <Style Selector="Button">
+                        <Setter Property="Background" Value="#7A00CC"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Padding" Value="16,12"/>
+                        <Setter Property="CornerRadius" Value="8"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                </Style>
+        
+                <Style Selector="Button:pointerover">
+                        <Setter Property="Background" Value="#6A00B8"/>
+                        <Setter Property="Opacity" Value="0.95"/>
+                </Style>
+        
+                <Style Selector="Button:pressed">
+                        <Setter Property="Background" Value="#5A00A4"/>
+                        <Setter Property="Opacity" Value="0.9"/>
+                </Style>
+                <Style Selector="Border">
+                        <Setter Property="BorderBrush" Value="#9C4DFF"></Setter>
+                        <Setter Property="Background" Value="#9C4DFF"></Setter>
+                        <Setter Property="BorderThickness" Value="5"></Setter>
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+        </Window.Styles>
+                <Grid  RowDefinitions="*,*,*,*,*" ColumnDefinitions="*,*,*,*,*">
+                                <TextBlock Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Url ссылка" Foreground="#9C4DFF"></TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Height="60" Width="150" Name="box_url"></TextBox>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Название" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#9C4DFF"></TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="1" Height="60" Name="box_name" Width="150"></TextBox>
+                                <TextBlock Grid.Column="0" Grid.Row="2" Text="Дата" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#9C4DFF"></TextBlock>
+                                <DatePicker Grid.Column="1" Grid.Row="2" Name="Dates" Background="#9C4DFF" Height="35" Width="300" Foreground="White"></DatePicker>
+                                <TextBlock Grid.Column="0" Grid.Row="3" Text="Исполнитель" Foreground="#9C4DFF" HorizontalAlignment="Center" VerticalAlignment="Center"> </TextBlock>
+                                <ComboBox Grid.Column="1" Grid.Row="3" Name="box_hero" ItemsSource="{Binding Arts}" HorizontalAlignment="Center" VerticalAlignment="Center" Height="60" Width="150" Background="#9C4DFF" Foreground="White"></ComboBox>
+                                <!--<TextBlock Grid.Column="0" Grid.Row="4" Text="Жанры" Foreground="#9C4DFF" HorizontalAlignment="Center" VerticalAlignment="Center"> </TextBlock>
+                                <ListBox Grid.Column="1" Grid.Row="4" Name="box_janri" ItemsSource="{Binding Janri}" SelectionMode="Multiple" Width="200" Height="100" Background="#9C4DFF" Foreground="White" Margin="0,0,0,0"></ListBox>-->
+                                <Button Grid.Column="4" Grid.Row="4" HorizontalAlignment="Center" Click="Button_OnClick" Content="Создать"></Button>
+                </Grid>
+        
 </Window>

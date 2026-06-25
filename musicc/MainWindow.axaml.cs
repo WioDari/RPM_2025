@@ -46,7 +46,15 @@ public partial class MainWindow : Window
             captcha();
             return;
         }
-      using (var bd = new PostgresContext())
+
+        if (box_name.Text == null && passw_view.Text == null)
+        {
+            errors.Text = "error";
+            kd += 1;
+            return;
+        }
+
+        using (var bd = new PostgresContext())
         {
             var user = bd.Users.Include(u => u.Role).FirstOrDefault(u => u.UserLogin == box_name.Text);
             string namepeop = user.FullName;

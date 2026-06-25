@@ -55,7 +55,7 @@ public partial class Window1 : Window
         _ = LoadAlbum();
     }
 
-    private async Task LoadAlbum()
+    public async Task LoadAlbum()
     {
         using (var bd = new PostgresContext())
         {
@@ -63,7 +63,7 @@ public partial class Window1 : Window
             {
                 Name = a.AlbumTitle,
                 author = a.Artist.ArtistName,
-                photo = a.CoverPath?? @"C:\Users\sekibanki\RiderProjects\musicc\musicc\photo\icon(1).png",
+                photo = a.CoverPath?? @"C:\Users\sekibanki\RiderProjects\musicc\musicc\photo\placeholder_cover.png",
                 track = a.Tracks.Count
             }).ToListAsync();
             Albums.Clear();
@@ -141,13 +141,20 @@ public partial class Window1 : Window
         this.Close();
     }
 
-    private void Button_OnClick1(object? sender, RoutedEventArgs e)
+    private async void Button_OnClick1(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var wind = new Window2();
+        var result = await wind.ShowDialog<bool?>(this);
+        if (result == true)
+        {
+            await LoadAlbum();
+        }
     }
 
     private void Button_OnClick2(object? sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        var wind = new Window3();
+        wind.ShowDialog(this);
     }
+        
 }

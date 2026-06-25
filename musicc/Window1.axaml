@@ -58,6 +58,9 @@
         <TabControl >
                 <TabItem Header="Main" Foreground="#7A00CC">
                         <Grid ColumnDefinitions="*,*,*" RowDefinitions="*,*,*">
+                                <WrapPanel>
+                                <Button Content="Создать альбом" Click="Button_OnClick1" VerticalAlignment="Bottom"></Button>
+                                </WrapPanel>
                                 <Border Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" BorderThickness="5" BorderBrush="#9C4DFF" Background="#9C4DFF" CornerRadius="5" Height="60" Width="250">
                                 <StackPanel>
                                         <TextBlock Foreground="White" Text="Имя" HorizontalAlignment="Center"></TextBlock>
@@ -81,10 +84,6 @@
                 </TabItem>
                 <TabItem Header="Playlists" Foreground="#7A00CC">
                         <StackPanel>
-                                <WrapPanel>
-                                <Button Content="Создать" Click="Button_OnClick1" VerticalAlignment="Bottom"></Button>
-                                <Button Content="Удалить" Click="Button_OnClick2" VerticalAlignment="Bottom" Margin="10,0,0,0"></Button>
-                                </WrapPanel>
                                 <ListBox ItemsSource="{Binding Playlists}" Margin="5" Background="#9C4DFF">
                                 <ListBox.ItemTemplate>
                                         <DataTemplate>
